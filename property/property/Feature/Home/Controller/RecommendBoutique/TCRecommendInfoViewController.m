@@ -109,7 +109,7 @@
 
 #pragma mark - UI
 - (void)createEntiretyScrollView {
-    mScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -20, self.view.width, self.view.height + 20 - TCRealValue(49))];
+    mScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -20, self.view.width, self.view.height + 20)];
     mScrollView.contentSize = CGSizeMake(self.view.width, TCRealValue(1500));
     mScrollView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
     [self.view addSubview:mScrollView];
@@ -135,8 +135,8 @@
     textAndImageView = [self createURLInfoViewWithOrigin:CGPointMake(0, selectGoodInfoSegment.y + selectGoodInfoSegment.height) AndURLStr:[NSString stringWithFormat:@"%@%@", TCCLIENT_RESOURCES_BASE_URL, mGoodDetail.detailURL]];
     [mScrollView addSubview:textAndImageView];
 
-    UIView *bottomView = [self createBottomViewWithFrame:CGRectMake(0, self.view.height - TCRealValue(49), self.view.width, TCRealValue(49))];
-    [self.view addSubview:bottomView];
+//    UIView *bottomView = [self createBottomViewWithFrame:CGRectMake(0, self.view.height - TCRealValue(49), self.view.width, TCRealValue(49))];
+//    [self.view addSubview:bottomView];
 
     [self createSelectSizeView];
     

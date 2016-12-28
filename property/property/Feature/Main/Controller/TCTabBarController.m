@@ -9,10 +9,8 @@
 #import "TCTabBarController.h"
 #import "TCNavigationController.h"
 #import "TCProfileViewController.h"
-//#import "TCVicinityViewController.h"
 #import "TCHomeViewController.h"
-//#import "TCCommunitiesViewController.h"
-//#import "TCToolsViewController.h"
+#import "TCOrderViewController.h"
 
 #import "TCTabBar.h"
 
@@ -28,13 +26,10 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self addChildController:[[TCHomeViewController alloc] init] title:@"首页" image:@"tabBar_home_normal" selectedImage:@"tabBar_home_selected"];
-    [self addChildController:[[UIViewController alloc] init] title:@"社区" image:@"tabBar_discover_normal" selectedImage:@"tabBar_discover_selected"];
+    [self addChildController:[[TCHomeViewController alloc] init] title:@"社区" image:@"tabBar_community_normal" selectedImage:@"tabBar_community_selected"];
+    [self addChildController:[[TCOrderViewController alloc] init] title:@"订单" image:@"tabBar_order_normal" selectedImage:@"tabBar_order_selected"];
     [self addChildController:[[TCProfileViewController alloc] init] title:@"我的" image:@"tabBar_profile_normal" selectedImage:@"tabBar_profile_selected"];
     self.tabBar.translucent = NO;
-//    [self setValue:[[TCTabBar alloc] init] forKey:@"tabBar"];
-    
-//    [self registerNotifications];
 }
 
 - (void)dealloc {
@@ -57,31 +52,16 @@
     nav.tabBarItem.title = title;
     nav.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     nav.tabBarItem.selectedImage = [[UIImage imageNamed:selecteImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    if ([title isEqualToString:@"附近"]) {
-        nav.tabBarItem.imageInsets = UIEdgeInsetsMake(-10, 0, 10, 0);
-    }
     nav.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -2);
     [self addChildViewController:nav];
 }
 
 #pragma mark - notification
 
-//- (void)registerNotifications {
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleClickVicinityButton:) name:TCVicinityButtonDidClickNotification object:nil];
-//}
 
 - (void)removeNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-#pragma mark - actions
-
-//- (void)handleClickVicinityButton:(NSNotification *)noti {
-//    TCVicinityViewController *vicinityVC = [[TCVicinityViewController alloc] init];
-//    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:vicinityVC];
-//    nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    [self presentViewController:nav animated:YES completion:nil];
-//}
 
 
 

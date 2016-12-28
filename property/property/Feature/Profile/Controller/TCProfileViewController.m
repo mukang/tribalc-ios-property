@@ -241,32 +241,18 @@ TCPhotoModeViewDelegate>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSArray *temp = self.fodderArray[section];
     return temp.count;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *currentCell;
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            TCProfileViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCProfileViewCell" forIndexPath:indexPath];
-            NSDictionary *fodder = self.fodderArray[indexPath.section][indexPath.row];
-            cell.titleLabel.text = fodder[@"title"];
-            cell.iconImageView.image = [UIImage imageNamed:fodder[@"icon"]];
-            cell.titleLabel.font = [UIFont systemFontOfSize:16];
-            currentCell = cell;
-        } else {
-            TCProfileProcessViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCProfileProcessViewCell" forIndexPath:indexPath];
-            [self addOrderButtonAction:cell.buttons];
-            currentCell = cell;
-            
-        }
-    } else {
-        TCProfileViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCProfileViewCell" forIndexPath:indexPath];
-        NSDictionary *fodder = self.fodderArray[indexPath.section][indexPath.row];
-        cell.titleLabel.text = fodder[@"title"];
-        cell.iconImageView.image = [UIImage imageNamed:fodder[@"icon"]];
-        cell.titleLabel.font = [UIFont systemFontOfSize:14];
-        currentCell = cell;
-    }
+    
+    TCProfileViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCProfileViewCell" forIndexPath:indexPath];
+    NSDictionary *fodder = self.fodderArray[indexPath.section][indexPath.row];
+    cell.titleLabel.text = fodder[@"title"];
+    cell.iconImageView.image = [UIImage imageNamed:fodder[@"icon"]];
+    cell.titleLabel.font = [UIFont systemFontOfSize:14];
+    currentCell = cell;
     return currentCell;
 }
 
@@ -277,17 +263,8 @@ TCPhotoModeViewDelegate>
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = 0;
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            height = 40;
-        } else {
-            height = 80;
-        }
-    } else {
-        height = 54;
-    }
-    return height;
+//    CGFloat height = 54;
+    return 54.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -302,29 +279,10 @@ TCPhotoModeViewDelegate>
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([self checkUserNeedLogin]) return;
     
-    if (indexPath.section == 0) {
-        TCUserOrderTabBarController *orderMainViewController = [[TCUserOrderTabBarController alloc] init];
-        orderMainViewController.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:orderMainViewController animated:YES];
-        
-    } else if (indexPath.section == 1) {
-        if (indexPath.row == 0) { // 我的钱包
-            TCWalletViewController *vc = [[TCWalletViewController alloc] initWithNibName:@"TCWalletViewController" bundle:[NSBundle mainBundle]];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        } else if (indexPath.row == 1) { // 身份认证
-            [self handleDidSelectedIDAuthCell];
-        } else if (indexPath.row == 2) { // 我的预定
-            TCUserReserveViewController *userReserveViewController = [[TCUserReserveViewController alloc] init];
-            userReserveViewController.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:userReserveViewController animated:YES];
-        } else if (indexPath.row == 3) { // 我的公司
-            [self handleDidSelectedMyCompanyCell];
-        }else if (indexPath.row == 4) {
-            TCPropertyManageListController *propertyListVc = [[TCPropertyManageListController alloc] init];
-            propertyListVc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:propertyListVc animated:YES];
-        }
+    if (indexPath.row == 0) { // 身份认证
+        [self handleDidSelectedIDAuthCell];
+    } else if (indexPath.row == 1) { // 我的公司
+        [self handleDidSelectedMyCompanyCell];
     }
 }
 
@@ -569,14 +527,8 @@ TCPhotoModeViewDelegate>
 
 - (NSArray *)fodderArray {
     if (_fodderArray == nil) {
-        _fodderArray = @[
-                         @[@{@"title": @"我的订单", @"icon": @"profile_order_icon"},
-                           @{@"title": @"", @"icon": @""}],
-                         @[@{@"title": @"我的钱包", @"icon": @"profile_wallet_icon"},
-                           @{@"title": @"身份认证", @"icon": @"profile_identity_icon"},
-                           @{@"title": @"我的预定", @"icon": @"profile_check_icon"},
-                           @{@"title": @"我的公司", @"icon": @"profile_company_icon"},
-                           @{@"title": @"物业报修", @"icon": @"profile_repairs_icon"}]
+        _fodderArray = @[@[@{@"title": @"身份认证", @"icon": @"profile_identity_icon"},
+                           @{@"title": @"我的公司", @"icon": @"profile_company_icon"},]
                          ];
     }
     return _fodderArray;

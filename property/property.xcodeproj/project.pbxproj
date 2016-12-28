@@ -666,6 +666,25 @@
 		559D94E11E13715B00982697 /* TCGetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D94DD1E13715B00982697 /* TCGetPasswordView.m */; };
 		559D94E21E13715B00982697 /* TCGetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559D94DE1E13715B00982697 /* TCGetPasswordView.xib */; };
 		559D94E51E1373D700982697 /* TCBlurImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D94E41E1373D700982697 /* TCBlurImageView.m */; };
+		559D94FD1E139C6500982697 /* bankCard.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559D94E81E139C6500982697 /* bankCard.plist */; };
+		559D94FE1E139C6500982697 /* citylist.data in Resources */ = {isa = PBXBuildFile; fileRef = 559D94E91E139C6500982697 /* citylist.data */; };
+		559D94FF1E139C6500982697 /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EA1E139C6500982697 /* downImage.jpg */; };
+		559D95001E139C6500982697 /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EB1E139C6500982697 /* downImage01.jpg */; };
+		559D95011E139C6500982697 /* assistant_external_sip.rc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94ED1E139C6500982697 /* assistant_external_sip.rc */; };
+		559D95021E139C6500982697 /* assistant_linphone_create.rc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EE1E139C6500982697 /* assistant_linphone_create.rc */; };
+		559D95031E139C6500982697 /* assistant_linphone_existing.rc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EF1E139C6500982697 /* assistant_linphone_existing.rc */; };
+		559D95041E139C6500982697 /* assistant_remote.rc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F01E139C6500982697 /* assistant_remote.rc */; };
+		559D95051E139C6500982697 /* linphonerc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F21E139C6500982697 /* linphonerc */; };
+		559D95061E139C6500982697 /* linphonerc-factory in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F31E139C6500982697 /* linphonerc-factory */; };
+		559D95071E139C6500982697 /* linphonerc~ipad in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F41E139C6500982697 /* linphonerc~ipad */; };
+		559D95081E139C6500982697 /* rootca.pem in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F51E139C6500982697 /* rootca.pem */; };
+		559D95091E139C6500982697 /* hold.mkv in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F71E139C6500982697 /* hold.mkv */; };
+		559D950A1E139C6500982697 /* msg.caf in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F81E139C6500982697 /* msg.caf */; };
+		559D950B1E139C6500982697 /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 559D94F91E139C6500982697 /* ringback.wav */; };
+		559D950C1E139C6500982697 /* notes_of_the_optimistic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 559D94FB1E139C6500982697 /* notes_of_the_optimistic.caf */; };
+		559D950D1E139C6500982697 /* shortring.caf in Resources */ = {isa = PBXBuildFile; fileRef = 559D94FC1E139C6500982697 /* shortring.caf */; };
+		559D95111E13B12A00982697 /* TCOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95101E13B12A00982697 /* TCOrderViewController.m */; };
+		559D95141E13C27E00982697 /* TCTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95131E13C27E00982697 /* TCTabView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2949,6 +2968,27 @@
 		559D94DE1E13715B00982697 /* TCGetPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCGetPasswordView.xib; sourceTree = "<group>"; };
 		559D94E31E1373D700982697 /* TCBlurImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlurImageView.h; sourceTree = "<group>"; };
 		559D94E41E1373D700982697 /* TCBlurImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlurImageView.m; sourceTree = "<group>"; };
+		559D94E81E139C6500982697 /* bankCard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bankCard.plist; sourceTree = "<group>"; };
+		559D94E91E139C6500982697 /* citylist.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = citylist.data; sourceTree = "<group>"; };
+		559D94EA1E139C6500982697 /* downImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage.jpg; sourceTree = "<group>"; };
+		559D94EB1E139C6500982697 /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
+		559D94ED1E139C6500982697 /* assistant_external_sip.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistant_external_sip.rc; sourceTree = "<group>"; };
+		559D94EE1E139C6500982697 /* assistant_linphone_create.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistant_linphone_create.rc; sourceTree = "<group>"; };
+		559D94EF1E139C6500982697 /* assistant_linphone_existing.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistant_linphone_existing.rc; sourceTree = "<group>"; };
+		559D94F01E139C6500982697 /* assistant_remote.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistant_remote.rc; sourceTree = "<group>"; };
+		559D94F21E139C6500982697 /* linphonerc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = linphonerc; sourceTree = "<group>"; };
+		559D94F31E139C6500982697 /* linphonerc-factory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "linphonerc-factory"; sourceTree = "<group>"; };
+		559D94F41E139C6500982697 /* linphonerc~ipad */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "linphonerc~ipad"; sourceTree = "<group>"; };
+		559D94F51E139C6500982697 /* rootca.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rootca.pem; sourceTree = "<group>"; };
+		559D94F71E139C6500982697 /* hold.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hold.mkv; sourceTree = "<group>"; };
+		559D94F81E139C6500982697 /* msg.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = msg.caf; sourceTree = "<group>"; };
+		559D94F91E139C6500982697 /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
+		559D94FB1E139C6500982697 /* notes_of_the_optimistic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notes_of_the_optimistic.caf; sourceTree = "<group>"; };
+		559D94FC1E139C6500982697 /* shortring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = shortring.caf; sourceTree = "<group>"; };
+		559D950F1E13B12A00982697 /* TCOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCOrderViewController.h; sourceTree = "<group>"; };
+		559D95101E13B12A00982697 /* TCOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCOrderViewController.m; sourceTree = "<group>"; };
+		559D95121E13C27E00982697 /* TCTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTabView.h; sourceTree = "<group>"; };
+		559D95131E13C27E00982697 /* TCTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTabView.m; sourceTree = "<group>"; };
 		A12549DADC4A72F6B6B3C670 /* Pods-property.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.release.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.release.xcconfig"; sourceTree = "<group>"; };
 		A60C01C459883F0F2D9D46B1 /* libPods-property.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-property.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF1BB4E914648267FFC1571 /* Pods-property.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.debug.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.debug.xcconfig"; sourceTree = "<group>"; };
@@ -3216,6 +3256,7 @@
 				559D886D1E1264DE00982697 /* Service */,
 				559D88661E12646900982697 /* Common */,
 				559D925D1E13598500982697 /* Feature */,
+				559D94E61E139C6500982697 /* Resource */,
 				559D88391E1257EB00982697 /* ViewController.h */,
 				559D883A1E1257EB00982697 /* ViewController.m */,
 				559D883C1E1257EB00982697 /* Main.storyboard */,
@@ -3352,6 +3393,8 @@
 				559D94781E13686700982697 /* TCCommonInputViewCell.xib */,
 				559D94731E13682000982697 /* TCCommonButton.h */,
 				559D94741E13682000982697 /* TCCommonButton.m */,
+				559D95121E13C27E00982697 /* TCTabView.h */,
+				559D95131E13C27E00982697 /* TCTabView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -7074,6 +7117,7 @@
 				559D94831E1369D600982697 /* TCGetNavigationItem.m */,
 				559D942D1E13606800982697 /* TCComponent.h */,
 				559D942E1E13606800982697 /* TCComponent.m */,
+				559D950E1E13B10E00982697 /* Order */,
 				559D94D61E13715B00982697 /* Login */,
 				559D930A1E135D8000982697 /* Profile */,
 				559D926A1E135D6400982697 /* Home */,
@@ -7811,6 +7855,79 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		559D94E61E139C6500982697 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				559D94E71E139C6500982697 /* BinaryFiles */,
+				559D94EA1E139C6500982697 /* downImage.jpg */,
+				559D94EB1E139C6500982697 /* downImage01.jpg */,
+				559D94EC1E139C6500982697 /* LinPhoneSources */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		559D94E71E139C6500982697 /* BinaryFiles */ = {
+			isa = PBXGroup;
+			children = (
+				559D94E81E139C6500982697 /* bankCard.plist */,
+				559D94E91E139C6500982697 /* citylist.data */,
+			);
+			path = BinaryFiles;
+			sourceTree = "<group>";
+		};
+		559D94EC1E139C6500982697 /* LinPhoneSources */ = {
+			isa = PBXGroup;
+			children = (
+				559D94ED1E139C6500982697 /* assistant_external_sip.rc */,
+				559D94EE1E139C6500982697 /* assistant_linphone_create.rc */,
+				559D94EF1E139C6500982697 /* assistant_linphone_existing.rc */,
+				559D94F01E139C6500982697 /* assistant_remote.rc */,
+				559D94F11E139C6500982697 /* images */,
+				559D94F21E139C6500982697 /* linphonerc */,
+				559D94F31E139C6500982697 /* linphonerc-factory */,
+				559D94F41E139C6500982697 /* linphonerc~ipad */,
+				559D94F51E139C6500982697 /* rootca.pem */,
+				559D94F61E139C6500982697 /* sounds */,
+			);
+			path = LinPhoneSources;
+			sourceTree = "<group>";
+		};
+		559D94F11E139C6500982697 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		559D94F61E139C6500982697 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				559D94F71E139C6500982697 /* hold.mkv */,
+				559D94F81E139C6500982697 /* msg.caf */,
+				559D94F91E139C6500982697 /* ringback.wav */,
+				559D94FA1E139C6500982697 /* ringtones */,
+				559D94FC1E139C6500982697 /* shortring.caf */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
+		559D94FA1E139C6500982697 /* ringtones */ = {
+			isa = PBXGroup;
+			children = (
+				559D94FB1E139C6500982697 /* notes_of_the_optimistic.caf */,
+			);
+			path = ringtones;
+			sourceTree = "<group>";
+		};
+		559D950E1E13B10E00982697 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				559D950F1E13B12A00982697 /* TCOrderViewController.h */,
+				559D95101E13B12A00982697 /* TCOrderViewController.m */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
 		90BB77D3DE009A25C681BBB6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -7965,14 +8082,17 @@
 			files = (
 				559D91131E12653200982697 /* hello16000.wav in Resources */,
 				559D91E01E12653400982697 /* hello8000.wav in Resources */,
+				559D950A1E139C6500982697 /* msg.caf in Resources */,
 				559D88431E1257EB00982697 /* LaunchScreen.storyboard in Resources */,
 				559D915D1E12653300982697 /* BelleSIPConfig.cmake in Resources */,
 				559D91BC1E12653400982697 /* BcToolboxConfig.cmake in Resources */,
+				559D95091E139C6500982697 /* hold.mkv in Resources */,
 				559D91E61E12653400982697 /* leaving_dreams.mkv in Resources */,
 				559D91191E12653200982697 /* its_a_game.mkv in Resources */,
 				559D93F61E135D8000982697 /* TCShippingAddressEditViewCell.xib in Resources */,
 				559D91BE1E12653400982697 /* BcToolboxTargets-release.cmake in Resources */,
 				559D90AA1E12653200982697 /* ORTPTargets-release.cmake in Resources */,
+				559D95081E139C6500982697 /* rootca.pem in Resources */,
 				559D91211E12653300982697 /* Matroska2Config.cmake in Resources */,
 				559D94181E135D8000982697 /* TCWalletBillViewCell.xib in Resources */,
 				559D91591E12653300982697 /* BcToolboxTargets.cmake in Resources */,
@@ -8023,16 +8143,20 @@
 				559D916B1E12653300982697 /* LinphoneConfig.cmake in Resources */,
 				559D91731E12653300982697 /* Mediastreamer2Targets.cmake in Resources */,
 				559D90AB1E12653200982697 /* ORTPTargets.cmake in Resources */,
+				559D95051E139C6500982697 /* linphonerc in Resources */,
 				559D91171E12653200982697 /* four_hands_together.mkv in Resources */,
 				559D90A51E12653200982697 /* Mediastreamer2ConfigVersion.cmake in Resources */,
 				559D94E01E13715B00982697 /* TCLoginViewController.xib in Resources */,
 				559D91671E12653300982697 /* BZRTPTargets.cmake in Resources */,
 				559D91D91E12653400982697 /* Mediastreamer2Targets.cmake in Resources */,
+				559D95031E139C6500982697 /* assistant_linphone_existing.rc in Resources */,
 				559D90B11E12653200982697 /* four_hands_together.mkv in Resources */,
 				559D91181E12653200982697 /* house_keeping.mkv in Resources */,
 				559D916D1E12653300982697 /* LinphoneTargets-release.cmake in Resources */,
 				559D91D61E12653400982697 /* Mediastreamer2Config.cmake in Resources */,
+				559D950B1E139C6500982697 /* ringback.wav in Resources */,
 				559D90EC1E12653200982697 /* ortp.pc in Resources */,
+				559D95001E139C6500982697 /* downImage01.jpg in Resources */,
 				559D91021E12653200982697 /* dummy_libraries.txt in Resources */,
 				559D91751E12653300982697 /* ORTPConfigVersion.cmake in Resources */,
 				559D90F41E12653200982697 /* BelcardConfig.cmake in Resources */,
@@ -8062,6 +8186,7 @@
 				559D916C1E12653300982697 /* LinphoneConfigVersion.cmake in Resources */,
 				559D90961E12653200982697 /* BelrTargets-release.cmake in Resources */,
 				559D911D1E12653200982697 /* oldphone-mono.wav in Resources */,
+				559D95021E139C6500982697 /* assistant_linphone_create.rc in Resources */,
 				559D91501E12653300982697 /* bctoolbox.pc in Resources */,
 				559D93C11E135D8000982697 /* TCBioEditPhoneViewController.xib in Resources */,
 				559D908F1E12653200982697 /* BelcardTargets-release.cmake in Resources */,
@@ -8073,6 +8198,7 @@
 				559D91E81E12653400982697 /* oldphone-mono-30s.caf in Resources */,
 				559D91BD1E12653400982697 /* BcToolboxConfigVersion.cmake in Resources */,
 				559D91781E12653300982697 /* dont_wait_too_long.mkv in Resources */,
+				559D95011E139C6500982697 /* assistant_external_sip.rc in Resources */,
 				559D93E01E135D8000982697 /* TCBankCardAddViewController.xib in Resources */,
 				559D88401E1257EB00982697 /* Assets.xcassets in Resources */,
 				559D91B81E12653400982697 /* ortp.pc in Resources */,
@@ -8080,6 +8206,7 @@
 				559D90A81E12653200982697 /* ORTPConfig.cmake in Resources */,
 				559D91E91E12653400982697 /* oldphone-mono.wav in Resources */,
 				559D911B1E12653200982697 /* notes_of_the_optimistic.mkv in Resources */,
+				559D94FF1E139C6500982697 /* downImage.jpg in Resources */,
 				559D91CD1E12653400982697 /* BZRTPTargets.cmake in Resources */,
 				559D908A1E12653200982697 /* BcToolboxConfig.cmake in Resources */,
 				559D916F1E12653300982697 /* rootca.pem in Resources */,
@@ -8101,6 +8228,7 @@
 				559D91721E12653300982697 /* Mediastreamer2Targets-release.cmake in Resources */,
 				559D915C1E12653300982697 /* BelcardTargets.cmake in Resources */,
 				559D90EE1E12653200982697 /* speexdsp.pc in Resources */,
+				559D950C1E139C6500982697 /* notes_of_the_optimistic.caf in Resources */,
 				559D940A1E135D8000982697 /* TCProfileViewCell.xib in Resources */,
 				559D91601E12653300982697 /* BelleSIPTargets.cmake in Resources */,
 				559D917B1E12653300982697 /* incoming_chat.wav in Resources */,
@@ -8111,6 +8239,7 @@
 				559D909F1E12653200982697 /* LinphoneConfig.cmake in Resources */,
 				559D883E1E1257EB00982697 /* Main.storyboard in Resources */,
 				559D91C71E12653400982697 /* BelrConfig.cmake in Resources */,
+				559D94FD1E139C6500982697 /* bankCard.plist in Resources */,
 				559D91521E12653300982697 /* ortp.pc in Resources */,
 				559D90F81E12653200982697 /* BelleSIPConfigVersion.cmake in Resources */,
 				559D91561E12653300982697 /* BcToolboxConfig.cmake in Resources */,
@@ -8175,7 +8304,9 @@
 				559D90A71E12653200982697 /* Mediastreamer2Targets.cmake in Resources */,
 				559D91111E12653200982697 /* ORTPTargets.cmake in Resources */,
 				559D908C1E12653200982697 /* BcToolboxTargets-release.cmake in Resources */,
+				559D950D1E139C6500982697 /* shortring.caf in Resources */,
 				559D90F21E12653200982697 /* BcToolboxTargets-release.cmake in Resources */,
+				559D95041E139C6500982697 /* assistant_remote.rc in Resources */,
 				559D90FF1E12653200982697 /* BZRTPConfigVersion.cmake in Resources */,
 				559D90B31E12653200982697 /* its_a_game.mkv in Resources */,
 				559D90A11E12653200982697 /* LinphoneTargets-release.cmake in Resources */,
@@ -8186,6 +8317,7 @@
 				559D91851E12653300982697 /* toy-mono.wav in Resources */,
 				559D91871E12653300982697 /* Matroska2Config.cmake in Resources */,
 				559D911F1E12653200982697 /* toy-mono.wav in Resources */,
+				559D95061E139C6500982697 /* linphonerc-factory in Resources */,
 				559D909D1E12653200982697 /* nowebcamCIF.jpg in Resources */,
 				559D93F81E135D8000982697 /* TCShippingAddressViewCell.xib in Resources */,
 				559D917D1E12653300982697 /* four_hands_together.mkv in Resources */,
@@ -8204,9 +8336,11 @@
 				559D91611E12653300982697 /* BelrConfig.cmake in Resources */,
 				559D90AE1E12653200982697 /* hello8000.wav in Resources */,
 				559D90971E12653200982697 /* BelrTargets.cmake in Resources */,
+				559D94FE1E139C6500982697 /* citylist.data in Resources */,
 				559D90FB1E12653200982697 /* BelrConfig.cmake in Resources */,
 				559D90B21E12653200982697 /* house_keeping.mkv in Resources */,
 				559D90FA1E12653200982697 /* BelleSIPTargets.cmake in Resources */,
+				559D95071E139C6500982697 /* linphonerc~ipad in Resources */,
 				559D91551E12653300982697 /* vpx.pc in Resources */,
 				559D91621E12653300982697 /* BelrTargets-release.cmake in Resources */,
 				559D90EA1E12653200982697 /* bctoolbox.pc in Resources */,
@@ -8293,6 +8427,7 @@
 				559D92FD1E135D6400982697 /* TCReserveUserBaseInfoView.m in Sources */,
 				559D92551E1268D300982697 /* TCFunctions.m in Sources */,
 				559D92151E12659C00982697 /* TCClient.m in Sources */,
+				559D95111E13B12A00982697 /* TCOrderViewController.m in Sources */,
 				559D92161E12659C00982697 /* TCClientConfig.m in Sources */,
 				559D93F31E135D8000982697 /* TCCityPickerView.m in Sources */,
 				559D92F41E135D6400982697 /* TCGoodSelectTitleView.m in Sources */,
@@ -8301,6 +8436,7 @@
 				559D94BD1E136D8200982697 /* TCRefreshHeader.m in Sources */,
 				559D92121E12659C00982697 /* Log.m in Sources */,
 				559D94B81E136D4D00982697 /* TCPropertyRepairsInfo.m in Sources */,
+				559D95141E13C27E00982697 /* TCTabView.m in Sources */,
 				559D93C21E135D8000982697 /* TCBioEditSMSViewController.m in Sources */,
 				559D93EE1E135D8000982697 /* TCBioEditSelectViewCell.m in Sources */,
 				559D91201E12653200982697 /* parser-impl.cc in Sources */,
@@ -8652,6 +8788,7 @@
 					"\"${PROJECT_DIR}/property/Common/Libs/liblinphone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = property/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -8696,6 +8833,7 @@
 					"\"${PROJECT_DIR}/property/Common/Libs/liblinphone-sdk/apple-darwin/include\"",
 				);
 				INFOPLIST_FILE = property/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
