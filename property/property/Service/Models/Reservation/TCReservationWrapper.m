@@ -1,0 +1,19 @@
+//
+//  TCReservationWrapper.m
+//  individual
+//
+//  Created by WYH on 16/12/7.
+//  Copyright © 2016年 杭州部落公社科技有限公司. All rights reserved.
+//
+
+#import "TCReservationWrapper.h"
+#import "TCReservation.h"
+
+@implementation TCReservationWrapper
+
++ (NSDictionary *)objectClassInArray {
+    return @{@"content": [TCReservation class]};
+}
+
+
+@end

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCShippingAddressViewController">
+            <connections>
+                <outlet property="tableView" destination="uvA-uF-hyy" id="cmv-hz-QdL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrN-sa-0LG">
+                    <color key="backgroundColor" red="0.31764705879999999" green="0.78039215689999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="a3i-zJ-L1M"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="新增收货地址">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="handleClickAddNewShippingAddressButton:" destination="-1" eventType="touchUpInside" id="vbi-RU-TAh"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uvA-uF-hyy">
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="nTD-1D-KPZ"/>
+                        <outlet property="delegate" destination="-1" id="LQj-WO-oYH"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uvA-uF-hyy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N0i-db-RL5"/>
+                <constraint firstItem="WrN-sa-0LG" firstAttribute="top" secondItem="uvA-uF-hyy" secondAttribute="bottom" id="Qwc-gR-u7M"/>
+                <constraint firstAttribute="trailing" secondItem="uvA-uF-hyy" secondAttribute="trailing" id="VyW-2K-UDo"/>
+                <constraint firstItem="WrN-sa-0LG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fQR-W2-UFn"/>
+                <constraint firstAttribute="bottom" secondItem="WrN-sa-0LG" secondAttribute="bottom" id="qCT-cd-YGh"/>
+                <constraint firstItem="uvA-uF-hyy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vHb-0b-G9b"/>
+                <constraint firstAttribute="trailing" secondItem="WrN-sa-0LG" secondAttribute="trailing" id="xCt-37-Jjm"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
