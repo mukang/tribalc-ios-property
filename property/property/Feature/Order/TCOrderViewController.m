@@ -38,7 +38,9 @@
                                                                     NSFontAttributeName : [UIFont systemFontOfSize:16],
                                                                     NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                     };
+    _index = 0;
     [self setUpTopView];
+    [self loadDataIsMore:NO];
     
 }
 
@@ -59,8 +61,22 @@
 - (void)loadDataIsMore:(BOOL)isMore {
     [MBProgressHUD showHUD:YES];
     @WeakObj(self)
+    
+    NSString *type = nil;
+    if (_index == 0) {
+        type = @"ORDER_ACCEPT";
+    }else if (_index == 1) {
+        type = @"TASK_CONFIRM";
+    }else if (_index == 2) {
+        type = @"NOT_FIX";
+    }else if (_index == 3) {
+        type = @"NOT_PAYING";
+    }else if (_index == 4) {
+        type = @"PAYED";
+    }
+    
     NSString *skip = isMore ? self.propertymanageWrapper.nextSkip : nil;
-    [[TCBuluoApi api] fetchPropertyWrapper:nil count:20 sortSkip:skip result:^(TCPropertyManageWrapper *propertyManageWrapper, NSError *error) {
+    [[TCBuluoApi api] fetchPropertyWrapper:type count:20 sortSkip:skip result:^(TCPropertyManageWrapper *propertyManageWrapper, NSError *error) {
         @StrongObj(self)
         if (propertyManageWrapper) {
             [MBProgressHUD hideHUD:YES];
@@ -90,7 +106,7 @@
 }
 
 - (void)setUpTopView {
-    TCTabView *tab = [[TCTabView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TCRealValue(42)) titleArr:@[@"新订单",@"已接单",@"待付款",@"已结束"]];
+    TCTabView *tab = [[TCTabView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TCRealValue(42)) titleArr:@[@"新订单",@"进行中",@"已结束"]];
     [self.view addSubview:tab];
     @WeakObj(self)
     tab.tapBlock = ^(NSInteger index){

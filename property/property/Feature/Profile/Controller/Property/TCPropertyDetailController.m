@@ -31,6 +31,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *problemDescHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *doorTimeLabelTopConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *fixProjectLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnTopConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *applyPhone;
 
 @end
 
@@ -80,10 +84,26 @@
     _phoneLabel.text = _propertyManage.phone;  
     _masterPersonNameLabe.text = _propertyManage.masterPersonName ? _propertyManage.masterPersonName : @"";
     _doorTimeLabel.text = [formatter stringFromDate:doorDate];
+    if (_propertyManage.fixProject) {
+        if ([_propertyManage.fixProject isEqualToString:@"PIPE_FIX"]) {
+            _fixProjectLabel.text = @"管件维修";
+        }else if ([_propertyManage.fixProject isEqualToString:@"PUBLIC_LIGHTING"]) {
+            _fixProjectLabel.text = @"公共照明";
+        }else if ([_propertyManage.fixProject isEqualToString:@"WATER_PIPE_FIX"]) {
+            _fixProjectLabel.text = @"水管维修";
+        }else if ([_propertyManage.fixProject isEqualToString:@"ELECTRICAL_FIX"]) {
+            _fixProjectLabel.text = @"电器维修";
+        }else {
+            _fixProjectLabel.text = @"其他";
+        }
+    }else {
+        _fixProjectLabel.text = @"";
+    }
     _masterView.hidden = [_propertyManage.status isEqualToString:@"ORDER_ACCEPT"];
     _payBtn.layer.cornerRadius = 3.0;
     _payBtn.clipsToBounds = YES;
     _problemDescBtn.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 10, 20);
+    
     
     NSString *problemDesc = _propertyManage.problemDesc ? _propertyManage.problemDesc : @"";
     NSDictionary *attribute1 = @{NSFontAttributeName: [UIFont systemFontOfSize:12]};
@@ -126,25 +146,76 @@
     
     CGFloat btnH = 0.0;
     CGFloat btnBottomC = 0.0;
+    CGFloat btnTopC = 30.0;
     
     if (_propertyManage.status) {
         if ([_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
             _masterView.hidden = YES;
-            _payBtn.hidden = YES;
+            _payBtn.hidden = NO;
+            btnH = 30.0;
+            [_payBtn setTitle:@"接单" forState:UIControlStateNormal];
+            [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
+            
         }else if ([_propertyManage.status isEqualToString:@"TASK_CONFIRM"]) {
             _masterView.hidden = NO;
-            _payBtn.hidden = YES;
+            _payBtn.hidden = NO;
+            [_payBtn setTitle:@"维修" forState:UIControlStateNormal];
+            [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
+            //已接单
+            
+            
         }else if ([_propertyManage.status isEqualToString:@"NOT_PAYING"]) {
             _masterView.hidden = NO;
             _payBtn.hidden = NO;
             btnH = 30.0;
             btnBottomC = 86.5;
+            btnTopC = 50;
+            //待支付
+            if (_propertyManage.totalFee) {
+                UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, CGRectGetMaxY(_masterView.frame), self.view.bounds.size.width-120, 20)];
+                moneyLabel.font = [UIFont systemFontOfSize:14];
+                [self.view addSubview:moneyLabel];
+                moneyLabel.textColor = TCRGBColor(42, 42, 42);
+                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%@",_propertyManage.totalFee];
+                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
+                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
+                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
+                moneyLabel.attributedText = att;
+                
+            }
+            [_payBtn setTitle:@"待支付" forState:UIControlStateNormal];
+            [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
+            
+            
         }else if ([_propertyManage.status isEqualToString:@"PAYED"]) {
             _masterView.hidden= NO;
             _payBtn.hidden = YES;
-        }else {
+            //已完成
+            if (_propertyManage.totalFee) {
+                UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, CGRectGetMaxY(_masterView.frame), self.view.bounds.size.width-120, 20)];
+                moneyLabel.font = [UIFont systemFontOfSize:14];
+                [self.view addSubview:moneyLabel];
+                moneyLabel.textColor = TCRGBColor(42, 42, 42);
+                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%@",_propertyManage.totalFee];
+                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
+                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
+                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
+                moneyLabel.attributedText = att;
+                
+            }
+            
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_masterView.frame)-75, -35, 75, 75)];
+            imageView.image = [UIImage imageNamed:@"propertyManageFinished"];
+            [_masterView addSubview:imageView];
+            
+            
+        }else if ([_propertyManage.status isEqualToString:@"NOT_FIX"]) {
             _masterView.hidden = YES;
             _payBtn.hidden = YES;
+            //待维修
         }
     }else {
         _masterView.hidden = YES;
@@ -153,6 +224,7 @@
     
     _btnHeightConstraint.constant = btnH;
     _btnBottomConstraint.constant = btnBottomC;
+    _btnTopConstraint.constant = btnTopC;
     
     [self.view setNeedsUpdateConstraints];
     [self.view updateConstraintsIfNeeded];

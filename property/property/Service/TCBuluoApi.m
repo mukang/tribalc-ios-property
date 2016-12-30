@@ -166,19 +166,19 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
     }];
 }
 
-//- (void)logout:(void (^)(BOOL, NSError *))resultBlock {
-//    if ([self isUserSessionValid]) {
-//        if (resultBlock) {
-//            TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
-//        }
-//    } else {
-//        if (resultBlock) {
-//            TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
-//        }
-//    }
-//    [self cleanUserSession];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:TCBuluoApiNotificationUserDidLogout object:nil];
-//}
+- (void)logout:(void (^)(BOOL, NSError *))resultBlock {
+    if ([self isUserSessionValid]) {
+        if (resultBlock) {
+            TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
+        }
+    } else {
+        if (resultBlock) {
+            TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
+        }
+    }
+    [self cleanUserSession];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TCBuluoApiNotificationUserDidLogout object:nil];
+}
 
 - (void)fetchUserInfoWithUserID:(NSString *)userID result:(void (^)(TCUserInfo *, NSError *))resultBlock {
     NSString *apiName = [NSString stringWithFormat:@"persons/%@", userID];

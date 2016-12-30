@@ -32,9 +32,9 @@
                     btn.tag = 10000+i;
                     btn.titleLabel.font = [UIFont systemFontOfSize:14];
                     [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-                    if (i == 0) {
-                        [self click:btn];
-                    }
+//                    if (i == 0) {
+//                        [self click:btn];
+//                    }
                 }
                 _lineView = [[UIView alloc] initWithFrame:CGRectMake(20, frame.size.height-2, kBtnWidth, 2)];
                 [self addSubview:_lineView];
