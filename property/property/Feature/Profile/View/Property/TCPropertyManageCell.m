@@ -70,17 +70,23 @@
         
         if (propertyManage.status) {
             if ([propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
-                [_statusBtn setTitle:@"系统接单" forState:UIControlStateNormal];
+                [_statusBtn setTitle:@"待接单" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
             }else if ([propertyManage.status isEqualToString:@"TASK_CONFIRM"]) {
-                [_statusBtn setTitle:@"任务确认" forState:UIControlStateNormal];
+                [_statusBtn setTitle:@"已接单" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
-            }else if ([propertyManage.status isEqualToString:@"NOT_PAYING"]) {
+            }else if ([propertyManage.status isEqualToString:@"TO_PAYING"]) {
                 [_statusBtn setTitle:@"待付款" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
             }else if ([propertyManage.status isEqualToString:@"PAYED"]) {
-                [_statusBtn setTitle:@"" forState:UIControlStateNormal];
+                [_statusBtn setTitle:@"已完成" forState:UIControlStateNormal];
                 _finishedImage.hidden= NO;
+            }else if ([propertyManage.status isEqualToString:@"TO_FIX"]) {
+                [_statusBtn setTitle:@"待维修" forState:UIControlStateNormal];
+                _finishedImage.hidden= YES;
+            }else if ([propertyManage.status isEqualToString:@"CANCEL"]) {
+                [_statusBtn setTitle:@"已取消" forState:UIControlStateNormal];
+                _finishedImage.hidden= YES;
             }else {
                 [_statusBtn setTitle:@"" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;

@@ -25,16 +25,14 @@ typedef NS_ENUM(NSInteger, TCUserEmotionState) {
 
 /** 用户ID */
 @property (copy, nonatomic) NSString *ID;
-/** 注册时间 */
-@property (nonatomic) NSInteger registrationDate;
-/** 服务等级 */
-@property (copy, nonatomic) NSString *serviceLeve;
+/** logo */
+@property (copy, nonatomic) NSString *logo;
 /** 昵称 */
 @property (copy, nonatomic) NSString *nickname;
-/** 头像路径 */
-@property (copy, nonatomic) NSString *picture;
-/** 用户背景图 */
-@property (copy, nonatomic) NSString *cover;
+/** 物业人员姓名 */
+@property (copy, nonatomic) NSString *name;
+/** 电话 */
+@property (copy, nonatomic) NSString *phone;
 /** 性别(UNKNOWN, MALE, FEMALE) */
 @property (copy, nonatomic) NSString *sex;
 /** 性别(枚举) */
@@ -49,13 +47,5 @@ typedef NS_ENUM(NSInteger, TCUserEmotionState) {
 @property (copy, nonatomic) NSString *province;
 /** 所在城市 */
 @property (copy, nonatomic) NSString *city;
-/** 所在城区 */
-@property (copy, nonatomic) NSString *district;
-/** 位置坐标 */
-@property (copy, nonatomic) NSArray *coordinate;
-/** 所在社区ID */
-@property (copy, nonatomic) NSString *communityID;
-/** 所在社区名称 */
-@property (copy, nonatomic) NSString *communityName;
 
 @end

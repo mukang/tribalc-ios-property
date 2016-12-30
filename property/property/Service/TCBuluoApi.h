@@ -495,4 +495,23 @@ typedef NS_ENUM(NSInteger, TCPayChannel) {
 //
 //
 //
+
+/**
+ 获取物业报修订单详情
+
+ @param orderId 订单号
+ @param resultBlock propertyManage
+ */
+- (void)fetchPropertyDetailWithOrderId:(NSString *)orderId result:(void (^)(TCPropertyManage *propertyManage, NSError *error))resultBlock;
+
+/**
+ 修改物业报修订单信息
+
+ @param orderId 订单号
+ @param status 要修改的订单状态
+ @param doorTime 上门时间
+ @param resultBlock 回调
+ */
+- (void)updatePropertyInfoWithOrderId:(NSString *)orderId status:(NSString *)status doorTime:(NSString *)doorTime result:(void (^)(BOOL success, NSError *error))resultBlock;
+
 @end

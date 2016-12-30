@@ -123,15 +123,15 @@
     // 所在地
     NSString *province = userInfo.province ?: @"";
     NSString *city = userInfo.city ?: @"";
-    NSString *district = userInfo.district ?: @"";
-    NSString *address = [NSString stringWithFormat:@"%@%@%@", province, city, district];
+//    NSString *district = userInfo.district ?: @"";
+//    NSString *address = [NSString stringWithFormat:@"%@%@%@", province, city, district];
     // 收货地址
     NSString *chippingAddress = @"";
-    if (userSensitiveInfo.shippingAddress) {
-        chippingAddress = [NSString stringWithFormat:@"%@%@%@%@", userSensitiveInfo.shippingAddress.province, userSensitiveInfo.shippingAddress.city, userSensitiveInfo.shippingAddress.district, userSensitiveInfo.shippingAddress.address];
-    }
-    
-    self.bioDetailsTitles = @[@[@"", nickname, genderStr, birthDateStr, emotionStateStr], @[phone, address, chippingAddress]];
+//    if (userSensitiveInfo.shippingAddress) {
+//        chippingAddress = [NSString stringWithFormat:@"%@%@%@%@", userSensitiveInfo.shippingAddress.province, userSensitiveInfo.shippingAddress.city, userSensitiveInfo.shippingAddress.district, userSensitiveInfo.shippingAddress.address];
+//    }
+//    
+//    self.bioDetailsTitles = @[@[@"", nickname, genderStr, birthDateStr, emotionStateStr], @[phone, address, chippingAddress]];
     [self.tableView reloadData];
 }
 
@@ -159,7 +159,7 @@
     UITableViewCell *currentCell = nil;
     if (indexPath.section == 0 && indexPath.row == 0) {
         TCBiographyAvatarViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCBiographyAvatarViewCell" forIndexPath:indexPath];
-        cell.avatar = [[TCBuluoApi api] currentUserSession].userInfo.picture;
+//        cell.avatar = [[TCBuluoApi api] currentUserSession].userInfo.picture;
         currentCell = cell;
     } else {
         TCBiographyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCBiographyViewCell" forIndexPath:indexPath];
@@ -373,13 +373,13 @@
 - (void)handleSelectLocationCell {
     TCBioEditLocationViewController *vc = [[TCBioEditLocationViewController alloc] init];
     TCUserInfo *userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
-    if (userInfo.province || userInfo.city || userInfo.district) {
-        TCUserAddress *address = [[TCUserAddress alloc] init];
-        address.province = userInfo.province;
-        address.city = userInfo.city;
-        address.district = userInfo.district;
-        vc.address = address;
-    }
+//    if (userInfo.province || userInfo.city || userInfo.district) {
+//        TCUserAddress *address = [[TCUserAddress alloc] init];
+//        address.province = userInfo.province;
+//        address.city = userInfo.city;
+//        address.district = userInfo.district;
+//        vc.address = address;
+//    }
     vc.editLocationBlock = ^() {
         [weakSelf fetchUserInfo];
     };

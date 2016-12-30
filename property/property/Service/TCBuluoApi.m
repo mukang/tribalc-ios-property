@@ -136,7 +136,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 #pragma mark - 普通用户资源
 
 - (void)login:(TCUserPhoneInfo *)phoneInfo result:(void (^)(TCUserSession *, NSError *))resultBlock {
-    NSString *apiName = @"persons/login";
+    NSString *apiName = @"property_members/login";
     TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
     NSDictionary *dic = [phoneInfo toObjectDictionary];
     for (NSString *key in dic.allKeys) {
@@ -151,7 +151,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
             userSession = [[TCUserSession alloc] initWithObjectDictionary:response.data];
             [self setUserSession:userSession];
             [self fetchCurrentUserInfoWithUserID:userSession.assigned];
-            [self fetchCurrentUserSensitiveInfoWithUserID:userSession.assigned];
+//            [self fetchCurrentUserSensitiveInfoWithUserID:userSession.assigned];
             TC_CALL_ASYNC_MQ({
                 [[NSNotificationCenter defaultCenter] postNotificationName:TCBuluoApiNotificationUserDidLogin object:nil];
             });
@@ -181,7 +181,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 }
 
 - (void)fetchUserInfoWithUserID:(NSString *)userID result:(void (^)(TCUserInfo *, NSError *))resultBlock {
-    NSString *apiName = [NSString stringWithFormat:@"persons/%@", userID];
+    NSString *apiName = [NSString stringWithFormat:@"%@", userID];
     TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
     [[TCClient client] send:request finish:^(TCClientResponse *response) {
         NSError *error = response.error;
@@ -251,7 +251,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.statusCode == 200) {
                 TCUserSession *userSession = self.currentUserSession;
-                userSession.userInfo.picture = avatar;
+//                userSession.userInfo.picture = avatar;
                 [self setUserSession:userSession];
                 if (resultBlock) {
                     TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
@@ -278,7 +278,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.statusCode == 200) {
                 TCUserSession *userSession = self.currentUserSession;
-                userSession.userInfo.cover = cover;
+//                userSession.userInfo.cover = cover;
                 [self setUserSession:userSession];
                 if (resultBlock) {
                     TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
@@ -1607,10 +1607,10 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)fetchPropertyWrapper:(NSString *)status count:(NSUInteger)count sortSkip:(NSString *)sortSkip result:(void (^)(TCPropertyManageWrapper *propertyManageWrapper, NSError *error))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *s = status ? [NSString stringWithFormat:@"status=%@&", status] : @"";
+        NSString *s = status ? [NSString stringWithFormat:@"displayStatus=%@&", status] : @"";
         NSString *limitSizePart = [NSString stringWithFormat:@"limitSize=%zd", count];
         NSString *sortSkipPart = sortSkip ? [NSString stringWithFormat:@"&sortSkip=%@", sortSkip] : @"";
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/property_management?%@%@%@", self.currentUserSession.assigned, s, limitSizePart, sortSkipPart];
+        NSString *apiName = [NSString stringWithFormat:@"property_orders?type=property&staff=%@&%@%@%@", self.currentUserSession.assigned, s, limitSizePart, sortSkipPart];
 //        NSString *apiName = [NSString stringWithFormat:@"persons/%@/property_management?%@%@%@", @"5824287f0cf210fc9cef5e42", s, limitSizePart, sortSkipPart];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -1688,5 +1688,53 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 //        }
 //    }
 //}
+
+- (void)fetchPropertyDetailWithOrderId:(NSString *)orderId result:(void (^)(TCPropertyManage *propertyManage, NSError *error))resultBlock {
+    if ([self isUserSessionValid]) {
+        NSString *apiName = [NSString stringWithFormat:@"property_orders/propertyDetail/%@", orderId];
+        TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
+        [[TCClient client] send:request finish:^(TCClientResponse *response) {
+            if (response.error) {
+                if (resultBlock) {
+                    TC_CALL_ASYNC_MQ(resultBlock(nil, response.error));
+                }
+            } else {
+                TCPropertyManage *propertyManage = [[TCPropertyManage alloc] initWithObjectDictionary:response.data];
+                if (resultBlock) {
+                    TC_CALL_ASYNC_MQ(resultBlock(propertyManage, nil));
+                }
+            }
+        }];
+    } else {
+        TCClientRequestError *sessionError = [TCClientRequestError errorWithCode:TCClientRequestErrorUserSessionInvalid andDescription:nil];
+        if (resultBlock) {
+            TC_CALL_ASYNC_MQ(resultBlock(nil, sessionError));
+        }
+    }
+}
+
+- (void)updatePropertyInfoWithOrderId:(NSString *)orderId status:(NSString *)status doorTime:(NSString *)doorTime result:(void (^)(BOOL, NSError *))resultBlock {
+    if ([self isUserSessionValid]) {
+        NSString *door = doorTime ? [NSString stringWithFormat:@"&doorTime=%@",doorTime] : @"";
+        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?staff=%@&status=%@%@", orderId,self.currentUserSession.assigned,status,door];
+        TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
+        [[TCClient client] send:request finish:^(TCClientResponse *response) {
+            if (response.statusCode == 200) {
+                if (resultBlock) {
+                    TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
+                }
+            } else {
+                if (resultBlock) {
+                    TC_CALL_ASYNC_MQ(resultBlock(NO, response.error));
+                }
+            }
+        }];
+    } else {
+        TCClientRequestError *sessionError = [TCClientRequestError errorWithCode:TCClientRequestErrorUserSessionInvalid andDescription:nil];
+        if (resultBlock) {
+            TC_CALL_ASYNC_MQ(resultBlock(NO, sessionError));
+        }
+    }
+}
 
 @end

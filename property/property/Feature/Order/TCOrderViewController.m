@@ -64,15 +64,11 @@
     
     NSString *type = nil;
     if (_index == 0) {
-        type = @"ORDER_ACCEPT";
+        type = @"NEW_ORDER";
     }else if (_index == 1) {
-        type = @"TASK_CONFIRM";
+        type = @"PROCESSING_ORDER";
     }else if (_index == 2) {
-        type = @"NOT_FIX";
-    }else if (_index == 3) {
-        type = @"NOT_PAYING";
-    }else if (_index == 4) {
-        type = @"PAYED";
+        type = @"FINISHED_ORDER";
     }
     
     NSString *skip = isMore ? self.propertymanageWrapper.nextSkip : nil;
@@ -142,6 +138,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TCPropertyManage *propertyManage = self.currentList[indexPath.section];
     TCPropertyDetailController *propertyDetailVC = [[TCPropertyDetailController alloc] initWithPropertyManage:propertyManage];
+    propertyDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:propertyDetailVC animated:YES];
 }
 

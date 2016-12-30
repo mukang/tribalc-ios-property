@@ -25,6 +25,7 @@
                 <outlet property="floorLabel" destination="2Zc-2f-IdE" id="53k-EC-GRw"/>
                 <outlet property="imageVConstraint" destination="AIu-1Q-yZN" id="rA9-pP-RRb"/>
                 <outlet property="imgView" destination="6mM-vD-3xN" id="Zha-Nh-y2R"/>
+                <outlet property="masterHeightConstraint" destination="ac2-lr-R1H" id="wH2-UC-cpv"/>
                 <outlet property="masterPersonNameLabe" destination="Zgd-fl-PEG" id="KNx-Ao-7uO"/>
                 <outlet property="masterView" destination="h8o-1M-mdf" id="fXO-BL-3Uj"/>
                 <outlet property="payBtn" destination="aR1-M9-Zw9" id="B6n-bM-Hmd"/>

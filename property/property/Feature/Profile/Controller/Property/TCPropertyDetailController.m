@@ -11,6 +11,7 @@
 #import "TCImageURLSynthesizer.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TCPaymentViewController.h"
+#import "TCBuluoApi.h"
 
 @interface TCPropertyDetailController ()
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;
@@ -35,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fixProjectLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnTopConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *applyPhone;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *masterHeightConstraint;
 
 @end
 
@@ -61,8 +63,23 @@
                                                                             target:self
                                                                             action:@selector(handleClickBackButton:)];
     
-    [self setData];
+    [self loadDetail];
     
+}
+
+- (void)loadDetail {
+    [MBProgressHUD showHUD:YES];
+    @WeakObj(self)
+    [[TCBuluoApi api] fetchPropertyDetailWithOrderId:_propertyManage.ID result:^(TCPropertyManage *propertyManage, NSError *error) {
+        @StrongObj(self)
+        if (propertyManage) {
+            [MBProgressHUD hideHUD:YES];
+            _propertyManage = propertyManage;
+            [self setData];
+        }else {
+            [MBProgressHUD showHUDWithMessage:error.localizedDescription? error.localizedDescription : @"获取订单详情失败，请稍后再试"];
+        }
+    }];
 }
 
 - (void)handleClickBackButton:(UIBarButtonItem *)sender {
@@ -147,12 +164,13 @@
     CGFloat btnH = 0.0;
     CGFloat btnBottomC = 0.0;
     CGFloat btnTopC = 30.0;
-    
+    CGFloat masterHC = 0.0;
     if (_propertyManage.status) {
         if ([_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
             _masterView.hidden = YES;
             _payBtn.hidden = NO;
             btnH = 30.0;
+            masterHC = 0.0;
             [_payBtn setTitle:@"接单" forState:UIControlStateNormal];
             [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
@@ -225,15 +243,45 @@
     _btnHeightConstraint.constant = btnH;
     _btnBottomConstraint.constant = btnBottomC;
     _btnTopConstraint.constant = btnTopC;
+    _masterHeightConstraint.constant = masterHC;
     
     [self.view setNeedsUpdateConstraints];
     [self.view updateConstraintsIfNeeded];
     [self.view layoutIfNeeded];
 }
 
+- (void)acceptOrder {
+    [MBProgressHUD showHUD:YES];
+    [[TCBuluoApi api] updatePropertyInfoWithOrderId:_propertyManage.ID status:@"TASK_CONFIRM" doorTime:nil result:^(BOOL success, NSError *error) {
+        if (success) {
+            [MBProgressHUD hideHUD:YES];
+            
+        }else {
+            [MBProgressHUD showHUDWithMessage:error.localizedDescription ? error.localizedDescription : @"接单失败"];
+        }
+        [self loadDetail];
+    }];
+}
+
+- (void)comfirmFixTime {
+
+}
+
 - (IBAction)payBtnClick:(id)sender {
-    TCPaymentViewController *paymentVc = [[TCPaymentViewController alloc] init];
-    [self.navigationController pushViewController:paymentVc animated:YES];
+    if (_propertyManage.status) {
+        if ([_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
+            //接单
+            [self acceptOrder];
+        }else if ([_propertyManage.status isEqualToString:@"TASK_CONFIRM"]) {
+        //确定维修时间
+            [self comfirmFixTime];
+        }else if ([_propertyManage.status isEqualToString:@"NOT_PAYING"]) {
+         //待付款
+            TCPaymentViewController *paymentVc = [[TCPaymentViewController alloc] init];
+            [self.navigationController pushViewController:paymentVc animated:YES];
+
+        }
+    }
 }
 
 - (void)dealloc {
