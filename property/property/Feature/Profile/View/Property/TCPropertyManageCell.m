@@ -81,7 +81,7 @@
                 [_statusBtn setTitle:@"待付款" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
                 _masterView.hidden = NO;
-            }else if ([propertyManage.status isEqualToString:@"PAYED"]) {
+            }else if ([propertyManage.status isEqualToString:@"PAY_ED"]) {
                 [_statusBtn setTitle:@"已完成" forState:UIControlStateNormal];
                 _finishedImage.hidden= NO;
                 _masterView.hidden = NO;

@@ -48,6 +48,9 @@
 @property (assign, nonatomic) NSTimeInterval timestamp;
 
 @property (strong, nonatomic) TCOrderCancelView *cancelView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *overImageView;
+
 @end
 
 @implementation TCPropertyDetailController
@@ -133,7 +136,7 @@
 
 - (void)setData {
     
-    if (![_propertyManage.status isEqualToString:@"PAYED"] && ![_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
+    if (![_propertyManage.status isEqualToString:@"PAY_ED"] && ![_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelOrder)];
     }else {
         self.navigationItem.rightBarButtonItem = nil;
@@ -169,6 +172,7 @@
         _fixProjectLabel.text = @"";
     }
     _masterView.hidden = [_propertyManage.status isEqualToString:@"ORDER_ACCEPT"];
+    _masterView.backgroundColor = [UIColor whiteColor];
     _payBtn.layer.cornerRadius = 3.0;
     _payBtn.clipsToBounds = YES;
     _problemDescBtn.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 10, 20);
@@ -223,6 +227,7 @@
         _textField = nil;
     }
     
+    _overImageView.hidden = YES;
     if (_propertyManage.status) {
         if ([_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
 
@@ -297,10 +302,12 @@
             [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
             
             
-        }else if ([_propertyManage.status isEqualToString:@"PAYED"]) {
+        }else if ([_propertyManage.status isEqualToString:@"PAY_ED"]) {
 
             //已完成
             masterHC = 90.0;
+            _overImageView.hidden = NO;
+            _masterView.backgroundColor = TCRGBColor(238, 239, 240);
             if (_propertyManage.totalFee) {
                 NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%.2f",_propertyManage.totalFee];
                 NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
@@ -309,12 +316,6 @@
                 self.moneyLabel.attributedText = att;
                 
             }
-            
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_masterView.frame)-75, -35, 75, 75)];
-            imageView.image = [UIImage imageNamed:@"propertyManageFinished"];
-            [_masterView addSubview:imageView];
-            
-            
         }
 
     }else {

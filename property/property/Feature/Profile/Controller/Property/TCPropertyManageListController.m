@@ -125,7 +125,7 @@
     if ([status isEqualToString:@"ORDER_ACCEPT"]) {
          height = 225.00;
     }else {
-        if ([status isEqualToString:@"PAYED"] && propertyManage.totalFee) {
+        if ([status isEqualToString:@"PAY_ED"] && propertyManage.totalFee) {
             height = 342;
         }else {
             height = 320.0;
