@@ -1713,10 +1713,38 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
     }
 }
 
-- (void)updatePropertyInfoWithOrderId:(NSString *)orderId status:(NSString *)status doorTime:(NSString *)doorTime result:(void (^)(BOOL, NSError *))resultBlock {
+- (void)updatePropertyInfoWithOrderId:(NSString *)orderId status:(NSString *)status doorTime:(NSString *)doorTime payValue:(NSString *)payValue result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *door = doorTime ? [NSString stringWithFormat:@"&doorTime=%@",doorTime] : @"";
-        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?staff=%@&status=%@%@", orderId,self.currentUserSession.assigned,status,door];
+        NSString *payVa = payValue ? [NSString stringWithFormat:@"&payValue=%@",payValue] : @"";
+        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?staff=%@&status=%@%@", orderId,self.currentUserSession.assigned,status,payVa];
+        TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
+        if (doorTime) {
+            NSInteger door = [doorTime integerValue];
+            [request setValue:[NSNumber numberWithInteger:door] forKey:@"value"];
+        }
+        
+        [[TCClient client] send:request finish:^(TCClientResponse *response) {
+            if (response.statusCode == 200) {
+                if (resultBlock) {
+                    TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
+                }
+            } else {
+                if (resultBlock) {
+                    TC_CALL_ASYNC_MQ(resultBlock(NO, response.error));
+                }
+            }
+        }];
+    } else {
+        TCClientRequestError *sessionError = [TCClientRequestError errorWithCode:TCClientRequestErrorUserSessionInvalid andDescription:nil];
+        if (resultBlock) {
+            TC_CALL_ASYNC_MQ(resultBlock(NO, sessionError));
+        }
+    }
+}
+
+- (void)cancelPropertyOrderWithOrderID:(NSString *)orderId reason:(NSString *)reasonStr result:(void(^)(BOOL success, NSError *error))resultBlock {
+    if ([self isUserSessionValid]) {
+        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?type=property&cancelReason=%@", orderId,reasonStr];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.statusCode == 200) {

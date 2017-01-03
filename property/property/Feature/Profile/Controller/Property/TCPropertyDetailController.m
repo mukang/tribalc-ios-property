@@ -12,8 +12,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TCPaymentViewController.h"
 #import "TCBuluoApi.h"
+#import "TCDatePickerView.h"
+#import "TCOrderCancelView.h"
+#import <Masonry.h>
 
-@interface TCPropertyDetailController ()
+@interface TCPropertyDetailController () <TCDatePickerViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *applyPersonNameLabel;
@@ -38,6 +41,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *applyPhone;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *masterHeightConstraint;
 
+@property (strong, nonatomic) UILabel *moneyLabel;
+
+@property (nonatomic, strong) UITextField *textField;
+
+@property (assign, nonatomic) NSTimeInterval timestamp;
+
+@property (strong, nonatomic) TCOrderCancelView *cancelView;
 @end
 
 @implementation TCPropertyDetailController
@@ -62,7 +72,7 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(handleClickBackButton:)];
-    
+    _timestamp = 0.0;
     [self loadDetail];
     
 }
@@ -86,7 +96,49 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)cancelWithReason:(NSString *)str {
+    @WeakObj(self)
+    [MBProgressHUD showHUD:YES];
+    [[TCBuluoApi api] cancelPropertyOrderWithOrderID:_propertyManage.ID reason:str result:^(BOOL success, NSError *error) {
+        @StrongObj(self)
+        if (success) {
+            [self.cancelView removeFromSuperview];
+            self.cancelView = nil;
+            [MBProgressHUD showHUDWithMessage:@"取消成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+            
+        }else {
+            [MBProgressHUD hideHUD:YES];
+            [MBProgressHUD showHUDWithMessage:@"取消失败"];
+        }
+    }];
+}
+
+- (void)cancelOrder {
+    @WeakObj(self)
+    _cancelView = [[TCOrderCancelView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.size.width, self.navigationController.view.size.height)];
+    _cancelView.cancelBlock = ^{
+        @StrongObj(self)
+        [self.cancelView removeFromSuperview];
+        self.cancelView = nil;
+    };
+    _cancelView.confirmBlock = ^(NSString *str){
+        @StrongObj(self)
+        [self cancelWithReason:str];
+    };
+    [self.navigationController.view addSubview:_cancelView];
+}
+
 - (void)setData {
+    
+    if (![_propertyManage.status isEqualToString:@"PAYED"] && ![_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelOrder)];
+    }else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    
     NSTimeInterval appointTime = _propertyManage.appointTime/1000;
     NSDate *appointDate = [NSDate dateWithTimeIntervalSince1970:appointTime];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -165,42 +217,79 @@
     CGFloat btnBottomC = 0.0;
     CGFloat btnTopC = 30.0;
     CGFloat masterHC = 0.0;
+    CGFloat doorTimeTopCon = 5.0;
+    if (_textField) {
+        [_textField removeFromSuperview];
+        _textField = nil;
+    }
+    
     if (_propertyManage.status) {
         if ([_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
-            _masterView.hidden = YES;
-            _payBtn.hidden = NO;
+
             btnH = 30.0;
             masterHC = 0.0;
+            btnBottomC = 70.0;
             [_payBtn setTitle:@"接单" forState:UIControlStateNormal];
             [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
             
         }else if ([_propertyManage.status isEqualToString:@"TASK_CONFIRM"]) {
-            _masterView.hidden = NO;
-            _payBtn.hidden = NO;
+
+            btnH = 30.0;
             [_payBtn setTitle:@"维修" forState:UIControlStateNormal];
             [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
+            btnBottomC = 70.0;
+            btnTopC = 30.0;
+            masterHC = 115.0;
+            doorTimeTopCon = 20.0;
+            _doorTimeLabel.text = @"";
             //已接单
             
+            UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(_doorTimeLabel.frame.origin.x, CGRectGetMaxY(_phoneLabel.frame)+15, _masterView.frame.size.width-_doorTimeLabel.frame.origin.x-5, _doorTimeLabel.frame.size.height+10)];
+            textField.layer.borderColor = TCRGBColor(154, 154, 154).CGColor;
+            textField.layer.cornerRadius = 3.0;
+            textField.layer.borderWidth = 0.5;
+            textField.clipsToBounds = YES;
+            textField.delegate = self;
+
+            textField.textAlignment = NSTextAlignmentRight;
+            [_masterView addSubview:textField];
             
-        }else if ([_propertyManage.status isEqualToString:@"NOT_PAYING"]) {
-            _masterView.hidden = NO;
-            _payBtn.hidden = NO;
+            UILabel *lefLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, textField.frame.size.height)];
+            lefLabel.text = @"请选择";
+            lefLabel.textAlignment = NSTextAlignmentRight;
+            lefLabel.textColor = TCRGBColor(154, 154, 154);
+            lefLabel.font = [UIFont systemFontOfSize:14];
+            textField.leftView = lefLabel;
+            textField.leftViewMode = UITextFieldViewModeAlways;
+
+            UIView *rightV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 18)];
+            
+            UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 10, 18)];
+            imageV.image = [UIImage imageNamed:@"indicating_arrow"];            
+            [rightV addSubview:imageV];
+            textField.rightView = rightV;
+            textField.rightViewMode = UITextFieldViewModeAlways;
+            _textField = textField;
+            
+            
+            
+        }else if ([_propertyManage.status isEqualToString:@"TO_PAYING"] || [_propertyManage.status isEqualToString:@"TO_FIX"]) {
+
             btnH = 30.0;
-            btnBottomC = 86.5;
-            btnTopC = 50;
+            btnBottomC = 70.0;
+            btnTopC = 30;
+            masterHC = 115.0;
+            doorTimeTopCon = 20.0;
             //待支付
             if (_propertyManage.totalFee) {
-                UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, CGRectGetMaxY(_masterView.frame), self.view.bounds.size.width-120, 20)];
-                moneyLabel.font = [UIFont systemFontOfSize:14];
-                [self.view addSubview:moneyLabel];
-                moneyLabel.textColor = TCRGBColor(42, 42, 42);
-                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%@",_propertyManage.totalFee];
+                
+                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%.2f",_propertyManage.totalFee];
                 NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
-                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
-                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
-                moneyLabel.attributedText = att;
+                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
+                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
+                self.moneyLabel.attributedText = att;
                 
             }
             [_payBtn setTitle:@"待支付" forState:UIControlStateNormal];
@@ -209,19 +298,15 @@
             
             
         }else if ([_propertyManage.status isEqualToString:@"PAYED"]) {
-            _masterView.hidden= NO;
-            _payBtn.hidden = YES;
+
             //已完成
+            masterHC = 90.0;
             if (_propertyManage.totalFee) {
-                UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, CGRectGetMaxY(_masterView.frame), self.view.bounds.size.width-120, 20)];
-                moneyLabel.font = [UIFont systemFontOfSize:14];
-                [self.view addSubview:moneyLabel];
-                moneyLabel.textColor = TCRGBColor(42, 42, 42);
-                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%@",_propertyManage.totalFee];
+                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%.2f",_propertyManage.totalFee];
                 NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
-                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
-                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:_propertyManage.totalFee]];
-                moneyLabel.attributedText = att;
+                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
+                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
+                self.moneyLabel.attributedText = att;
                 
             }
             
@@ -230,29 +315,56 @@
             [_masterView addSubview:imageView];
             
             
-        }else if ([_propertyManage.status isEqualToString:@"NOT_FIX"]) {
-            _masterView.hidden = YES;
-            _payBtn.hidden = YES;
-            //待维修
         }
+
     }else {
-        _masterView.hidden = YES;
-        _payBtn.hidden = YES;
+
     }
     
     _btnHeightConstraint.constant = btnH;
     _btnBottomConstraint.constant = btnBottomC;
     _btnTopConstraint.constant = btnTopC;
     _masterHeightConstraint.constant = masterHC;
+    _doorTimeLabelTopConstraint.constant = doorTimeTopCon;
     
     [self.view setNeedsUpdateConstraints];
     [self.view updateConstraintsIfNeeded];
     [self.view layoutIfNeeded];
 }
 
+- (UILabel *)moneyLabel {
+    if (_moneyLabel == nil) {
+        _moneyLabel = [[UILabel alloc] init];
+        _moneyLabel.font = [UIFont systemFontOfSize:14];
+        _moneyLabel.textAlignment = NSTextAlignmentRight;
+        
+        [self.view addSubview:_moneyLabel];
+        [_moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(_masterView);
+            make.height.equalTo(@20);
+            make.top.equalTo(_masterView.mas_bottom);
+        }];
+        _moneyLabel.textColor = TCRGBColor(42, 42, 42);
+    }
+    return _moneyLabel;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self showDatePicker];
+    return NO;
+}
+
+- (void)showDatePicker {
+    TCDatePickerView *datePickerView = [[TCDatePickerView alloc] initWithController:self];
+    datePickerView.datePicker.date = [NSDate date];
+    datePickerView.datePicker.minimumDate = [NSDate date];
+    datePickerView.delegate = self;
+    [datePickerView show];
+}
+
 - (void)acceptOrder {
     [MBProgressHUD showHUD:YES];
-    [[TCBuluoApi api] updatePropertyInfoWithOrderId:_propertyManage.ID status:@"TASK_CONFIRM" doorTime:nil result:^(BOOL success, NSError *error) {
+    [[TCBuluoApi api] updatePropertyInfoWithOrderId:_propertyManage.ID status:@"TASK_CONFIRM" doorTime:nil payValue:nil result:^(BOOL success, NSError *error) {
         if (success) {
             [MBProgressHUD hideHUD:YES];
             
@@ -263,8 +375,35 @@
     }];
 }
 
-- (void)comfirmFixTime {
+- (void)didClickConfirmButtonInDatePickerView:(TCDatePickerView *)view {
+    _timestamp = [view.datePicker.date timeIntervalSince1970];
+    if (_textField) {
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)(_timestamp * 1000) / 1000];
+         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+         dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+         dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+         dateFormatter.timeStyle = kCFDateFormatterShortStyle;
+         _textField.text = [dateFormatter stringFromDate:date];
+    }
+}
 
+- (void)comfirmFixTime {
+    if (_textField) {
+        if (_textField.text.length > 0) {
+            [MBProgressHUD showHUD:YES];
+            [[TCBuluoApi api] updatePropertyInfoWithOrderId:_propertyManage.ID status:@"TO_FIX" doorTime:[NSString stringWithFormat:@"%ld",(NSInteger)(_timestamp * 1000) / 1000] payValue:nil result:^(BOOL success, NSError *error) {
+                if (success) {
+                    [MBProgressHUD hideHUD:YES];
+                    [self loadDetail];
+                }else {
+                    [MBProgressHUD showHUDWithMessage:error.localizedDescription ? error.localizedDescription : @"确定时间失败"];
+                }
+                
+            }];
+        }else {
+            [MBProgressHUD showHUDWithMessage:@"请输入维修时间"];
+        }
+    }
 }
 
 - (IBAction)payBtnClick:(id)sender {
@@ -275,9 +414,13 @@
         }else if ([_propertyManage.status isEqualToString:@"TASK_CONFIRM"]) {
         //确定维修时间
             [self comfirmFixTime];
-        }else if ([_propertyManage.status isEqualToString:@"NOT_PAYING"]) {
+        }else if ([_propertyManage.status isEqualToString:@"TO_PAYING"] || [_propertyManage.status isEqualToString:@"TO_FIX"]) {
          //待付款
             TCPaymentViewController *paymentVc = [[TCPaymentViewController alloc] init];
+            paymentVc.orderID = _propertyManage.ID;
+            paymentVc.successBlock = ^{
+                [self loadDetail];
+            };
             [self.navigationController pushViewController:paymentVc animated:YES];
 
         }

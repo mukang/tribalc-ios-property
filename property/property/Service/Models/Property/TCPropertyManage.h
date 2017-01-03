@@ -38,6 +38,6 @@
 /** 订单号 */
 @property (copy,nonatomic) NSString *propertyNum;
 /** 费用 */
-@property (copy,nonatomic) NSString *totalFee;
+@property (assign,nonatomic) CGFloat totalFee;
 
 @end

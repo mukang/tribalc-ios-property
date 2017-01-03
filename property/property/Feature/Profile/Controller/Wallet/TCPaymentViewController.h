@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ConfirmMoneySuccessBlock)();
+
 @interface TCPaymentViewController : UIViewController
+
+@property (nonatomic, copy) NSString *orderID;
+
+@property (copy, nonatomic) ConfirmMoneySuccessBlock successBlock;
 
 @end

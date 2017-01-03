@@ -512,6 +512,14 @@ typedef NS_ENUM(NSInteger, TCPayChannel) {
  @param doorTime 上门时间
  @param resultBlock 回调
  */
-- (void)updatePropertyInfoWithOrderId:(NSString *)orderId status:(NSString *)status doorTime:(NSString *)doorTime result:(void (^)(BOOL success, NSError *error))resultBlock;
+- (void)updatePropertyInfoWithOrderId:(NSString *)orderId status:(NSString *)status doorTime:(NSString *)doorTime payValue:(NSString *)payValue result:(void (^)(BOOL success, NSError *error))resultBlock;
 
+
+/**
+ 取消物业报修订单
+ 
+ @param orderId 订单号
+ @param resultBlock 结果回调success为NO时表示提交失败
+ */
+- (void)cancelPropertyOrderWithOrderID:(NSString *)orderId reason:(NSString *)reasonStr result:(void(^)(BOOL success, NSError *error))resultBlock;
 @end

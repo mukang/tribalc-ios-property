@@ -233,7 +233,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR1-M9-Zw9">
-                                    <rect key="frame" x="35" y="651.5" width="305" height="30"/>
+                                    <rect key="frame" x="20" y="651.5" width="335" height="30"/>
                                     <color key="backgroundColor" red="0.26666666666666666" green="0.74509803921568629" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="qtT-XT-z1h"/>
@@ -294,10 +294,10 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="pG5-3p-g7K" firstAttribute="height" secondItem="Hhe-Dn-cEo" secondAttribute="height" id="07q-qo-uD4"/>
-                                <constraint firstAttribute="trailing" secondItem="aR1-M9-Zw9" secondAttribute="trailing" constant="35" id="0W8-Mp-0O1"/>
+                                <constraint firstAttribute="trailing" secondItem="aR1-M9-Zw9" secondAttribute="trailing" constant="20" id="0W8-Mp-0O1"/>
                                 <constraint firstItem="6mM-vD-3xN" firstAttribute="leading" secondItem="E24-ol-dyl" secondAttribute="leading" constant="20" id="0aC-0X-3ML"/>
                                 <constraint firstAttribute="trailing" secondItem="8Pt-iG-ySb" secondAttribute="trailing" constant="20" id="0ax-5U-AEi"/>
-                                <constraint firstItem="aR1-M9-Zw9" firstAttribute="leading" secondItem="E24-ol-dyl" secondAttribute="leading" constant="35" id="11P-A2-HtV"/>
+                                <constraint firstItem="aR1-M9-Zw9" firstAttribute="leading" secondItem="E24-ol-dyl" secondAttribute="leading" constant="20" id="11P-A2-HtV"/>
                                 <constraint firstItem="6mM-vD-3xN" firstAttribute="top" secondItem="z3b-bq-pfn" secondAttribute="bottom" constant="20" id="24h-yE-hZH"/>
                                 <constraint firstItem="nXU-4X-Kqc" firstAttribute="height" secondItem="2Zc-2f-IdE" secondAttribute="height" id="4V8-XE-Yaq"/>
                                 <constraint firstItem="w6K-Mq-83n" firstAttribute="top" secondItem="OaN-U8-ugo" secondAttribute="bottom" id="59n-JX-I9c"/>

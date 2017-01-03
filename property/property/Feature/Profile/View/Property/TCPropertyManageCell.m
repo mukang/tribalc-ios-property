@@ -72,44 +72,53 @@
             if ([propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
                 [_statusBtn setTitle:@"待接单" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
+                _masterView.hidden = YES;
             }else if ([propertyManage.status isEqualToString:@"TASK_CONFIRM"]) {
                 [_statusBtn setTitle:@"已接单" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
+                _masterView.hidden = NO;
             }else if ([propertyManage.status isEqualToString:@"TO_PAYING"]) {
                 [_statusBtn setTitle:@"待付款" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
+                _masterView.hidden = NO;
             }else if ([propertyManage.status isEqualToString:@"PAYED"]) {
                 [_statusBtn setTitle:@"已完成" forState:UIControlStateNormal];
                 _finishedImage.hidden= NO;
+                _masterView.hidden = NO;
             }else if ([propertyManage.status isEqualToString:@"TO_FIX"]) {
                 [_statusBtn setTitle:@"待维修" forState:UIControlStateNormal];
                 _finishedImage.hidden= YES;
+                _masterView.hidden = NO;
             }else if ([propertyManage.status isEqualToString:@"CANCEL"]) {
                 [_statusBtn setTitle:@"已取消" forState:UIControlStateNormal];
                 _finishedImage.hidden= YES;
+                _masterView.hidden = YES;
             }else {
                 [_statusBtn setTitle:@"" forState:UIControlStateNormal];
                 _finishedImage.hidden = YES;
+                _masterView.hidden = YES;
             }
         }else {
             [_statusBtn setTitle:@"" forState:UIControlStateNormal];
             _finishedImage.hidden = YES;
+            _masterView.hidden = YES;
         }
         
-        NSString *money = propertyManage.totalFee;
-        if (money) {
-           NSString *s = [NSString stringWithFormat:@"维修金额¥%@",propertyManage.totalFee];
-           NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:s];
-            
-            [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:227.0/255 green:19/255.0 blue:19/255.0 alpha:1.0] range:NSMakeRange(5, s.length-5)];
-            _moneyLabel.attributedText = attStr;
+        if (propertyManage.totalFee) {
+            _moneyLabel.hidden = NO;
+            NSString *money = [NSString stringWithFormat:@"%.2f",propertyManage.totalFee];
+            if (money) {
+                NSString *s = [NSString stringWithFormat:@"维修金额¥%.2f",propertyManage.totalFee];
+                NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:s];
+                
+                [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:227.0/255 green:19/255.0 blue:19/255.0 alpha:1.0] range:NSMakeRange(5, s.length-5)];
+                _moneyLabel.attributedText = attStr;
+            }else {
+                _moneyLabel.attributedText = [[NSAttributedString alloc] initWithString:@"" attributes:nil];
+            }
         }else {
-            _moneyLabel.attributedText = [[NSAttributedString alloc] initWithString:@"" attributes:nil];
+            _moneyLabel.hidden = YES;
         }
-        
-        
-        
-        
     }
 }
 

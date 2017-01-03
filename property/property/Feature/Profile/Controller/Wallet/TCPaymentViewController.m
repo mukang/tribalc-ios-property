@@ -8,6 +8,7 @@
 
 #import "TCPaymentViewController.h"
 #import <Masonry.h>
+#import "TCBuluoApi.h"
 
 @interface TCPaymentViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *boardView;
@@ -46,7 +47,7 @@
     _myTextField.delegate = self;
     _myTextField.textAlignment = NSTextAlignmentRight;
     _myTextField.font = [UIFont systemFontOfSize:14];
-    _myTextField.keyboardType = UIKeyboardTypeNumberPad;
+    _myTextField.keyboardType = UIKeyboardTypeDecimalPad;
     
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 31)];
     l.text = @"付款金额";
@@ -158,7 +159,47 @@
     return NO;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField.text.length > 0) {
+        
+        NSString *money = [textField.text substringFromIndex:2];
+        [self confirmMoneyWithMoney:money];
+        
+        return YES;
+    }else {
+        [MBProgressHUD showHUDWithMessage:@"请输入金额"];
+        return NO;
+    }
+}
+
+- (void)confirmMoneyWithMoney:(NSString *)money {
+    [MBProgressHUD showHUD:YES];
+    [[TCBuluoApi api] updatePropertyInfoWithOrderId:self.orderID status:@"TO_PAYING" doorTime:nil payValue:money result:^(BOOL success, NSError *error) {
+        if (success) {
+            [MBProgressHUD showHUDWithMessage:@"提交金额成功"];
+            if (self.successBlock) {
+                self.successBlock();
+            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }else {
+            [MBProgressHUD showHUDWithMessage:@"提交失败"];
+        }
+    }];
+}
+
 - (IBAction)pay:(id)sender {
+    
+    if (_myTextField.text.length > 0) {
+        
+        NSString *money = [_myTextField.text substringFromIndex:2];
+        [self confirmMoneyWithMoney:money];
+        
+    }else {
+        [MBProgressHUD showHUDWithMessage:@"请输入金额"];
+    }
+    
 }
 
 - (void)handleClickBackButton:(UIBarButtonItem *)sender {

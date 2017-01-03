@@ -685,6 +685,7 @@
 		559D950D1E139C6500982697 /* shortring.caf in Resources */ = {isa = PBXBuildFile; fileRef = 559D94FC1E139C6500982697 /* shortring.caf */; };
 		559D95111E13B12A00982697 /* TCOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95101E13B12A00982697 /* TCOrderViewController.m */; };
 		559D95141E13C27E00982697 /* TCTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95131E13C27E00982697 /* TCTabView.m */; };
+		559D95191E1B8F5800982697 /* TCOrderCancelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95181E1B8F5800982697 /* TCOrderCancelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2985,10 +2986,12 @@
 		559D94F91E139C6500982697 /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
 		559D94FB1E139C6500982697 /* notes_of_the_optimistic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notes_of_the_optimistic.caf; sourceTree = "<group>"; };
 		559D94FC1E139C6500982697 /* shortring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = shortring.caf; sourceTree = "<group>"; };
-		559D950F1E13B12A00982697 /* TCOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCOrderViewController.h; sourceTree = "<group>"; };
-		559D95101E13B12A00982697 /* TCOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCOrderViewController.m; sourceTree = "<group>"; };
+		559D950F1E13B12A00982697 /* TCOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCOrderViewController.h; path = ../TCOrderViewController.h; sourceTree = "<group>"; };
+		559D95101E13B12A00982697 /* TCOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCOrderViewController.m; path = ../TCOrderViewController.m; sourceTree = "<group>"; };
 		559D95121E13C27E00982697 /* TCTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTabView.h; sourceTree = "<group>"; };
 		559D95131E13C27E00982697 /* TCTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTabView.m; sourceTree = "<group>"; };
+		559D95171E1B8F5800982697 /* TCOrderCancelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCOrderCancelView.h; sourceTree = "<group>"; };
+		559D95181E1B8F5800982697 /* TCOrderCancelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCOrderCancelView.m; sourceTree = "<group>"; };
 		A12549DADC4A72F6B6B3C670 /* Pods-property.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.release.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.release.xcconfig"; sourceTree = "<group>"; };
 		A60C01C459883F0F2D9D46B1 /* libPods-property.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-property.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF1BB4E914648267FFC1571 /* Pods-property.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.debug.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.debug.xcconfig"; sourceTree = "<group>"; };
@@ -7922,10 +7925,28 @@
 		559D950E1E13B10E00982697 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				559D950F1E13B12A00982697 /* TCOrderViewController.h */,
-				559D95101E13B12A00982697 /* TCOrderViewController.m */,
+				559D95151E1B8F2200982697 /* Controllers */,
+				559D95161E1B8F2200982697 /* Views */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		559D95151E1B8F2200982697 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				559D95101E13B12A00982697 /* TCOrderViewController.m */,
+				559D950F1E13B12A00982697 /* TCOrderViewController.h */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		559D95161E1B8F2200982697 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				559D95171E1B8F5800982697 /* TCOrderCancelView.h */,
+				559D95181E1B8F5800982697 /* TCOrderCancelView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		90BB77D3DE009A25C681BBB6 /* Pods */ = {
@@ -8604,6 +8625,7 @@
 				559D93F51E135D8000982697 /* TCShippingAddressEditViewCell.m in Sources */,
 				559D93CE1E135D8000982697 /* TCIDAuthDetailViewController.m in Sources */,
 				559D940D1E135D8000982697 /* TCSettingCacheViewCell.m in Sources */,
+				559D95191E1B8F5800982697 /* TCOrderCancelView.m in Sources */,
 				559D91FA1E12655D00982697 /* UIView+Category.m in Sources */,
 				559D93D31E135D8000982697 /* TCUserOrderTableViewCell.m in Sources */,
 				559D942B1E135FAF00982697 /* TCListShoppingCart.m in Sources */,
