@@ -49,6 +49,10 @@
     [self loadDataIsMore:NO];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (UITableView *)propertyTableView {
     if (_propertyTableView == nil) {
         _propertyTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TCRealValue(42), self.view.bounds.size.width, self.view.bounds.size.height-TCRealValue(42)) style:UITableViewStyleGrouped];
