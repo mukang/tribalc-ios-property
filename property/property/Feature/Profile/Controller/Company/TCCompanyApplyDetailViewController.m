@@ -126,7 +126,7 @@ typedef NS_ENUM(NSInteger, TCInputCellType) {
             switch (indexPath.row) {
                 case TCInputCellTypeName:
                     cell.title = @"姓名";
-                    cell.content = [[TCBuluoApi api] currentUserSession].userSensitiveInfo.name;
+                    cell.content = [[TCBuluoApi api] currentUserSession].userInfo.name;
                     cell.inputEnabled = NO;
                     break;
                 case TCInputCellTypeDepartment:
