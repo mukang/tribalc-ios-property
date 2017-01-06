@@ -26,6 +26,8 @@ extern NSString *const TCClientHTTPMethodDelete;
 
 @interface TCClientRequest : NSObject <TCClientRequest>
 
+/** 用户token，必填 */
+@property (copy, nonatomic) NSString *token;
 /** 参数 */
 @property (strong, nonatomic) id params;
 /** 图片上传时的图片数据 */

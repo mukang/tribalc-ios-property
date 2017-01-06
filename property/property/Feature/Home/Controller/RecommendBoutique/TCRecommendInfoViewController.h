@@ -17,11 +17,9 @@
 #import "TCClientConfig.h"
 #import "TCGoodTitleView.h"
 #import "NSObject+TCModel.h"
-#import "TCUserOrderDetailViewController.h"
 #import "TCClientRequestError.h"
 #import "TCGoodShopView.h"
 #import "TCImgPageControl.h"
-#import "TCShoppingCartViewController.h"
 #import "TCGoodSelectView.h"
 
 

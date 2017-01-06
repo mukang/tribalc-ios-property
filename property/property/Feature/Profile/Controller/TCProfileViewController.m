@@ -5,24 +5,20 @@
 //  Created by 穆康 on 2016/10/26.
 //  Copyright © 2016年 杭州部落公社科技有限公司. All rights reserved.
 //
-#import "TCUserOrderTabBarController.h"
+
 #import "TCProfileViewController.h"
 #import "TCLoginViewController.h"
 #import "TCBiographyViewController.h"
-#import "TCWalletViewController.h"
 #import "TCIDAuthViewController.h"
 #import "TCIDAuthDetailViewController.h"
 #import "TCCompanyViewController.h"
 #import "TCCompanyApplyViewController.h"
-#import "TCUserOrderTabBarController.h"
 #import "TCSettingViewController.h"
-#import "TCUserReserveViewController.h"
 #import "TCPropertyManageListController.h"
 #import "TCQRCodeViewController.h"
 
 #import "TCProfileHeaderView.h"
 #import "TCProfileViewCell.h"
-#import "TCProfileProcessViewCell.h"
 #import "TCPhotoModeView.h"
 
 #import "TCImageURLSynthesizer.h"
@@ -128,11 +124,6 @@ TCPhotoModeViewDelegate>
     
     UINib *nib = [UINib nibWithNibName:@"TCProfileViewCell" bundle:[NSBundle mainBundle]];
     [tableView registerNib:nib forCellReuseIdentifier:@"TCProfileViewCell"];
-    nib = [UINib nibWithNibName:@"TCProfileProcessViewCell" bundle:[NSBundle mainBundle]];
-    [tableView registerNib:nib forCellReuseIdentifier:@"TCProfileProcessViewCell"];
-    
-
-
 }
 
 - (void)updateHeaderView {
@@ -161,14 +152,6 @@ TCPhotoModeViewDelegate>
         } else {
             [self.headerView.bgImageView setImage:[UIImage imageNamed:@"profile_default_cover"]];
         }
-    }
-}
-
-- (void)addOrderButtonAction:(NSArray *)buttons {
-    for (int i = 0; i < buttons.count; i++) {
-        UIButton *button = buttons[i];
-        button.tag = i;
-        [button addTarget:self action:@selector(touchOrderButton:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
@@ -454,37 +437,19 @@ TCPhotoModeViewDelegate>
 }
 
 - (void)handleDidSelectedMyCompanyCell {
-    [MBProgressHUD showHUD:YES];
-    [[TCBuluoApi api] fetchCompanyBlindStatus:^(TCUserCompanyInfo *userCompanyInfo, NSError *error) {
-        if (userCompanyInfo) {
-            [MBProgressHUD hideHUD:YES];
-            if ([userCompanyInfo.comfirmed isEqualToString:@"SUCCEED"]) {
-                TCCompanyViewController *vc = [[TCCompanyViewController alloc] init];
-                vc.userCompanyInfo = userCompanyInfo;
-                vc.hidesBottomBarWhenPushed = YES;
-                [weakSelf.navigationController pushViewController:vc animated:YES];
-            } else {
-                TCCompanyApplyStatus applyStatus;
-                if ([userCompanyInfo.comfirmed isEqualToString:@"PROCESSING"]) {
-                    applyStatus = TCCompanyApplyStatusProcess;
-                } else if ([userCompanyInfo.comfirmed isEqualToString:@"FAILURE"]) {
-                    applyStatus = TCCompanyApplyStatusFailure;
-                } else {
-                    applyStatus = TCCompanyApplyStatusNotApply;
-                }
-                TCCompanyApplyViewController *vc = [[TCCompanyApplyViewController alloc] initWithCompanyApplyStatus:applyStatus];
-                vc.hidesBottomBarWhenPushed = YES;
-                [weakSelf.navigationController pushViewController:vc animated:YES];
-            }
-        } else {
-            NSString *reason = error.localizedDescription ?: @"请稍后再试";
-            [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"加载失败，%@", reason]];
-        }
-    }];
+    TCUserInfo *userInfo = [TCBuluoApi api].currentUserSession.userInfo;
+    if (userInfo.companyID) {
+        TCCompanyViewController *vc = [[TCCompanyViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        TCCompanyApplyViewController *vc = [[TCCompanyApplyViewController alloc] initWithCompanyApplyStatus:TCCompanyApplyStatusNotApply];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)handleDidSelectedIDAuthCell {
-//    TCUserSensitiveInfo *sensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
     TCUserInfo *userInfo = [TCBuluoApi api].currentUserSession.userInfo;
     UIViewController *currentVC;
     if ([userInfo.authorizedStatus isEqualToString:@"PROCESSING"]) {
@@ -499,28 +464,6 @@ TCPhotoModeViewDelegate>
     }
     currentVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:currentVC animated:YES];
-}
-
-- (void)touchOrderButton:(UIButton *)button {
-    if ([self checkUserNeedLogin]) return;
-    
-    NSString *title;
-    switch (button.tag) {
-        case 1:
-            title = @"待付款";
-            break;
-        case 2:
-            title = @"待收货";
-            break;
-        case 3:
-            title = @"已结束";
-            break;
-        default:
-            break;
-    }
-    TCUserOrderTabBarController *userOrderTabBarController = [[TCUserOrderTabBarController alloc] initWithTitle:title];
-    userOrderTabBarController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:userOrderTabBarController animated:YES];
 }
 
 

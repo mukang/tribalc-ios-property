@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TCUserCompanyInfo;
 
 @interface TCCompanyViewController : UIViewController
 
-@property (strong, nonatomic) TCUserCompanyInfo *userCompanyInfo;
 
 @end

@@ -10,6 +10,7 @@
 #import "TCCompanyApplyDetailViewController.h"
 
 #import "TCCommonButton.h"
+#import "TCBuluoApi.h"
 
 #import <Masonry.h>
 
@@ -135,6 +136,12 @@
 }
 
 - (void)handlePushToApplyDetailVC {
+    TCUserInfo *userInfo = [TCBuluoApi api].currentUserSession.userInfo;
+    if (![userInfo.authorizedStatus isEqualToString:@"SUCCESS"]) {
+        [MBProgressHUD showHUDWithMessage:@"身份认证成功后才可绑定公司"];
+        return;
+    }
+    
     TCCompanyApplyDetailViewController *vc = [[TCCompanyApplyDetailViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }

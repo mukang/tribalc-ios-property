@@ -8,7 +8,6 @@
 
 #import "TCBioEditSMSViewController.h"
 #import "TCBiographyViewController.h"
-#import "TCWalletPasswordViewController.h"
 
 #import "UIImage+Category.h"
 
@@ -133,11 +132,7 @@
         return;
     }
     
-    if (self.messageCodeType == TCMessageCodeTypeFindPassword) {
-        TCWalletPasswordViewController *vc = [[TCWalletPasswordViewController alloc] initWithPasswordType:TCWalletPasswordTypeFindInputNewPassword];
-        vc.messageCode = code;
-        [self.navigationController pushViewController:vc animated:YES];
-    } else {
+    if (self.messageCodeType == TCMessageCodeTypeBindPhone) {
         [self handleChangeUserPhoneWithCode:code];
     }
 }

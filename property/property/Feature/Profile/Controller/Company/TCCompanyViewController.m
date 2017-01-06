@@ -23,6 +23,8 @@
 
 @interface TCCompanyViewController () <UITableViewDataSource, UITableViewDelegate, TCCompanyIntroViewCellDelegate, UIScrollViewDelegate>
 
+@property (strong, nonatomic) TCUserCompanyInfo *userCompanyInfo;
+
 @property (weak, nonatomic) UITableView *tableView;
 @property (weak, nonatomic) TCCompanyHeaderView *headerView;
 
@@ -54,6 +56,7 @@
     
     [self setupNavBar];
     [self setupSubviews];
+    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,7 +76,6 @@
 #pragma mark - Private Methods
 
 - (void)setupNavBar {
-    self.navigationItem.title = self.userCompanyInfo.company.name;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back_item"]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
@@ -95,7 +97,23 @@
     
     TCCompanyHeaderView *headerView = [[TCCompanyHeaderView alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, self.headerViewHeight)];
     tableView.tableHeaderView = headerView;
-    headerView.companyInfo = self.userCompanyInfo.company;
+    self.headerView = headerView;
+}
+
+- (void)loadData {
+    [MBProgressHUD showHUD:YES];
+    [[TCBuluoApi api] fetchCompanyBlindStatus:^(TCUserCompanyInfo *userCompanyInfo, NSError *error) {
+        if (userCompanyInfo) {
+            [MBProgressHUD hideHUD:YES];
+            weakSelf.userCompanyInfo = userCompanyInfo;
+            self.headerView.companyInfo = userCompanyInfo.company;
+            self.navigationItem.title = userCompanyInfo.company.companyName;
+            [weakSelf.tableView reloadData];
+        } else {
+            NSString *reason = error.localizedDescription ?: @"请稍后再试";
+            [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"加载失败，%@", reason]];
+        }
+    }];
 }
 
 #pragma mark - Navigation Bar
@@ -185,7 +203,7 @@
             switch (indexPath.row) {
                 case 1:
                     cell.titleLabel.text = @"公司名称";
-                    cell.subtitleLabel.text = self.userCompanyInfo.company.name;
+                    cell.subtitleLabel.text = self.userCompanyInfo.company.companyName;
                     break;
                 case 2:
                     cell.titleLabel.text = @"姓名";

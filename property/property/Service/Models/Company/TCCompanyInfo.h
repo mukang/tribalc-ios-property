@@ -17,7 +17,7 @@
 /** 公司logo */
 @property (copy, nonatomic) NSString *logo;
 /** 公司名称 */
-@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *companyName;
 /** 公司简介 */
 @property (copy, nonatomic) NSString *desc;
 

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TCRecommendGoodCell.h"
-#import "TCShoppingCartViewController.h"
 #import "TCGetNavigationItem.h"
 #import "TCRecommendInfoViewController.h"
 #import "TCBuluoApi.h"

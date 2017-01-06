@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TCCompanyInfo;
+#import "TCCompanyInfo.h"
+#import "TCCommunity.h"
 
-typedef void(^TCCompanyInfoBlock)(TCCompanyInfo *companyInfo);
+typedef void(^TCCompanyInfoBlock)(TCCompanyInfo *companyInfo, TCCommunity *community);
 
 @interface TCCompanyListViewController : UIViewController
 
 /** 社区ID */
-@property (copy, nonatomic) NSString *communityID;
+@property (strong, nonatomic) TCCommunity *community;
 @property (copy, nonatomic) TCCompanyInfoBlock companyInfoBlock;
 @property (weak, nonatomic) UIViewController *popToVC;
 

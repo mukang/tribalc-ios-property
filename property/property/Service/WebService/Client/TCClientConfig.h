@@ -17,10 +17,13 @@
 #define TCCLIENT_API_HOST    @"app-services.buluo-gs.com"
 #endif
 
+#if DEBUG
+#define TCCLIENT_BASE_URL    @"http://" TCCLIENT_API_HOST ":10086/tribalc/v1.0"
+#else
 #define TCCLIENT_BASE_URL    @"https://" TCCLIENT_API_HOST "/tribalc/v1.0"
+#endif
 
 #define TCCLIENT_RESOURCES_BASE_URL        @"http://dev-app-services.buluo-gs.com/resources"
-
 #define TCCLIENT_OSS_RESOURCES_BASE_URL    @"http://buluo-gs-pictures.oss-cn-beijing.aliyuncs.com"
 
 #endif

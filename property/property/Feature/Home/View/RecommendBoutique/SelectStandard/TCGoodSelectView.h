@@ -13,6 +13,7 @@
 
 @protocol TCGoodSelectViewDelegate <NSObject>
 
+@optional
 - (void)selectView:(TCGoodSelectView *)goodSelectView didAddShoppingCartWithGoodDetail:(TCGoodDetail *)goodDetail Amount:(NSInteger)amount;
 
 - (void)selectView:(TCGoodSelectView *)goodSelectView didChangeStandardButtonWithGoodDetail:(TCGoodDetail *)goodDetail;
