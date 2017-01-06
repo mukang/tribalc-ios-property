@@ -8,6 +8,7 @@
 
 #import "TCRestaurantTableViewCell.h"
 #import "TCImageURLSynthesizer.h"
+#import "UIImage+Category.h"
 
 @implementation TCRestaurantTableViewCell  {
     UIView *locationLineType;
@@ -85,7 +86,9 @@
 }
 
 - (void)setupData {
-    [self.resImgView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:_service.mainPicture]];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:_service.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(TCRealValue(175), TCRealValue(130))];
+    [self.resImgView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     self.nameLab.text = _service.name;
     self.markPlcaeLab.text = _service.store.markPlace;
     if (_service.tags.count != 0) {

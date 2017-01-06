@@ -15,6 +15,7 @@
 #import "TCDatePickerView.h"
 #import "TCOrderCancelView.h"
 #import <Masonry.h>
+#import "UIImage+Category.h"
 
 @interface TCPropertyDetailController () <TCDatePickerViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;
@@ -201,8 +202,8 @@
                         [_imgView addSubview:imageView];
                         imageView.layer.cornerRadius = 3.0;
                         imageView.clipsToBounds = YES;
-                        [imageView sd_setImageWithURL:imageURL placeholderImage:nil options:SDWebImageRetryFailed];
-                    }
+                        UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(height, height)];
+                        [imageView sd_setImageWithURL:imageURL placeholderImage:placeholderImage options:SDWebImageRetryFailed];                    }
                 }
                 
             }
@@ -269,9 +270,9 @@
             textField.leftView = lefLabel;
             textField.leftViewMode = UITextFieldViewModeAlways;
 
-            UIView *rightV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 18)];
+            UIView *rightV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 18)];
             
-            UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 10, 18)];
+            UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, 10, 18)];
             imageV.image = [UIImage imageNamed:@"indicating_arrow"];            
             [rightV addSubview:imageV];
             textField.rightView = rightV;
@@ -343,7 +344,7 @@
         [_moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(_masterView);
             make.height.equalTo(@20);
-            make.top.equalTo(_masterView.mas_bottom);
+            make.top.equalTo(_masterView.mas_bottom).offset(5);
         }];
         _moneyLabel.textColor = TCRGBColor(42, 42, 42);
     }
@@ -377,14 +378,15 @@
 }
 
 - (void)didClickConfirmButtonInDatePickerView:(TCDatePickerView *)view {
-    _timestamp = [view.datePicker.date timeIntervalSince1970];
+//    _timestamp = [view.datePicker.date timeIntervalSince1970];
     if (_textField) {
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)(_timestamp * 1000) / 1000];
-         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-         dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-         dateFormatter.dateStyle = kCFDateFormatterShortStyle;
-         dateFormatter.timeStyle = kCFDateFormatterShortStyle;
-         _textField.text = [dateFormatter stringFromDate:date];
+//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)(_timestamp * 1000) / 1000];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+//         dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+//         dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+//         dateFormatter.timeStyle = kCFDateFormatterShortStyle;
+         _textField.text = [dateFormatter stringFromDate:view.datePicker.date];
     }
 }
 

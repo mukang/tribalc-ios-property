@@ -7,6 +7,7 @@
 //
 
 #import "TCRecommendListViewController.h"
+#import "UIImage+Category.h"
 
 @interface TCRecommendListViewController () {
     TCGoodsWrapper *goodsInfoWrapper;
@@ -140,8 +141,9 @@
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TCGoods *info = goodsInfoWrapper.content[indexPath.row];
     TCRecommendGoodCell *cell = (TCRecommendGoodCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
-    
-    [cell.goodImageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:info.mainPicture]];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:info.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(TCRealValue(169), TCRealValue(214))];
+    [cell.goodImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     cell.shopNameLab.text = info.brand;
     cell.typeAndNameLab.text = [NSString stringWithFormat:@"%@", info.name];
     NSString *salePriceStr = [NSString stringWithFormat:@"%f", info.salePrice];

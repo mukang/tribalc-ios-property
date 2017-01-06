@@ -9,6 +9,7 @@
 #import "TCGoodShopView.h"
 #import "TCComponent.h"
 #import "TCImageURLSynthesizer.h"
+#import "UIImage+Category.h"
 
 @implementation TCGoodShopView
 
@@ -64,8 +65,9 @@
 - (UIImageView *)createShopLogoImageViewWithFrame:(CGRect)frame AndUrlStr:(NSString *)urlStr{
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    NSURL *url = [TCImageURLSynthesizer synthesizeImageURLWithPath:urlStr];
-    [imageView sd_setImageWithURL:url];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:urlStr];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:frame.size];
+    [imageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     return imageView;
 }
 

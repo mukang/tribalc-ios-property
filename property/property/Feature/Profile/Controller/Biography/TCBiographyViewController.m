@@ -80,7 +80,7 @@
 
 - (void)fetchUserInfo {
     TCUserInfo *userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
-    TCUserSensitiveInfo *userSensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
+//    TCUserSensitiveInfo *userSensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
     // 昵称
     NSString *nickname = userInfo.nickname ?: @"";
     // 性别
@@ -119,19 +119,19 @@
             break;
     }
     // 电话号码
-    NSString *phone = userSensitiveInfo.phone ?: @"";
+    NSString *phone = userInfo.phone ?: @"";
     // 所在地
-    NSString *province = userInfo.province ?: @"";
-    NSString *city = userInfo.city ?: @"";
+//    NSString *province = userInfo.province ?: @"";
+//    NSString *city = userInfo.city ?: @"";
 //    NSString *district = userInfo.district ?: @"";
 //    NSString *address = [NSString stringWithFormat:@"%@%@%@", province, city, district];
     // 收货地址
-    NSString *chippingAddress = @"";
+//    NSString *chippingAddress = @"";
 //    if (userSensitiveInfo.shippingAddress) {
 //        chippingAddress = [NSString stringWithFormat:@"%@%@%@%@", userSensitiveInfo.shippingAddress.province, userSensitiveInfo.shippingAddress.city, userSensitiveInfo.shippingAddress.district, userSensitiveInfo.shippingAddress.address];
 //    }
 //    
-//    self.bioDetailsTitles = @[@[@"", nickname, genderStr, birthDateStr, emotionStateStr], @[phone, address, chippingAddress]];
+    self.bioDetailsTitles = @[@[@"", nickname, genderStr, birthDateStr, emotionStateStr], @[phone]];
     [self.tableView reloadData];
 }
 
@@ -151,7 +151,7 @@
     if (section == 0) {
         return 5;
     } else {
-        return 3;
+        return 1;
     }
 }
 
@@ -159,7 +159,7 @@
     UITableViewCell *currentCell = nil;
     if (indexPath.section == 0 && indexPath.row == 0) {
         TCBiographyAvatarViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCBiographyAvatarViewCell" forIndexPath:indexPath];
-//        cell.avatar = [[TCBuluoApi api] currentUserSession].userInfo.picture;
+        cell.avatar = [[TCBuluoApi api] currentUserSession].userInfo.picture;
         currentCell = cell;
     } else {
         TCBiographyViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TCBiographyViewCell" forIndexPath:indexPath];
@@ -400,7 +400,7 @@
 
 - (NSArray *)biographyTitles {
     if (_biographyTitles == nil) {
-        _biographyTitles = @[@[@"头像", @"昵称", @"性别", @"出生日期", @"情感状态"], @[@"手机号", @"所在地", @"收货地址"]];
+        _biographyTitles = @[@[@"头像", @"昵称", @"性别", @"出生日期", @"情感状态"], @[@"手机号"]];
     }
     return _biographyTitles;
 }

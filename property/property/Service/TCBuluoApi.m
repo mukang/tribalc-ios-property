@@ -181,7 +181,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 }
 
 - (void)fetchUserInfoWithUserID:(NSString *)userID result:(void (^)(TCUserInfo *, NSError *))resultBlock {
-    NSString *apiName = [NSString stringWithFormat:@"%@", userID];
+    NSString *apiName = [NSString stringWithFormat:@"property_members/%@", userID];
     TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
     [[TCClient client] send:request finish:^(TCClientResponse *response) {
         NSError *error = response.error;
@@ -199,7 +199,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 }
 
 - (void)fetchUserSensitiveInfoWithUserID:(NSString *)userID result:(void (^)(TCUserSensitiveInfo *, NSError *))resultBlock {
-    NSString *apiName = [NSString stringWithFormat:@"persons/%@/sensitive_info", userID];
+    NSString *apiName = [NSString stringWithFormat:@"property_members/%@/sensitive_info", userID];
     TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
     [[TCClient client] send:request finish:^(TCClientResponse *response) {
         NSError *error = response.error;
@@ -218,7 +218,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserNickname:(NSString *)nickname result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/nickname", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/nickname", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         [request setValue:nickname forParam:@"nickname"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -245,7 +245,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserAvatar:(NSString *)avatar result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/picture", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/picture", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         [request setValue:avatar forParam:@"picture"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -272,7 +272,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserCover:(NSString *)cover result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/cover", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/cover", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         [request setValue:cover forParam:@"cover"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -299,7 +299,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserGender:(TCUserGender)gender result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/sex", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/sex", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         NSString *sex = @"UNKNOWN";
         switch (gender) {
@@ -338,7 +338,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserBirthdate:(NSDate *)birthdate result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/birthday", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/birthday", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         NSTimeInterval timestamp = [birthdate timeIntervalSince1970];
         [request setValue:[NSNumber numberWithInteger:(timestamp * 1000)] forParam:@"birthday"];
@@ -366,7 +366,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserEmotionState:(TCUserEmotionState)emotionState result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/emotion", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/emotion", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         NSString *emotion = @"UNKNOWN";
         switch (emotionState) {
@@ -467,7 +467,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserPhone:(TCUserPhoneInfo *)phoneInfo result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/sensitive_info/phone", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/sensitive_info/phone", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         NSDictionary *dic = [phoneInfo toObjectDictionary];
         for (NSString *key in dic.allKeys) {
@@ -497,7 +497,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)setUserDefaultShippingAddress:(TCUserShippingAddress *)shippingAddress result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/sensitive_info/addressID", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/sensitive_info/addressID", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         [request setValue:shippingAddress.ID forKey:@"value"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -525,7 +525,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)addUserShippingAddress:(TCUserShippingAddress *)shippingAddress result:(void (^)(BOOL, TCUserShippingAddress *, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/addresses", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/addresses", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
         NSDictionary *dic = [shippingAddress toObjectDictionary];
         for (NSString *key in dic.allKeys) {
@@ -553,7 +553,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)fetchUserShippingAddressList:(void (^)(NSArray *, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/addresses", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/addresses", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             NSError *error = response.error;
@@ -583,7 +583,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)fetchUserShippingAddress:(NSString *)shippingAddressID result:(void (^)(TCUserShippingAddress *, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/addresses/%@", self.currentUserSession.assigned, shippingAddressID];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/addresses/%@", self.currentUserSession.assigned, shippingAddressID];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.error) {
@@ -607,7 +607,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserShippingAddress:(TCUserShippingAddress *)shippingAddress result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/addresses/%@", self.currentUserSession.assigned, shippingAddress.ID];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/addresses/%@", self.currentUserSession.assigned, shippingAddress.ID];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         NSDictionary *dic = [shippingAddress toObjectDictionary];
         for (NSString *key in dic.allKeys) {
@@ -695,7 +695,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         NSString *tradingTypePart = tradingType ? [NSString stringWithFormat:@"tradingType=%@&", tradingType] : @"";
         NSString *limitSizePart = [NSString stringWithFormat:@"limitSize=%zd", count];
         NSString *sortSkipPart = sortSkip ? [NSString stringWithFormat:@"&sortSkip=%@", sortSkip] : @"";
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/bills?%@%@%@", self.currentUserSession.assigned, tradingTypePart, limitSizePart, sortSkipPart];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/bills?%@%@%@", self.currentUserSession.assigned, tradingTypePart, limitSizePart, sortSkipPart];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.error) {
@@ -721,9 +721,9 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
     if ([self isUserSessionValid]) {
         NSString *apiName;
         if (messageCode) {
-            apiName = [NSString stringWithFormat:@"persons/%@/wallet/password?vcode=%@", self.currentUserSession.assigned, messageCode];
+            apiName = [NSString stringWithFormat:@"property_members/%@/wallet/password?vcode=%@", self.currentUserSession.assigned, messageCode];
         } else {
-            apiName = [NSString stringWithFormat:@"persons/%@/wallet/password", self.currentUserSession.assigned];
+            apiName = [NSString stringWithFormat:@"property_members/%@/wallet/password", self.currentUserSession.assigned];
         }
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         [request setValue:anOldPassword forParam:@"oldPassword"];
@@ -778,7 +778,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)addBankCard:(TCBankCard *)bankCard withVerificationCode:(NSString *)verificationCode result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/bank_cards?vcode=%@", self.currentUserSession.assigned, verificationCode];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/bank_cards?vcode=%@", self.currentUserSession.assigned, verificationCode];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
         NSDictionary *dic = [bankCard toObjectDictionary];
         for (NSString *key in dic.allKeys) {
@@ -828,7 +828,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)fetchCompanyBlindStatus:(void (^)(TCUserCompanyInfo *, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/company_bind_request", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/company_bind_request", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.error) {
@@ -852,7 +852,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)bindCompanyWithUserCompanyInfo:(TCUserCompanyInfo *)userCompanyInfo result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/company_bind_request", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/company_bind_request", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
         [request setValue:userCompanyInfo.company.ID forParam:@"companyId"];
         [request setValue:userCompanyInfo.department forParam:@"department"];
@@ -877,9 +877,9 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
     }
 }
 
-- (void)authorizeUserIdentity:(TCUserIDAuthInfo *)userIDAuthInfo result:(void (^)(TCUserSensitiveInfo *, NSError *))resultBlock {
+- (void)authorizeUserIdentity:(TCUserIDAuthInfo *)userIDAuthInfo result:(void (^)(TCUserInfo *, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/authentication", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/authentication", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
         NSDictionary *dic = [userIDAuthInfo toObjectDictionary];
         for (NSString *key in dic.allKeys) {
@@ -887,12 +887,14 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         }
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.statusCode == 200) {
-                TCUserSensitiveInfo *sensitiveInfo = [[TCUserSensitiveInfo alloc] initWithObjectDictionary:response.data];
+                TCUserInfo *userInfo = [[TCUserInfo alloc] initWithObjectDictionary:response.data];
+                
                 TCUserSession *userSession = self.currentUserSession;
-                userSession.userSensitiveInfo = sensitiveInfo;
+                
+                userSession.userInfo = userInfo;
                 [self setUserSession:userSession];
                 if (resultBlock) {
-                    TC_CALL_ASYNC_MQ(resultBlock(sensitiveInfo, nil));
+                    TC_CALL_ASYNC_MQ(resultBlock(userInfo, nil));
                 }
             } else {
                 if (resultBlock) {
@@ -1394,7 +1396,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)createShoppingCartWithAmount:(NSInteger)amount goodsId:(NSString *)goodsId result:(void(^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"persons/%@/shopping_cart", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/shopping_cart", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
         
         [request setValue:[NSNumber numberWithInteger:amount] forParam:@"amount"];

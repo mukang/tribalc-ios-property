@@ -281,7 +281,7 @@ typedef NS_ENUM(NSInteger, TCPayChannel) {
 // @param userIDAuthInfo TCUserIDAuthInfo对象
 // @param resultBlock 结果回调，认证状态请查看sensitiveInfo中的authorizedStatus字段，sensitiveInfo为nil时表示请求失败，原因见error的code和userInfo
 // */
-- (void)authorizeUserIdentity:(TCUserIDAuthInfo *)userIDAuthInfo result:(void (^)(TCUserSensitiveInfo *sensitiveInfo, NSError *error))resultBlock;
+- (void)authorizeUserIdentity:(TCUserIDAuthInfo *)userIDAuthInfo result:(void (^)(TCUserInfo *sensitiveInfo, NSError *error))resultBlock;
 //
 ///**
 // 社区参观预约

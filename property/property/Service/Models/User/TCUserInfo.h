@@ -48,4 +48,11 @@ typedef NS_ENUM(NSInteger, TCUserEmotionState) {
 /** 所在城市 */
 @property (copy, nonatomic) NSString *city;
 
+@property (copy, nonatomic) NSString *cover;
+
+@property (copy, nonatomic) NSString *picture;
+
+@property (copy, nonatomic) NSString *idNo;
+
+@property (copy, nonatomic) NSString *authorizedStatus;
 @end

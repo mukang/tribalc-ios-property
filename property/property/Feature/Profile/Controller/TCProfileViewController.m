@@ -146,21 +146,21 @@ TCPhotoModeViewDelegate>
         self.headerView.nickBgView.hidden = NO;
         TCUserInfo *userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
         self.headerView.nickLabel.text = userInfo.nickname;
-//        if (userInfo.picture) {
-//            UIImage *currentAvatarImage = self.headerView.avatarImageView.image;
-//            NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:userInfo.picture];
-//            [self.headerView.avatarImageView sd_setImageWithURL:URL placeholderImage:currentAvatarImage options:SDWebImageRetryFailed];
-//        } else {
-//            [self.headerView.avatarImageView setImage:[UIImage imageNamed:@"profile_default_avatar_icon"]];
-//        }
+        if (userInfo.picture) {
+            UIImage *currentAvatarImage = self.headerView.avatarImageView.image;
+            NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:userInfo.picture];
+            [self.headerView.avatarImageView sd_setImageWithURL:URL placeholderImage:currentAvatarImage options:SDWebImageRetryFailed];
+        } else {
+            [self.headerView.avatarImageView setImage:[UIImage imageNamed:@"profile_default_avatar_icon"]];
+        }
         
-//        if (userInfo.cover) {
-//            UIImage *currentBgImage = self.headerView.bgImageView.image;
-//            NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:userInfo.cover];
-//            [self.headerView.bgImageView sd_setImageWithURL:URL placeholderImage:currentBgImage options:SDWebImageRetryFailed];
-//        } else {
-//            [self.headerView.bgImageView setImage:[UIImage imageNamed:@"profile_default_cover"]];
-//        }
+        if (userInfo.cover) {
+            UIImage *currentBgImage = self.headerView.bgImageView.image;
+            NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:userInfo.cover];
+            [self.headerView.bgImageView sd_setImageWithURL:URL placeholderImage:currentBgImage options:SDWebImageRetryFailed];
+        } else {
+            [self.headerView.bgImageView setImage:[UIImage imageNamed:@"profile_default_cover"]];
+        }
     }
 }
 
@@ -484,12 +484,13 @@ TCPhotoModeViewDelegate>
 }
 
 - (void)handleDidSelectedIDAuthCell {
-    TCUserSensitiveInfo *sensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
+//    TCUserSensitiveInfo *sensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
+    TCUserInfo *userInfo = [TCBuluoApi api].currentUserSession.userInfo;
     UIViewController *currentVC;
-    if ([sensitiveInfo.authorizedStatus isEqualToString:@"PROCESSING"]) {
+    if ([userInfo.authorizedStatus isEqualToString:@"PROCESSING"]) {
         TCIDAuthDetailViewController *vc = [[TCIDAuthDetailViewController alloc] initWithIDAuthStatus:TCIDAuthStatusProcessing];
         currentVC = vc;
-    } else if ([sensitiveInfo.authorizedStatus isEqualToString:@"SUCCESS"] || [sensitiveInfo.authorizedStatus isEqualToString:@"FAILURE"]) {
+    } else if ([userInfo.authorizedStatus isEqualToString:@"SUCCESS"] || [userInfo.authorizedStatus isEqualToString:@"FAILURE"]) {
         TCIDAuthDetailViewController *vc = [[TCIDAuthDetailViewController alloc] initWithIDAuthStatus:TCIDAuthStatusFinished];
         currentVC = vc;
     } else {

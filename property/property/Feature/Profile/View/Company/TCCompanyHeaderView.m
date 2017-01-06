@@ -11,6 +11,7 @@
 #import "TCImageURLSynthesizer.h"
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImage+Category.h"
 
 @interface TCCompanyHeaderView ()
 
@@ -66,12 +67,11 @@
     _companyInfo = companyInfo;
     
     NSURL *logoURL = [TCImageURLSynthesizer synthesizeImageURLWithPath:companyInfo.logo];
-    [self.logoImageView sd_setImageWithURL:logoURL placeholderImage:nil options:SDWebImageRetryFailed];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(64, 64)];
+    [self.logoImageView sd_setImageWithURL:logoURL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     
     self.imagePalyerView.pictures = companyInfo.pictures;
-    if (companyInfo.pictures.count == 1) {
-        self.imagePalyerView.autoPlayEnabled = NO;
-    }
+    
 }
 
 @end

@@ -15,6 +15,7 @@
 #import "TCImageURLSynthesizer.h"
 #import "TCRecommendHeader.h"
 #import "TCRecommendFooter.h"
+#import "UIImage+Category.h"
 
 @interface TCUserReserveViewController ()
 
@@ -183,7 +184,9 @@
     }
     NSArray *userReserveOrderArr = userReserveWrapper.content;
     TCReservation *reservation = userReserveOrderArr[indexPath.section];
-    [cell.storeImageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:reservation.mainPicture] placeholderImage:[UIImage imageNamed:@"good_placeholder"]];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:reservation.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(TCRealValue(169), TCRealValue(115))];
+    [cell.storeImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     [cell setTitleLabText:reservation.storeName];
     [cell setBrandLabText:reservation.markPlace];
     if (reservation.tags.count == 0) {

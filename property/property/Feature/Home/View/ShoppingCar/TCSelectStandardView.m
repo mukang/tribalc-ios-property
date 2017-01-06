@@ -12,6 +12,7 @@
 #import "TCComponent.h"
 #import "TCClientConfig.h"
 #import "NSObject+TCModel.h"
+#import "UIImage+Category.h"
 
 @implementation TCSelectStandardView {
     
@@ -486,7 +487,9 @@
     imageView.layer.borderWidth = TCRealValue(1.5);
     imageView.layer.borderColor = TCRGBColor(242, 242, 242).CGColor;
     imageView.layer.cornerRadius = TCRealValue(5);
-    [imageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:mCartItem.goods.mainPicture] ];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:mCartItem.goods.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:imageView.size];
+    [imageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     imageView.backgroundColor = [UIColor whiteColor];
     imageView.layer.masksToBounds = YES;
     return imageView;
@@ -577,7 +580,9 @@
 - (void)setupBaseInfoWithGoodDetailDic:(TCGoodDetail *)goodDetail {
     priceLab.text = [NSString stringWithFormat:@"￥%@", @([NSString stringWithFormat:@"%f", goodDetail.salePrice].floatValue)];
     inventoryLab.text = [NSString stringWithFormat:@"(剩余:%ld件)", (long)goodDetail.repertory];
-    [titleImageView sd_setImageWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", TCCLIENT_RESOURCES_BASE_URL, goodDetail.mainPicture]]];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:goodDetail.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:titleImageView.size];
+    [titleImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
 //    _numberLab.text = @"1";
 
 }

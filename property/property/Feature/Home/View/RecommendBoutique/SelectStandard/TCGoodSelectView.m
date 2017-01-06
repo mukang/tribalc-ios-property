@@ -15,6 +15,7 @@
 #import "TCSelectSecondaryBtn.h"
 #import "TCSelectButton.h"
 #import "TCComponent.h"
+#import "UIImage+Category.h"
 
 @implementation TCGoodSelectView {
     TCGoodDetail *goodDetail;
@@ -136,7 +137,9 @@
 
 - (TCGoodSelectTitleView *)getTitleViewWithFrame:(CGRect)frame {
     TCGoodSelectTitleView *titleView = [[TCGoodSelectTitleView alloc] initWithFrame:frame];
-    [titleView.selectImageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:goodDetail.mainPicture]];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(TCRealValue(115), TCRealValue(115))];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:goodDetail.mainPicture];
+    [titleView.selectImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     titleView.selectPriceLab.text = [NSString stringWithFormat:@"￥%@", @([NSString stringWithFormat:@"%f", goodDetail.salePrice].floatValue)];
     [titleView setupRepertory:goodDetail.repertory];
     return titleView;
@@ -291,7 +294,9 @@
     
     goodDetail = [[TCGoodDetail alloc] initWithObjectDictionary:_goodStandard.goodsIndexes[index]];
     
-    [selectTitleView.selectImageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:goodDetail.mainPicture]];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(TCRealValue(115), TCRealValue(115))];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:goodDetail.mainPicture];
+    [selectTitleView.selectImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     selectTitleView.selectPriceLab.text = [NSString stringWithFormat:@"￥%@", @([NSString stringWithFormat:@"%f", goodDetail.salePrice].floatValue)];
     
     [selectTitleView setupRepertory:goodDetail.repertory];

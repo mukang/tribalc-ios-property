@@ -20,4 +20,22 @@
  */
 + (UIImage *)shadowImageWithColor:(UIColor *)color;
 
+
+/**
+ 生成一张占位图
+ 
+ @param name 图片名字
+ @param size 期望生成的占位图尺寸
+ @return 占位图
+ */
++ (UIImage *)placeholderImageWithNamed:(NSString *)name imageSize:(CGSize)size;
+
+/**
+ 生成一张默认占位图
+ 
+ @param size 期望生成的占位图尺寸
+ @return 占位图
+ */
++ (UIImage *)placeholderImageWithSize:(CGSize)size;
+
 @end

@@ -10,6 +10,7 @@
 #import "TCComponent.h"
 #import "TCImageURLSynthesizer.h"
 #import "TCComputeView.h"
+#import "UIImage+Category.h"
 
 @implementation TCShoppingCartListTableViewCell {
     UIButton *selectStandardBtn;
@@ -106,7 +107,9 @@
 #pragma mark - Setup Data
 - (void)setupData {
     self.selectBtn.isSelected = _cartItem.select;
-    [self.leftImageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:_cartItem.goods.mainPicture]];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:_cartItem.goods.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(TCRealValue(94), TCRealValue(94))];
+    [self.leftImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     self.titleLab.text = _cartItem.goods.name;
     self.primaryStandardLab.text = [self getPrimaryStr];
     [self.primaryStandardLab sizeToFit];

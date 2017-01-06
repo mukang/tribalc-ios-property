@@ -40,8 +40,13 @@
                                                                     };
     _index = 0;
     [self setUpTopView];
-    [self loadDataIsMore:NO];
+//    [self loadDataIsMore:NO];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadDataIsMore:NO];
 }
 
 - (UITableView *)propertyTableView {
@@ -150,7 +155,7 @@
         height = 225.00;
     }else {
         if (([status isEqualToString:@"PAY_ED"] || [status isEqualToString:@"TO_PAYING"]) && propertyManage.totalFee>0) {
-            height = 342.0;
+            height = 350.0;
         }else {
             height = 320.0;
         }

@@ -8,6 +8,7 @@
 
 #import "TCRestaurantInfoViewController.h"
 #import "TCImageURLSynthesizer.h"
+#import "UIImage+Category.h"
 
 @interface TCRestaurantInfoViewController () {
     UIImageView *serviceTitleImageView;
@@ -98,7 +99,7 @@
 
 #pragma mark - UI
 - (void)createWholeScrollView {
-    mScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, TCScreenWidth, self.view.frame.size.height - TCRealValue(45))];
+    mScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, TCScreenWidth, self.view.frame.size.height)];
     [self.view addSubview:mScrollView];
     mScrollView.backgroundColor = [UIColor whiteColor];
     mScrollView.delegate = self;
@@ -112,7 +113,7 @@
     
     [self createTitleImageView];
     
-    [self createBottomButton];
+//    [self createBottomButton];
     
     [self createServiceInfoView];
     
@@ -124,7 +125,9 @@
 
 - (void)createTitleImageView {
     serviceTitleImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, TCRealValue(270))];
-    [serviceTitleImageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:serviceDetail.mainPicture] placeholderImage:[UIImage imageNamed:@"home_image_place"]];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:serviceDetail.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:serviceTitleImageView.size];
+    [serviceTitleImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     serviceTitleImageView.clipsToBounds = NO;
     
     float logoViewRadius = serviceTitleImageView.height * 0.12;
@@ -502,16 +505,16 @@
     }
 }
 
-- (void)touchReserveRest {
-    NSString *storeSetMealId = serviceDetail.ID;
-    TCReserveOnlineViewController *reserveOnlineViewController = [[TCReserveOnlineViewController alloc] initWithStoreSetMealId:storeSetMealId];
-    [self.navigationController pushViewController:reserveOnlineViewController animated:YES];
-}
+//- (void)touchReserveRest {
+//    NSString *storeSetMealId = serviceDetail.ID;
+//    TCReserveOnlineViewController *reserveOnlineViewController = [[TCReserveOnlineViewController alloc] initWithStoreSetMealId:storeSetMealId];
+//    [self.navigationController pushViewController:reserveOnlineViewController animated:YES];
+//}
 
-- (void)touchPreferentialPay
-{
-    NSLog(@"点击优惠买单");
-}
+//- (void)touchPreferentialPay
+//{
+//    NSLog(@"点击优惠买单");
+//}
 
 -(void)touchPhoneBtn {
     TCDetailStore *detailStore = serviceDetail.detailStore;

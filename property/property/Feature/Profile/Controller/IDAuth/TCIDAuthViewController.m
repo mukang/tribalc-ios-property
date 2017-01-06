@@ -242,8 +242,8 @@ TCGenderPickerViewDelegate>
     }
     
     [MBProgressHUD showHUD:YES];
-    [[TCBuluoApi api] authorizeUserIdentity:self.authInfo result:^(TCUserSensitiveInfo *sensitiveInfo, NSError *error) {
-        if (sensitiveInfo) {
+    [[TCBuluoApi api] authorizeUserIdentity:self.authInfo result:^(TCUserInfo *userInfo, NSError *error) {
+        if (userInfo) {
             [MBProgressHUD showHUDWithMessage:@"认证申请已提交"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf handleClickBackButton:nil];
@@ -283,11 +283,11 @@ TCGenderPickerViewDelegate>
     if (_authInfo == nil) {
         _authInfo = [[TCUserIDAuthInfo alloc] init];
         TCUserInfo *userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
-        TCUserSensitiveInfo *userSensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
-        _authInfo.name = userSensitiveInfo.name ?: nil;
+//        TCUserSensitiveInfo *userSensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
+        _authInfo.name = userInfo.name ?: nil;
         _authInfo.birthday = userInfo.birthday ?: 0;
         _authInfo.personSex = userInfo.sex ?: nil;
-        _authInfo.idNo = userSensitiveInfo.idNo ?: nil;
+        _authInfo.idNo = userInfo.idNo ?: nil;
     }
     return _authInfo;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+Category.h"
+#import <SDImageCache.h>
 
 @implementation UIImage (Category)
 
@@ -50,6 +51,45 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
+
++ (UIImage *)placeholderImageWithNamed:(NSString *)name imageSize:(CGSize)size {
+    
+    NSString *key = [NSString stringWithFormat:@"%@%@", name, NSStringFromCGSize(size)];
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    
+    UIImage *image = [imageCache imageFromCacheForKey:key];
+    if (image) {
+        return image;
+    } else {         // 没有就创建再存储到缓存和磁盘
+        UIImage *originalImage = [UIImage imageNamed:name];
+        
+        CGFloat targetLen = size.width <= size.height ? size.width : size.height;
+        CGFloat originalImageLen = originalImage.size.width;
+        if (originalImageLen > targetLen) {
+            originalImageLen = targetLen;
+        }
+        CGFloat originalImageX = (size.width - originalImageLen) * 0.5f;
+        CGFloat originalImageY = (size.height - originalImageLen) * 0.5f;
+        CGRect originalImageF = CGRectMake(originalImageX, originalImageY, originalImageLen, originalImageLen);
+        
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(ctx, TCRGBColor(242, 242, 242).CGColor);
+        CGContextFillRect(ctx, CGRectMake(0.0f, 0.0f, size.width, size.height));
+        [originalImage drawInRect:originalImageF];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        // 存储到缓存和磁盘
+        [imageCache storeImage:image forKey:key completion:nil];
+        
+        return image;
+    }
+}
+
++ (UIImage *)placeholderImageWithSize:(CGSize)size {
+    return [self placeholderImageWithNamed:@"placeholder_image" imageSize:size];
 }
 
 @end

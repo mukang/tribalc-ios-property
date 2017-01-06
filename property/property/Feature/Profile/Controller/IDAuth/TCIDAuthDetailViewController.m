@@ -19,7 +19,7 @@
 
 @property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) TCUserInfo *userInfo;
-@property (strong, nonatomic) TCUserSensitiveInfo *sensitiveInfo;
+//@property (strong, nonatomic) TCUserSensitiveInfo *sensitiveInfo;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @end
@@ -42,7 +42,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     self.userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
-    self.sensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
+//    self.sensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
     
     [self setupNavBar];
     if (self.authStatus == TCIDAuthStatusProcessing) {
@@ -106,10 +106,10 @@
         make.top.left.bottom.right.equalTo(weakSelf.view);
     }];
     
-    if ([self.sensitiveInfo.authorizedStatus isEqualToString:@"SUCCESS"]) {
+    if ([self.userInfo.authorizedStatus isEqualToString:@"SUCCESS"]) {
         [self setupSuccessStatus];
     }
-    if ([self.sensitiveInfo.authorizedStatus isEqualToString:@"FAILURE"]) {
+    if ([self.userInfo.authorizedStatus isEqualToString:@"FAILURE"]) {
         [self setupFailuerStatus];
     }
 }
@@ -160,7 +160,7 @@
     switch (indexPath.row) {
         case 0:
             cell.titleLabel.text = @"真实姓名";
-            cell.subtitleLabel.text = self.sensitiveInfo.name;
+            cell.subtitleLabel.text = self.userInfo.name;
             break;
         case 1:
         {
@@ -181,7 +181,7 @@
             break;
         case 3:
             cell.titleLabel.text = @"身份证号";
-            cell.subtitleLabel.text = self.sensitiveInfo.idNo;
+            cell.subtitleLabel.text = self.userInfo.idNo;
             break;
             
         default:

@@ -7,6 +7,7 @@
 //
 
 #import "TCRecommendInfoViewController.h"
+#import "UIImage+Category.h"
 
 @interface TCRecommendInfoViewController () {
     TCGoodDetail *mGoodDetail;
@@ -354,9 +355,9 @@
     NSURL *imgUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", TCCLIENT_RESOURCES_BASE_URL, mGoodDetail.pictures[indexPath.row]]];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, collectionView.width, collectionView.height)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [imageView sd_setImageWithURL:imgUrl placeholderImage:[UIImage imageNamed:@"home_image_place"]];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:imageView.size];
+    [imageView sd_setImageWithURL:imgUrl placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     imageView.backgroundColor = [UIColor whiteColor];
-    
     [cell.contentView addSubview:imageView];
     return cell;
 }

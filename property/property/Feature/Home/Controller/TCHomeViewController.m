@@ -64,10 +64,10 @@
     UIView *expressView = [self getExpressViewWithFrame:CGRectMake(0, titleScrollView.y + titleScrollView.height, TCScreenWidth, TCRealValue(33))];
     [homeScrollView addSubview:expressView];
     
-    UIView *propertyView = [self getPropertyFunctionViewWithFrame:CGRectMake(0, expressView.y + expressView.height + TCRealValue(5), TCScreenWidth, TCRealValue(88))];
-    [homeScrollView addSubview:propertyView];
+//    UIView *propertyView = [self getPropertyFunctionViewWithFrame:CGRectMake(0, expressView.y + expressView.height + TCRealValue(5), TCScreenWidth, TCRealValue(88))];
+//    [homeScrollView addSubview:propertyView];
     
-    UITableView *commodityTableView = [self getHomeTableViewWithFrame:CGRectMake(0, propertyView.y + propertyView.height, TCScreenWidth, TCRealValue(943.5))];
+    UITableView *commodityTableView = [self getHomeTableViewWithFrame:CGRectMake(0, CGRectGetMaxY(expressView.frame), TCScreenWidth, TCRealValue(943.5))];
     [homeScrollView addSubview:commodityTableView];
     
     homeScrollView.contentSize = CGSizeMake(TCScreenWidth, commodityTableView.y + commodityTableView.height);

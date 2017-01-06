@@ -14,6 +14,7 @@
 #import "TCReserveOnlineViewController.h"
 #import "TCBuluoApi.h"
 #import "TCOrderDetailAlertView.h"
+#import "UIImage+Category.h"
 
 @interface TCUserReserveDetailViewController () {
 //    UITableView *reserveDetailTableView;
@@ -200,7 +201,9 @@
     TCUserReserveTableViewCell *cell = [[TCUserReserveTableViewCell alloc] initReserveDetail];
     cell.backgroundColor = [UIColor whiteColor];
 //    cell.storeImageView.frame = CGRectMake(cell.storeImageView.x + 8, 131 / 2 - 109.5 / 2, cell.storeImageView.width - 8, 109.5);
-    [cell.storeImageView sd_setImageWithURL:[TCImageURLSynthesizer synthesizeImageURLWithPath:reservationDetail.mainPicture] placeholderImage:[UIImage imageNamed:@"good_placeholder"]];
+    NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:reservationDetail.mainPicture];
+    UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(TCRealValue(169), TCRealValue(115))];
+    [cell.storeImageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     cell.timeLab.text = [self getTimeStr:reservationDetail.appointTime / 1000];
     cell.personNumberLab.text = [NSString stringWithFormat:@"%li", (long)reservationDetail.personNum];
     [cell setTitleLabText:reservationDetail.storeName];
