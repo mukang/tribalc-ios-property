@@ -15,14 +15,8 @@
 #import "TCUserSipInfo.h"
 #import "TCUserPhoneInfo.h"
 #import "TCUserAddress.h"
-#import "TCUserShippingAddress.h"
-#import "TCWalletAccount.h"
-#import "TCWalletBill.h"
-#import "TCWalletBillWrapper.h"
-#import "TCBankCard.h"
 #import "TCUserCompanyInfo.h"
 #import "TCUserIDAuthInfo.h"
-#import "TCUserPayment.h"
 
 /********** 商业相关 **********/
 
@@ -30,7 +24,6 @@
 #import "TCGoodsWrapper.h"
 #import "TCGoodDetail.h"
 #import "TCGoodStandards.h"
-#import "TCStoreInfo.h"
 
 /********** 服务相关 **********/
 #import "TCServiceWrapper.h"
@@ -44,16 +37,6 @@
 //#import "TCOrderWrapper.h"
 //#import "TCOrderItem.h"
 //#import "TCOrder.h"
-
-/********** 预订相关 **********/
-#import "TCReservationWrapper.h"
-#import "TCReservation.h"
-#import "TCReservationDetail.h"
-
-/********** 购物车相关 **********/
-#import "TCShoppingCartWrapper.h"
-#import "TCListShoppingCart.h"
-#import "TCCartItem.h"
 
 /********** OSS上传相关 **********/
 
@@ -71,7 +54,6 @@
 /********** 物业报修 **********/
 #import "TCPropertyManageWrapper.h"
 #import "TCPropertyManage.h"
-#import "TCPropertyRepairsInfo.h"
 
 
 @interface TCModelImport : NSObject

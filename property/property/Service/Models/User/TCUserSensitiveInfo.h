@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TCUserShippingAddress.h"
 #import "TCUserSipInfo.h"
 
 @interface TCUserSensitiveInfo : NSObject
@@ -24,8 +23,6 @@
 @property (copy, nonatomic) NSString *authorizedStatus;
 /** 默认收货地址ID */
 @property (copy, nonatomic) NSString *addressID;
-/** 默认收货地址 */
-@property (strong, nonatomic) TCUserShippingAddress *shippingAddress;
 /** 所在公司ID */
 @property (copy, nonatomic) NSString *companyID;
 /** 公司名称 */
