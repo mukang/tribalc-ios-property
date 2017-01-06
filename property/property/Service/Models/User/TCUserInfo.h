@@ -57,5 +57,13 @@ typedef NS_ENUM(NSInteger, TCUserEmotionState) {
 @property (copy, nonatomic) NSString *idNo;
 /** 认证状态(PROCESSING, SUCCESS, FAILURE) */
 @property (copy, nonatomic) NSString *authorizedStatus;
+/** 所在社区ID */
+@property (copy, nonatomic) NSString *communityID;
+/** 所在社区名称 */
+@property (copy, nonatomic) NSString *communityName;
+/** 所在公司ID */
+@property (copy, nonatomic) NSString *companyID;
+/** 公司名称 */
+@property (copy, nonatomic) NSString *companyName;
 
 @end

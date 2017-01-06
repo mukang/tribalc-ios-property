@@ -504,11 +504,6 @@
 		559D93C21E135D8000982697 /* TCBioEditSMSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D931B1E135D8000982697 /* TCBioEditSMSViewController.m */; };
 		559D93C31E135D8000982697 /* TCBioEditSMSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559D931C1E135D8000982697 /* TCBioEditSMSViewController.xib */; };
 		559D93C41E135D8000982697 /* TCBiographyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D931E1E135D8000982697 /* TCBiographyViewController.m */; };
-		559D93C91E135D8000982697 /* TCCommunityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D93271E135D8000982697 /* TCCommunityListViewController.m */; };
-		559D93CA1E135D8000982697 /* TCCompanyApplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D93291E135D8000982697 /* TCCompanyApplyDetailViewController.m */; };
-		559D93CB1E135D8000982697 /* TCCompanyApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D932B1E135D8000982697 /* TCCompanyApplyViewController.m */; };
-		559D93CC1E135D8000982697 /* TCCompanyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D932D1E135D8000982697 /* TCCompanyListViewController.m */; };
-		559D93CD1E135D8000982697 /* TCCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D932F1E135D8000982697 /* TCCompanyViewController.m */; };
 		559D93CE1E135D8000982697 /* TCIDAuthDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D93321E135D8000982697 /* TCIDAuthDetailViewController.m */; };
 		559D93CF1E135D8000982697 /* TCIDAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D93341E135D8000982697 /* TCIDAuthViewController.m */; };
 		559D93D01E135D8000982697 /* TCIDAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 559D93351E135D8000982697 /* TCIDAuthViewController.xib */; };
@@ -633,6 +628,11 @@
 		7AF2ECF71E1F81A9008C556E /* TCPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECF51E1F81A9008C556E /* TCPaymentViewController.m */; };
 		7AF2ECF81E1F81A9008C556E /* TCPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF2ECF61E1F81A9008C556E /* TCPaymentViewController.xib */; };
 		7AF2ECFC1E1F83EB008C556E /* TCOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECFB1E1F83EB008C556E /* TCOrderViewController.m */; };
+		7AF2ED071E1F95C0008C556E /* TCCommunityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECFE1E1F95C0008C556E /* TCCommunityListViewController.m */; };
+		7AF2ED081E1F95C0008C556E /* TCCompanyApplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ED001E1F95C0008C556E /* TCCompanyApplyDetailViewController.m */; };
+		7AF2ED091E1F95C0008C556E /* TCCompanyApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ED021E1F95C0008C556E /* TCCompanyApplyViewController.m */; };
+		7AF2ED0A1E1F95C0008C556E /* TCCompanyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ED041E1F95C0008C556E /* TCCompanyListViewController.m */; };
+		7AF2ED0B1E1F95C0008C556E /* TCCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ED061E1F95C0008C556E /* TCCompanyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2622,16 +2622,6 @@
 		559D931C1E135D8000982697 /* TCBioEditSMSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCBioEditSMSViewController.xib; sourceTree = "<group>"; };
 		559D931D1E135D8000982697 /* TCBiographyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBiographyViewController.h; sourceTree = "<group>"; };
 		559D931E1E135D8000982697 /* TCBiographyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBiographyViewController.m; sourceTree = "<group>"; };
-		559D93261E135D8000982697 /* TCCommunityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunityListViewController.h; sourceTree = "<group>"; };
-		559D93271E135D8000982697 /* TCCommunityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCommunityListViewController.m; sourceTree = "<group>"; };
-		559D93281E135D8000982697 /* TCCompanyApplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyApplyDetailViewController.h; sourceTree = "<group>"; };
-		559D93291E135D8000982697 /* TCCompanyApplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyApplyDetailViewController.m; sourceTree = "<group>"; };
-		559D932A1E135D8000982697 /* TCCompanyApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyApplyViewController.h; sourceTree = "<group>"; };
-		559D932B1E135D8000982697 /* TCCompanyApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyApplyViewController.m; sourceTree = "<group>"; };
-		559D932C1E135D8000982697 /* TCCompanyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyListViewController.h; sourceTree = "<group>"; };
-		559D932D1E135D8000982697 /* TCCompanyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyListViewController.m; sourceTree = "<group>"; };
-		559D932E1E135D8000982697 /* TCCompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyViewController.h; sourceTree = "<group>"; };
-		559D932F1E135D8000982697 /* TCCompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyViewController.m; sourceTree = "<group>"; };
 		559D93311E135D8000982697 /* TCIDAuthDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCIDAuthDetailViewController.h; sourceTree = "<group>"; };
 		559D93321E135D8000982697 /* TCIDAuthDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCIDAuthDetailViewController.m; sourceTree = "<group>"; };
 		559D93331E135D8000982697 /* TCIDAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCIDAuthViewController.h; sourceTree = "<group>"; };
@@ -2849,6 +2839,16 @@
 		7AF2ECF61E1F81A9008C556E /* TCPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPaymentViewController.xib; sourceTree = "<group>"; };
 		7AF2ECFA1E1F83EB008C556E /* TCOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCOrderViewController.h; sourceTree = "<group>"; };
 		7AF2ECFB1E1F83EB008C556E /* TCOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCOrderViewController.m; sourceTree = "<group>"; };
+		7AF2ECFD1E1F95C0008C556E /* TCCommunityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunityListViewController.h; sourceTree = "<group>"; };
+		7AF2ECFE1E1F95C0008C556E /* TCCommunityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCommunityListViewController.m; sourceTree = "<group>"; };
+		7AF2ECFF1E1F95C0008C556E /* TCCompanyApplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyApplyDetailViewController.h; sourceTree = "<group>"; };
+		7AF2ED001E1F95C0008C556E /* TCCompanyApplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyApplyDetailViewController.m; sourceTree = "<group>"; };
+		7AF2ED011E1F95C0008C556E /* TCCompanyApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyApplyViewController.h; sourceTree = "<group>"; };
+		7AF2ED021E1F95C0008C556E /* TCCompanyApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyApplyViewController.m; sourceTree = "<group>"; };
+		7AF2ED031E1F95C0008C556E /* TCCompanyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyListViewController.h; sourceTree = "<group>"; };
+		7AF2ED041E1F95C0008C556E /* TCCompanyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyListViewController.m; sourceTree = "<group>"; };
+		7AF2ED051E1F95C0008C556E /* TCCompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCompanyViewController.h; sourceTree = "<group>"; };
+		7AF2ED061E1F95C0008C556E /* TCCompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCompanyViewController.m; sourceTree = "<group>"; };
 		A12549DADC4A72F6B6B3C670 /* Pods-property.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.release.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.release.xcconfig"; sourceTree = "<group>"; };
 		A60C01C459883F0F2D9D46B1 /* libPods-property.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-property.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF1BB4E914648267FFC1571 /* Pods-property.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.debug.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.debug.xcconfig"; sourceTree = "<group>"; };
@@ -7236,16 +7236,16 @@
 		559D93251E135D8000982697 /* Company */ = {
 			isa = PBXGroup;
 			children = (
-				559D93261E135D8000982697 /* TCCommunityListViewController.h */,
-				559D93271E135D8000982697 /* TCCommunityListViewController.m */,
-				559D93281E135D8000982697 /* TCCompanyApplyDetailViewController.h */,
-				559D93291E135D8000982697 /* TCCompanyApplyDetailViewController.m */,
-				559D932A1E135D8000982697 /* TCCompanyApplyViewController.h */,
-				559D932B1E135D8000982697 /* TCCompanyApplyViewController.m */,
-				559D932C1E135D8000982697 /* TCCompanyListViewController.h */,
-				559D932D1E135D8000982697 /* TCCompanyListViewController.m */,
-				559D932E1E135D8000982697 /* TCCompanyViewController.h */,
-				559D932F1E135D8000982697 /* TCCompanyViewController.m */,
+				7AF2ED051E1F95C0008C556E /* TCCompanyViewController.h */,
+				7AF2ED061E1F95C0008C556E /* TCCompanyViewController.m */,
+				7AF2ED011E1F95C0008C556E /* TCCompanyApplyViewController.h */,
+				7AF2ED021E1F95C0008C556E /* TCCompanyApplyViewController.m */,
+				7AF2ECFF1E1F95C0008C556E /* TCCompanyApplyDetailViewController.h */,
+				7AF2ED001E1F95C0008C556E /* TCCompanyApplyDetailViewController.m */,
+				7AF2ECFD1E1F95C0008C556E /* TCCommunityListViewController.h */,
+				7AF2ECFE1E1F95C0008C556E /* TCCommunityListViewController.m */,
+				7AF2ED031E1F95C0008C556E /* TCCompanyListViewController.h */,
+				7AF2ED041E1F95C0008C556E /* TCCompanyListViewController.m */,
 			);
 			path = Company;
 			sourceTree = "<group>";
@@ -8140,8 +8140,8 @@
 				559D92551E1268D300982697 /* TCFunctions.m in Sources */,
 				559D92151E12659C00982697 /* TCClient.m in Sources */,
 				559D92161E12659C00982697 /* TCClientConfig.m in Sources */,
+				7AF2ED081E1F95C0008C556E /* TCCompanyApplyDetailViewController.m in Sources */,
 				559D92F41E135D6400982697 /* TCGoodSelectTitleView.m in Sources */,
-				559D93CA1E135D8000982697 /* TCCompanyApplyDetailViewController.m in Sources */,
 				559D93F11E135D8000982697 /* TCBiographyViewCell.m in Sources */,
 				559D94BD1E136D8200982697 /* TCRefreshHeader.m in Sources */,
 				559D92121E12659C00982697 /* Log.m in Sources */,
@@ -8187,6 +8187,7 @@
 				559D94981E136AE400982697 /* MLBPasswordTextField.m in Sources */,
 				559D94DF1E13715B00982697 /* TCLoginViewController.m in Sources */,
 				559D942C1E135FAF00982697 /* TCShoppingCartWrapper.m in Sources */,
+				7AF2ED0A1E1F95C0008C556E /* TCCompanyListViewController.m in Sources */,
 				559D940B1E135D8000982697 /* TCScannerBorder.m in Sources */,
 				559D94CB1E136E1B00982697 /* TCImagePlayerView.m in Sources */,
 				559D93001E135D6400982697 /* TCRestaurantSortView.m in Sources */,
@@ -8202,7 +8203,6 @@
 				559D94B61E136D4D00982697 /* TCPropertyManage.m in Sources */,
 				559D92FE1E135D6400982697 /* TCRestaurantLogoView.m in Sources */,
 				559D92E01E135D6400982697 /* TCRecommendInfoViewController.m in Sources */,
-				559D93C91E135D8000982697 /* TCCommunityListViewController.m in Sources */,
 				559D93BF1E135D8000982697 /* TCBioEditNickViewController.m in Sources */,
 				559D944A1E13612C00982697 /* TCDetailStore.m in Sources */,
 				559D943C1E1360D000982697 /* TCGoodsWrapper.m in Sources */,
@@ -8232,10 +8232,12 @@
 				559D92111E12659C00982697 /* LinphoneManager.m in Sources */,
 				559D93DC1E135D8000982697 /* TCProfileViewController.m in Sources */,
 				559D944E1E13612C00982697 /* TCServices.m in Sources */,
+				7AF2ED091E1F95C0008C556E /* TCCompanyApplyViewController.m in Sources */,
 				559D93021E135D6400982697 /* TCServiceFilterView.m in Sources */,
 				559D91F71E12655D00982697 /* NSObject+TCModel.m in Sources */,
 				559D92671E13599900982697 /* TCNavigationController.m in Sources */,
 				559D92EC1E135D6400982697 /* TCAnnotation.m in Sources */,
+				7AF2ED071E1F95C0008C556E /* TCCommunityListViewController.m in Sources */,
 				559D94701E1364A400982697 /* TCUserSession.m in Sources */,
 				559D94AE1E136CA400982697 /* TCGenderPickerView.m in Sources */,
 				559D92DB1E135D6400982697 /* TCLocationViewController.m in Sources */,
@@ -8246,7 +8248,6 @@
 				559D943A1E1360D000982697 /* TCGoods.m in Sources */,
 				559D94C81E136DD300982697 /* TCReservationWrapper.m in Sources */,
 				559D92F11E135D6400982697 /* TCUserLocationAnnotationView.m in Sources */,
-				559D93CB1E135D8000982697 /* TCCompanyApplyViewController.m in Sources */,
 				559D93031E135D6400982697 /* TCServiceSelectBtn.m in Sources */,
 				559D94C71E136DD300982697 /* TCReservationDetail.m in Sources */,
 				559D92181E12659C00982697 /* TCClientRequestError.m in Sources */,
@@ -8263,7 +8264,6 @@
 				559D947D1E13687D00982697 /* TCCommonIndicatorViewCell.m in Sources */,
 				559D92191E12659C00982697 /* TCClientResponse.m in Sources */,
 				559D92171E12659C00982697 /* TCClientRequest.m in Sources */,
-				559D93CD1E135D8000982697 /* TCCompanyViewController.m in Sources */,
 				559D944B1E13612C00982697 /* TCListStore.m in Sources */,
 				559D92E91E135D6400982697 /* TCHomeViewController.m in Sources */,
 				559D948E1E136AAE00982697 /* TCPaymentDetailView.m in Sources */,
@@ -8282,11 +8282,11 @@
 				559D93BD1E135D8000982697 /* TCBioEditGenderViewController.m in Sources */,
 				559D91F81E12655D00982697 /* NSObject+TCNomal.m in Sources */,
 				559D944F1E13612C00982697 /* TCServiceWrapper.m in Sources */,
-				559D93CC1E135D8000982697 /* TCCompanyListViewController.m in Sources */,
 				559D940E1E135D8000982697 /* TCSettingNotificationViewCell.m in Sources */,
 				559D94A51E136B9900982697 /* TCBankCard.m in Sources */,
 				559D93CE1E135D8000982697 /* TCIDAuthDetailViewController.m in Sources */,
 				559D940D1E135D8000982697 /* TCSettingCacheViewCell.m in Sources */,
+				7AF2ED0B1E1F95C0008C556E /* TCCompanyViewController.m in Sources */,
 				559D95191E1B8F5800982697 /* TCOrderCancelView.m in Sources */,
 				559D91FA1E12655D00982697 /* UIView+Category.m in Sources */,
 				559D942B1E135FAF00982697 /* TCListShoppingCart.m in Sources */,
@@ -8493,6 +8493,7 @@
 			baseConfigurationReference = A12549DADC4A72F6B6B3C670 /* Pods-property.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8528,8 +8529,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.propertyManagement";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8270d4c7-f534-4d6b-a973-7a0239249de5";
-				PROVISIONING_PROFILE_SPECIFIER = "Property Development";
+				PROVISIONING_PROFILE = "cbd41020-ff16-406b-ae05-0a0ff4f57481";
+				PROVISIONING_PROFILE_SPECIFIER = "Property Distribution";
 			};
 			name = Release;
 		};

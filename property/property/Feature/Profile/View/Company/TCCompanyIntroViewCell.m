@@ -61,7 +61,7 @@
 - (void)setCompanyInfo:(TCCompanyInfo *)companyInfo {
     _companyInfo = companyInfo;
     
-    self.nameLabel.text = companyInfo.name;
+    self.nameLabel.text = companyInfo.companyName;
     
     self.introLabel.text = companyInfo.desc;
     if (companyInfo.desc.length > 80) {

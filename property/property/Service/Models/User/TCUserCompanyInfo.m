@@ -8,12 +8,14 @@
 
 #import "TCUserCompanyInfo.h"
 #import "TCCompanyInfo.h"
+#import "TCCommunity.h"
 
 @implementation TCUserCompanyInfo
 
 + (NSDictionary *)objectClassInDictionary {
     return @{
-             @"company": [TCCompanyInfo class]
+             @"company": [TCCompanyInfo class],
+             @"community": [TCCommunity class]
              };
 }
 

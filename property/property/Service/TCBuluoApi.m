@@ -472,6 +472,12 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 //        [request setValue:userCompanyInfo.personNum forParam:@"personNum"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.statusCode == 201) {
+                TCUserSession *userSession = self.currentUserSession;
+                userSession.userInfo.communityID = userCompanyInfo.community.ID;
+                userSession.userInfo.communityName = userCompanyInfo.community.name;
+                userSession.userInfo.companyID = userCompanyInfo.company.ID;
+                userSession.userInfo.companyName = userCompanyInfo.company.companyName;
+                [self setUserSession:userSession];
                 if (resultBlock) {
                     TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
                 }
@@ -501,9 +507,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.statusCode == 200) {
                 TCUserInfo *userInfo = [[TCUserInfo alloc] initWithObjectDictionary:response.data];
-                
                 TCUserSession *userSession = self.currentUserSession;
-                
                 userSession.userInfo = userInfo;
                 [self setUserSession:userSession];
                 if (resultBlock) {

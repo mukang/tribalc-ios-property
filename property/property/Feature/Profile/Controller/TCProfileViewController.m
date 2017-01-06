@@ -437,37 +437,19 @@ TCPhotoModeViewDelegate>
 }
 
 - (void)handleDidSelectedMyCompanyCell {
-    [MBProgressHUD showHUD:YES];
-    [[TCBuluoApi api] fetchCompanyBlindStatus:^(TCUserCompanyInfo *userCompanyInfo, NSError *error) {
-        if (userCompanyInfo) {
-            [MBProgressHUD hideHUD:YES];
-            if ([userCompanyInfo.comfirmed isEqualToString:@"SUCCEED"]) {
-                TCCompanyViewController *vc = [[TCCompanyViewController alloc] init];
-                vc.userCompanyInfo = userCompanyInfo;
-                vc.hidesBottomBarWhenPushed = YES;
-                [weakSelf.navigationController pushViewController:vc animated:YES];
-            } else {
-                TCCompanyApplyStatus applyStatus;
-                if ([userCompanyInfo.comfirmed isEqualToString:@"PROCESSING"]) {
-                    applyStatus = TCCompanyApplyStatusProcess;
-                } else if ([userCompanyInfo.comfirmed isEqualToString:@"FAILURE"]) {
-                    applyStatus = TCCompanyApplyStatusFailure;
-                } else {
-                    applyStatus = TCCompanyApplyStatusNotApply;
-                }
-                TCCompanyApplyViewController *vc = [[TCCompanyApplyViewController alloc] initWithCompanyApplyStatus:applyStatus];
-                vc.hidesBottomBarWhenPushed = YES;
-                [weakSelf.navigationController pushViewController:vc animated:YES];
-            }
-        } else {
-            NSString *reason = error.localizedDescription ?: @"请稍后再试";
-            [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"加载失败，%@", reason]];
-        }
-    }];
+    TCUserInfo *userInfo = [TCBuluoApi api].currentUserSession.userInfo;
+    if (userInfo.companyID) {
+        TCCompanyViewController *vc = [[TCCompanyViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        TCCompanyApplyViewController *vc = [[TCCompanyApplyViewController alloc] initWithCompanyApplyStatus:TCCompanyApplyStatusNotApply];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)handleDidSelectedIDAuthCell {
-//    TCUserSensitiveInfo *sensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
     TCUserInfo *userInfo = [TCBuluoApi api].currentUserSession.userInfo;
     UIViewController *currentVC;
     if ([userInfo.authorizedStatus isEqualToString:@"PROCESSING"]) {

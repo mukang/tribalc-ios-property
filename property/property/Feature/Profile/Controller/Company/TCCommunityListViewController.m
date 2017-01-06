@@ -62,15 +62,15 @@
 }
 
 - (void)loadNetData {
-//    [[TCBuluoApi api] fetchCommunityListGroupByCity:^(NSArray *communities, NSError *error) {
-//        if (communities) {
-//            weakSelf.communities = communities;
-//            [weakSelf.tableView reloadData];
-//        } else {
-//            NSString *reason = error.localizedDescription ?: @"请稍后再试";
-//            [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"加载失败，%@", reason]];
-//        }
-//    }];
+    [[TCBuluoApi api] fetchCommunityListGroupByCity:^(NSArray *communities, NSError *error) {
+        if (communities) {
+            weakSelf.communities = communities;
+            [weakSelf.tableView reloadData];
+        } else {
+            NSString *reason = error.localizedDescription ?: @"请稍后再试";
+            [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"加载失败，%@", reason]];
+        }
+    }];
 }
 
 #pragma mark - Status Bar
@@ -104,7 +104,7 @@
     TCCompanyListViewController *vc = [[TCCompanyListViewController alloc] init];
     TCCommunityListInCity *communityListInCity = self.communities[indexPath.section];
     TCCommunity *community = communityListInCity.communityList[indexPath.row];
-    vc.communityID = community.ID;
+    vc.community = community;
     vc.popToVC = self.popToVC;
     vc.companyInfoBlock = self.companyInfoBlock;
     [self.navigationController pushViewController:vc animated:YES];

@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 @class TCCompanyInfo;
+@class TCCommunity;
 
 @interface TCUserCompanyInfo : NSObject
 
 /** 公司信息 */
 @property (strong, nonatomic) TCCompanyInfo *company;
+/** 公司所在社区信息 */
+@property (strong, nonatomic) TCCommunity *community;
 /** 公司部门 */
 @property (copy, nonatomic) NSString *department;
 /** 职位 */
