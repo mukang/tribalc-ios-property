@@ -108,7 +108,7 @@
             _moneyLabel.hidden = NO;
             NSString *money = [NSString stringWithFormat:@"%.2f",propertyManage.totalFee];
             if (money) {
-                NSString *s = [NSString stringWithFormat:@"维修金额¥%.2f",propertyManage.totalFee];
+                NSString *s = [NSString stringWithFormat:@"维修金额 ¥%.2f",propertyManage.totalFee];
                 NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:s];
                 
                 [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:227.0/255 green:19/255.0 blue:19/255.0 alpha:1.0] range:NSMakeRange(5, s.length-5)];

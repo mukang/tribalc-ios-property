@@ -41,7 +41,7 @@
     _boardView.layer.borderColor = [UIColor colorWithRed:154/255.0 green:154/255.0 blue:154/255.0 alpha:1.0].CGColor;
     _boardView.layer.borderWidth = 0.5;
     
-    _myTextField = [[UITextField alloc] initWithFrame:CGRectMake(25, 26, [UIScreen mainScreen].bounds.size.width-50, 31.5)];
+    _myTextField = [[UITextField alloc] initWithFrame:CGRectMake(25, 26, [UIScreen mainScreen].bounds.size.width-50, 40)];
     [self.view addSubview:_myTextField];
     _myTextField.placeholder = @"请输入付款金额";
     _myTextField.delegate = self;
@@ -49,7 +49,7 @@
     _myTextField.font = [UIFont systemFontOfSize:14];
     _myTextField.keyboardType = UIKeyboardTypeDecimalPad;
     
-    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 31)];
+    UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 65, 40)];
     l.text = @"付款金额";
     l.textColor = [UIColor blackColor];
     l.font = [UIFont boldSystemFontOfSize:14];

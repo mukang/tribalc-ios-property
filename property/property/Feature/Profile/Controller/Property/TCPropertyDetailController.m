@@ -16,6 +16,7 @@
 #import "TCOrderCancelView.h"
 #import <Masonry.h>
 #import "UIImage+Category.h"
+#import "TCPhotoBrowser.h"
 
 @interface TCPropertyDetailController () <TCDatePickerViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;
@@ -51,6 +52,9 @@
 @property (strong, nonatomic) TCOrderCancelView *cancelView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *overImageView;
+
+@property (nonatomic, strong) TCPhotoBrowser *pB;
+
 
 @end
 
@@ -137,7 +141,7 @@
 
 - (void)setData {
     
-    if (![_propertyManage.status isEqualToString:@"PAY_ED"] && ![_propertyManage.status isEqualToString:@"ORDER_ACCEPT"]) {
+    if (![_propertyManage.status isEqualToString:@"PAY_ED"] && ![_propertyManage.status isEqualToString:@"ORDER_ACCEPT"] && ![_propertyManage.status isEqualToString:@"CANCEL"] && ![_propertyManage.status isEqualToString:@"TO_PAYING"]) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelOrder)];
     }else {
         self.navigationItem.rightBarButtonItem = nil;
@@ -199,6 +203,10 @@
                         height = [UIScreen mainScreen].bounds.size.width/375.0*102.5;
                         NSURL *imageURL = [TCImageURLSynthesizer synthesizeImageURLWithPath:imgStr];
                         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5+(height + 5) * i, 0, height, height)];
+                        imageView.tag = 12345+i;
+                        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toSeeBigPhoto:)];
+                        [imageView addGestureRecognizer:tap];
+                        imageView.userInteractionEnabled = YES;
                         [_imgView addSubview:imageView];
                         imageView.layer.cornerRadius = 3.0;
                         imageView.clipsToBounds = YES;
@@ -285,13 +293,13 @@
 
             btnH = 30.0;
             btnBottomC = 70.0;
-            btnTopC = 30;
-            masterHC = 115.0;
-            doorTimeTopCon = 20.0;
+            btnTopC = 40;
+            masterHC = 90.0;
+            doorTimeTopCon = 5.0;
             //待支付
             if (_propertyManage.totalFee) {
                 
-                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%.2f",_propertyManage.totalFee];
+                NSString *moneyStr = [NSString stringWithFormat:@"维修金额 ¥%.2f",_propertyManage.totalFee];
                 NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
                 [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
                 [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
@@ -317,6 +325,22 @@
                 self.moneyLabel.attributedText = att;
                 
             }
+        }else if ([_propertyManage.status isEqualToString:@"CANCEL"]) {
+            if (_propertyManage.phone) {
+                masterHC = 90.0;
+                _overImageView.hidden = YES;
+                doorTimeTopCon = 5.0;
+            }
+            if (_propertyManage.totalFee) {
+                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%.2f",_propertyManage.totalFee];
+                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
+                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
+                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
+                self.moneyLabel.attributedText = att;
+                
+            }
+            btnH = 0.0;
+            
         }
 
     }else {
@@ -334,6 +358,42 @@
     [self.view layoutIfNeeded];
 }
 
+- (void)toSeeBigPhoto:(UITapGestureRecognizer *)ges {
+    NSMutableArray *mutableArr = [NSMutableArray array];
+    for (UIView *view in _imgView.subviews) {
+        if ([view isKindOfClass:[UIImageView class]]) {
+            UIImageView * imgView = (UIImageView *)view;
+            [mutableArr addObject:imgView.image];
+        }
+    }
+    
+    UIView *view = ges.view;
+    NSInteger index = view.tag-12345;
+    
+    CGRect rect = [view.superview convertRect:view.frame toView:self.navigationController.view];
+//    rect.origin.y -= 65;
+    
+    if (_pB == nil) {
+        _pB = [[TCPhotoBrowser alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, TCScreenHeight)];
+        _pB.isNeedDelete = YES;
+//        _pB.delegate = self;
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removePB:)];
+//        [_pB addGestureRecognizer:tap];
+        _pB.isNeedSave = NO;
+    }
+    _pB.hidden = NO;
+    _pB.backgroundColor = [UIColor blackColor];
+//    _pB.imgArr = self.propertyManage.pictures;
+    _pB.imgArr = mutableArr;
+    _pB.currentIndex = index;
+    
+    
+    _pB.initRect = rect;
+    [_pB setInitRect];
+    [self.navigationController.view addSubview:_pB];
+    
+}
+
 - (UILabel *)moneyLabel {
     if (_moneyLabel == nil) {
         _moneyLabel = [[UILabel alloc] init];
@@ -343,8 +403,8 @@
         [self.view addSubview:_moneyLabel];
         [_moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(_masterView);
-            make.height.equalTo(@20);
-            make.top.equalTo(_masterView.mas_bottom).offset(5);
+            make.height.equalTo(@30);
+            make.top.equalTo(_masterView.mas_bottom);
         }];
         _moneyLabel.textColor = TCRGBColor(42, 42, 42);
     }
@@ -378,7 +438,7 @@
 }
 
 - (void)didClickConfirmButtonInDatePickerView:(TCDatePickerView *)view {
-//    _timestamp = [view.datePicker.date timeIntervalSince1970];
+    _timestamp = [view.datePicker.date timeIntervalSince1970];
     if (_textField) {
 //        NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)(_timestamp * 1000) / 1000];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

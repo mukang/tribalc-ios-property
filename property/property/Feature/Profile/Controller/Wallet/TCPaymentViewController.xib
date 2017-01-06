@@ -25,14 +25,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lxy-PW-jpI">
-                            <rect key="frame" x="20" y="26" width="335" height="32"/>
+                            <rect key="frame" x="20" y="26" width="335" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="31.5" id="BYu-l5-XZP"/>
+                                <constraint firstAttribute="height" constant="40" id="BYu-l5-XZP"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注:请输入包含耗材费或特殊人工费的综合金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWk-RN-OTI">
-                            <rect key="frame" x="20" y="58" width="335" height="32"/>
+                            <rect key="frame" x="20" y="66" width="335" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

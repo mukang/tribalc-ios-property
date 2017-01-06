@@ -686,6 +686,7 @@
 		559D95111E13B12A00982697 /* TCOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95101E13B12A00982697 /* TCOrderViewController.m */; };
 		559D95141E13C27E00982697 /* TCTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95131E13C27E00982697 /* TCTabView.m */; };
 		559D95191E1B8F5800982697 /* TCOrderCancelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D95181E1B8F5800982697 /* TCOrderCancelView.m */; };
+		55F7A6E11E1F4E7E0089A9E4 /* TCPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7A6E01E1F4E7E0089A9E4 /* TCPhotoBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2992,6 +2993,8 @@
 		559D95131E13C27E00982697 /* TCTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTabView.m; sourceTree = "<group>"; };
 		559D95171E1B8F5800982697 /* TCOrderCancelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCOrderCancelView.h; sourceTree = "<group>"; };
 		559D95181E1B8F5800982697 /* TCOrderCancelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCOrderCancelView.m; sourceTree = "<group>"; };
+		55F7A6DF1E1F4E7E0089A9E4 /* TCPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPhotoBrowser.h; sourceTree = "<group>"; };
+		55F7A6E01E1F4E7E0089A9E4 /* TCPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPhotoBrowser.m; sourceTree = "<group>"; };
 		A12549DADC4A72F6B6B3C670 /* Pods-property.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.release.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.release.xcconfig"; sourceTree = "<group>"; };
 		A60C01C459883F0F2D9D46B1 /* libPods-property.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-property.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF1BB4E914648267FFC1571 /* Pods-property.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-property.debug.xcconfig"; path = "Pods/Target Support Files/Pods-property/Pods-property.debug.xcconfig"; sourceTree = "<group>"; };
@@ -3365,6 +3368,8 @@
 		559D886B1E12646900982697 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				55F7A6DF1E1F4E7E0089A9E4 /* TCPhotoBrowser.h */,
+				55F7A6E01E1F4E7E0089A9E4 /* TCPhotoBrowser.m */,
 				559D94E31E1373D700982697 /* TCBlurImageView.h */,
 				559D94E41E1373D700982697 /* TCBlurImageView.m */,
 				559D94CC1E136E5500982697 /* TCPhotoModeView.h */,
@@ -8466,6 +8471,7 @@
 				559D92F21E135D6400982697 /* TCRecommendFooter.m in Sources */,
 				559D925C1E126D6D00982697 /* TCModelImport.m in Sources */,
 				559D94791E13686700982697 /* TCCommonInputViewCell.m in Sources */,
+				55F7A6E11E1F4E7E0089A9E4 /* TCPhotoBrowser.m in Sources */,
 				559D92E81E135D6400982697 /* TCRestaurantViewController.m in Sources */,
 				559D94A61E136B9900982697 /* TCWalletAccount.m in Sources */,
 				559D92DC1E135D6400982697 /* TCPlaceOrderViewController.m in Sources */,
