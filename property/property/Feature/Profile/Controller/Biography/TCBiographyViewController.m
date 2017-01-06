@@ -8,12 +8,10 @@
 
 #import "TCBiographyViewController.h"
 #import "TCBioEditPhoneViewController.h"
-#import "TCShippingAddressViewController.h"
 #import "TCBioEditNickViewController.h"
 #import "TCBioEditGenderViewController.h"
 #import "TCBioEditEmotionViewController.h"
 #import "TCBioEditBirthdateViewController.h"
-#import "TCBioEditLocationViewController.h"
 
 #import "TCBiographyViewCell.h"
 #import "TCBiographyAvatarViewCell.h"
@@ -80,7 +78,7 @@
 
 - (void)fetchUserInfo {
     TCUserInfo *userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
-//    TCUserSensitiveInfo *userSensitiveInfo = [[TCBuluoApi api] currentUserSession].userSensitiveInfo;
+    
     // 昵称
     NSString *nickname = userInfo.nickname ?: @"";
     // 性别
@@ -120,17 +118,7 @@
     }
     // 电话号码
     NSString *phone = userInfo.phone ?: @"";
-    // 所在地
-//    NSString *province = userInfo.province ?: @"";
-//    NSString *city = userInfo.city ?: @"";
-//    NSString *district = userInfo.district ?: @"";
-//    NSString *address = [NSString stringWithFormat:@"%@%@%@", province, city, district];
-    // 收货地址
-//    NSString *chippingAddress = @"";
-//    if (userSensitiveInfo.shippingAddress) {
-//        chippingAddress = [NSString stringWithFormat:@"%@%@%@%@", userSensitiveInfo.shippingAddress.province, userSensitiveInfo.shippingAddress.city, userSensitiveInfo.shippingAddress.district, userSensitiveInfo.shippingAddress.address];
-//    }
-//    
+    
     self.bioDetailsTitles = @[@[@"", nickname, genderStr, birthDateStr, emotionStateStr], @[phone]];
     [self.tableView reloadData];
 }
@@ -215,12 +203,6 @@
         switch (indexPath.row) {
             case 0: // 手机号
                 [self handleSelectPhoneCell];
-                break;
-            case 1: // 所在地
-                [self handleSelectLocationCell];
-                break;
-            case 2: // 收货地址
-                [self handleSelectShippingAddressCell];
                 break;
                 
             default:
@@ -368,32 +350,6 @@
         }
     };
     [self.navigationController pushViewController:editPhoneVC animated:YES];
-}
-
-- (void)handleSelectLocationCell {
-    TCBioEditLocationViewController *vc = [[TCBioEditLocationViewController alloc] init];
-    TCUserInfo *userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
-//    if (userInfo.province || userInfo.city || userInfo.district) {
-//        TCUserAddress *address = [[TCUserAddress alloc] init];
-//        address.province = userInfo.province;
-//        address.city = userInfo.city;
-//        address.district = userInfo.district;
-//        vc.address = address;
-//    }
-    vc.editLocationBlock = ^() {
-        [weakSelf fetchUserInfo];
-    };
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)handleSelectShippingAddressCell {
-    TCShippingAddressViewController *vc = [[TCShippingAddressViewController alloc] initWithNibName:@"TCShippingAddressViewController" bundle:[NSBundle mainBundle]];
-    vc.defaultShippingAddressChangeBlock = ^(BOOL isChange) {
-        if (isChange) {
-            [weakSelf fetchUserInfo];
-        }
-    };
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Override Methods

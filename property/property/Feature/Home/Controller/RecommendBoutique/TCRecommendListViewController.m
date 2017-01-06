@@ -51,10 +51,6 @@
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
                                                                             action:@selector(touchBackBtn:)];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"good_shopping_white"]
-//                                                                              style:UIBarButtonItemStylePlain
-//                                                                             target:self
-//                                                                             action:@selector(touchShopCar:)];
 }
 
 
@@ -181,12 +177,6 @@
 
 - (void)touchBackBtn:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)touchShopCar:(id)sender {
-    TCShoppingCartViewController *shoppingCartViewController = [[TCShoppingCartViewController alloc] init];
-    shoppingCartViewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:shoppingCartViewController animated:YES];
 }
 
 #pragma mark - Status Bar

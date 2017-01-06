@@ -57,7 +57,9 @@
     NSString *method = clientRequest.HTTPMethod;
     NSString *URLString = clientRequest.apiName;
     id parameters = clientRequest.params;
+    NSString *token = clientRequest.token ?: nil;
     
+    [self.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     __block NSError *serializationError = nil;
@@ -121,7 +123,9 @@
     NSString *method = clientRequest.HTTPMethod;
     NSString *URLString = clientRequest.uploadURLString;
     NSData *imageData = clientRequest.imageData;
+    NSString *token = clientRequest.token ?: nil;
     
+    [self.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     [self.requestSerializer setValue:@"image/jpeg" forHTTPHeaderField:@"Content-Type"];
     
     __block NSError *serializationError = nil;

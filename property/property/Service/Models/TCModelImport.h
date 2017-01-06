@@ -61,10 +61,8 @@
 
 /********** 社区相关 **********/
 
-//#import "TCCommunity.h"
-//#import "TCCommunityDetailInfo.h"
-//#import "TCCommunityListInCity.h"
-//#import "TCCommunityReservationInfo.h"
+#import "TCCommunity.h"
+#import "TCCommunityListInCity.h"
 
 /********** 公司相关 **********/
 

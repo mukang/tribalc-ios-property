@@ -47,12 +47,15 @@ typedef NS_ENUM(NSInteger, TCUserEmotionState) {
 @property (copy, nonatomic) NSString *province;
 /** 所在城市 */
 @property (copy, nonatomic) NSString *city;
-
+/** 街区 */
+@property (copy, nonatomic) NSString *district;
+/** 背景图片 */
 @property (copy, nonatomic) NSString *cover;
-
+/** 头像 */
 @property (copy, nonatomic) NSString *picture;
-
+/** 身份证号 */
 @property (copy, nonatomic) NSString *idNo;
-
+/** 认证状态(PROCESSING, SUCCESS, FAILURE) */
 @property (copy, nonatomic) NSString *authorizedStatus;
+
 @end

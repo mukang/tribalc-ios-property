@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TCUserOrderTabBarController.h"
-#import "TCUserOrderViewController.h"
 
 
 @interface TCProfileViewController : UIViewController

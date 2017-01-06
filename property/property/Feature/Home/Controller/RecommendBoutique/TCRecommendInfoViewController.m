@@ -363,19 +363,6 @@
 }
 
 #pragma mark - TCGoodSelectViewDelegate
-- (void)selectView:(TCGoodSelectView *)goodSelectView didAddShoppingCartWithGoodDetail:(TCGoodDetail *)goodDetail Amount:(NSInteger)amount {
-    
-    [MBProgressHUD showHUD:YES];
-    [[TCBuluoApi api] createShoppingCartWithAmount:amount goodsId:goodDetail.ID result:^(BOOL result, NSError *error) {
-        if (result) {
-            [MBProgressHUD showHUDWithMessage:@"加入购物车成功"];
-        } else {
-            NSString *reason = error.localizedDescription ?: @"请稍后再试";
-            [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"加入购物车失败, %@", reason]];
-        }
-    }];
-    
-}
 
 - (void)selectView:(TCGoodSelectView *)goodSelectView didChangeStandardButtonWithGoodDetail:(TCGoodDetail *)goodDetail {
     [self reloadDetailViewWithTouchGoodDetail:goodDetail];
@@ -435,8 +422,7 @@
 
 
 - (void)touchShopCarBtn:(id)sender {
-    TCShoppingCartViewController *shoppingCartViewController = [[TCShoppingCartViewController alloc] init];
-    [self.navigationController pushViewController:shoppingCartViewController animated:YES];
+    
 }
 
 - (void)touchSelectStandardBtn:(UIButton *)btn {
