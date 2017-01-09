@@ -611,7 +611,6 @@
 		55EC5BD71E2347FA00C5FB73 /* TCCustomTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC5BD61E2347FA00C5FB73 /* TCCustomTransitionAnimation.m */; };
 		55EC5BDA1E23489A00C5FB73 /* TCFadeOutTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC5BD91E23489A00C5FB73 /* TCFadeOutTransitionAnimation.m */; };
 		55EC5BDD1E23833C00C5FB73 /* TCNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC5BDC1E23833C00C5FB73 /* TCNavigationDelegate.m */; };
-		55F7A6E11E1F4E7E0089A9E4 /* TCPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7A6E01E1F4E7E0089A9E4 /* TCPhotoBrowser.m */; };
 		7AF2ECEB1E1F7887008C556E /* TCCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE41E1F7887008C556E /* TCCommunity.m */; };
 		7AF2ECED1E1F7887008C556E /* TCCommunityListInCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE81E1F7887008C556E /* TCCommunityListInCity.m */; };
 		7AF2ECF71E1F81A9008C556E /* TCPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECF51E1F81A9008C556E /* TCPaymentViewController.m */; };
@@ -2797,8 +2796,6 @@
 		55EC5BD91E23489A00C5FB73 /* TCFadeOutTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCFadeOutTransitionAnimation.m; sourceTree = "<group>"; };
 		55EC5BDB1E23833C00C5FB73 /* TCNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNavigationDelegate.h; sourceTree = "<group>"; };
 		55EC5BDC1E23833C00C5FB73 /* TCNavigationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNavigationDelegate.m; sourceTree = "<group>"; };
-		55F7A6DF1E1F4E7E0089A9E4 /* TCPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPhotoBrowser.h; sourceTree = "<group>"; };
-		55F7A6E01E1F4E7E0089A9E4 /* TCPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPhotoBrowser.m; sourceTree = "<group>"; };
 		7AF2ECE31E1F7887008C556E /* TCCommunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunity.h; sourceTree = "<group>"; };
 		7AF2ECE41E1F7887008C556E /* TCCommunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCommunity.m; sourceTree = "<group>"; };
 		7AF2ECE71E1F7887008C556E /* TCCommunityListInCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunityListInCity.h; sourceTree = "<group>"; };
@@ -3198,8 +3195,6 @@
 		559D886B1E12646900982697 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				55F7A6DF1E1F4E7E0089A9E4 /* TCPhotoBrowser.h */,
-				55F7A6E01E1F4E7E0089A9E4 /* TCPhotoBrowser.m */,
 				559D94E31E1373D700982697 /* TCBlurImageView.h */,
 				559D94E41E1373D700982697 /* TCBlurImageView.m */,
 				559D94CC1E136E5500982697 /* TCPhotoModeView.h */,
@@ -8088,7 +8083,6 @@
 				7AF2ECED1E1F7887008C556E /* TCCommunityListInCity.m in Sources */,
 				559D925C1E126D6D00982697 /* TCModelImport.m in Sources */,
 				559D94791E13686700982697 /* TCCommonInputViewCell.m in Sources */,
-				55F7A6E11E1F4E7E0089A9E4 /* TCPhotoBrowser.m in Sources */,
 				559D92E81E135D6400982697 /* TCRestaurantViewController.m in Sources */,
 				7AF2ECFC1E1F83EB008C556E /* TCOrderViewController.m in Sources */,
 				559D94811E1368CD00982697 /* TCCompanyInfo.m in Sources */,

@@ -16,7 +16,6 @@
 #import "TCOrderCancelView.h"
 #import <Masonry.h>
 #import "UIImage+Category.h"
-#import "TCPhotoBrowser.h"
 #import "TCImagePreviewObject.h"
 #import "TCImagePreviewController.h"
 
@@ -54,8 +53,6 @@
 @property (strong, nonatomic) TCOrderCancelView *cancelView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *overImageView;
-
-@property (nonatomic, strong) TCPhotoBrowser *pB;
 
 @property (copy, nonatomic) NSArray *imagePreViewObjectArr;
 
@@ -455,42 +452,6 @@
                                                                    beganRect:beganRect];
     
     [self.navigationController pushViewController:previewController animated:YES];
-
-    
-    
-    
-    
-//    NSMutableArray *mutableArr = [NSMutableArray array];
-//    for (UIView *view in _imgView.subviews) {
-//        if ([view isKindOfClass:[UIImageView class]]) {
-//            UIImageView * imgView = (UIImageView *)view;
-//            [mutableArr addObject:imgView.image];
-//        }
-//    }
-//    
-
-//    
-//    CGRect rect = [view.superview convertRect:view.frame toView:self.navigationController.view];
-////    rect.origin.y -= 65;
-//    
-//    if (_pB == nil) {
-//        _pB = [[TCPhotoBrowser alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, TCScreenHeight)];
-//        _pB.isNeedDelete = YES;
-////        _pB.delegate = self;
-////        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removePB:)];
-////        [_pB addGestureRecognizer:tap];
-//        _pB.isNeedSave = NO;
-//    }
-//    _pB.hidden = NO;
-//    _pB.backgroundColor = [UIColor blackColor];
-////    _pB.imgArr = self.propertyManage.pictures;
-//    _pB.imgArr = mutableArr;
-//    _pB.currentIndex = index;
-//    
-//    
-//    _pB.initRect = rect;
-//    [_pB setInitRect];
-//    [self.navigationController.view addSubview:_pB];
     
 }
 
