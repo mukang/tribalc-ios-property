@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TCNavigationDelegate.h"
 @class TCPropertyManage;
 
-@interface TCPropertyDetailController : UIViewController
+
+@interface TCPropertyDetailController : UIViewController<TCTransitionAnimationSupportDelegate>
 
 - (instancetype)initWithPropertyManage:(TCPropertyManage *)property;
 

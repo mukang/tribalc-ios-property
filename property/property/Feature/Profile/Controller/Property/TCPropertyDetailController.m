@@ -16,9 +16,10 @@
 #import "TCOrderCancelView.h"
 #import <Masonry.h>
 #import "UIImage+Category.h"
-#import "TCPhotoBrowser.h"
+#import "TCImagePreviewObject.h"
+#import "TCImagePreviewController.h"
 
-@interface TCPropertyDetailController () <TCDatePickerViewDelegate,UITextFieldDelegate>
+@interface TCPropertyDetailController () <TCDatePickerViewDelegate,UITextFieldDelegate,TCImagePreviewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *communityNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *applyPersonNameLabel;
@@ -53,8 +54,11 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *overImageView;
 
-@property (nonatomic, strong) TCPhotoBrowser *pB;
+@property (copy, nonatomic) NSArray *imagePreViewObjectArr;
 
+@property (weak, nonatomic) UIView *selectedView;
+
+@property (nonatomic, strong) id<UIViewControllerAnimatedTransitioning> animation;
 
 @end
 
@@ -69,13 +73,33 @@
 }
 
 
+#pragma mark - transition animation
+
+-(BOOL)isTransitionAnimationSupport
+{
+    return YES;
+}
+
+-(id<UIViewControllerAnimatedTransitioning>)pushTransitionAnimationSupport
+{
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 && [[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
+//        return nil;
+//    }
+    return self.animation;
+}
+
+-(id<UIViewControllerAnimatedTransitioning>)popTransitionAnimationSupport
+{
+    return nil;
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.navigationController.delegate = [TCNavigationDelegate shareDelegate];
     self.title = @"物业订单";
-    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back_item"]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
@@ -195,13 +219,21 @@
     if ([_propertyManage.pictures isKindOfClass:[NSArray class]]) {
         NSArray *arr = _propertyManage.pictures;
         if (arr.count > 0) {
+            
+            NSMutableArray *objArr = [NSMutableArray arrayWithCapacity:0];
             for (int i =0; i < arr.count; i++) {
                 NSString *imgStr = arr[i];
                 if ([imgStr isKindOfClass:[NSString class]]) {
                     if (![imgStr isEqualToString:@""]) {
+                        NSURL *imageURL = [TCImageURLSynthesizer synthesizeImageURLWithPath:imgStr];
+                        
+                        TCImagePreviewObject *obj = [[TCImagePreviewObject alloc] init];
+                        obj.imageUrl = [imageURL absoluteString];
+                        [objArr addObject:obj];
+                        
                         _imgView.hidden = NO;
                         height = [UIScreen mainScreen].bounds.size.width/375.0*102.5;
-                        NSURL *imageURL = [TCImageURLSynthesizer synthesizeImageURLWithPath:imgStr];
+                        
                         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5+(height + 5) * i, 0, height, height)];
                         imageView.tag = 12345+i;
                         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toSeeBigPhoto:)];
@@ -214,6 +246,9 @@
                         [imageView sd_setImageWithURL:imageURL placeholderImage:placeholderImage options:SDWebImageRetryFailed];                    }
                 }
                 
+            }
+            if (objArr.count > 0) {
+                _imagePreViewObjectArr = objArr;
             }
         }else {
             _imgView.hidden = YES;
@@ -299,14 +334,27 @@
             //待支付
             if (_propertyManage.totalFee) {
                 
-                NSString *moneyStr = [NSString stringWithFormat:@"维修金额 ¥%.2f",_propertyManage.totalFee];
-                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
-                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
-                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
-                self.moneyLabel.attributedText = att;
+                NSString *money = [NSString stringWithFormat:@"%.2f",_propertyManage.totalFee];
+                if (money) {
+                    NSString *s = [NSString stringWithFormat:@"维修金额 ¥%.2f",_propertyManage.totalFee];
+                    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:s];
+                    
+                    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:227.0/255 green:19/255.0 blue:19/255.0 alpha:1.0] range:NSMakeRange(5, s.length-5)];
+                    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:[s rangeOfString:money]];
+                    NSRange r = [s rangeOfString:@"."];
+                    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(r.location+r.length, s.length-r.location-1)];
+                    self.moneyLabel.attributedText = attStr;
+                }
                 
             }
-            [_payBtn setTitle:@"待支付" forState:UIControlStateNormal];
+            
+            if ([_propertyManage.status isEqualToString:@"TO_PAYING"]) {
+                [_payBtn setTitle:@"待支付" forState:UIControlStateNormal];
+            }else if ([_propertyManage.status isEqualToString:@"TO_FIX"]) {
+                [_payBtn setTitle:@"去收款" forState:UIControlStateNormal];
+            }
+            
+            
             [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [_payBtn setBackgroundColor:TCRGBColor(88, 191, 200)];
             
@@ -318,11 +366,18 @@
             _overImageView.hidden = NO;
             _masterView.backgroundColor = TCRGBColor(238, 239, 240);
             if (_propertyManage.totalFee) {
-                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%.2f",_propertyManage.totalFee];
-                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
-                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
-                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
-                self.moneyLabel.attributedText = att;
+                
+                NSString *money = [NSString stringWithFormat:@"%.2f",_propertyManage.totalFee];
+                if (money) {
+                    NSString *s = [NSString stringWithFormat:@"维修金额 ¥%.2f",_propertyManage.totalFee];
+                    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:s];
+                    
+                    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:227.0/255 green:19/255.0 blue:19/255.0 alpha:1.0] range:NSMakeRange(5, s.length-5)];
+                    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:[s rangeOfString:money]];
+                    NSRange r = [s rangeOfString:@"."];
+                    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(r.location+r.length, s.length-r.location-1)];
+                    self.moneyLabel.attributedText = attStr;
+                }
                 
             }
         }else if ([_propertyManage.status isEqualToString:@"CANCEL"]) {
@@ -332,11 +387,17 @@
                 doorTimeTopCon = 5.0;
             }
             if (_propertyManage.totalFee) {
-                NSString *moneyStr = [NSString stringWithFormat:@"维修金额¥%.2f",_propertyManage.totalFee];
-                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString: moneyStr];
-                [att addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
-                [att addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[moneyStr rangeOfString:[NSString stringWithFormat:@"¥%.2f",_propertyManage.totalFee]]];
-                self.moneyLabel.attributedText = att;
+                NSString *money = [NSString stringWithFormat:@"%.2f",_propertyManage.totalFee];
+                if (money) {
+                    NSString *s = [NSString stringWithFormat:@"维修金额 ¥%.2f",_propertyManage.totalFee];
+                    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:s];
+                    
+                    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:227.0/255 green:19/255.0 blue:19/255.0 alpha:1.0] range:NSMakeRange(5, s.length-5)];
+                    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:[s rangeOfString:money]];
+                    NSRange r = [s rangeOfString:@"."];
+                    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(r.location+r.length, s.length-r.location-1)];
+                    self.moneyLabel.attributedText = attStr;
+                }
                 
             }
             btnH = 0.0;
@@ -358,39 +419,39 @@
     [self.view layoutIfNeeded];
 }
 
-- (void)toSeeBigPhoto:(UITapGestureRecognizer *)ges {
-    NSMutableArray *mutableArr = [NSMutableArray array];
+-(CGRect)transitionAnimationImageEndRectWithIndex:(NSInteger)index
+{
+//    CGRect rect = [_selectedView.superview convertRect:_selectedView.frame toView:self.navigationController.view];
+    CGRect rect = [[UIApplication sharedApplication].keyWindow convertRect:_selectedView.frame fromView:_selectedView.superview];
+    rect.origin.y -= 85;
     for (UIView *view in _imgView.subviews) {
-        if ([view isKindOfClass:[UIImageView class]]) {
-            UIImageView * imgView = (UIImageView *)view;
-            [mutableArr addObject:imgView.image];
+        NSInteger i = view.tag - 12345;
+        if (i == index) {
+            rect = [[UIApplication sharedApplication].keyWindow convertRect:view.frame fromView:view.superview];
+            rect.origin.y -= 85;
         }
     }
-    
+    return rect;
+}
+
+- (void)toSeeBigPhoto:(UITapGestureRecognizer *)ges {
     UIView *view = ges.view;
     NSInteger index = view.tag-12345;
+    self.selectedView = view;
     
-    CGRect rect = [view.superview convertRect:view.frame toView:self.navigationController.view];
-//    rect.origin.y -= 65;
+    TCImagePreviewController *previewController = [TCImagePreviewController new];
+    previewController.models = _imagePreViewObjectArr;
+    previewController.currentIndex = index;
+    TCImagePreviewObject *currentObj = previewController.models[previewController.currentIndex];
     
-    if (_pB == nil) {
-        _pB = [[TCPhotoBrowser alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, TCScreenHeight)];
-        _pB.isNeedDelete = YES;
-//        _pB.delegate = self;
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removePB:)];
-//        [_pB addGestureRecognizer:tap];
-        _pB.isNeedSave = NO;
-    }
-    _pB.hidden = NO;
-    _pB.backgroundColor = [UIColor blackColor];
-//    _pB.imgArr = self.propertyManage.pictures;
-    _pB.imgArr = mutableArr;
-    _pB.currentIndex = index;
+    CGRect rect = [[UIApplication sharedApplication].keyWindow convertRect:view.frame fromView:view.superview];
+    rect.origin.y -= 85;
+    CGRect beganRect = rect;
+    previewController.delegate = self;
+    self.animation = [previewController fetchTransitionAnimationWithImageUrl:[NSURL URLWithString:currentObj.imageUrl]
+                                                                   beganRect:beganRect];
     
-    
-    _pB.initRect = rect;
-    [_pB setInitRect];
-    [self.navigationController.view addSubview:_pB];
+    [self.navigationController pushViewController:previewController animated:YES];
     
 }
 
@@ -440,13 +501,10 @@
 - (void)didClickConfirmButtonInDatePickerView:(TCDatePickerView *)view {
     _timestamp = [view.datePicker.date timeIntervalSince1970];
     if (_textField) {
-//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSInteger)(_timestamp * 1000) / 1000];
+
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm"];
-//         dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-//         dateFormatter.dateStyle = kCFDateFormatterShortStyle;
-//         dateFormatter.timeStyle = kCFDateFormatterShortStyle;
-         _textField.text = [dateFormatter stringFromDate:view.datePicker.date];
+        _textField.text = [dateFormatter stringFromDate:view.datePicker.date];
     }
 }
 
@@ -488,6 +546,12 @@
 
         }
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.animation = nil;
 }
 
 - (void)dealloc {
