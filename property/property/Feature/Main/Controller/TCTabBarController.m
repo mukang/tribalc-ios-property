@@ -11,10 +11,11 @@
 #import "TCProfileViewController.h"
 #import "TCHomeViewController.h"
 #import "TCOrderViewController.h"
-
+#import "TCLoginViewController.h"
+#import "TCBuluoApi.h"
 #import "TCTabBar.h"
 
-@interface TCTabBarController ()
+@interface TCTabBarController () <UITabBarControllerDelegate>
 
 @end
 
@@ -25,6 +26,7 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    self.delegate = self;
     
     [self addChildController:[[TCHomeViewController alloc] init] title:@"社区" image:@"tabBar_community_normal" selectedImage:@"tabBar_community_selected"];
     [self addChildController:[[TCOrderViewController alloc] init] title:@"订单" image:@"tabBar_order_normal" selectedImage:@"tabBar_order_selected"];
@@ -63,7 +65,23 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - UITabBarControllerDelegate
 
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    TCNavigationController *vc = (TCNavigationController *)viewController;
+    if ([vc.childViewControllers[0] isKindOfClass:[TCOrderViewController class]] && [[TCBuluoApi api] needLogin]) {
+        [self showLoginViewController];
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark - Show Login View Controller
+
+- (void)showLoginViewController {
+    TCLoginViewController *vc = [[TCLoginViewController alloc] initWithNibName:@"TCLoginViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

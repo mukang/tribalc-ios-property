@@ -14,10 +14,12 @@
 #import "TCBuluoApi.h"
 #import "TCPropertyManageCell.h"
 #import "TCPropertyDetailController.h"
-
+#import "TCCommonButton.h"
+#import <Masonry.h>
 
 @interface TCOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) TCTabView *tab;
 @property (nonatomic, strong) UITableView *propertyTableView;
 
 @property (nonatomic, strong) TCPropertyManageWrapper *propertymanageWrapper;
@@ -26,6 +28,9 @@
 
 @property (nonatomic, assign) NSInteger index;
 
+@property (weak, nonatomic) UILabel *promptLabel;
+@property (weak, nonatomic) TCCommonButton *bindButton;
+
 @end
 
 @implementation TCOrderViewController
@@ -33,20 +38,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = TCRGBColor(242, 242, 242);
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.titleTextAttributes = @{
                                                                     NSFontAttributeName : [UIFont systemFontOfSize:16],
                                                                     NSForegroundColorAttributeName : [UIColor whiteColor]
                                                                     };
+    
+    
     _index = 0;
     [self setUpTopView];
-//    [self loadDataIsMore:NO];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadDataIsMore:NO];
+    
+    if ([[TCBuluoApi api] currentUserSession].userInfo.companyID) {
+        self.tab.hidden = NO;
+        self.propertyTableView.hidden = NO;
+        [self loadDataIsMore:NO];
+    } else {
+        self.tab.hidden = YES;
+        self.propertyTableView.hidden = YES;
+        [self setupPromptView];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -113,12 +129,40 @@
 - (void)setUpTopView {
     TCTabView *tab = [[TCTabView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TCRealValue(42)) titleArr:@[@"新订单",@"进行中",@"已结束"]];
     [self.view addSubview:tab];
+    self.tab = tab;
     @WeakObj(self)
     tab.tapBlock = ^(NSInteger index){
         @StrongObj(self)
         self.index = index;
         [self loadDataIsMore:NO];
     };
+}
+
+- (void)setupPromptView {
+    UILabel *promptLabel = [[UILabel alloc] init];
+    promptLabel.text = @"绑定公司成功后，才可查看订单信息\n请到“我的公司”中申请绑定";
+    promptLabel.textColor = TCRGBColor(42, 42, 42);
+    promptLabel.textAlignment = NSTextAlignmentCenter;
+    promptLabel.font = [UIFont systemFontOfSize:16];
+    promptLabel.numberOfLines = 0;
+    [self.view addSubview:promptLabel];
+    self.promptLabel = promptLabel;
+    
+//    TCCommonButton *bindButton = [TCCommonButton buttonWithTitle:@"绑定公司" target:self action:@selector(handleClickBindButton:)];
+//    [self.view addSubview:bindButton];
+//    self.bindButton = bindButton;
+    
+    __weak typeof(self) weakSelf = self;
+    [promptLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(weakSelf.view);
+        make.top.equalTo(weakSelf.view.mas_top).with.offset(TCRealValue(180));
+    }];
+//    [bindButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(weakSelf.view.mas_top).with.offset(300);
+//        make.left.equalTo(weakSelf.view.mas_left).with.offset(30);
+//        make.right.equalTo(weakSelf.view.mas_right).with.offset(-30);
+//        make.height.mas_equalTo(40);
+//    }];
 }
 
 - (void)setupTableViewRefreshView {
@@ -200,6 +244,11 @@
     return cell;
 }
 
+#pragma mark - Actions
+
+- (void)handleClickBindButton:(TCCommonButton *)sender {
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -48,6 +48,9 @@
     [self setupNavBar];
     [self setupSubviews];
     [self handleClickResendButton:nil];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapControllerView:)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -160,6 +163,12 @@
 - (void)handleCickBackButton:(UIBarButtonItem *)sender {
     TCBiographyViewController *bioVC = self.navigationController.viewControllers[1];
     [self.navigationController popToViewController:bioVC animated:YES];
+}
+
+- (void)handleTapControllerView:(UITapGestureRecognizer *)sender {
+    if ([self.textField isFirstResponder]) {
+        [self.textField resignFirstResponder];
+    }
 }
 
 #pragma mark - Count Down

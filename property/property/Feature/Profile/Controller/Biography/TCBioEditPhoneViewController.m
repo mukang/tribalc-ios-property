@@ -27,6 +27,9 @@
     
     [self setupNavBar];
     [self setupSubviews];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapControllerView:)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -81,6 +84,12 @@
 
 - (void)handleCickBackButton:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)handleTapControllerView:(UITapGestureRecognizer *)sender {
+    if ([self.textField isFirstResponder]) {
+        [self.textField resignFirstResponder];
+    }
 }
 
 #pragma mark - Other
