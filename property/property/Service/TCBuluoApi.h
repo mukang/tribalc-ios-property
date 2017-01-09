@@ -139,7 +139,7 @@ typedef NS_ENUM(NSInteger, TCPayChannel) {
 - (void)changeUserAddress:(TCUserAddress *)userAddress result:(void (^)(BOOL success, NSError *error))resultBlock;
 
 /**
- 修改用户手机（敏感信息）
+ 修改用户手机
 
  @param phoneInfo TCUserPhoneInfo对象
  @param resultBlock 结果回调，success为NO时表示修改失败，失败原因见error的code和userInfo

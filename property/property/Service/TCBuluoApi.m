@@ -406,7 +406,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)changeUserPhone:(TCUserPhoneInfo *)phoneInfo result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/sensitive_info/phone", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"property_members/%@/phone", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         request.token = self.currentUserSession.token;
         NSDictionary *dic = [phoneInfo toObjectDictionary];
@@ -416,7 +416,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.statusCode == 200) {
                 TCUserSession *userSession = self.currentUserSession;
-                userSession.userSensitiveInfo.phone = phoneInfo.phone;
+                userSession.userInfo.phone = phoneInfo.phone;
                 [self setUserSession:userSession];
                 if (resultBlock) {
                     TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
