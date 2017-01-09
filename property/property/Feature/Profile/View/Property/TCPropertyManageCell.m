@@ -112,6 +112,9 @@
                 NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:s];
                 
                 [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:227.0/255 green:19/255.0 blue:19/255.0 alpha:1.0] range:NSMakeRange(5, s.length-5)];
+                [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:[s rangeOfString:money]];
+                NSRange r = [s rangeOfString:@"."];
+                [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(r.location+r.length, s.length-r.location-1)];
                 _moneyLabel.attributedText = attStr;
             }else {
                 _moneyLabel.attributedText = [[NSAttributedString alloc] initWithString:@"" attributes:nil];
