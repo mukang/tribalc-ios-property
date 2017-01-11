@@ -7700,8 +7700,8 @@
 				TargetAttributes = {
 					559D882F1E1257EB00982697 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 9F743944H3;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 452XNHBVYZ;
+						ProvisioningStyle = Manual;
 					};
 					559D88481E1257EB00982697 = {
 						CreatedOnToolsVersion = 8.1;
@@ -8347,7 +8347,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9F743944H3;
+				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = property/PrefixHeader.pch;
@@ -8380,10 +8380,10 @@
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.propertyManagement";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "5ff660b3-a959-4d04-a991-4cbd286b385f";
+				PROVISIONING_PROFILE_SPECIFIER = "Property Development";
 			};
 			name = Debug;
 		};
@@ -8393,8 +8393,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9F743944H3;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = property/PrefixHeader.pch;
@@ -8427,10 +8427,10 @@
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.propertyManagement";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a2b3c382-0b8a-4859-9005-db60e28bfaf2";
+				PROVISIONING_PROFILE_SPECIFIER = "Property Distribution";
 			};
 			name = Release;
 		};
