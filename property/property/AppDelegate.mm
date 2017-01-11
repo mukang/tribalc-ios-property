@@ -29,6 +29,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    application.statusBarHidden = NO;
     
     TCSipAPI *sipApi = [TCSipAPI api];
     
