@@ -10,4 +10,8 @@
 
 @interface TCBaseViewController : UIViewController
 
+@property (nonatomic) BOOL hideOriginalNavBar;
+
+- (void)handleClickBackButton:(UIBarButtonItem *)sender;
+
 @end

@@ -9,18 +9,19 @@
 #import "TCRestaurantInfoViewController.h"
 #import "TCImageURLSynthesizer.h"
 #import "UIImage+Category.h"
+#import "NSObject+Distance.h"
 
 @interface TCRestaurantInfoViewController () {
     UIImageView *serviceTitleImageView;
     TCRestaurantLogoView *logoView;
-    UIImageView *navBarBackImageView;
     UIView *serviceInfoView;
     
     TCServiceDetail *serviceDetail;
     NSString *mServiceId;
-    BOOL isCollection;
-    BOOL isStatusBarBlack;
 }
+
+@property (weak, nonatomic) UINavigationBar *navBar;
+@property (weak, nonatomic) UINavigationItem *navItem;
 
 @end
 
@@ -36,47 +37,61 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    isStatusBarBlack = NO;
-    mScrollView.delegate = self;
-    
-    [self setupNavigationBar];
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupNavigationBar];
-    
     [self loadServiceDetail];
-    
-    isCollection = NO;
-    
 }
 
 #pragma mark - Navigation Bar
-- (void)setupNavigationBarWithLeftImgName:(NSString *)leftName AndRightImgName:(NSString *)rightName {
-    UIButton *leftBtn = [TCGetNavigationItem getBarButtonWithFrame:CGRectMake(0, 0, 30, 17) AndImageName:leftName];
-    [leftBtn addTarget:self action:@selector(touchBackBtn) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
-    UIButton *rightBtn = [TCGetNavigationItem getBarButtonWithFrame:CGRectMake(20, 0, 20, 17) AndImageName:rightName];
-    [rightBtn addTarget:self action:@selector(touchCollectionBtn:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-}
 
 - (void)setupNavigationBar {
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    navBarBackImageView = self.navigationController.navigationBar.subviews.firstObject;
-    navBarBackImageView.backgroundColor = [UIColor whiteColor];
-    navBarBackImageView.alpha = 0;
-    [self setupNavigationBarWithLeftImgName:@"back" AndRightImgName:[self getCollectionImageName]];
+    self.hideOriginalNavBar = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 64)];
+    [navBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
+    [navBar setTintColor:[UIColor whiteColor]];
+    [self.view addSubview:navBar];
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"首页"];
+    navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back_item"]
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(handleClickBackButton:)];
+    [navBar setItems:@[navItem]];
+    
+    self.navBar = navBar;
+    self.navItem = navItem;
+    
+    [self updateNavigationBarWithAlpha:0.0];
 }
 
+- (void)updateNavigationBar {
+    CGFloat maxOffsetY = TCRealValue(270);
+    CGFloat offsetY = mScrollView.contentOffset.y;
+    CGFloat alpha = offsetY / maxOffsetY;
+    if (alpha > 1.0) alpha = 1.0;
+    if (alpha < 0.0) alpha = 0.0;
+    [self updateNavigationBarWithAlpha:alpha];
+}
+
+- (void)updateNavigationBarWithAlpha:(CGFloat)alpha {
+    UIColor *titleColor = nil;
+    if (alpha > 0.7) {
+        titleColor = [UIColor whiteColor];
+    } else {
+        titleColor = [UIColor clearColor];
+    }
+    self.navBar.titleTextAttributes = @{
+                                        NSFontAttributeName : [UIFont systemFontOfSize:16],
+                                        NSForegroundColorAttributeName : titleColor
+                                        };
+    
+    UIImage *bgImage = [UIImage imageWithColor:TCARGBColor(42, 42, 42, alpha)];
+    [self.navBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
+}
 
 #pragma mark - Get Data
 - (void)loadServiceDetail {
@@ -87,6 +102,7 @@
         if (service) {
             [MBProgressHUD hideHUD:YES];
             serviceDetail = service;
+            weakSelf.navItem.title = service.name;
             [weakSelf createWholeView];
         } else {
             NSString *reason = error.localizedDescription ?: @"请稍后再试";
@@ -100,7 +116,7 @@
 #pragma mark - UI
 - (void)createWholeScrollView {
     mScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, TCScreenWidth, self.view.frame.size.height)];
-    [self.view addSubview:mScrollView];
+    [self.view insertSubview:mScrollView belowSubview:self.navBar];
     mScrollView.backgroundColor = [UIColor whiteColor];
     mScrollView.delegate = self;
 }
@@ -113,7 +129,7 @@
     
     [self createTitleImageView];
     
-//    [self createBottomButton];
+    //    [self createBottomButton];
     
     [self createServiceInfoView];
     
@@ -141,10 +157,10 @@
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - TCRealValue(45), self.view.frame.size.width, TCRealValue(45))];
     UIColor *backColor = [UIColor colorWithRed:81/255.0 green:199/255.0 blue:209/255.0 alpha:1];
     UIButton *orderBtn = [self createBottomBtnWithFrame:CGRectMake(0, 0, bottomView.width / 2, bottomView.height) AndText:@"优惠买单" AndImgName:@"res_discount" AndBackColor: [UIColor colorWithRed:112/255.0 green:206/255.0 blue:213/255.0 alpha:1]];
-    [orderBtn addTarget:self action:@selector(touchPreferentialPay) forControlEvents:UIControlEventTouchUpInside];
+    //    [orderBtn addTarget:self action:@selector(touchPreferentialPay) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *reserveBtn = [self createBottomBtnWithFrame:CGRectMake(bottomView.width / 2, 0, bottomView.width / 2, bottomView.height) AndText:@"预订餐位" AndImgName:@"res_ordering" AndBackColor:backColor];
-    [reserveBtn addTarget:self action:@selector(touchReserveRest) forControlEvents:UIControlEventTouchUpInside];
+    //    [reserveBtn addTarget:self action:@selector(touchReserveRest) forControlEvents:UIControlEventTouchUpInside];
     
     [bottomView addSubview:reserveBtn];
     [bottomView addSubview:orderBtn];
@@ -212,7 +228,7 @@
     
     UIView *storeBaseInfoView = [self createServiceStoreBaseInfoViewWithFrame:CGRectMake(0, titleLab.y + titleLab.height + TCRealValue(16), frame.size.width, TCRealValue(14))];
     [view addSubview:storeBaseInfoView];
-
+    
     UIView *averagePriceView = [self createAveragePriceViewWithFrame:CGRectMake(0, storeBaseInfoView.y + storeBaseInfoView.height + TCRealValue(14), frame.size.width / 2 - TCRealValue(20), TCRealValue(15))];
     [view addSubview:averagePriceView];
     
@@ -238,7 +254,10 @@
     typeLab.textAlignment = NSTextAlignmentRight;
     [view addSubview:typeLab];
     
-    UILabel *rangeLab = [TCComponent createLabelWithFrame:CGRectMake(rightLine.x + TCRealValue(0.5) + TCRealValue(8), markPlaceLab.y, TCScreenWidth - rightLine.x + TCRealValue(0.5) + TCRealValue(8), markPlaceLab.height) AndFontSize:TCRealValue(14) AndTitle:@"2222m"];
+    
+    CGFloat distance = [NSObject distanceWithCoordinateArr:serviceDetail.detailStore.coordinate];
+    NSString *positionStr = [NSString stringWithFormat:@"%.2fkm",distance];
+    UILabel *rangeLab = [TCComponent createLabelWithFrame:CGRectMake(rightLine.x + TCRealValue(0.5) + TCRealValue(8), markPlaceLab.y, TCScreenWidth - rightLine.x + TCRealValue(0.5) + TCRealValue(8), markPlaceLab.height) AndFontSize:TCRealValue(14) AndTitle:positionStr];
     rangeLab.textAlignment = NSTextAlignmentLeft;
     [view addSubview:rangeLab];
     
@@ -250,7 +269,7 @@
     UIView *view = [[UIView alloc] initWithFrame:frame];
     UILabel *tagLab = [TCComponent createLabelWithFrame:CGRectMake(frame.size.width - TCRealValue(28), frame.size.height - TCRealValue(11), TCRealValue(28), TCRealValue(12)) AndFontSize:TCRealValue(11) AndTitle:@"元/人" AndTextColor:TCRGBColor(154, 154, 154)];
     [view addSubview:tagLab];
-
+    
     NSString *priceStr = [NSString stringWithFormat:@"%f", serviceDetail.personExpense];
     priceStr = [NSString stringWithFormat:@"%@", @(priceStr.floatValue)];
     UILabel *priceLabel = [TCComponent createLabelWithFrame:CGRectMake(0, 0, view.width - TCRealValue(28), frame.size.height) AndFontSize:frame.size.height AndTitle:priceStr AndTextColor:[UIColor blackColor]];
@@ -305,14 +324,14 @@
 - (UIView *)getParagraphViewWithFrame:(CGRect)frame AndTitle:(NSString *)title AndText:(NSString *)text AndimgName:(NSString *)imgName{
     UIView *view = [[UIView alloc] initWithFrame:frame];
     view.backgroundColor = [UIColor whiteColor];
-
+    
     UIView *titleView = [self getParagraphTitleViewWithFrame:CGRectMake(0, TCRealValue(22.5), frame.size.width, TCRealValue(23)) AndImgName:imgName AndTitle:title];
     
     UILabel *textLab = [[UILabel alloc] initWithFrame:CGRectMake(TCRealValue(62), titleView.y + titleView.height + TCRealValue(8), view.width - TCRealValue(62) * 2, view.height - TCRealValue(96) + TCRealValue(15))];
     textLab.numberOfLines = TCRealValue(4);
     textLab.font = [UIFont systemFontOfSize:TCRealValue(14)];
     textLab.attributedText = [self getAttributedStringWithText:text];
-   
+    
     UIView *line = [TCComponent createGrayLineWithFrame:CGRectMake(TCRealValue(20), view.size.height - TCRealValue(0.5), view.width - TCRealValue(20), TCRealValue(0.5))];
     if (text.length > TCRealValue(80)) {
         UIButton *moreInfoBtn = [self getMoreInfoButtonWithFrame:CGRectMake(0, frame.size.height - TCRealValue(10) - TCRealValue(12), frame.size.width, TCRealValue(12)) AndTitle:title];
@@ -387,8 +406,8 @@
 
 - (UIView *)getStoreTagsView {
     UIView *view = [[UIView alloc] init];
-    NSArray *tagArr = [self getStoreTagLogoTitleArr:serviceDetail.detailStore.faclities];
-    NSArray *tagLogoArr = serviceDetail.detailStore.faclities;
+    NSArray *tagArr = [self getStoreTagLogoTitleArr:serviceDetail.detailStore.facilities];
+    NSArray *tagLogoArr = serviceDetail.detailStore.facilities;
     CGFloat width = TCRealValue(37);
     for (int i = 0; i < tagLogoArr.count; i++) {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(i * TCRealValue(24) + width, 0, TCRealValue(24), TCRealValue(24))];
@@ -486,23 +505,14 @@
     [button addSubview:phoneLab];
     [button addSubview:arrowImgView];
     
-
+    
     return button;
 }
 
 
 #pragma mark - Touch Action
-- (void)touchBackBtn {
+- (void)handleClickBackButton:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)touchCollectionBtn:(UIButton *)button {
-    if (mScrollView.contentOffset.y < 70) {
-        isCollection = !isCollection;
-        UIButton *rightBtn = [TCGetNavigationItem getBarButtonWithFrame:CGRectMake(20, 10, 20, 17) AndImageName:[self getCollectionImageName]];
-        [rightBtn addTarget:self action:@selector(touchCollectionBtn:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
-    }
 }
 
 //- (void)touchReserveRest {
@@ -524,8 +534,8 @@
 
 - (void)touchCallCustomerService {
     NSLog(@"点击电话客服");
-        UIWebView *callView = [TCComponent callWithPhone:@"15733108692"];
-        [self.view addSubview:callView];
+    UIWebView *callView = [TCComponent callWithPhone:@"15733108692"];
+    [self.view addSubview:callView];
     
 }
 
@@ -543,35 +553,14 @@
     NSLog(@"点击餐厅话题更多详情");
 }
 
-- (NSString *)getCollectionImageName {
-    if (isCollection == YES) {
-        return @"res_collection";
-    } else {
-        return @"res_collection_not";
-    }
-}
-
 #pragma mark - ScrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    CGFloat minAlphaOffset = 0;
-    CGFloat maxAlphaOffset = TCRealValue(270);
-    CGFloat offset = scrollView.contentOffset.y;
-    CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
-    navBarBackImageView.alpha = alpha;
-    
-
-    CGPoint point = scrollView.contentOffset;
-    
-    if (point.y > 70) {
-        [self setupNavigationBarWithLeftImgName:@"back_black" AndRightImgName:@"res_collection_black"];
-        isStatusBarBlack = YES;
-        [self setNeedsStatusBarAppearanceUpdate];
-    } else {
-        [self setupNavigationBarWithLeftImgName:@"back" AndRightImgName:[self getCollectionImageName]];
-        isStatusBarBlack = NO;
-        [self setNeedsStatusBarAppearanceUpdate];
+    if ([scrollView isEqual:mScrollView]) {
+        [self updateNavigationBar];
     }
+    
+    CGPoint point = scrollView.contentOffset;
     
     if (point.y < 0) {
         double height = -point.y + TCRealValue(270);
@@ -579,7 +568,7 @@
         double width = self.view.frame.size.width * number;
         double logoRadius = height * 0.12;
         double addHeight = logoRadius * 2 - logoView.height;
-    
+        
         [serviceTitleImageView setFrame:CGRectMake(self.view.frame.size.width / 2 - width / 2, point.y, width, height)];
         [logoView setLogoFrame:CGRectMake(serviceTitleImageView.frame.size.width / 2 - logoRadius, serviceTitleImageView.frame.size.height - logoRadius, logoRadius * 2, logoRadius * 2)];
         serviceInfoView.y = serviceInfoView.y + addHeight;
@@ -587,26 +576,8 @@
     }
 }
 
-
-
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    mScrollView.delegate = nil;
-    
-    [self.navigationController.navigationBar setTranslucent:NO];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:42/255.0 green:42/255.0 blue:42/255.0 alpha:1];
-    navBarBackImageView.alpha = 1.0;
-    
-}
-
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    if (isStatusBarBlack) {
-        return UIStatusBarStyleDefault;
-    } else {
-        return UIStatusBarStyleLightContent;
-    }
-    
+    return UIStatusBarStyleLightContent;
 }
 
 

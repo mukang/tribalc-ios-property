@@ -22,9 +22,9 @@
 /** 略所图 */
 @property (copy, nonatomic) NSString *thumbnail;
 /** 位置信息 */
-@property (copy, nonatomic) NSString *coordinate;
+@property (copy, nonatomic) NSArray *coordinate;
 /** 辅助设备 */
-@property (copy, nonatomic) NSArray *faclities;
+@property (copy, nonatomic) NSArray *facilities;
 /** 折扣信息 */
 @property ( nonatomic) CGFloat discount;
 /** 标志性位置 */
@@ -33,5 +33,11 @@
 @property (copy, nonatomic) NSArray *tags;
 /** 类别 */
 @property (copy, nonatomic) NSString *category;
+/** 区 */
+@property (copy, nonatomic) NSString *district;
+/** 详细地址 */
+@property (copy, nonatomic) NSString *address;
+/** 菜系类型 */
+@property (copy, nonatomic) NSArray *cookingStyle;
 
 @end
