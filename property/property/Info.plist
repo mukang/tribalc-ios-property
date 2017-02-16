@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
 	<string>格致物业版</string>
 	<key>CFBundleExecutable</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>物业版</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -24,8 +24,19 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>buluo-gs-pictures.oss-cn-beijing.aliyuncs.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>dev-app-services.buluo-gs.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>用于二维码扫描以及更新头像和背景</string>
@@ -37,14 +48,14 @@
 	<string>microphoneDesciption</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<false/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

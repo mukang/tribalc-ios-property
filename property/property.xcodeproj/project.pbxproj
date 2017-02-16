@@ -11,9 +11,7 @@
 		559D88351E1257EB00982697 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D88341E1257EB00982697 /* main.m */; };
 		559D88381E1257EB00982697 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 559D88371E1257EB00982697 /* AppDelegate.mm */; };
 		559D883B1E1257EB00982697 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D883A1E1257EB00982697 /* ViewController.m */; };
-		559D883E1E1257EB00982697 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 559D883C1E1257EB00982697 /* Main.storyboard */; };
 		559D88401E1257EB00982697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 559D883F1E1257EB00982697 /* Assets.xcassets */; };
-		559D88431E1257EB00982697 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 559D88411E1257EB00982697 /* LaunchScreen.storyboard */; };
 		559D884E1E1257EB00982697 /* propertyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D884D1E1257EB00982697 /* propertyTests.m */; };
 		559D88591E1257EB00982697 /* propertyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D88581E1257EB00982697 /* propertyUITests.m */; };
 		559D905C1E12653100982697 /* parser-impl.cc in Sources */ = {isa = PBXBuildFile; fileRef = 559D88CB1E12652E00982697 /* parser-impl.cc */; };
@@ -587,8 +585,6 @@
 		559D94E51E1373D700982697 /* TCBlurImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D94E41E1373D700982697 /* TCBlurImageView.m */; };
 		559D94FD1E139C6500982697 /* bankCard.plist in Resources */ = {isa = PBXBuildFile; fileRef = 559D94E81E139C6500982697 /* bankCard.plist */; };
 		559D94FE1E139C6500982697 /* citylist.data in Resources */ = {isa = PBXBuildFile; fileRef = 559D94E91E139C6500982697 /* citylist.data */; };
-		559D94FF1E139C6500982697 /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EA1E139C6500982697 /* downImage.jpg */; };
-		559D95001E139C6500982697 /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EB1E139C6500982697 /* downImage01.jpg */; };
 		559D95011E139C6500982697 /* assistant_external_sip.rc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94ED1E139C6500982697 /* assistant_external_sip.rc */; };
 		559D95021E139C6500982697 /* assistant_linphone_create.rc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EE1E139C6500982697 /* assistant_linphone_create.rc */; };
 		559D95031E139C6500982697 /* assistant_linphone_existing.rc in Resources */ = {isa = PBXBuildFile; fileRef = 559D94EF1E139C6500982697 /* assistant_linphone_existing.rc */; };
@@ -613,6 +609,9 @@
 		55EC5BDD1E23833C00C5FB73 /* TCNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC5BDC1E23833C00C5FB73 /* TCNavigationDelegate.m */; };
 		55F9EE441E55BB2C00935ADF /* TCServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE431E55BB2C00935ADF /* TCServiceListCell.m */; };
 		55F9EE471E55BB4E00935ADF /* NSObject+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE461E55BB4E00935ADF /* NSObject+Distance.m */; };
+		7A252CE41E25CC9500A4A58F /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE21E25CC9500A4A58F /* downImage.jpg */; };
+		7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE31E25CC9500A4A58F /* downImage01.jpg */; };
+		7ABCC10D1E26333D00750E47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ABCC10B1E26333D00750E47 /* LaunchScreen.storyboard */; };
 		7AF2ECEB1E1F7887008C556E /* TCCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE41E1F7887008C556E /* TCCommunity.m */; };
 		7AF2ECED1E1F7887008C556E /* TCCommunityListInCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE81E1F7887008C556E /* TCCommunityListInCity.m */; };
 		7AF2ECF71E1F81A9008C556E /* TCPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECF51E1F81A9008C556E /* TCPaymentViewController.m */; };
@@ -649,9 +648,7 @@
 		559D88371E1257EB00982697 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		559D88391E1257EB00982697 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		559D883A1E1257EB00982697 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		559D883D1E1257EB00982697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		559D883F1E1257EB00982697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		559D88421E1257EB00982697 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		559D88441E1257EB00982697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		559D88491E1257EB00982697 /* propertyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = propertyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		559D884D1E1257EB00982697 /* propertyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = propertyTests.m; sourceTree = "<group>"; };
@@ -2765,8 +2762,6 @@
 		559D94E41E1373D700982697 /* TCBlurImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlurImageView.m; sourceTree = "<group>"; };
 		559D94E81E139C6500982697 /* bankCard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bankCard.plist; sourceTree = "<group>"; };
 		559D94E91E139C6500982697 /* citylist.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = citylist.data; sourceTree = "<group>"; };
-		559D94EA1E139C6500982697 /* downImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage.jpg; sourceTree = "<group>"; };
-		559D94EB1E139C6500982697 /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
 		559D94ED1E139C6500982697 /* assistant_external_sip.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistant_external_sip.rc; sourceTree = "<group>"; };
 		559D94EE1E139C6500982697 /* assistant_linphone_create.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistant_linphone_create.rc; sourceTree = "<group>"; };
 		559D94EF1E139C6500982697 /* assistant_linphone_existing.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistant_linphone_existing.rc; sourceTree = "<group>"; };
@@ -2802,6 +2797,10 @@
 		55F9EE431E55BB2C00935ADF /* TCServiceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceListCell.m; sourceTree = "<group>"; };
 		55F9EE451E55BB4E00935ADF /* NSObject+Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Distance.h"; sourceTree = "<group>"; };
 		55F9EE461E55BB4E00935ADF /* NSObject+Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Distance.m"; sourceTree = "<group>"; };
+		7A252CE21E25CC9500A4A58F /* downImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage.jpg; sourceTree = "<group>"; };
+		7A252CE31E25CC9500A4A58F /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
+		7ABCC10C1E26333D00750E47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7ABCC10E1E26335000750E47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7AF2ECE31E1F7887008C556E /* TCCommunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunity.h; sourceTree = "<group>"; };
 		7AF2ECE41E1F7887008C556E /* TCCommunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCommunity.m; sourceTree = "<group>"; };
 		7AF2ECE71E1F7887008C556E /* TCCommunityListInCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunityListInCity.h; sourceTree = "<group>"; };
@@ -3091,9 +3090,7 @@
 				559D94E61E139C6500982697 /* Resource */,
 				559D88391E1257EB00982697 /* ViewController.h */,
 				559D883A1E1257EB00982697 /* ViewController.m */,
-				559D883C1E1257EB00982697 /* Main.storyboard */,
 				559D883F1E1257EB00982697 /* Assets.xcassets */,
-				559D88411E1257EB00982697 /* LaunchScreen.storyboard */,
 				559D88441E1257EB00982697 /* Info.plist */,
 				559D88331E1257EB00982697 /* Supporting Files */,
 			);
@@ -3103,6 +3100,7 @@
 		559D88331E1257EB00982697 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7ABCC10B1E26333D00750E47 /* LaunchScreen.storyboard */,
 				559D88341E1257EB00982697 /* main.m */,
 				559D921D1E12660100982697 /* PrefixHeader.pch */,
 			);
@@ -7476,9 +7474,8 @@
 		559D94E61E139C6500982697 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7A252CDF1E25CC4C00A4A58F /* Images */,
 				559D94E71E139C6500982697 /* BinaryFiles */,
-				559D94EA1E139C6500982697 /* downImage.jpg */,
-				559D94EB1E139C6500982697 /* downImage01.jpg */,
 				559D94EC1E139C6500982697 /* LinPhoneSources */,
 			);
 			path = Resource;
@@ -7576,6 +7573,15 @@
 				55EC5BD31E2338D300C5FB73 /* TCImagePreviewObject.m */,
 			);
 			path = TCImagePreView;
+			sourceTree = "<group>";
+		};
+		7A252CDF1E25CC4C00A4A58F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7A252CE21E25CC9500A4A58F /* downImage.jpg */,
+				7A252CE31E25CC9500A4A58F /* downImage01.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		7AF2ECE21E1F7887008C556E /* Community */ = {
@@ -7753,7 +7759,6 @@
 				559D91131E12653200982697 /* hello16000.wav in Resources */,
 				559D91E01E12653400982697 /* hello8000.wav in Resources */,
 				559D950A1E139C6500982697 /* msg.caf in Resources */,
-				559D88431E1257EB00982697 /* LaunchScreen.storyboard in Resources */,
 				559D915D1E12653300982697 /* BelleSIPConfig.cmake in Resources */,
 				559D91BC1E12653400982697 /* BcToolboxConfig.cmake in Resources */,
 				559D95091E139C6500982697 /* hold.mkv in Resources */,
@@ -7823,7 +7828,6 @@
 				559D91D61E12653400982697 /* Mediastreamer2Config.cmake in Resources */,
 				559D950B1E139C6500982697 /* ringback.wav in Resources */,
 				559D90EC1E12653200982697 /* ortp.pc in Resources */,
-				559D95001E139C6500982697 /* downImage01.jpg in Resources */,
 				559D91021E12653200982697 /* dummy_libraries.txt in Resources */,
 				559D91751E12653300982697 /* ORTPConfigVersion.cmake in Resources */,
 				559D90F41E12653200982697 /* BelcardConfig.cmake in Resources */,
@@ -7864,6 +7868,7 @@
 				559D91E81E12653400982697 /* oldphone-mono-30s.caf in Resources */,
 				559D91BD1E12653400982697 /* BcToolboxConfigVersion.cmake in Resources */,
 				559D91781E12653300982697 /* dont_wait_too_long.mkv in Resources */,
+				7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */,
 				559D95011E139C6500982697 /* assistant_external_sip.rc in Resources */,
 				559D88401E1257EB00982697 /* Assets.xcassets in Resources */,
 				559D91B81E12653400982697 /* ortp.pc in Resources */,
@@ -7871,8 +7876,8 @@
 				559D90A81E12653200982697 /* ORTPConfig.cmake in Resources */,
 				559D91E91E12653400982697 /* oldphone-mono.wav in Resources */,
 				559D911B1E12653200982697 /* notes_of_the_optimistic.mkv in Resources */,
-				559D94FF1E139C6500982697 /* downImage.jpg in Resources */,
 				559D91CD1E12653400982697 /* BZRTPTargets.cmake in Resources */,
+				7A252CE41E25CC9500A4A58F /* downImage.jpg in Resources */,
 				559D908A1E12653200982697 /* BcToolboxConfig.cmake in Resources */,
 				559D916F1E12653300982697 /* rootca.pem in Resources */,
 				559D91541E12653300982697 /* speexdsp.pc in Resources */,
@@ -7900,7 +7905,6 @@
 				559D91EB1E12653400982697 /* toy-mono.wav in Resources */,
 				559D91151E12653200982697 /* incoming_chat.wav in Resources */,
 				559D909F1E12653200982697 /* LinphoneConfig.cmake in Resources */,
-				559D883E1E1257EB00982697 /* Main.storyboard in Resources */,
 				559D91C71E12653400982697 /* BelrConfig.cmake in Resources */,
 				559D94FD1E139C6500982697 /* bankCard.plist in Resources */,
 				559D91521E12653300982697 /* ortp.pc in Resources */,
@@ -7935,6 +7939,7 @@
 				559D908D1E12653200982697 /* BcToolboxTargets.cmake in Resources */,
 				559D91511E12653300982697 /* belle-sip.pc in Resources */,
 				559D915F1E12653300982697 /* BelleSIPTargets-release.cmake in Resources */,
+				7ABCC10D1E26333D00750E47 /* LaunchScreen.storyboard in Resources */,
 				559D93C31E135D8000982697 /* TCBioEditSMSViewController.xib in Resources */,
 				559D91801E12653300982697 /* leaving_dreams.mkv in Resources */,
 				559D91C61E12653400982697 /* BelleSIPTargets.cmake in Resources */,
@@ -8264,18 +8269,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		559D883C1E1257EB00982697 /* Main.storyboard */ = {
+		7ABCC10B1E26333D00750E47 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				559D883D1E1257EB00982697 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		559D88411E1257EB00982697 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				559D88421E1257EB00982697 /* Base */,
+				7ABCC10C1E26333D00750E47 /* Base */,
+				7ABCC10E1E26335000750E47 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -8287,6 +8285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -8334,6 +8333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -8376,6 +8376,8 @@
 			baseConfigurationReference = CAF1BB4E914648267FFC1571 /* Pods-property.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8409,9 +8411,9 @@
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.propertyManagement";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8270d4c7-f534-4d6b-a973-7a0239249de5";
+				PROVISIONING_PROFILE = "323a004f-61ba-4223-92fd-1cef4b123811";
 				PROVISIONING_PROFILE_SPECIFIER = "Property Development";
 			};
 			name = Debug;
@@ -8421,7 +8423,8 @@
 			baseConfigurationReference = A12549DADC4A72F6B6B3C670 /* Pods-property.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8455,10 +8458,10 @@
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib/mediastreamer/plugins",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.propertyManagement";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbd41020-ff16-406b-ae05-0a0ff4f57481";
-				PROVISIONING_PROFILE_SPECIFIER = "Property Distribution";
+				PROVISIONING_PROFILE = "5ff660b3-a959-4d04-a991-4cbd286b385f";
+				PROVISIONING_PROFILE_SPECIFIER = "Property Development";
 			};
 			name = Release;
 		};

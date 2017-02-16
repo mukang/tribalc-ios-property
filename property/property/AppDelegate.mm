@@ -33,12 +33,16 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    application.statusBarHidden = NO;
     
     TCSipAPI *sipApi = [TCSipAPI api];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [sipApi login];
     });
+    
+    
+    [self startLocationAction];
     
     return YES;
 }
