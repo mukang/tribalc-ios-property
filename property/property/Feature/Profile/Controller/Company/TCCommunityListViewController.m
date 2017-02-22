@@ -9,7 +9,6 @@
 #import "TCCommunityListViewController.h"
 #import "TCCompanyNameViewCell.h"
 #import "TCBuluoApi.h"
-#import <Masonry.h>
 
 @interface TCCommunityListViewController () <UITableViewDataSource, UITableViewDelegate>
 

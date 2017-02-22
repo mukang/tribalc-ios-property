@@ -7,7 +7,6 @@
 //
 
 #import "TCCompanyEmployeesViewCell.h"
-#import <Masonry.h>
 
 @implementation TCCompanyEmployeesViewCell
 

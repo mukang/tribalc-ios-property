@@ -8,7 +8,6 @@
 
 #import "TCBioEditGenderViewController.h"
 #import "TCBioEditSelectViewCell.h"
-#import <Masonry.h>
 
 @interface TCBioEditGenderViewController () <UITableViewDataSource, UITableViewDelegate>
 

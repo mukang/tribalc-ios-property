@@ -15,7 +15,6 @@
 #import "TCPropertyManageCell.h"
 #import "TCPropertyDetailController.h"
 #import "TCCommonButton.h"
-#import <Masonry.h>
 
 @interface TCOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 

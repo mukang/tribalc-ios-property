@@ -9,7 +9,6 @@
 #import "TCImagePlayerView.h"
 #import "TCImageURLSynthesizer.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <Masonry.h>
 
 static NSInteger const plusNum = 2;  // 需要加上的数
 

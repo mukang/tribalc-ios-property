@@ -7,7 +7,6 @@
 //
 
 #import "TCVicinityTitleView.h"
-#import <Masonry.h>
 
 @implementation TCVicinityTitleView
 

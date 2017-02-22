@@ -7,7 +7,6 @@
 //
 
 #import "TCServiceListCell.h"
-#import <Masonry.h>
 #import "UIImage+Category.h"
 #import <UIImageView+WebCache.h>
 #import "TCImageURLSynthesizer.h"

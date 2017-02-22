@@ -7,7 +7,6 @@
 //
 
 #import "TCIDAuthDetailViewCell.h"
-#import <Masonry.h>
 
 @implementation TCIDAuthDetailViewCell
 

@@ -13,7 +13,6 @@
 #import "TCIDAuthDetailViewCell.h"
 
 #import "TCBuluoApi.h"
-#import <Masonry.h>
 
 @interface TCIDAuthDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 

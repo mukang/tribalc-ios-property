@@ -7,7 +7,6 @@
 //
 
 #import "TCSettingCacheViewCell.h"
-#import <Masonry.h>
 #import <SDImageCache.h>
 
 @interface TCSettingCacheViewCell ()

@@ -7,7 +7,6 @@
 //
 
 #import "TCCompanyApplyTitleViewCell.h"
-#import <Masonry.h>
 
 @implementation TCCompanyApplyTitleViewCell
 

@@ -7,7 +7,6 @@
 //
 
 #import "TCSettingNotificationViewCell.h"
-#import <Masonry.h>
 
 @interface TCSettingNotificationViewCell ()
 

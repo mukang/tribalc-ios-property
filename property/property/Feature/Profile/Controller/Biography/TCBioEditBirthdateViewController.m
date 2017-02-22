@@ -9,7 +9,6 @@
 #import "TCBioEditBirthdateViewController.h"
 #import "TCBioEditBirthdateViewCell.h"
 #import "TCBuluoApi.h"
-#import <Masonry.h>
 
 @interface TCBioEditBirthdateViewController () <UITableViewDataSource, UITableViewDelegate>
 

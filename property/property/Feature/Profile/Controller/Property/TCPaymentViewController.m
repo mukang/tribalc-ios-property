@@ -7,7 +7,6 @@
 //
 
 #import "TCPaymentViewController.h"
-#import <Masonry.h>
 #import "TCBuluoApi.h"
 
 @interface TCPaymentViewController ()<UITextFieldDelegate>

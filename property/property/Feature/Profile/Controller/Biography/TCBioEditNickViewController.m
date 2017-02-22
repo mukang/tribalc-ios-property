@@ -9,7 +9,6 @@
 #import "TCBioEditNickViewController.h"
 #import "TCBioEditNickViewCell.h"
 #import "TCBuluoApi.h"
-#import <Masonry.h>
 
 @interface TCBioEditNickViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 

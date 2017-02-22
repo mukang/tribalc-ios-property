@@ -9,7 +9,6 @@
 #import "TCCompanyIntroViewCell.h"
 #import "TCCompanyInfo.h"
 #import "TCExtendButton.h"
-#import <Masonry.h>
 
 @interface TCCompanyIntroViewCell ()
 

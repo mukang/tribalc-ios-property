@@ -12,8 +12,6 @@
 #import "TCCommonButton.h"
 #import "TCBuluoApi.h"
 
-#import <Masonry.h>
-
 @interface TCCompanyApplyViewController ()
 
 @property (weak, nonatomic) UILabel *promptLabel;
