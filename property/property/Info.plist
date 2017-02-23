@@ -40,8 +40,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>用于二维码扫描以及更新头像和背景</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>

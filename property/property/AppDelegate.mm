@@ -89,8 +89,7 @@
         _isRequest = YES;
         [_locationManager stopUpdatingLocation];
         
-        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%f,%f",coordinate.latitude, coordinate.longitude] forKey:@"locationLatAndLog"];
-        
+        [[NSUserDefaults standardUserDefaults] setObject:@[@(coordinate.latitude), @(coordinate.longitude)] forKey:TCBuluoUserLocationCoordinateKey];
     }
     
 }
