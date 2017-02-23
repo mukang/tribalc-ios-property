@@ -10,4 +10,7 @@ pod 'Bugly'
 pod 'Masonry'
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'MGSwipeTableCell', '~> 1.5.6'
+pod 'AMap2DMap-NO-IDFA'
+pod 'AMapSearch-NO-IDFA'
+pod 'AMapLocation-NO-IDFA'
 end
