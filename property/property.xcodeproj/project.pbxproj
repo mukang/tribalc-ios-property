@@ -609,6 +609,7 @@
 		55EC5BDD1E23833C00C5FB73 /* TCNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC5BDC1E23833C00C5FB73 /* TCNavigationDelegate.m */; };
 		55F9EE441E55BB2C00935ADF /* TCServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE431E55BB2C00935ADF /* TCServiceListCell.m */; };
 		55F9EE471E55BB4E00935ADF /* NSObject+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE461E55BB4E00935ADF /* NSObject+Distance.m */; };
+		55F9EE571E6023D300935ADF /* TCStoreInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE561E6023D300935ADF /* TCStoreInfo.m */; };
 		7A252CE41E25CC9500A4A58F /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE21E25CC9500A4A58F /* downImage.jpg */; };
 		7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE31E25CC9500A4A58F /* downImage01.jpg */; };
 		7ABCC10D1E26333D00750E47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ABCC10B1E26333D00750E47 /* LaunchScreen.storyboard */; };
@@ -2797,6 +2798,8 @@
 		55F9EE431E55BB2C00935ADF /* TCServiceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceListCell.m; sourceTree = "<group>"; };
 		55F9EE451E55BB4E00935ADF /* NSObject+Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Distance.h"; sourceTree = "<group>"; };
 		55F9EE461E55BB4E00935ADF /* NSObject+Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Distance.m"; sourceTree = "<group>"; };
+		55F9EE551E6023D300935ADF /* TCStoreInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreInfo.h; sourceTree = "<group>"; };
+		55F9EE561E6023D300935ADF /* TCStoreInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreInfo.m; sourceTree = "<group>"; };
 		7A252CE21E25CC9500A4A58F /* downImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage.jpg; sourceTree = "<group>"; };
 		7A252CE31E25CC9500A4A58F /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
 		7ABCC10C1E26333D00750E47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -7348,6 +7351,8 @@
 		559D94301E1360D000982697 /* Goods */ = {
 			isa = PBXGroup;
 			children = (
+				55F9EE551E6023D300935ADF /* TCStoreInfo.h */,
+				55F9EE561E6023D300935ADF /* TCStoreInfo.m */,
 				559D94311E1360D000982697 /* TCGoodDetail.h */,
 				559D94321E1360D000982697 /* TCGoodDetail.m */,
 				559D94331E1360D000982697 /* TCGoods.h */,
@@ -8165,6 +8170,7 @@
 				559D92541E1268D300982697 /* TCArchiveService.m in Sources */,
 				559D94091E135D8000982697 /* TCProfileViewCell.m in Sources */,
 				55EC5BCE1E23388A00C5FB73 /* TCImagePreivewCell.m in Sources */,
+				55F9EE571E6023D300935ADF /* TCStoreInfo.m in Sources */,
 				559D92DA1E135D6400982697 /* TCHomeCommodityTableViewCell.m in Sources */,
 				55F9EE471E55BB4E00935ADF /* NSObject+Distance.m in Sources */,
 				559D93D81E135D8000982697 /* TCAboutUSViewController.m in Sources */,

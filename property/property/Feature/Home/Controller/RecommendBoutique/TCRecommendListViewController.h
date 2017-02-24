@@ -19,6 +19,6 @@
 #import "TCImageURLSynthesizer.h"
 #import "TCRecommendFooter.h"
 
-@interface TCRecommendListViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SDWebImageManagerDelegate>
+@interface TCRecommendListViewController : TCBaseViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SDWebImageManagerDelegate>
 
 @end
