@@ -7,7 +7,6 @@
 //
 
 #import "TCOrderCancelView.h"
-#import <Masonry.h>
 #import "TCCommonButton.h"
 
 @interface TCOrderCancelView ()

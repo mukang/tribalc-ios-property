@@ -7,7 +7,6 @@
 //
 
 #import "TCBioEditNickViewCell.h"
-#import <Masonry.h>
 
 @interface TCBioEditNickViewCell ()
 

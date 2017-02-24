@@ -17,8 +17,6 @@
 
 #import "TCBuluoApi.h"
 
-#import <Masonry.h>
-
 typedef NS_ENUM(NSInteger, TCInputCellType) {
     TCInputCellTypeName = 1,
     TCInputCellTypeDepartment,

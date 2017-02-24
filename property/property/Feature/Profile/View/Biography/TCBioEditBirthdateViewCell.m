@@ -7,7 +7,6 @@
 //
 
 #import "TCBioEditBirthdateViewCell.h"
-#import <Masonry.h>
 
 @interface TCBioEditBirthdateViewCell ()
 

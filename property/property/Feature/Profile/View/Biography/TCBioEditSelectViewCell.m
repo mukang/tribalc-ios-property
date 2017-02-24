@@ -7,7 +7,6 @@
 //
 
 #import "TCBioEditSelectViewCell.h"
-#import <Masonry.h>
 
 @interface TCBioEditSelectViewCell ()
 

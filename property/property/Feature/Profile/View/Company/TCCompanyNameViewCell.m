@@ -7,7 +7,6 @@
 //
 
 #import "TCCompanyNameViewCell.h"
-#import <Masonry.h>
 
 @implementation TCCompanyNameViewCell
 

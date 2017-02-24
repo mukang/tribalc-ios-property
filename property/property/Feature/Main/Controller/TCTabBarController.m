@@ -15,6 +15,10 @@
 #import "TCBuluoApi.h"
 #import "TCTabBar.h"
 
+#import <AMapFoundationKit/AMapFoundationKit.h>
+
+static NSString *const AMapApiKey = @"ebbe753a2efddfdfbaedef9a3bd58d15";
+
 @interface TCTabBarController () <UITabBarControllerDelegate>
 
 @end
@@ -32,6 +36,8 @@
     [self addChildController:[[TCOrderViewController alloc] init] title:@"订单" image:@"tabBar_order_normal" selectedImage:@"tabBar_order_selected"];
     [self addChildController:[[TCProfileViewController alloc] init] title:@"我的" image:@"tabBar_profile_normal" selectedImage:@"tabBar_profile_selected"];
     self.tabBar.translucent = NO;
+    
+    [self setupAMapServices];
 }
 
 - (void)dealloc {
@@ -81,6 +87,13 @@
 - (void)showLoginViewController {
     TCLoginViewController *vc = [[TCLoginViewController alloc] initWithNibName:@"TCLoginViewController" bundle:[NSBundle mainBundle]];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - AMapServices
+
+- (void)setupAMapServices {
+    [AMapServices sharedServices].apiKey = AMapApiKey;
+    [AMapServices sharedServices].enableHTTPS = YES;
 }
 
 - (void)didReceiveMemoryWarning {

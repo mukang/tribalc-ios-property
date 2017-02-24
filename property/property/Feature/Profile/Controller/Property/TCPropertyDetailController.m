@@ -14,7 +14,6 @@
 #import "TCBuluoApi.h"
 #import "TCDatePickerView.h"
 #import "TCOrderCancelView.h"
-#import <Masonry.h>
 #import "UIImage+Category.h"
 #import "TCImagePreviewObject.h"
 #import "TCImagePreviewController.h"

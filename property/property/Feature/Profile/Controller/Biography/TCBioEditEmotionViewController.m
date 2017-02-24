@@ -8,7 +8,6 @@
 
 #import "TCBioEditEmotionViewController.h"
 #import "TCBioEditSelectViewCell.h"
-#import <Masonry.h>
 
 @interface TCBioEditEmotionViewController () <UITableViewDataSource, UITableViewDelegate>
 
