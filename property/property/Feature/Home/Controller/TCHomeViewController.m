@@ -39,6 +39,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self setupNavigationBarColor];
+    self.navigationItem.leftBarButtonItem = nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
