@@ -44,7 +44,7 @@
         _communityNameLabel.text = propertyManage.communityName ? propertyManage.communityName : @"";
         _companyNameLabel.text =  propertyManage.companyName ? propertyManage.companyName : @"";
         _applyPersonNameLabel.text = propertyManage.applyPersonName ? propertyManage.applyPersonName : @"";
-        _floorLabel.text = propertyManage.floor ? [NSString stringWithFormat:@"%@层",propertyManage.floor] : @"";
+        _floorLabel.text = propertyManage.floor ? [NSString stringWithFormat:@"%@",propertyManage.floor] : @"";
         _appiontTimeLabel.text = [formatter stringFromDate:appointDate];
         _phoneLabel.text = propertyManage.phone;
         _masterPersonNameLabel.text = propertyManage.masterPersonName ? propertyManage.masterPersonName : @"";

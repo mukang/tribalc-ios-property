@@ -792,7 +792,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         NSString *s = status ? [NSString stringWithFormat:@"displayStatus=%@&", status] : @"";
         NSString *limitSizePart = [NSString stringWithFormat:@"limitSize=%zd", count];
         NSString *sortSkipPart = sortSkip ? [NSString stringWithFormat:@"&sortSkip=%@", sortSkip] : @"";
-        NSString *apiName = [NSString stringWithFormat:@"property_orders?type=property&staff=%@&%@%@%@", self.currentUserSession.assigned, s, limitSizePart, sortSkipPart];
+        NSString *apiName = [NSString stringWithFormat:@"property_orders?type=property&me=%@&%@%@%@", self.currentUserSession.assigned, s, limitSizePart, sortSkipPart];
 //        NSString *apiName = [NSString stringWithFormat:@"persons/%@/property_management?%@%@%@", @"5824287f0cf210fc9cef5e42", s, limitSizePart, sortSkipPart];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         request.token = self.currentUserSession.token;
@@ -872,7 +872,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 - (void)updatePropertyInfoWithOrderId:(NSString *)orderId status:(NSString *)status doorTime:(NSString *)doorTime payValue:(NSString *)payValue result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
         NSString *payVa = payValue ? [NSString stringWithFormat:@"&payValue=%@",payValue] : @"";
-        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?staff=%@&status=%@%@", orderId,self.currentUserSession.assigned,status,payVa];
+        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?me=%@&status=%@%@", orderId,self.currentUserSession.assigned,status,payVa];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         request.token = self.currentUserSession.token;
         if (doorTime) {

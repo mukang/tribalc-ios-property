@@ -8158,7 +8158,6 @@
 				559D94091E135D8000982697 /* TCProfileViewCell.m in Sources */,
 				55EC5BCE1E23388A00C5FB73 /* TCImagePreivewCell.m in Sources */,
 				55F9EE571E6023D300935ADF /* TCStoreInfo.m in Sources */,
-				559D92DA1E135D6400982697 /* TCHomeCommodityTableViewCell.m in Sources */,
 				7A8352F01E5EEC0F003A8E76 /* TCConst.m in Sources */,
 				55F9EE471E55BB4E00935ADF /* NSObject+Distance.m in Sources */,
 				559D93D81E135D8000982697 /* TCAboutUSViewController.m in Sources */,

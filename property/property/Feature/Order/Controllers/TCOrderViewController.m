@@ -86,6 +86,10 @@
     [MBProgressHUD showHUD:YES];
     @WeakObj(self)
     
+    if (self.promptLabel.hidden == NO) {
+        self.promptLabel.hidden = YES;
+    }
+    
     NSString *type = nil;
     if (_index == 0) {
         type = @"NEW_ORDER";
