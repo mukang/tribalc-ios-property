@@ -40,7 +40,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.font = [UIFont systemFontOfSize:TCRealValue(11)];
     label.textColor = TCRGBColor(154, 154, 154);
-    label.text = [NSString stringWithFormat:@"总销量 : %li   电话 : %@", saleNumber, phoneNumer?phoneNumer:@""];
+    label.text = [NSString stringWithFormat:@"总销量 : %zd   电话 : %@", saleNumber, phoneNumer?phoneNumer:@""];
     return label;
 }
 
@@ -64,7 +64,8 @@
 
 - (UIImageView *)createShopLogoImageViewWithFrame:(CGRect)frame AndUrlStr:(NSString *)urlStr{
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
     NSURL *URL = [TCImageURLSynthesizer synthesizeImageURLWithPath:urlStr];
     UIImage *placeholderImage = [UIImage placeholderImageWithSize:frame.size];
     [imageView sd_setImageWithURL:URL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
