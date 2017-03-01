@@ -901,7 +901,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)cancelPropertyOrderWithOrderID:(NSString *)orderId reason:(NSString *)reasonStr result:(void(^)(BOOL success, NSError *error))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?type=property&cancelReason=%@", orderId,reasonStr];
+        NSString *apiName = [NSString stringWithFormat:@"property_orders/%@?me=%@&type=property&cancelReason=%@",orderId,self.currentUserSession.assigned, reasonStr];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {

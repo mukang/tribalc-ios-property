@@ -8371,7 +8371,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wang shuaifeng (CL336ERY54)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wang shuaifeng (CL336ERY54)";
 				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8407,7 +8408,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "323a004f-61ba-4223-92fd-1cef4b123811";
+				PROVISIONING_PROFILE = "8270d4c7-f534-4d6b-a973-7a0239249de5";
 				PROVISIONING_PROFILE_SPECIFIER = "Property Development";
 			};
 			name = Debug;
@@ -8418,7 +8419,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wang shuaifeng (CL336ERY54)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wang shuaifeng (CL336ERY54)";
 				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8454,7 +8456,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5ff660b3-a959-4d04-a991-4cbd286b385f";
+				PROVISIONING_PROFILE = "8270d4c7-f534-4d6b-a973-7a0239249de5";
 				PROVISIONING_PROFILE_SPECIFIER = "Property Development";
 			};
 			name = Release;
