@@ -7,57 +7,41 @@
 //
 
 #import "TCHomeViewController.h"
-#import "TCHomeCommodityTableViewCell.h"
-//#import "TCRepairsViewController.h"
-#import "TCGetNavigationItem.h"
-
-#import "TCGoodSelectView.h"
-
-
-#import "TCPropertyManageListController.h"
 #import "TCLoginViewController.h"
-//#import "TCRepairsViewController.h"
-
-#import "TCBlurImageView.h"
-#import <MBProgressHUD.h>
+#import "TCNavigationController.h"
 #import "TCQRCodeViewController.h"
+#import "TCServiceListViewController.h"
+
+#import "TCHomeCommodityTableViewCell.h"
+#import "TCGoodSelectView.h"
+#import "UIImage+Category.h"
+#import <MBProgressHUD.h>
 
 @interface TCHomeViewController () {
     NSDictionary *homeInfoDic;
     UIScrollView *titleScrollView;
     UIScrollView *homeScrollView;
-    UILabel *navigationTitleLab;
     NSTimer *titleScrollTimer;
 }
 
-@property (nonatomic, strong) TCBlurImageView *blurImageView;
+@property (weak, nonatomic) UINavigationBar *navBar;
+@property (weak, nonatomic) UINavigationItem *navItem;
+@property (nonatomic) BOOL needsLightContentStatusBar;
 
 @end
 
 @implementation TCHomeViewController
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self setupNavigationBarColor];
-    self.navigationItem.leftBarButtonItem = nil;
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self setupNavigationBarColor];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.frame = [UIScreen mainScreen].bounds;
     
-    [self setupNavigationBar];
-    
+    [self setupNavBar];
     [self forgeData];
     
     homeScrollView = [self getHomeScrollViewWithFrame:CGRectMake(0, 0, TCScreenWidth, TCScreenHeight - self.tabBarController.tabBar.size.height)];
-    [self.view addSubview:homeScrollView];
+    [self.view insertSubview:homeScrollView belowSubview:self.navBar];
     
     [self setupTitleImageScrollViewWithFrame:CGRectMake(0, 0, self.view.width, TCRealValue(265))];
     [homeScrollView addSubview:titleScrollView];
@@ -73,18 +57,6 @@
     
     homeScrollView.contentSize = CGSizeMake(TCScreenWidth, commodityTableView.y + commodityTableView.height);
     
-}
-
-- (void)setupNavigationBarColor {
-    [self.navigationController.navigationBar setTranslucent:YES];
-    CGFloat minAlphaOffset = 0;
-    CGFloat maxAlphaOffset = 270;
-    CGFloat offset = homeScrollView.contentOffset.y;
-    CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
-    UIImageView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
-    barImageView.backgroundColor = TCRGBColor(42, 42, 42);
-    barImageView.alpha = alpha;
-    navigationTitleLab.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:alpha];
 }
 
 - (UIScrollView *)getHomeScrollViewWithFrame:(CGRect)frame {
@@ -173,23 +145,6 @@
 }
 
 
-- (UIColor *)colorOfPoint:(CGPoint)point {
-    unsigned char pixel[4] = {0};
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
-    
-    CGContextTranslateCTM(context, -point.x, -point.y);
-    
-    [self.view.layer renderInContext:context];
-    
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpace);
-    
-    UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
-    
-    return color;
-}
-
 - (UIView *)getExpressViewWithFrame:(CGRect)frame {
     UIView *expressView = [[UIView alloc] initWithFrame:frame];
     expressView.backgroundColor = [UIColor whiteColor];
@@ -221,20 +176,22 @@
 }
 
 
-- (void)setupNavigationBar {
-    
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIFont systemFontOfSize:TCRealValue(16)],NSFontAttributeName,nil]];
-
-    navigationTitleLab = [TCGetNavigationItem getTitleItemWithText:@"首页"];
-    self.navigationItem.titleView = navigationTitleLab;
-    self.view.backgroundColor = TCRGBColor(1, 1, 1);
+- (void)setupNavBar {
+    self.hideOriginalNavBar = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.navigationController.navigationBar setTranslucent:YES];
-    UIImageView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
-    barImageView.backgroundColor = TCRGBColor(42, 42, 42);
-    barImageView.alpha = 0;
-    navigationTitleLab.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 64)];
+    [navBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
+    [self.view addSubview:navBar];
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"首页"];
+    [navBar setItems:@[navItem]];
+    
+    self.navBar = navBar;
+    self.navItem = navItem;
+    
+    [self updateNavigationBarWithAlpha:0.0];
+    self.needsLightContentStatusBar = YES;
 }
 
 
@@ -296,7 +253,8 @@
 
 - (void)showLoginViewController {
     TCLoginViewController *vc = [[TCLoginViewController alloc] initWithNibName:@"TCLoginViewController" bundle:[NSBundle mainBundle]];
-    [self presentViewController:vc animated:YES completion:nil];
+    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (UIView *)getHeaderLineViewWithFrame:(CGRect)frame {
@@ -323,14 +281,66 @@
     }
 }
 
-- (void)setNavigationBarBlack {
-    [self.navigationController.navigationBar setTranslucent:NO];
-    UIImageView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
-    barImageView.backgroundColor = TCRGBColor(42, 42, 42);
-    barImageView.alpha = 1;
+#pragma mark - Status Bar
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return UIStatusBarAnimationFade;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.needsLightContentStatusBar ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
+}
 
+//-(UIStatusBarStyle)preferredStatusBarStyle {
+//    if (homeScrollView.contentOffset.y < 130) {
+//        UIColor *color = [self colorOfPoint:CGPointMake(TCScreenWidth / 2, 10)];
+//        BOOL isLight = [self isLightColor:color];
+//        if (!isLight) {
+//            return UIStatusBarStyleLightContent;
+//        } else {
+//            return UIStatusBarStyleDefault;
+//        }
+//    } else {
+//        return UIStatusBarStyleLightContent;
+//    }
+//    
+//}
+
+- (void)setNeedsLightContentStatusBar:(BOOL)needsLightContentStatusBar {
+    BOOL statusBarNeedsUpdate = (needsLightContentStatusBar != _needsLightContentStatusBar);
+    _needsLightContentStatusBar = needsLightContentStatusBar;
+    if (statusBarNeedsUpdate) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+}
+
+- (UIColor *)colorOfPoint:(CGPoint)point {
+    unsigned char pixel[4] = {0};
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
+    
+    CGContextTranslateCTM(context, -point.x, -point.y);
+    
+    [self.view.layer renderInContext:context];
+    
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
+    
+    return color;
+}
+
+- (BOOL) isLightColor:(UIColor*)color {
+    CGFloat components[3];
+    [self getRGBComponents:components forColor:color];
+    
+    CGFloat num = components[0] + components[1] + components[2];
+    if(num < 382)
+        return NO;
+    else
+        return YES;
+}
 
 - (void)getRGBComponents:(CGFloat [3])components forColor:(UIColor *)color {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
@@ -358,15 +368,37 @@
     }
 }
 
-- (BOOL) isLightColor:(UIColor*)color {
-    CGFloat components[3];
-    [self getRGBComponents:components forColor:color];
+#pragma mark - Navigation Bar
+
+- (void)updateNavigationBarAndStatusBar {
+    CGFloat maxOffsetY = 270;
+    CGFloat offsetY = homeScrollView.contentOffset.y;
+    CGFloat alpha = offsetY / maxOffsetY;
+    if (alpha > 1.0) alpha = 1.0;
+    if (alpha < 0.0) alpha = 0.0;
+    [self updateNavigationBarWithAlpha:alpha];
     
-    CGFloat num = components[0] + components[1] + components[2];
-    if(num < 382)
-    return NO;
-    else
-    return YES;
+    if (offsetY < -10) {
+        self.needsLightContentStatusBar = NO;
+    } else {
+        self.needsLightContentStatusBar = YES;
+    }
+}
+
+- (void)updateNavigationBarWithAlpha:(CGFloat)alpha {
+    UIColor *titleColor = nil;
+    if (alpha > 0.7) {
+        titleColor = [UIColor whiteColor];
+    } else {
+        titleColor = [UIColor clearColor];
+    }
+    self.navBar.titleTextAttributes = @{
+                                        NSFontAttributeName : [UIFont systemFontOfSize:16],
+                                        NSForegroundColorAttributeName : titleColor
+                                        };
+    
+    UIImage *bgImage = [UIImage imageWithColor:TCARGBColor(42, 42, 42, alpha)];
+    [self.navBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
 }
 
 
@@ -449,42 +481,32 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([scrollView isEqual:homeScrollView]) {
-        CGFloat minAlphaOffset = 0;
-        CGFloat maxAlphaOffset = 270;
-        CGFloat offset = scrollView.contentOffset.y;
-        CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
+        [self updateNavigationBarAndStatusBar];
         
-        UIImageView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
-        barImageView.backgroundColor = TCRGBColor(42, 42, 42);
-        barImageView.alpha = alpha;
-        
-        navigationTitleLab.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:alpha];
     }
-    
-    [self setNeedsStatusBarAppearanceUpdate];
-    
+//    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 
 #pragma mark - click
 - (void)touchCommunityUnlockBtn:(UIButton *)button {
     
-    if ([self checkUserNeedLogin]) return;
-    
-//    if ([[TCBuluoApi api] currentUserSession].userSensitiveInfo.companyID) {
-        [self endTitleScrollTimer];   //计时器停止
-        @WeakObj(self)
-        if (_blurImageView == nil) {
-            _blurImageView = [[TCBlurImageView alloc] initWithController:self.navigationController endBlock:^{
-                @StrongObj(self)
-                [self startTitleScrollTimer];
-                _blurImageView = nil;
-            }];
-        }
-        [_blurImageView show];
-//    }else {
-//        [MBProgressHUD showHUDWithMessage:@"请先绑定公司"];
-//    }
+//    if ([self checkUserNeedLogin]) return;
+//    
+////    if ([[TCBuluoApi api] currentUserSession].userSensitiveInfo.companyID) {
+//        [self endTitleScrollTimer];   //计时器停止
+//        @WeakObj(self)
+//        if (_blurImageView == nil) {
+//            _blurImageView = [[TCBlurImageView alloc] initWithController:self.navigationController endBlock:^{
+//                @StrongObj(self)
+//                [self startTitleScrollTimer];
+//                _blurImageView = nil;
+//            }];
+//        }
+//        [_blurImageView show];
+////    }else {
+////        [MBProgressHUD showHUDWithMessage:@"请先绑定公司"];
+////    }
 }
 
 
@@ -499,9 +521,9 @@
 - (void)touchScanPayBtn:(UIButton *)button {
 //    NSLog(@"点击扫码支付");
 //    [MBProgressHUD showHUDWithMessage:@"此功能暂未开放，敬请期待！"];
-    TCQRCodeViewController *qrVC = [[TCQRCodeViewController alloc] init];
-    qrVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:qrVC animated:YES];
+//    TCQRCodeViewController *qrVC = [[TCQRCodeViewController alloc] init];
+//    qrVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:qrVC animated:YES];
 }
 
 - (void)touchOfficeReserveBtn:(UIButton *)button {
@@ -509,50 +531,21 @@
 }
 
 - (void)touchShoppingBtn:(id)sender {
-    [self setNavigationBarBlack];
     TCRecommendListViewController *recommend = [[TCRecommendListViewController alloc]init];
     recommend.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:recommend animated:YES];
 }
 
 - (void)touchRestaurantBtn:(id)sender {
-    [self setNavigationBarBlack];
-    TCRestaurantViewController *resaurant = [[TCRestaurantViewController alloc]init];
-    resaurant.title = @"餐饮";
-    resaurant.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:resaurant animated:YES];
+    TCServiceListViewController *vc = [[TCServiceListViewController alloc] initWithServiceType:TCServiceTypeRepast];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)touchEntertainmentBtn:(id)sender {
-    [self setNavigationBarBlack];
-    TCRestaurantViewController *resaurant = [[TCRestaurantViewController alloc]init];
-    resaurant.title = @"娱乐";
-    resaurant.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:resaurant animated:YES];
-}
-
-
--(UIStatusBarStyle)preferredStatusBarStyle {
-    if (homeScrollView.contentOffset.y < 130) {
-        UIColor *color = [self colorOfPoint:CGPointMake(TCScreenWidth / 2, 10)];
-        BOOL isLight = [self isLightColor:color];
-        if (!isLight) {
-            return UIStatusBarStyleLightContent;
-        } else {
-            return UIStatusBarStyleDefault;
-        }
-    } else {
-        return UIStatusBarStyleLightContent;
-    }
-    
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setTranslucent:NO];
-    UIImageView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
-    barImageView.backgroundColor = TCRGBColor(42, 42, 42);
-    barImageView.alpha = 1;
+    TCServiceListViewController *vc = [[TCServiceListViewController alloc] initWithServiceType:TCServiceTypeOther];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

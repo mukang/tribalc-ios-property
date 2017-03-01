@@ -638,35 +638,8 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 #pragma mark - 服务类资源
 
-- (void)fetchServiceWrapper:(NSString *)category limiSize:(NSUInteger)limitSize sortSkip:(NSString *)sortSkip sort:(NSString *)sort result:(void (^)(TCServiceWrapper *, NSError *))resultBlock {
-    NSString *sortPart = sort ? [NSString stringWithFormat:@"sort=%@", sort] : @"sort=popularValue,desc";
-    NSString *categoryPart = category ? [NSString stringWithFormat:@"category=%@&", category] : @"";
-    NSString *limitSizePart = [NSString stringWithFormat:@"limitSize=%zd&", limitSize];
-    NSString *sortSkipPart = sortSkip ? [NSString stringWithFormat:@"sortSkip=%@&", sortSkip] : @"";
-    NSString *coordinateStr = @"";
-    
-    if ([sort isKindOfClass:[NSString class]]) {
-        if ([sort isEqualToString:@"coordinate,asc"]) {
-            NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationLatAndLog"];
-            if ([str isKindOfClass:[NSString class]]) {
-                NSArray *strArr = [str componentsSeparatedByString:@","];
-                if ([strArr isKindOfClass:[NSArray class]]) {
-                    if (strArr.count == 2) {
-                        
-                        NSString *lonStr = strArr[1];
-                        NSString *latStr = strArr[0];
-                        
-                        if ([lonStr isKindOfClass:[NSString class]] && [latStr isKindOfClass:[NSString class]]) {
-                            coordinateStr = [NSString stringWithFormat:@"coordinate=%@,%@&",lonStr,latStr];
-                        }
-                        
-                    }
-                }
-            }
-        }
-    }
-    
-    NSString *apiName = [NSString stringWithFormat:@"store_set_meals?%@%@%@%@%@", categoryPart, limitSizePart, sortSkipPart,coordinateStr, sortPart];
+- (void)fetchServiceWrapperWithQuery:(NSString *)query result:(void (^)(TCServiceWrapper *, NSError *))resultBlock {
+    NSString *apiName = [NSString stringWithFormat:@"store_set_meals?%@", query];
     TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
     request.token = self.currentUserSession.token;
     [[TCClient client] send:request finish:^(TCClientResponse *response) {
