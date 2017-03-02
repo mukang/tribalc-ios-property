@@ -594,6 +594,8 @@
 		7A1A856B1E66DF6800BB5EDB /* TCServiceTabItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A85661E66DF6800BB5EDB /* TCServiceTabItemView.m */; };
 		7A1A856F1E66E4EF00BB5EDB /* TCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A856D1E66E4EF00BB5EDB /* TCHomeViewController.m */; };
 		7A1A85701E66E4EF00BB5EDB /* TCHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A856E1E66E4EF00BB5EDB /* TCHomeViewController.xib */; };
+		7A1A85811E68029000BB5EDB /* TCServiceFacilitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A857E1E68029000BB5EDB /* TCServiceFacilitiesViewController.m */; };
+		7A1A85821E68029000BB5EDB /* TCServiceLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A85801E68029000BB5EDB /* TCServiceLocationViewController.m */; };
 		7A252CE41E25CC9500A4A58F /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE21E25CC9500A4A58F /* downImage.jpg */; };
 		7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE31E25CC9500A4A58F /* downImage01.jpg */; };
 		7A8352AB1E5D4682003A8E76 /* TCPicturesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AA1E5D4682003A8E76 /* TCPicturesHeaderView.m */; };
@@ -2768,6 +2770,10 @@
 		7A1A856C1E66E4EF00BB5EDB /* TCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeViewController.h; sourceTree = "<group>"; };
 		7A1A856D1E66E4EF00BB5EDB /* TCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeViewController.m; sourceTree = "<group>"; };
 		7A1A856E1E66E4EF00BB5EDB /* TCHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHomeViewController.xib; sourceTree = "<group>"; };
+		7A1A857D1E68029000BB5EDB /* TCServiceFacilitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceFacilitiesViewController.h; sourceTree = "<group>"; };
+		7A1A857E1E68029000BB5EDB /* TCServiceFacilitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceFacilitiesViewController.m; sourceTree = "<group>"; };
+		7A1A857F1E68029000BB5EDB /* TCServiceLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceLocationViewController.h; sourceTree = "<group>"; };
+		7A1A85801E68029000BB5EDB /* TCServiceLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceLocationViewController.m; sourceTree = "<group>"; };
 		7A252CE21E25CC9500A4A58F /* downImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage.jpg; sourceTree = "<group>"; };
 		7A252CE31E25CC9500A4A58F /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
 		7A8352A91E5D4682003A8E76 /* TCPicturesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPicturesHeaderView.h; sourceTree = "<group>"; };
@@ -7031,6 +7037,10 @@
 				7A8352B31E5D7028003A8E76 /* TCServiceDetailViewController.m */,
 				7A8352F41E5EEF73003A8E76 /* TCServiceMapViewController.h */,
 				7A8352F51E5EEF73003A8E76 /* TCServiceMapViewController.m */,
+				7A1A857F1E68029000BB5EDB /* TCServiceLocationViewController.h */,
+				7A1A85801E68029000BB5EDB /* TCServiceLocationViewController.m */,
+				7A1A857D1E68029000BB5EDB /* TCServiceFacilitiesViewController.h */,
+				7A1A857E1E68029000BB5EDB /* TCServiceFacilitiesViewController.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -8047,6 +8057,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1A85821E68029000BB5EDB /* TCServiceLocationViewController.m in Sources */,
 				559D94CE1E136E5500982697 /* TCPhotoModeView.m in Sources */,
 				559D94E51E1373D700982697 /* TCBlurImageView.m in Sources */,
 				559D94751E13682000982697 /* TCCommonButton.m in Sources */,
@@ -8155,6 +8166,7 @@
 				7AF2ED091E1F95C0008C556E /* TCCompanyApplyViewController.m in Sources */,
 				559D91F71E12655D00982697 /* NSObject+TCModel.m in Sources */,
 				559D92671E13599900982697 /* TCNavigationController.m in Sources */,
+				7A1A85811E68029000BB5EDB /* TCServiceFacilitiesViewController.m in Sources */,
 				7A8352C11E5D7046003A8E76 /* TCServiceAddressViewCell.m in Sources */,
 				7AF2ED071E1F95C0008C556E /* TCCommunityListViewController.m in Sources */,
 				559D94701E1364A400982697 /* TCUserSession.m in Sources */,
