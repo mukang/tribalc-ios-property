@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "TCTabBarController.h"
+#import "TCLaunchViewController.h"
+
 #import "TCSipAPI.h"
 #import <CoreLocation/CoreLocation.h>
 
@@ -33,6 +35,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    [self showLaunchWindow];
     application.statusBarHidden = NO;
     
     TCSipAPI *sipApi = [TCSipAPI api];
@@ -92,6 +95,16 @@
         [[NSUserDefaults standardUserDefaults] setObject:@[@(coordinate.latitude), @(coordinate.longitude)] forKey:TCBuluoUserLocationCoordinateKey];
     }
     
+}
+
+/** 显示启动视窗 */
+- (void)showLaunchWindow {
+    TCLaunchViewController *launchViewController = [[TCLaunchViewController alloc] init];
+    self.launchWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.launchWindow.rootViewController = launchViewController;
+    self.launchWindow.windowLevel = UIWindowLevelNormal;
+    self.launchWindow.hidden = NO;
+    launchViewController.launchWindow = self.launchWindow;
 }
 
 

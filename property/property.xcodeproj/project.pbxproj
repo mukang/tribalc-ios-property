@@ -598,6 +598,10 @@
 		7A1A85821E68029000BB5EDB /* TCServiceLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A85801E68029000BB5EDB /* TCServiceLocationViewController.m */; };
 		7A252CE41E25CC9500A4A58F /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE21E25CC9500A4A58F /* downImage.jpg */; };
 		7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE31E25CC9500A4A58F /* downImage01.jpg */; };
+		7A2A774D1E6D593F000CFAA8 /* HD4.0''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A774A1E6D593F000CFAA8 /* HD4.0''.png */; };
+		7A2A774E1E6D593F000CFAA8 /* HD4.7''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A774B1E6D593F000CFAA8 /* HD4.7''.png */; };
+		7A2A774F1E6D593F000CFAA8 /* HD5.5''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2A774C1E6D593F000CFAA8 /* HD5.5''.png */; };
+		7A2A77521E6D5A02000CFAA8 /* TCLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */; };
 		7A8352AB1E5D4682003A8E76 /* TCPicturesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AA1E5D4682003A8E76 /* TCPicturesHeaderView.m */; };
 		7A8352B01E5D6FD2003A8E76 /* TCDetailStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AD1E5D6FD2003A8E76 /* TCDetailStore.m */; };
 		7A8352B11E5D6FD2003A8E76 /* TCServiceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AF1E5D6FD2003A8E76 /* TCServiceDetail.m */; };
@@ -2776,6 +2780,11 @@
 		7A1A85801E68029000BB5EDB /* TCServiceLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceLocationViewController.m; sourceTree = "<group>"; };
 		7A252CE21E25CC9500A4A58F /* downImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage.jpg; sourceTree = "<group>"; };
 		7A252CE31E25CC9500A4A58F /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
+		7A2A774A1E6D593F000CFAA8 /* HD4.0''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.0''.png"; sourceTree = "<group>"; };
+		7A2A774B1E6D593F000CFAA8 /* HD4.7''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.7''.png"; sourceTree = "<group>"; };
+		7A2A774C1E6D593F000CFAA8 /* HD5.5''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD5.5''.png"; sourceTree = "<group>"; };
+		7A2A77501E6D5A02000CFAA8 /* TCLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLaunchViewController.h; sourceTree = "<group>"; };
+		7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLaunchViewController.m; sourceTree = "<group>"; };
 		7A8352A91E5D4682003A8E76 /* TCPicturesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPicturesHeaderView.h; sourceTree = "<group>"; };
 		7A8352AA1E5D4682003A8E76 /* TCPicturesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPicturesHeaderView.m; sourceTree = "<group>"; };
 		7A8352AC1E5D6FD2003A8E76 /* TCDetailStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDetailStore.h; sourceTree = "<group>"; };
@@ -3168,6 +3177,8 @@
 			children = (
 				559D94D31E1370FE00982697 /* TCBaseViewController.h */,
 				559D94D41E1370FF00982697 /* TCBaseViewController.m */,
+				7A2A77501E6D5A02000CFAA8 /* TCLaunchViewController.h */,
+				7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -7561,6 +7572,9 @@
 		7A252CDF1E25CC4C00A4A58F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7A2A774A1E6D593F000CFAA8 /* HD4.0''.png */,
+				7A2A774B1E6D593F000CFAA8 /* HD4.7''.png */,
+				7A2A774C1E6D593F000CFAA8 /* HD5.5''.png */,
 				7A252CE21E25CC9500A4A58F /* downImage.jpg */,
 				7A252CE31E25CC9500A4A58F /* downImage01.jpg */,
 			);
@@ -7748,6 +7762,7 @@
 				559D91E61E12653400982697 /* leaving_dreams.mkv in Resources */,
 				559D91191E12653200982697 /* its_a_game.mkv in Resources */,
 				559D91BE1E12653400982697 /* BcToolboxTargets-release.cmake in Resources */,
+				7A2A774E1E6D593F000CFAA8 /* HD4.7''.png in Resources */,
 				559D90AA1E12653200982697 /* ORTPTargets-release.cmake in Resources */,
 				559D95081E139C6500982697 /* rootca.pem in Resources */,
 				559D91211E12653300982697 /* Matroska2Config.cmake in Resources */,
@@ -7762,6 +7777,7 @@
 				559D91011E12653200982697 /* BZRTPTargets.cmake in Resources */,
 				559D91D51E12653400982697 /* rootca.pem in Resources */,
 				559D911C1E12653200982697 /* oldphone-mono-30s.caf in Resources */,
+				7A2A774F1E6D593F000CFAA8 /* HD5.5''.png in Resources */,
 				559D917C1E12653300982697 /* ringback.wav in Resources */,
 				559D91CA1E12653400982697 /* BZRTPConfig.cmake in Resources */,
 				559D947A1E13686700982697 /* TCCommonInputViewCell.xib in Resources */,
@@ -7985,6 +8001,7 @@
 				559D91621E12653300982697 /* BelrTargets-release.cmake in Resources */,
 				559D90EA1E12653200982697 /* bctoolbox.pc in Resources */,
 				559D91121E12653200982697 /* dont_wait_too_long.mkv in Resources */,
+				7A2A774D1E6D593F000CFAA8 /* HD4.0''.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8193,6 +8210,7 @@
 				559D947D1E13687D00982697 /* TCCommonIndicatorViewCell.m in Sources */,
 				559D92191E12659C00982697 /* TCClientResponse.m in Sources */,
 				559D92171E12659C00982697 /* TCClientRequest.m in Sources */,
+				7A2A77521E6D5A02000CFAA8 /* TCLaunchViewController.m in Sources */,
 				559D944B1E13612C00982697 /* TCListStore.m in Sources */,
 				559D946F1E1364A400982697 /* TCUserSensitiveInfo.m in Sources */,
 				559D94031E135D8000982697 /* TCPropertyManageCell.m in Sources */,
