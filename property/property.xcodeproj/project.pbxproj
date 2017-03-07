@@ -599,6 +599,7 @@
 		7A252CE41E25CC9500A4A58F /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE21E25CC9500A4A58F /* downImage.jpg */; };
 		7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE31E25CC9500A4A58F /* downImage01.jpg */; };
 		7A2A77521E6D5A02000CFAA8 /* TCLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */; };
+		7A550F9C1E6E58AC00BC36A8 /* TCUserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550F9B1E6E58AC00BC36A8 /* TCUserAgreementViewController.m */; };
 		7A8352AB1E5D4682003A8E76 /* TCPicturesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AA1E5D4682003A8E76 /* TCPicturesHeaderView.m */; };
 		7A8352B01E5D6FD2003A8E76 /* TCDetailStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AD1E5D6FD2003A8E76 /* TCDetailStore.m */; };
 		7A8352B11E5D6FD2003A8E76 /* TCServiceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AF1E5D6FD2003A8E76 /* TCServiceDetail.m */; };
@@ -619,6 +620,7 @@
 		7AC2935A1E6D893800FDC861 /* HD4.0''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC293571E6D893800FDC861 /* HD4.0''.png */; };
 		7AC2935B1E6D893800FDC861 /* HD4.7''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC293581E6D893800FDC861 /* HD4.7''.png */; };
 		7AC2935C1E6D893800FDC861 /* HD5.5''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC293591E6D893800FDC861 /* HD5.5''.png */; };
+		7AC293601E6D904D00FDC861 /* TCUserAgreement.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2935F1E6D904D00FDC861 /* TCUserAgreement.rtf */; };
 		7AF2ECEB1E1F7887008C556E /* TCCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE41E1F7887008C556E /* TCCommunity.m */; };
 		7AF2ECED1E1F7887008C556E /* TCCommunityListInCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE81E1F7887008C556E /* TCCommunityListInCity.m */; };
 		7AF2ECF71E1F81A9008C556E /* TCPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECF51E1F81A9008C556E /* TCPaymentViewController.m */; };
@@ -2782,6 +2784,8 @@
 		7A252CE31E25CC9500A4A58F /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
 		7A2A77501E6D5A02000CFAA8 /* TCLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLaunchViewController.h; sourceTree = "<group>"; };
 		7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLaunchViewController.m; sourceTree = "<group>"; };
+		7A550F9A1E6E58AC00BC36A8 /* TCUserAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCUserAgreementViewController.h; sourceTree = "<group>"; };
+		7A550F9B1E6E58AC00BC36A8 /* TCUserAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCUserAgreementViewController.m; sourceTree = "<group>"; };
 		7A8352A91E5D4682003A8E76 /* TCPicturesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPicturesHeaderView.h; sourceTree = "<group>"; };
 		7A8352AA1E5D4682003A8E76 /* TCPicturesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPicturesHeaderView.m; sourceTree = "<group>"; };
 		7A8352AC1E5D6FD2003A8E76 /* TCDetailStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDetailStore.h; sourceTree = "<group>"; };
@@ -2819,6 +2823,7 @@
 		7AC293571E6D893800FDC861 /* HD4.0''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.0''.png"; sourceTree = "<group>"; };
 		7AC293581E6D893800FDC861 /* HD4.7''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.7''.png"; sourceTree = "<group>"; };
 		7AC293591E6D893800FDC861 /* HD5.5''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD5.5''.png"; sourceTree = "<group>"; };
+		7AC2935F1E6D904D00FDC861 /* TCUserAgreement.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TCUserAgreement.rtf; sourceTree = "<group>"; };
 		7AF2ECE31E1F7887008C556E /* TCCommunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunity.h; sourceTree = "<group>"; };
 		7AF2ECE41E1F7887008C556E /* TCCommunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCommunity.m; sourceTree = "<group>"; };
 		7AF2ECE71E1F7887008C556E /* TCCommunityListInCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunityListInCity.h; sourceTree = "<group>"; };
@@ -7451,6 +7456,8 @@
 				559D94D81E13715B00982697 /* TCLoginViewController.h */,
 				559D94D91E13715B00982697 /* TCLoginViewController.m */,
 				559D94DA1E13715B00982697 /* TCLoginViewController.xib */,
+				7A550F9A1E6E58AC00BC36A8 /* TCUserAgreementViewController.h */,
+				7A550F9B1E6E58AC00BC36A8 /* TCUserAgreementViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -7468,6 +7475,7 @@
 		559D94E61E139C6500982697 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7AC2935F1E6D904D00FDC861 /* TCUserAgreement.rtf */,
 				7A252CDF1E25CC4C00A4A58F /* Images */,
 				559D94E71E139C6500982697 /* BinaryFiles */,
 				559D94EC1E139C6500982697 /* LinPhoneSources */,
@@ -7922,6 +7930,7 @@
 				559D91821E12653300982697 /* oldphone-mono-30s.caf in Resources */,
 				559D908E1E12653200982697 /* BelcardConfig.cmake in Resources */,
 				559D90AF1E12653200982697 /* incoming_chat.wav in Resources */,
+				7AC293601E6D904D00FDC861 /* TCUserAgreement.rtf in Resources */,
 				559D93D01E135D8000982697 /* TCIDAuthViewController.xib in Resources */,
 				559D91101E12653200982697 /* ORTPTargets-release.cmake in Resources */,
 				559D91771E12653300982697 /* ORTPTargets.cmake in Resources */,
@@ -8186,6 +8195,7 @@
 				7A1A85811E68029000BB5EDB /* TCServiceFacilitiesViewController.m in Sources */,
 				7A8352C11E5D7046003A8E76 /* TCServiceAddressViewCell.m in Sources */,
 				7AF2ED071E1F95C0008C556E /* TCCommunityListViewController.m in Sources */,
+				7A550F9C1E6E58AC00BC36A8 /* TCUserAgreementViewController.m in Sources */,
 				559D94701E1364A400982697 /* TCUserSession.m in Sources */,
 				7A8352C51E5D7046003A8E76 /* TCServicePromptViewCell.m in Sources */,
 				559D94AE1E136CA400982697 /* TCGenderPickerView.m in Sources */,

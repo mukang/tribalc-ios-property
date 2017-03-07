@@ -7,6 +7,7 @@
 //
 
 #import "TCLoginViewController.h"
+#import "TCUserAgreementViewController.h"
 
 #import "TCGetPasswordView.h"
 
@@ -42,10 +43,19 @@
     weakSelf = self;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapViewGesture:)];
+    tapGesture.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGesture];
     
     [self setupSubviews];
     [self setupConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.navigationController) {
+        self.navigationController.navigationBarHidden = YES;
+    }
 }
 
 - (void)setupSubviews {
@@ -75,7 +85,7 @@
     NSRange highlightRange = [noticeStr rangeOfString:userAgreementStr];
     YYTextHighlight *highlight = [[YYTextHighlight alloc] init];
     highlight.tapAction = ^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect) {
-        NSLog(@"部落公社注册协议");
+        [weakSelf handleTapUserAgreementStr];
     };
     NSMutableAttributedString *attText = [[NSMutableAttributedString alloc] initWithString:noticeStr];
     attText.yy_font = [UIFont systemFontOfSize:12];
@@ -87,6 +97,9 @@
     noticeLabel.translatesAutoresizingMaskIntoConstraints = NO;
     noticeLabel.attributedText = attText;
     noticeLabel.textAlignment = NSTextAlignmentCenter;
+    noticeLabel.size = CGSizeMake(350, 20);
+    noticeLabel.x = 50;
+    noticeLabel.y = 200;
     [self.view addSubview:noticeLabel];
     self.noticeLabel = noticeLabel;
 }
@@ -218,6 +231,11 @@
 
 - (void)handleTapViewGesture:(UITapGestureRecognizer *)gesture {
     [self.view endEditing:YES];
+}
+
+- (void)handleTapUserAgreementStr {
+    TCUserAgreementViewController *vc = [[TCUserAgreementViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITextFieldDelegate

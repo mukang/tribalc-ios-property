@@ -16,6 +16,7 @@
 #import "TCSettingViewController.h"
 #import "TCPropertyManageListController.h"
 #import "TCQRCodeViewController.h"
+#import "TCNavigationController.h"
 
 #import "TCProfileHeaderView.h"
 #import "TCProfileViewCell.h"
@@ -374,7 +375,8 @@ TCPhotoModeViewDelegate>
 
 - (void)showLoginViewController {
     TCLoginViewController *vc = [[TCLoginViewController alloc] initWithNibName:@"TCLoginViewController" bundle:[NSBundle mainBundle]];
-    [self presentViewController:vc animated:YES completion:nil];
+    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - Notifications 

@@ -86,7 +86,8 @@ static NSString *const AMapApiKey = @"ebbe753a2efddfdfbaedef9a3bd58d15";
 
 - (void)showLoginViewController {
     TCLoginViewController *vc = [[TCLoginViewController alloc] initWithNibName:@"TCLoginViewController" bundle:[NSBundle mainBundle]];
-    [self presentViewController:vc animated:YES completion:nil];
+    TCNavigationController *nav = [[TCNavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - AMapServices
