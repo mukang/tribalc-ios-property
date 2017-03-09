@@ -599,6 +599,7 @@
 		7A252CE41E25CC9500A4A58F /* downImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE21E25CC9500A4A58F /* downImage.jpg */; };
 		7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A252CE31E25CC9500A4A58F /* downImage01.jpg */; };
 		7A2A77521E6D5A02000CFAA8 /* TCLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */; };
+		7A2F5C261E70FC9C00174EB1 /* TCImageCompressHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2F5C251E70FC9C00174EB1 /* TCImageCompressHandler.m */; };
 		7A550F9C1E6E58AC00BC36A8 /* TCUserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A550F9B1E6E58AC00BC36A8 /* TCUserAgreementViewController.m */; };
 		7A8352AB1E5D4682003A8E76 /* TCPicturesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AA1E5D4682003A8E76 /* TCPicturesHeaderView.m */; };
 		7A8352B01E5D6FD2003A8E76 /* TCDetailStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352AD1E5D6FD2003A8E76 /* TCDetailStore.m */; };
@@ -2784,6 +2785,8 @@
 		7A252CE31E25CC9500A4A58F /* downImage01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = downImage01.jpg; sourceTree = "<group>"; };
 		7A2A77501E6D5A02000CFAA8 /* TCLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLaunchViewController.h; sourceTree = "<group>"; };
 		7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLaunchViewController.m; sourceTree = "<group>"; };
+		7A2F5C241E70FC9C00174EB1 /* TCImageCompressHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCImageCompressHandler.h; sourceTree = "<group>"; };
+		7A2F5C251E70FC9C00174EB1 /* TCImageCompressHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCImageCompressHandler.m; sourceTree = "<group>"; };
 		7A550F9A1E6E58AC00BC36A8 /* TCUserAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCUserAgreementViewController.h; sourceTree = "<group>"; };
 		7A550F9B1E6E58AC00BC36A8 /* TCUserAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCUserAgreementViewController.m; sourceTree = "<group>"; };
 		7A8352A91E5D4682003A8E76 /* TCPicturesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPicturesHeaderView.h; sourceTree = "<group>"; };
@@ -3207,6 +3210,8 @@
 				559D924D1E1268D300982697 /* TCFunctions.m */,
 				559D924E1E1268D300982697 /* TCImageURLSynthesizer.h */,
 				559D924F1E1268D300982697 /* TCImageURLSynthesizer.m */,
+				7A2F5C241E70FC9C00174EB1 /* TCImageCompressHandler.h */,
+				7A2F5C251E70FC9C00174EB1 /* TCImageCompressHandler.m */,
 				559D92501E1268D300982697 /* TCPhotoPicker.h */,
 				559D92511E1268D300982697 /* TCPhotoPicker.m */,
 				559D92521E1268D300982697 /* TCScanner.h */,
@@ -8152,6 +8157,7 @@
 				7A1A856A1E66DF6800BB5EDB /* TCServiceTabBar.m in Sources */,
 				559D92EB1E135D6400982697 /* TCOpenDoorController.m in Sources */,
 				559D93C41E135D8000982697 /* TCBiographyViewController.m in Sources */,
+				7A2F5C261E70FC9C00174EB1 /* TCImageCompressHandler.m in Sources */,
 				559D94721E1364A400982697 /* TCUserSipInfo.m in Sources */,
 				7A8352B01E5D6FD2003A8E76 /* TCDetailStore.m in Sources */,
 				559D94B61E136D4D00982697 /* TCPropertyManage.m in Sources */,

@@ -9,6 +9,7 @@
 #import "TCBuluoApi.h"
 #import "TCClient.h"
 #import "TCArchiveService.h"
+#import "TCImageCompressHandler.h"
 
 #import "NSObject+TCModel.h"
 
@@ -677,7 +678,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 #pragma mark - 上传图片资源
 
 - (void)uploadImage:(UIImage *)image progress:(void (^)(NSProgress *))progress result:(void (^)(BOOL, TCUploadInfo *, NSError *))resultBlock {
-    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    NSData *imageData = [TCImageCompressHandler compressImage:image toByte:100 * 1000];
     [self authorizeImageData:imageData result:^(TCUploadInfo *uploadInfo, NSError *error) {
         if (error) {
             if (resultBlock) {
