@@ -34,12 +34,7 @@ static CGFloat const duration = 0.25;
 - (void)show {
     if (!sourceController) return;
     
-    UIView *superView;
-    if (sourceController.navigationController) {
-        superView = sourceController.navigationController.view;
-    } else {
-        superView = sourceController.view;
-    }
+    UIView *superView = [UIApplication sharedApplication].keyWindow;
     [superView addSubview:self];
     [superView bringSubviewToFront:self];
     
@@ -62,6 +57,12 @@ static CGFloat const duration = 0.25;
 
 - (void)initPrivate {
     self.backgroundColor = TCARGBColor(0, 0, 0, 0);
+    
+    UIView *backgroundView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    backgroundView.backgroundColor = TCARGBColor(0, 0, 0, 0);
+    [self addSubview:backgroundView];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapBgView:)];
+    [backgroundView addGestureRecognizer:tapGesture];
     
     CGFloat containerViewH = 256;
     CGFloat buttonW = 60;
@@ -125,6 +126,10 @@ static CGFloat const duration = 0.25;
     if ([self.delegate respondsToSelector:@selector(didClickConfirmButtonInDatePickerView:)]) {
         [self.delegate didClickConfirmButtonInDatePickerView:self];
     }
+    [self dismiss];
+}
+
+- (void)handleTapBgView:(UITapGestureRecognizer *)gesture {
     [self dismiss];
 }
 
