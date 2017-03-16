@@ -462,7 +462,6 @@
 		559D92DF1E135D6400982697 /* TCRecommendGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D927A1E135D6400982697 /* TCRecommendGoodCell.m */; };
 		559D92E01E135D6400982697 /* TCRecommendInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D927C1E135D6400982697 /* TCRecommendInfoViewController.m */; };
 		559D92E11E135D6400982697 /* TCRecommendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D927E1E135D6400982697 /* TCRecommendListViewController.m */; };
-		559D92EB1E135D6400982697 /* TCOpenDoorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D92931E135D6400982697 /* TCOpenDoorController.m */; };
 		559D92F21E135D6400982697 /* TCRecommendFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D92A51E135D6400982697 /* TCRecommendFooter.m */; };
 		559D92F31E135D6400982697 /* TCRecommendHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D92A71E135D6400982697 /* TCRecommendHeader.m */; };
 		559D92F41E135D6400982697 /* TCGoodSelectTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D92AA1E135D6400982697 /* TCGoodSelectTitleView.m */; };
@@ -591,6 +590,17 @@
 		7A0191441E7A8F4500283822 /* TCLockKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01913E1E7A8F4500283822 /* TCLockKey.m */; };
 		7A0191451E7A8F4500283822 /* TCLockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191401E7A8F4500283822 /* TCLockWrapper.m */; };
 		7A0191461E7A8F4500283822 /* TCVisitorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191421E7A8F4500283822 /* TCVisitorInfo.m */; };
+		7A0191541E7A907A00283822 /* TCAddVisitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191491E7A907A00283822 /* TCAddVisitorViewController.m */; };
+		7A0191571E7A907A00283822 /* TCLockQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01914F1E7A907A00283822 /* TCLockQRCodeViewController.m */; };
+		7A0191581E7A907A00283822 /* TCLocksAndVisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191511E7A907A00283822 /* TCLocksAndVisitorsViewController.m */; };
+		7A0191651E7A90A600283822 /* TCAddVisitorDeviceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01915C1E7A90A600283822 /* TCAddVisitorDeviceViewCell.m */; };
+		7A0191661E7A90A600283822 /* TCAddVisitorTimeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01915E1E7A90A600283822 /* TCAddVisitorTimeViewCell.m */; };
+		7A0191671E7A90A600283822 /* TCLockEquipPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191601E7A90A600283822 /* TCLockEquipPickerView.m */; };
+		7A0191681E7A90A600283822 /* TCLockOrVisitorSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191621E7A90A600283822 /* TCLockOrVisitorSectionHeader.m */; };
+		7A0191691E7A90A600283822 /* TCVisitorLocksCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191641E7A90A600283822 /* TCVisitorLocksCell.m */; };
+		7A0191741E7A930800283822 /* TCLockQRCodeTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191711E7A930800283822 /* TCLockQRCodeTitleView.m */; };
+		7A0191751E7A930800283822 /* TCLockQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191731E7A930800283822 /* TCLockQRCodeView.m */; };
+		7A0191781E7A932C00283822 /* TCOpenDoorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191771E7A932C00283822 /* TCOpenDoorController.m */; };
 		7A1A85591E66DD5100BB5EDB /* TCServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A85581E66DD5100BB5EDB /* TCServiceListCell.m */; };
 		7A1A855C1E66DF3F00BB5EDB /* TCServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A855B1E66DF3F00BB5EDB /* TCServiceListViewController.m */; };
 		7A1A85671E66DF6800BB5EDB /* TCServiceFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A855E1E66DF6800BB5EDB /* TCServiceFilterView.m */; };
@@ -2548,8 +2558,6 @@
 		559D927C1E135D6400982697 /* TCRecommendInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCRecommendInfoViewController.m; sourceTree = "<group>"; };
 		559D927D1E135D6400982697 /* TCRecommendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRecommendListViewController.h; sourceTree = "<group>"; };
 		559D927E1E135D6400982697 /* TCRecommendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCRecommendListViewController.m; sourceTree = "<group>"; };
-		559D92921E135D6400982697 /* TCOpenDoorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCOpenDoorController.h; sourceTree = "<group>"; };
-		559D92931E135D6400982697 /* TCOpenDoorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCOpenDoorController.m; sourceTree = "<group>"; };
 		559D92A41E135D6400982697 /* TCRecommendFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRecommendFooter.h; sourceTree = "<group>"; };
 		559D92A51E135D6400982697 /* TCRecommendFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCRecommendFooter.m; sourceTree = "<group>"; };
 		559D92A61E135D6400982697 /* TCRecommendHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCRecommendHeader.h; sourceTree = "<group>"; };
@@ -2780,6 +2788,28 @@
 		7A0191401E7A8F4500283822 /* TCLockWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockWrapper.m; sourceTree = "<group>"; };
 		7A0191411E7A8F4500283822 /* TCVisitorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVisitorInfo.h; sourceTree = "<group>"; };
 		7A0191421E7A8F4500283822 /* TCVisitorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVisitorInfo.m; sourceTree = "<group>"; };
+		7A0191481E7A907A00283822 /* TCAddVisitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCAddVisitorViewController.h; sourceTree = "<group>"; };
+		7A0191491E7A907A00283822 /* TCAddVisitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCAddVisitorViewController.m; sourceTree = "<group>"; };
+		7A01914E1E7A907A00283822 /* TCLockQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockQRCodeViewController.h; sourceTree = "<group>"; };
+		7A01914F1E7A907A00283822 /* TCLockQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockQRCodeViewController.m; sourceTree = "<group>"; };
+		7A0191501E7A907A00283822 /* TCLocksAndVisitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLocksAndVisitorsViewController.h; sourceTree = "<group>"; };
+		7A0191511E7A907A00283822 /* TCLocksAndVisitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLocksAndVisitorsViewController.m; sourceTree = "<group>"; };
+		7A01915B1E7A90A600283822 /* TCAddVisitorDeviceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCAddVisitorDeviceViewCell.h; sourceTree = "<group>"; };
+		7A01915C1E7A90A600283822 /* TCAddVisitorDeviceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCAddVisitorDeviceViewCell.m; sourceTree = "<group>"; };
+		7A01915D1E7A90A600283822 /* TCAddVisitorTimeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCAddVisitorTimeViewCell.h; sourceTree = "<group>"; };
+		7A01915E1E7A90A600283822 /* TCAddVisitorTimeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCAddVisitorTimeViewCell.m; sourceTree = "<group>"; };
+		7A01915F1E7A90A600283822 /* TCLockEquipPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockEquipPickerView.h; sourceTree = "<group>"; };
+		7A0191601E7A90A600283822 /* TCLockEquipPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockEquipPickerView.m; sourceTree = "<group>"; };
+		7A0191611E7A90A600283822 /* TCLockOrVisitorSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockOrVisitorSectionHeader.h; sourceTree = "<group>"; };
+		7A0191621E7A90A600283822 /* TCLockOrVisitorSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockOrVisitorSectionHeader.m; sourceTree = "<group>"; };
+		7A0191631E7A90A600283822 /* TCVisitorLocksCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVisitorLocksCell.h; sourceTree = "<group>"; };
+		7A0191641E7A90A600283822 /* TCVisitorLocksCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVisitorLocksCell.m; sourceTree = "<group>"; };
+		7A0191701E7A930800283822 /* TCLockQRCodeTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockQRCodeTitleView.h; sourceTree = "<group>"; };
+		7A0191711E7A930800283822 /* TCLockQRCodeTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockQRCodeTitleView.m; sourceTree = "<group>"; };
+		7A0191721E7A930800283822 /* TCLockQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockQRCodeView.h; sourceTree = "<group>"; };
+		7A0191731E7A930800283822 /* TCLockQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockQRCodeView.m; sourceTree = "<group>"; };
+		7A0191761E7A932C00283822 /* TCOpenDoorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCOpenDoorController.h; sourceTree = "<group>"; };
+		7A0191771E7A932C00283822 /* TCOpenDoorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCOpenDoorController.m; sourceTree = "<group>"; };
 		7A1A85571E66DD5100BB5EDB /* TCServiceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceListCell.h; sourceTree = "<group>"; };
 		7A1A85581E66DD5100BB5EDB /* TCServiceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceListCell.m; sourceTree = "<group>"; };
 		7A1A855A1E66DF3F00BB5EDB /* TCServiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceListViewController.h; sourceTree = "<group>"; };
@@ -7051,8 +7081,7 @@
 				7A1A856C1E66E4EF00BB5EDB /* TCHomeViewController.h */,
 				7A1A856D1E66E4EF00BB5EDB /* TCHomeViewController.m */,
 				7A1A856E1E66E4EF00BB5EDB /* TCHomeViewController.xib */,
-				559D92921E135D6400982697 /* TCOpenDoorController.h */,
-				559D92931E135D6400982697 /* TCOpenDoorController.m */,
+				7A0191471E7A907A00283822 /* OpenDoor */,
 				559D92711E135D6400982697 /* RecommendBoutique */,
 				559D927F1E135D6400982697 /* Service */,
 			);
@@ -7094,6 +7123,7 @@
 			children = (
 				7A8352FD1E5EEFE8003A8E76 /* TCHomeCommodityTableViewCell.h */,
 				7A8352FE1E5EEFE8003A8E76 /* TCHomeCommodityTableViewCell.m */,
+				7A01915A1E7A90A600283822 /* OpenDoor */,
 				559D92A21E135D6400982697 /* RecommendBoutique */,
 				559D92B91E135D6400982697 /* Service */,
 			);
@@ -7633,6 +7663,42 @@
 			path = OpenDoor;
 			sourceTree = "<group>";
 		};
+		7A0191471E7A907A00283822 /* OpenDoor */ = {
+			isa = PBXGroup;
+			children = (
+				7A0191761E7A932C00283822 /* TCOpenDoorController.h */,
+				7A0191771E7A932C00283822 /* TCOpenDoorController.m */,
+				7A0191501E7A907A00283822 /* TCLocksAndVisitorsViewController.h */,
+				7A0191511E7A907A00283822 /* TCLocksAndVisitorsViewController.m */,
+				7A0191481E7A907A00283822 /* TCAddVisitorViewController.h */,
+				7A0191491E7A907A00283822 /* TCAddVisitorViewController.m */,
+				7A01914E1E7A907A00283822 /* TCLockQRCodeViewController.h */,
+				7A01914F1E7A907A00283822 /* TCLockQRCodeViewController.m */,
+			);
+			path = OpenDoor;
+			sourceTree = "<group>";
+		};
+		7A01915A1E7A90A600283822 /* OpenDoor */ = {
+			isa = PBXGroup;
+			children = (
+				7A0191701E7A930800283822 /* TCLockQRCodeTitleView.h */,
+				7A0191711E7A930800283822 /* TCLockQRCodeTitleView.m */,
+				7A0191721E7A930800283822 /* TCLockQRCodeView.h */,
+				7A0191731E7A930800283822 /* TCLockQRCodeView.m */,
+				7A01915B1E7A90A600283822 /* TCAddVisitorDeviceViewCell.h */,
+				7A01915C1E7A90A600283822 /* TCAddVisitorDeviceViewCell.m */,
+				7A01915D1E7A90A600283822 /* TCAddVisitorTimeViewCell.h */,
+				7A01915E1E7A90A600283822 /* TCAddVisitorTimeViewCell.m */,
+				7A01915F1E7A90A600283822 /* TCLockEquipPickerView.h */,
+				7A0191601E7A90A600283822 /* TCLockEquipPickerView.m */,
+				7A0191611E7A90A600283822 /* TCLockOrVisitorSectionHeader.h */,
+				7A0191621E7A90A600283822 /* TCLockOrVisitorSectionHeader.m */,
+				7A0191631E7A90A600283822 /* TCVisitorLocksCell.h */,
+				7A0191641E7A90A600283822 /* TCVisitorLocksCell.m */,
+			);
+			path = OpenDoor;
+			sourceTree = "<group>";
+		};
 		7A252CDF1E25CC4C00A4A58F /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -8146,6 +8212,7 @@
 				559D93FF1E135D8000982697 /* TCCompanyTitleViewCell.m in Sources */,
 				559D92551E1268D300982697 /* TCFunctions.m in Sources */,
 				55EC5BD11E2338B900C5FB73 /* TCImagePreviewStatusView.m in Sources */,
+				7A0191671E7A90A600283822 /* TCLockEquipPickerView.m in Sources */,
 				559D92151E12659C00982697 /* TCClient.m in Sources */,
 				559D92161E12659C00982697 /* TCClientConfig.m in Sources */,
 				55EC5BD41E2338D300C5FB73 /* TCImagePreviewObject.m in Sources */,
@@ -8163,7 +8230,9 @@
 				559D91201E12653200982697 /* parser-impl.cc in Sources */,
 				559D94391E1360D000982697 /* TCGoodDetail.m in Sources */,
 				7A0191451E7A8F4500283822 /* TCLockWrapper.m in Sources */,
+				7A0191581E7A907A00283822 /* TCLocksAndVisitorsViewController.m in Sources */,
 				559D93BC1E135D8000982697 /* TCBioEditEmotionViewController.m in Sources */,
+				7A0191661E7A90A600283822 /* TCAddVisitorTimeViewCell.m in Sources */,
 				559D92F21E135D6400982697 /* TCRecommendFooter.m in Sources */,
 				7AF2ECED1E1F7887008C556E /* TCCommunityListInCity.m in Sources */,
 				559D925C1E126D6D00982697 /* TCModelImport.m in Sources */,
@@ -8181,9 +8250,11 @@
 				55EC5BDA1E23489A00C5FB73 /* TCFadeOutTransitionAnimation.m in Sources */,
 				7A0191461E7A8F4500283822 /* TCVisitorInfo.m in Sources */,
 				7A1A856B1E66DF6800BB5EDB /* TCServiceTabItemView.m in Sources */,
+				7A0191541E7A907A00283822 /* TCAddVisitorViewController.m in Sources */,
 				559D93EC1E135D8000982697 /* TCBioEditBirthdateViewCell.m in Sources */,
 				559D91F61E12655D00982697 /* MBProgressHUD+Category.m in Sources */,
 				559D946A1E1364A400982697 /* TCUserCompanyInfo.m in Sources */,
+				7A0191741E7A930800283822 /* TCLockQRCodeTitleView.m in Sources */,
 				559D93CF1E135D8000982697 /* TCIDAuthViewController.m in Sources */,
 				559D91F91E12655D00982697 /* UIImage+Category.m in Sources */,
 				559D92E11E135D6400982697 /* TCRecommendListViewController.m in Sources */,
@@ -8210,7 +8281,6 @@
 				559D92571E1268D300982697 /* TCPhotoPicker.m in Sources */,
 				7A1A856A1E66DF6800BB5EDB /* TCServiceTabBar.m in Sources */,
 				7A0191431E7A8F4500283822 /* TCLockEquip.m in Sources */,
-				559D92EB1E135D6400982697 /* TCOpenDoorController.m in Sources */,
 				559D93C41E135D8000982697 /* TCBiographyViewController.m in Sources */,
 				7A2F5C261E70FC9C00174EB1 /* TCImageCompressHandler.m in Sources */,
 				559D94721E1364A400982697 /* TCUserSipInfo.m in Sources */,
@@ -8218,6 +8288,8 @@
 				559D94B61E136D4D00982697 /* TCPropertyManage.m in Sources */,
 				559D92E01E135D6400982697 /* TCRecommendInfoViewController.m in Sources */,
 				559D93BF1E135D8000982697 /* TCBioEditNickViewController.m in Sources */,
+				7A0191681E7A90A600283822 /* TCLockOrVisitorSectionHeader.m in Sources */,
+				7A0191651E7A90A600283822 /* TCAddVisitorDeviceViewCell.m in Sources */,
 				559D943C1E1360D000982697 /* TCGoodsWrapper.m in Sources */,
 				559D94D21E136EA400982697 /* TCUploadInfo.m in Sources */,
 				55EC5BD71E2347FA00C5FB73 /* TCCustomTransitionAnimation.m in Sources */,
@@ -8238,6 +8310,8 @@
 				559D92541E1268D300982697 /* TCArchiveService.m in Sources */,
 				559D94091E135D8000982697 /* TCProfileViewCell.m in Sources */,
 				7A1A85691E66DF6800BB5EDB /* TCServiceSortView.m in Sources */,
+				7A0191751E7A930800283822 /* TCLockQRCodeView.m in Sources */,
+				7A0191691E7A90A600283822 /* TCVisitorLocksCell.m in Sources */,
 				55EC5BCE1E23388A00C5FB73 /* TCImagePreivewCell.m in Sources */,
 				55F9EE571E6023D300935ADF /* TCStoreInfo.m in Sources */,
 				7A8352F01E5EEC0F003A8E76 /* TCConst.m in Sources */,
@@ -8248,6 +8322,7 @@
 				559D90BA1E12653200982697 /* parser-impl.cc in Sources */,
 				559D944C1E13612C00982697 /* TCMarkStore.m in Sources */,
 				559D93BB1E135D8000982697 /* TCBioEditBirthdateViewController.m in Sources */,
+				7A0191781E7A932C00283822 /* TCOpenDoorController.m in Sources */,
 				559D92111E12659C00982697 /* LinphoneManager.m in Sources */,
 				7A8352FB1E5EEF8D003A8E76 /* TCServiceAnnotation.m in Sources */,
 				559D93DC1E135D8000982697 /* TCProfileViewController.m in Sources */,
@@ -8282,6 +8357,7 @@
 				559D947D1E13687D00982697 /* TCCommonIndicatorViewCell.m in Sources */,
 				559D92191E12659C00982697 /* TCClientResponse.m in Sources */,
 				559D92171E12659C00982697 /* TCClientRequest.m in Sources */,
+				7A0191571E7A907A00283822 /* TCLockQRCodeViewController.m in Sources */,
 				7A2A77521E6D5A02000CFAA8 /* TCLaunchViewController.m in Sources */,
 				559D944B1E13612C00982697 /* TCListStore.m in Sources */,
 				559D946F1E1364A400982697 /* TCUserSensitiveInfo.m in Sources */,
