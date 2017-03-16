@@ -11,6 +11,7 @@
 #import "TCLaunchViewController.h"
 
 #import "TCSipAPI.h"
+#import "WXApiManager.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface AppDelegate ()<CLLocationManagerDelegate>
@@ -37,6 +38,9 @@
     [self.window makeKeyAndVisible];
     [self showLaunchWindow];
     application.statusBarHidden = NO;
+    
+    // wechat
+    [WXApi registerApp:kWXAppID];
     
     TCSipAPI *sipApi = [TCSipAPI api];
     
@@ -152,6 +156,20 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    if ([url.absoluteString hasPrefix:@"wx"]) {
+        return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+    }
+    return NO;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([url.absoluteString hasPrefix:@"wx"]) {
+        return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+    }
+    return NO;
 }
 
 

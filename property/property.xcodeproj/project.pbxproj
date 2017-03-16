@@ -585,6 +585,8 @@
 		55EC5BDD1E23833C00C5FB73 /* TCNavigationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC5BDC1E23833C00C5FB73 /* TCNavigationDelegate.m */; };
 		55F9EE471E55BB4E00935ADF /* NSObject+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE461E55BB4E00935ADF /* NSObject+Distance.m */; };
 		55F9EE571E6023D300935ADF /* TCStoreInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE561E6023D300935ADF /* TCStoreInfo.m */; };
+		7A0191381E7A8D3900283822 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0191321E7A8D3900283822 /* libWeChatSDK.a */; };
+		7A0191391E7A8D3900283822 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191361E7A8D3900283822 /* WXApiManager.m */; };
 		7A1A85591E66DD5100BB5EDB /* TCServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A85581E66DD5100BB5EDB /* TCServiceListCell.m */; };
 		7A1A855C1E66DF3F00BB5EDB /* TCServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A855B1E66DF3F00BB5EDB /* TCServiceListViewController.m */; };
 		7A1A85671E66DF6800BB5EDB /* TCServiceFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A855E1E66DF6800BB5EDB /* TCServiceFilterView.m */; };
@@ -2760,6 +2762,12 @@
 		55F9EE461E55BB4E00935ADF /* NSObject+Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Distance.m"; sourceTree = "<group>"; };
 		55F9EE551E6023D300935ADF /* TCStoreInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreInfo.h; sourceTree = "<group>"; };
 		55F9EE561E6023D300935ADF /* TCStoreInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreInfo.m; sourceTree = "<group>"; };
+		7A0191321E7A8D3900283822 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		7A0191331E7A8D3900283822 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		7A0191341E7A8D3900283822 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		7A0191351E7A8D3900283822 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		7A0191361E7A8D3900283822 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		7A0191371E7A8D3900283822 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		7A1A85571E66DD5100BB5EDB /* TCServiceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceListCell.h; sourceTree = "<group>"; };
 		7A1A85581E66DD5100BB5EDB /* TCServiceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceListCell.m; sourceTree = "<group>"; };
 		7A1A855A1E66DF3F00BB5EDB /* TCServiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceListViewController.h; sourceTree = "<group>"; };
@@ -2938,6 +2946,7 @@
 				559D90E91E12653200982697 /* libmsx264.a in Frameworks */,
 				559D91921E12653300982697 /* libbelr.a in Frameworks */,
 				559D91351E12653300982697 /* libmatroska2.a in Frameworks */,
+				7A0191381E7A8D3900283822 /* libWeChatSDK.a in Frameworks */,
 				559D90E11E12653200982697 /* libvo-amrwbenc.a in Frameworks */,
 				559D91481E12653300982697 /* libvpx.a in Frameworks */,
 				559D90671E12653100982697 /* libbv16.a in Frameworks */,
@@ -3194,6 +3203,7 @@
 		559D88691E12646900982697 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7A0191311E7A8D3900283822 /* Wechat */,
 				55EC5BC71E23382200C5FB73 /* Custom */,
 				559D94921E136AE400982697 /* MLBPasswordTextField */,
 				559D886E1E12652E00982697 /* liblinphone-sdk */,
@@ -7582,6 +7592,19 @@
 			path = TCImagePreView;
 			sourceTree = "<group>";
 		};
+		7A0191311E7A8D3900283822 /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				7A0191321E7A8D3900283822 /* libWeChatSDK.a */,
+				7A0191331E7A8D3900283822 /* WechatAuthSDK.h */,
+				7A0191341E7A8D3900283822 /* WXApi.h */,
+				7A0191351E7A8D3900283822 /* WXApiManager.h */,
+				7A0191361E7A8D3900283822 /* WXApiManager.m */,
+				7A0191371E7A8D3900283822 /* WXApiObject.h */,
+			);
+			path = Wechat;
+			sourceTree = "<group>";
+		};
 		7A252CDF1E25CC4C00A4A58F /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -8107,6 +8130,7 @@
 				559D95141E13C27E00982697 /* TCTabView.m in Sources */,
 				7A8352FF1E5EEFE8003A8E76 /* TCHomeCommodityTableViewCell.m in Sources */,
 				559D93C21E135D8000982697 /* TCBioEditSMSViewController.m in Sources */,
+				7A0191391E7A8D3900283822 /* WXApiManager.m in Sources */,
 				559D93EE1E135D8000982697 /* TCBioEditSelectViewCell.m in Sources */,
 				559D91201E12653200982697 /* parser-impl.cc in Sources */,
 				559D94391E1360D000982697 /* TCGoodDetail.m in Sources */,
@@ -8435,6 +8459,7 @@
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/armv7-apple-darwin.ios/lib/mediastreamer/plugins",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib/mediastreamer/plugins",
+					"$(PROJECT_DIR)/property/Common/Libs/Wechat",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -8483,6 +8508,7 @@
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/armv7-apple-darwin.ios/lib/mediastreamer/plugins",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib",
 					"$(PROJECT_DIR)/property/Common/Libs/liblinphone-sdk/x86_64-apple-darwin.ios/lib/mediastreamer/plugins",
+					"$(PROJECT_DIR)/property/Common/Libs/Wechat",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
