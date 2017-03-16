@@ -306,4 +306,38 @@ typedef NS_ENUM(NSInteger, TCPayChannel) {
  @param resultBlock 结果回调success为NO时表示提交失败
  */
 - (void)cancelPropertyOrderWithOrderID:(NSString *)orderId reason:(NSString *)reasonStr result:(void(^)(BOOL success, NSError *error))resultBlock;
+
+#pragma mark - 门锁设备
+
+/**
+ 获取自己的锁列表
+ 
+ @param resultBlock 回调
+ */
+- (void)fetchMyLockListResult:(void (^)(NSArray *lockList, NSError *error))resultBlock;
+
+
+/**
+ 获取激活的锁列表
+ 
+ @param resultBlock 回调
+ */
+- (void)fetchMyLockKeysResult:(void (^)(NSArray *lockKeysList, NSError *error))resultBlock;
+
+/**
+ 申请设备的二维码
+ 
+ @param visitorInfo 访客信息
+ @param resultBlock 结果回调
+ */
+- (void)fetchLockKeyWithVisitorInfo:(TCVisitorInfo *)visitorInfo result:(void(^)(TCLockKey *lockKey, NSError *error))resultBlock;
+
+/**
+ 清除设备的二维码
+ 
+ @param lockKeyID 设备二维码id
+ @param resultBlock 结果回调
+ */
+- (void)deleteLockKeyWithID:(NSString *)lockKeyID result:(void(^)(BOOL success, NSError *error))resultBlock;
+
 @end

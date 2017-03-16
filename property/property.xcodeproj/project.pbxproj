@@ -587,6 +587,10 @@
 		55F9EE571E6023D300935ADF /* TCStoreInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9EE561E6023D300935ADF /* TCStoreInfo.m */; };
 		7A0191381E7A8D3900283822 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0191321E7A8D3900283822 /* libWeChatSDK.a */; };
 		7A0191391E7A8D3900283822 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191361E7A8D3900283822 /* WXApiManager.m */; };
+		7A0191431E7A8F4500283822 /* TCLockEquip.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01913C1E7A8F4500283822 /* TCLockEquip.m */; };
+		7A0191441E7A8F4500283822 /* TCLockKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01913E1E7A8F4500283822 /* TCLockKey.m */; };
+		7A0191451E7A8F4500283822 /* TCLockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191401E7A8F4500283822 /* TCLockWrapper.m */; };
+		7A0191461E7A8F4500283822 /* TCVisitorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191421E7A8F4500283822 /* TCVisitorInfo.m */; };
 		7A1A85591E66DD5100BB5EDB /* TCServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A85581E66DD5100BB5EDB /* TCServiceListCell.m */; };
 		7A1A855C1E66DF3F00BB5EDB /* TCServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A855B1E66DF3F00BB5EDB /* TCServiceListViewController.m */; };
 		7A1A85671E66DF6800BB5EDB /* TCServiceFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A855E1E66DF6800BB5EDB /* TCServiceFilterView.m */; };
@@ -2768,6 +2772,14 @@
 		7A0191351E7A8D3900283822 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		7A0191361E7A8D3900283822 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
 		7A0191371E7A8D3900283822 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		7A01913B1E7A8F4500283822 /* TCLockEquip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockEquip.h; sourceTree = "<group>"; };
+		7A01913C1E7A8F4500283822 /* TCLockEquip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockEquip.m; sourceTree = "<group>"; };
+		7A01913D1E7A8F4500283822 /* TCLockKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockKey.h; sourceTree = "<group>"; };
+		7A01913E1E7A8F4500283822 /* TCLockKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockKey.m; sourceTree = "<group>"; };
+		7A01913F1E7A8F4500283822 /* TCLockWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLockWrapper.h; sourceTree = "<group>"; };
+		7A0191401E7A8F4500283822 /* TCLockWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLockWrapper.m; sourceTree = "<group>"; };
+		7A0191411E7A8F4500283822 /* TCVisitorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVisitorInfo.h; sourceTree = "<group>"; };
+		7A0191421E7A8F4500283822 /* TCVisitorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVisitorInfo.m; sourceTree = "<group>"; };
 		7A1A85571E66DD5100BB5EDB /* TCServiceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceListCell.h; sourceTree = "<group>"; };
 		7A1A85581E66DD5100BB5EDB /* TCServiceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceListCell.m; sourceTree = "<group>"; };
 		7A1A855A1E66DF3F00BB5EDB /* TCServiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCServiceListViewController.h; sourceTree = "<group>"; };
@@ -6969,6 +6981,7 @@
 			children = (
 				559D925A1E126D6D00982697 /* TCModelImport.h */,
 				559D925B1E126D6D00982697 /* TCModelImport.m */,
+				7A01913A1E7A8F4500283822 /* OpenDoor */,
 				7AF2ECE21E1F7887008C556E /* Community */,
 				559D94CF1E136EA400982697 /* Upload */,
 				559D94AF1E136D4D00982697 /* Property */,
@@ -7605,6 +7618,21 @@
 			path = Wechat;
 			sourceTree = "<group>";
 		};
+		7A01913A1E7A8F4500283822 /* OpenDoor */ = {
+			isa = PBXGroup;
+			children = (
+				7A01913B1E7A8F4500283822 /* TCLockEquip.h */,
+				7A01913C1E7A8F4500283822 /* TCLockEquip.m */,
+				7A01913D1E7A8F4500283822 /* TCLockKey.h */,
+				7A01913E1E7A8F4500283822 /* TCLockKey.m */,
+				7A01913F1E7A8F4500283822 /* TCLockWrapper.h */,
+				7A0191401E7A8F4500283822 /* TCLockWrapper.m */,
+				7A0191411E7A8F4500283822 /* TCVisitorInfo.h */,
+				7A0191421E7A8F4500283822 /* TCVisitorInfo.m */,
+			);
+			path = OpenDoor;
+			sourceTree = "<group>";
+		};
 		7A252CDF1E25CC4C00A4A58F /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -8134,6 +8162,7 @@
 				559D93EE1E135D8000982697 /* TCBioEditSelectViewCell.m in Sources */,
 				559D91201E12653200982697 /* parser-impl.cc in Sources */,
 				559D94391E1360D000982697 /* TCGoodDetail.m in Sources */,
+				7A0191451E7A8F4500283822 /* TCLockWrapper.m in Sources */,
 				559D93BC1E135D8000982697 /* TCBioEditEmotionViewController.m in Sources */,
 				559D92F21E135D6400982697 /* TCRecommendFooter.m in Sources */,
 				7AF2ECED1E1F7887008C556E /* TCCommunityListInCity.m in Sources */,
@@ -8150,6 +8179,7 @@
 				559D92141E12659C00982697 /* TCSipAPI.m in Sources */,
 				7AF2ECEB1E1F7887008C556E /* TCCommunity.m in Sources */,
 				55EC5BDA1E23489A00C5FB73 /* TCFadeOutTransitionAnimation.m in Sources */,
+				7A0191461E7A8F4500283822 /* TCVisitorInfo.m in Sources */,
 				7A1A856B1E66DF6800BB5EDB /* TCServiceTabItemView.m in Sources */,
 				559D93EC1E135D8000982697 /* TCBioEditBirthdateViewCell.m in Sources */,
 				559D91F61E12655D00982697 /* MBProgressHUD+Category.m in Sources */,
@@ -8179,6 +8209,7 @@
 				559D94971E136AE400982697 /* MLBPasswordRenderView.m in Sources */,
 				559D92571E1268D300982697 /* TCPhotoPicker.m in Sources */,
 				7A1A856A1E66DF6800BB5EDB /* TCServiceTabBar.m in Sources */,
+				7A0191431E7A8F4500283822 /* TCLockEquip.m in Sources */,
 				559D92EB1E135D6400982697 /* TCOpenDoorController.m in Sources */,
 				559D93C41E135D8000982697 /* TCBiographyViewController.m in Sources */,
 				7A2F5C261E70FC9C00174EB1 /* TCImageCompressHandler.m in Sources */,
@@ -8210,6 +8241,7 @@
 				55EC5BCE1E23388A00C5FB73 /* TCImagePreivewCell.m in Sources */,
 				55F9EE571E6023D300935ADF /* TCStoreInfo.m in Sources */,
 				7A8352F01E5EEC0F003A8E76 /* TCConst.m in Sources */,
+				7A0191441E7A8F4500283822 /* TCLockKey.m in Sources */,
 				55F9EE471E55BB4E00935ADF /* NSObject+Distance.m in Sources */,
 				559D93D81E135D8000982697 /* TCAboutUSViewController.m in Sources */,
 				7A8352AB1E5D4682003A8E76 /* TCPicturesHeaderView.m in Sources */,

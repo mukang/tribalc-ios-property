@@ -55,6 +55,11 @@
 #import "TCPropertyManageWrapper.h"
 #import "TCPropertyManage.h"
 
+/*********** 门锁 ***********/
+#import "TCLockKey.h"
+#import "TCLockEquip.h"
+#import "TCLockWrapper.h"
+#import "TCVisitorInfo.h"
 
 @interface TCModelImport : NSObject
 
