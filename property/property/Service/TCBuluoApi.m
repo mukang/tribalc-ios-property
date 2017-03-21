@@ -901,7 +901,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)fetchMyLockListResult:(void (^)(NSArray *lockList, NSError *error))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"locks?me=%@", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"locks?me=%@&type=property", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -932,7 +932,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)fetchMyLockKeysResult:(void (^)(NSArray *lockKeysList, NSError *error))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"keys?me=%@", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"keys?me=%@&type=property", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -962,7 +962,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)fetchLockKeyWithVisitorInfo:(TCVisitorInfo *)visitorInfo result:(void (^)(TCLockKey *, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"keys?me=%@", self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"keys?me=%@&type=property", self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
         request.token = self.currentUserSession.token;
         NSDictionary *dic = [visitorInfo toObjectDictionary];
@@ -991,7 +991,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 
 - (void)deleteLockKeyWithID:(NSString *)lockKeyID result:(void (^)(BOOL, NSError *))resultBlock {
     if ([self isUserSessionValid]) {
-        NSString *apiName = [NSString stringWithFormat:@"keys/%@?me=%@",lockKeyID,self.currentUserSession.assigned];
+        NSString *apiName = [NSString stringWithFormat:@"keys/%@?me=%@&type=property",lockKeyID,self.currentUserSession.assigned];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodDelete apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
