@@ -6,11 +6,11 @@
 //  Copyright © 2016年 杭州部落公社科技有限公司. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TCBaseViewController.h"
 
 typedef void(^TCBioEditBirthdateBlock)();
 
-@interface TCBioEditBirthdateViewController : UIViewController
+@interface TCBioEditBirthdateViewController : TCBaseViewController
 
 @property (strong, nonatomic) NSDate *birthdate;
 @property (copy, nonatomic) TCBioEditBirthdateBlock editBirthdateBlock;

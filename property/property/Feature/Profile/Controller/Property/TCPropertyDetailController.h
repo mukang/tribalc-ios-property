@@ -6,12 +6,12 @@
 //  Copyright © 2016年 杭州部落公社科技有限公司. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TCBaseViewController.h"
 #import "TCNavigationDelegate.h"
 @class TCPropertyManage;
 
 
-@interface TCPropertyDetailController : UIViewController<TCTransitionAnimationSupportDelegate>
+@interface TCPropertyDetailController : TCBaseViewController <TCTransitionAnimationSupportDelegate>
 
 - (instancetype)initWithPropertyManage:(TCPropertyManage *)property;
 

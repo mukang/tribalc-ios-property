@@ -6,14 +6,14 @@
 //  Copyright © 2016年 杭州部落公社科技有限公司. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TCBaseViewController.h"
 
 typedef NS_ENUM(NSInteger, TCIDAuthStatus) {
     TCIDAuthStatusProcessing = 0,
     TCIDAuthStatusFinished
 };
 
-@interface TCIDAuthDetailViewController : UIViewController
+@interface TCIDAuthDetailViewController : TCBaseViewController
 
 @property (nonatomic, readonly) TCIDAuthStatus authStatus;
 

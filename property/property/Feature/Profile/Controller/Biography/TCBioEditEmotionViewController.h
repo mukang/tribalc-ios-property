@@ -6,12 +6,12 @@
 //  Copyright © 2016年 杭州部落公社科技有限公司. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TCBaseViewController.h"
 #import "TCBuluoApi.h"
 
 typedef void(^TCBioEditEmotionBlock)();
 
-@interface TCBioEditEmotionViewController : UIViewController
+@interface TCBioEditEmotionViewController : TCBaseViewController
 
 @property (nonatomic) TCUserEmotionState emotionState;
 @property (copy, nonatomic) TCBioEditEmotionBlock editEmotionBlock;

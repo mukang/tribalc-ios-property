@@ -6,10 +6,10 @@
 //  Copyright © 2016年 杭州部落公社科技有限公司. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TCBaseViewController.h"
 #import "TCCompanyListViewController.h"
 
-@interface TCCommunityListViewController : UIViewController
+@interface TCCommunityListViewController : TCBaseViewController
 
 @property (copy, nonatomic) TCCompanyInfoBlock companyInfoBlock;
 @property (weak, nonatomic) UIViewController *popToVC;

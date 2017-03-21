@@ -44,6 +44,8 @@ TCPhotoModeViewDelegate>
 @property (copy, nonatomic) NSArray *fodderArray;
 @property (strong, nonatomic) TCUserInfo *userInfo;
 
+@property (weak, nonatomic) UINavigationBar *navBar;
+@property (weak, nonatomic) UINavigationItem *navItem;
 @property (nonatomic) BOOL needsLightContentStatusBar;
 
 @property (nonatomic) CGFloat headerViewHeight;
@@ -70,43 +72,37 @@ TCPhotoModeViewDelegate>
     [self registerNotifications];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self updateNavigationBar];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    if (![[self.navigationController.childViewControllers lastObject] isEqual:self]) {
-        [self restoreNavigationBar];
-    } else {
-        // TODO:
-    }
-}
-
 - (void)dealloc {
+    self.tableView.dataSource = nil;
+    self.tableView.delegate = nil;
     [self removeNotifications];
 }
 
 - (void)setupNavBar {
-    self.extendedLayoutIncludesOpaqueBars = YES;
+    self.hideOriginalNavBar = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, 64)];
+    [navBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
+    [self.view addSubview:navBar];
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"我的"];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"profile_nav_QRcode_item"]
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
                                                                 action:@selector(handleClickQRCodeButton:)];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    navItem.leftBarButtonItem = leftItem;
     UIBarButtonItem *settingItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"profile_nav_setting_item"]
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:self
                                                                    action:@selector(handleClickSettingButton:)];
-//    UIBarButtonItem *messageItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"profile_nav_message_item"]
-//                                                                    style:UIBarButtonItemStylePlain
-//                                                                   target:self
-//                                                                   action:@selector(handleClickMessageButton:)];
-//    self.navigationItem.rightBarButtonItems = @[messageItem, settingItem];
-    self.navigationItem.rightBarButtonItem = settingItem;
+    navItem.rightBarButtonItem = settingItem;
+    [navBar setItems:@[navItem]];
+    
+    self.navBar = navBar;
+    self.navItem = navItem;
+    
+    [self updateNavigationBarWithAlpha:0.0];
 }
 
 - (void)setupSubviews {
@@ -116,7 +112,7 @@ TCPhotoModeViewDelegate>
     tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
     tableView.delegate = self;
     tableView.dataSource = self;
-    [self.view addSubview:tableView];
+    [self.view insertSubview:tableView belowSubview:self.navBar];
     self.tableView = tableView;
     
     TCProfileHeaderView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"TCProfileHeaderView" owner:nil options:nil] firstObject];
@@ -159,44 +155,33 @@ TCPhotoModeViewDelegate>
 
 #pragma mark - Navigation Bar
 
-- (void)restoreNavigationBar {
-    [self updateNavigationBarWithAlpha:1.0];
-}
-
 - (void)updateNavigationBar {
-    if ([[self.navigationController.childViewControllers lastObject] isEqual:self]) {
-        CGFloat offsetY = self.tableView.contentOffset.y;
-        CGFloat alpha = offsetY / (self.headerViewHeight - self.topBarHeight);
-        alpha = roundf(alpha * 100) / 100;
-        if (alpha > 1.0) alpha = 1.0;
-        if (alpha < 0.0) alpha = 0.0;
-        [self updateNavigationBarWithAlpha:alpha];
-    }
+    CGFloat offsetY = self.tableView.contentOffset.y;
+    CGFloat alpha = offsetY / (self.headerViewHeight - self.topBarHeight);
+    if (alpha > 1.0) alpha = 1.0;
+    if (alpha < 0.0) alpha = 0.0;
+    [self updateNavigationBarWithAlpha:alpha];
 }
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha {
     UIColor *tintColor = nil, *titleColor = nil;
-    if (alpha < 1.0) {
-        self.navigationController.navigationBar.translucent = YES;
-    } else {
-        self.navigationController.navigationBar.translucent = NO;
-    }
     if (alpha > 0.7) {
         self.needsLightContentStatusBar = YES;
         tintColor = [UIColor whiteColor];
         titleColor = [UIColor whiteColor];
     } else {
         self.needsLightContentStatusBar = NO;
-        tintColor = TCRGBColor(65, 65, 65);
+        tintColor = TCRGBColor(42, 42, 42);
         titleColor = [UIColor clearColor];
     }
-    [self.navigationController.navigationBar setTintColor:tintColor];
-    self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSFontAttributeName : [UIFont systemFontOfSize:16],
-                                                                    NSForegroundColorAttributeName : titleColor
-                                                                    };
+    [self.navBar setTintColor:tintColor];
+    self.navBar.titleTextAttributes = @{
+                                        NSFontAttributeName : [UIFont systemFontOfSize:16],
+                                        NSForegroundColorAttributeName : titleColor
+                                        };
+    
     UIImage *bgImage = [UIImage imageWithColor:TCARGBColor(42, 42, 42, alpha)];
-    [self.navigationController.navigationBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
+    [self.navBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - Status Bar

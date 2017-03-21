@@ -31,6 +31,8 @@
 @property (nonatomic) CGFloat headerViewHeight;
 @property (nonatomic) CGFloat topBarHeight;
 
+@property (weak, nonatomic) UINavigationBar *navBar;
+@property (weak, nonatomic) UINavigationItem *navItem;
 @property (nonatomic) BOOL needsLightContentStatusBar;
 
 @property (nonatomic) BOOL companyIntroFold;
@@ -59,27 +61,28 @@
     [self loadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self updateNavigationBar];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    if (![[self.navigationController.childViewControllers lastObject] isEqual:self]) {
-        [self restoreNavigationBar];
-    } else {
-        // TODO:
-    }
-}
-
 #pragma mark - Private Methods
 
 - (void)setupNavBar {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back_item"]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(handleCickBackButton:)];
+    self.hideOriginalNavBar = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, 64)];
+    [navBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
+    [self.view addSubview:navBar];
+    
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:self.userCompanyInfo.company.companyName];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back_item"]
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(handleCickBackButton:)];
+    navItem.leftBarButtonItem = leftItem;
+    [navBar setItems:@[navItem]];
+    
+    self.navBar = navBar;
+    self.navItem = navItem;
+    
+    [self updateNavigationBarWithAlpha:0.0];
 }
 
 - (void)setupSubviews {
@@ -92,7 +95,7 @@
     [tableView registerClass:[TCCompanyIntroViewCell class] forCellReuseIdentifier:@"TCCompanyIntroViewCell"];
     [tableView registerClass:[TCCompanyTitleViewCell class] forCellReuseIdentifier:@"TCCompanyTitleViewCell"];
     [tableView registerClass:[TCCompanyEmployeesViewCell class] forCellReuseIdentifier:@"TCCompanyEmployeesViewCell"];
-    [self.view addSubview:tableView];
+    [self.view insertSubview:tableView belowSubview:self.navBar];
     self.tableView = tableView;
     
     TCCompanyHeaderView *headerView = [[TCCompanyHeaderView alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, self.headerViewHeight)];
@@ -118,41 +121,33 @@
 
 #pragma mark - Navigation Bar
 
-- (void)restoreNavigationBar {
-    [self updateNavigationBarWithAlpha:1.0];
-}
-
 - (void)updateNavigationBar {
-    if ([[self.navigationController.childViewControllers lastObject] isEqual:self]) {
-        CGFloat offsetY = self.tableView.contentOffset.y;
-        CGFloat alpha = offsetY / (self.headerViewHeight - self.topBarHeight);
-        alpha = roundf(alpha * 100) / 100;
-        if (alpha > 1.0) alpha = 1.0;
-        if (alpha < 0.0) alpha = 0.0;
-        [self updateNavigationBarWithAlpha:alpha];
-    }
+    CGFloat offsetY = self.tableView.contentOffset.y;
+    CGFloat alpha = offsetY / (self.headerViewHeight - self.topBarHeight);
+    if (alpha > 1.0) alpha = 1.0;
+    if (alpha < 0.0) alpha = 0.0;
+    [self updateNavigationBarWithAlpha:alpha];
 }
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha {
     UIColor *tintColor = nil, *titleColor = nil;
-    if (alpha < 1.0) {
-        self.navigationController.navigationBar.translucent = YES;
-        self.needsLightContentStatusBar = NO;
-        tintColor = TCRGBColor(65, 65, 65);
-        titleColor = [UIColor clearColor];
-    } else {
-        self.navigationController.navigationBar.translucent = NO;
+    if (alpha > 0.7) {
         self.needsLightContentStatusBar = YES;
         tintColor = [UIColor whiteColor];
         titleColor = [UIColor whiteColor];
+    } else {
+        self.needsLightContentStatusBar = NO;
+        tintColor = TCRGBColor(42, 42, 42);
+        titleColor = [UIColor clearColor];
     }
-    [self.navigationController.navigationBar setTintColor:tintColor];
-    self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSFontAttributeName : [UIFont systemFontOfSize:16],
-                                                                    NSForegroundColorAttributeName : titleColor
-                                                                    };
+    [self.navBar setTintColor:tintColor];
+    self.navBar.titleTextAttributes = @{
+                                        NSFontAttributeName : [UIFont systemFontOfSize:16],
+                                        NSForegroundColorAttributeName : titleColor
+                                        };
+    
     UIImage *bgImage = [UIImage imageWithColor:TCARGBColor(42, 42, 42, alpha)];
-    [self.navigationController.navigationBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
+    [self.navBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark - Status Bar
