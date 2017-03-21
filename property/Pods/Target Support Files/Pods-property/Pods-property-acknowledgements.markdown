@@ -44,11 +44,6 @@ Copyright © 2014 AutoNavi. All Rights Reserved.
 Copyright © 2014 AutoNavi. All Rights Reserved.
 
 
-## Bugly
-
-Copyright 2016 tencent.com. All rights reserved.
-
-
 ## MBProgressHUD
 
 Copyright © 2009-2016 Matej Bukovinski
