@@ -17,6 +17,7 @@
 #import "TCPropertyManageListController.h"
 #import "TCQRCodeViewController.h"
 #import "TCNavigationController.h"
+#import "TCLocksAndVisitorsViewController.h"
 
 #import "TCProfileHeaderView.h"
 #import "TCProfileViewCell.h"
@@ -267,6 +268,8 @@ TCPhotoModeViewDelegate>
         [self handleDidSelectedIDAuthCell];
     } else if (indexPath.row == 1) { // 我的公司
         [self handleDidSelectedMyCompanyCell];
+    } else if (indexPath.row == 2) { // 社区开锁
+        [self handleDidSelectedLockCell];
     }
 }
 
@@ -468,13 +471,29 @@ TCPhotoModeViewDelegate>
     [self.navigationController pushViewController:currentVC animated:YES];
 }
 
+- (void)handleDidSelectedLockCell {
+    TCUserInfo *userInfo = [[TCBuluoApi api] currentUserSession].userInfo;
+    if (![userInfo.authorizedStatus isEqualToString:@"SUCCESS"]) {
+        [MBProgressHUD showHUDWithMessage:@"身份认证成功后才可使用开门功能"];
+        return;
+    }
+    if (!userInfo.companyID) {
+        [MBProgressHUD showHUDWithMessage:@"绑定公司成功后才可使用授权功能"];
+        return;
+    }
+    
+    TCLocksAndVisitorsViewController *lockAndVisitorVC = [[TCLocksAndVisitorsViewController alloc] initWithType:TCLocks];
+    lockAndVisitorVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:lockAndVisitorVC animated:YES];
+}
 
 #pragma mark - Override Methods
 
 - (NSArray *)fodderArray {
     if (_fodderArray == nil) {
         _fodderArray = @[@[@{@"title": @"身份认证", @"icon": @"profile_identity_icon"},
-                           @{@"title": @"我的公司", @"icon": @"profile_company_icon"},]
+                           @{@"title": @"我的公司", @"icon": @"profile_company_icon"},
+                           @{@"title": @"社区开锁", @"icon": @"profile_lock_icon"}]
                          ];
     }
     return _fodderArray;

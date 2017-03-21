@@ -42,11 +42,13 @@
     // wechat
     [WXApi registerApp:kWXAppID];
     
+    /*
     TCSipAPI *sipApi = [TCSipAPI api];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [sipApi login];
     });
+     */
     
     
     [self startLocationAction];
@@ -127,14 +129,15 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     
-    if (![[TCSipAPI api] isLogin]) {
-        [[TCSipAPI api] login];
-    }
+//    if (![[TCSipAPI api] isLogin]) {
+//        [[TCSipAPI api] login];
+//    }
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    /*
     LinphoneManager *instance = LinphoneManager.instance;
     [instance becomeActive];
     
@@ -151,6 +154,7 @@
             
         }
     }
+     */
 }
 
 
