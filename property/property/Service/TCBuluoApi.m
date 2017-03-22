@@ -183,7 +183,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         request.token = self.currentUserSession.token;
         [request setValue:nickname forParam:@"nickname"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.nickname = nickname;
                 [self setUserSession:userSession];
@@ -211,7 +211,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         request.token = self.currentUserSession.token;
         [request setValue:avatar forParam:@"picture"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.picture = avatar;
                 [self setUserSession:userSession];
@@ -239,7 +239,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         request.token = self.currentUserSession.token;
         [request setValue:cover forParam:@"cover"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.cover = cover;
                 [self setUserSession:userSession];
@@ -278,7 +278,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         }
         [request setValue:sex forParam:@"sex"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.sex = sex;
                 userSession.userInfo.gender = gender;
@@ -308,7 +308,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         NSTimeInterval timestamp = [birthdate timeIntervalSince1970];
         [request setValue:[NSNumber numberWithInteger:(timestamp * 1000)] forParam:@"birthday"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.birthday = (NSUInteger)(timestamp * 1000);
                 [self setUserSession:userSession];
@@ -350,7 +350,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         }
         [request setValue:emotion forKey:@"emotion"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.emotion = emotion;
                 userSession.userInfo.emotionState = emotionState;
@@ -382,7 +382,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
             [request setValue:dic[key] forParam:key];
         }
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.province = userAddress.province;
                 userSession.userInfo.city = userAddress.city;
@@ -415,7 +415,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
             [request setValue:dic[key] forParam:key];
         }
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.phone = phoneInfo.phone;
                 [self setUserSession:userSession];
@@ -472,7 +472,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 //        [request setValue:userCompanyInfo.position forParam:@"position"];
 //        [request setValue:userCompanyInfo.personNum forParam:@"personNum"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 201) {
+            if (response.codeInResponse == 201) {
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo.communityID = userCompanyInfo.community.ID;
                 userSession.userInfo.communityName = userCompanyInfo.community.name;
@@ -506,7 +506,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
             [request setValue:dic[key] forParam:key];
         }
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 TCUserInfo *userInfo = [[TCUserInfo alloc] initWithObjectDictionary:response.data];
                 TCUserSession *userSession = self.currentUserSession;
                 userSession.userInfo = userInfo;
@@ -536,7 +536,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
     request.token = self.currentUserSession.token;
     [request setValue:phone forParam:@"value"];
     [[TCClient client] send:request finish:^(TCClientResponse *response) {
-        if (response.statusCode == 202) {
+        if (response.codeInResponse == 202) {
             if (resultBlock) {
                 TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
             }
@@ -689,7 +689,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
             TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut uploadURLString:uploadURLString];
             [request setImageData:imageData];
             [[TCClient client] upload:request progress:progress finish:^(TCClientResponse *response) {
-                if (response.statusCode == 200) {
+                if (response.codeInResponse == 200) {
                     if (resultBlock) {
                         TC_CALL_ASYNC_MQ(resultBlock(YES, uploadInfo, nil));
                     }
@@ -798,7 +798,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
 //        request.token = self.currentUserSession.token;
 //        [request setValue:@"ssssss" forParam:@"value"];
 //        [[TCClient client] send:request finish:^(TCClientResponse *response) {
-//            if (response.statusCode == 200) {
+//            if (response.codeInResponse == 200) {
 //                if (resultBlock) {
 //                    TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
 //                }
@@ -855,7 +855,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         }
         
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 if (resultBlock) {
                     TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
                 }
@@ -879,7 +879,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 if (resultBlock) {
                     TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
                 }
@@ -905,7 +905,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 if (resultBlock) {
                     NSMutableArray *lockList = [NSMutableArray array];
                     NSArray *dicArray = response.data;
@@ -936,7 +936,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 200) {
+            if (response.codeInResponse == 200) {
                 if (resultBlock) {
                     NSMutableArray *lockList = [NSMutableArray array];
                     NSArray *dicArray = response.data;
@@ -995,7 +995,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodDelete apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
-            if (response.statusCode == 204) {
+            if (response.codeInResponse == 204) {
                 if (resultBlock) {
                     TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
                 }

@@ -68,7 +68,7 @@
     if (serializationError) {
         TCClientRequestError *error = [TCClientRequestError errorWithCode:TCClientRequestErrorRequestSerializationError
                                                            andDescription:serializationError.localizedDescription];
-        TCClientResponse *response = [TCClientResponse responseWithStatusCode:0 data:nil orError:error];
+        TCClientResponse *response = [TCClientResponse responseWithStatusCode:0 codeInResponse:0 data:nil orError:error];
         if (responseBlock) {
             responseBlock(response);
         }
@@ -78,7 +78,8 @@
     __block NSURLSessionDataTask *dataTask = nil;
     dataTask = [self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         id dataInResponse = nil;
-        NSInteger codeInResponse = [(NSHTTPURLResponse *)response statusCode];
+        NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+        NSInteger codeInResponse = 0;
         if (!error) {
             serializationError = nil;
             NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:responseObject
@@ -101,14 +102,16 @@
                 }
             }
         } else {
-            if ([error.domain isEqualToString:NSURLErrorDomain]) {
+            if (statusCode == 401) { // 当前账号在其他设备登录
+                error = [TCClientRequestError errorWithCode:TCClientRequestErrorUserSessionInvalid andDescription:nil];
+            } else if ([error.domain isEqualToString:NSURLErrorDomain]) {
                 TCClientRequestErrorCode errorCode = [TCClientRequestError codeFromNSURLErrorCode:error.code];
                 error = [TCClientRequestError errorWithCode:errorCode andDescription:nil];
             } else {
                 error = [TCClientRequestError errorWithCode:TCClientRequestErrorNetworkError andDescription:nil];
             }
         }
-        TCClientResponse *clientResponse = [TCClientResponse responseWithStatusCode:codeInResponse data:dataInResponse orError:error];
+        TCClientResponse *clientResponse = [TCClientResponse responseWithStatusCode:statusCode codeInResponse:codeInResponse data:dataInResponse orError:error];
         if (responseBlock) {
             responseBlock(clientResponse);
         }
@@ -133,7 +136,7 @@
     if (serializationError) {
         TCClientRequestError *error = [TCClientRequestError errorWithCode:TCClientRequestErrorRequestSerializationError
                                                            andDescription:serializationError.localizedDescription];
-        TCClientResponse *response = [TCClientResponse responseWithStatusCode:0 data:nil orError:error];
+        TCClientResponse *response = [TCClientResponse responseWithStatusCode:0 codeInResponse:0 data:nil orError:error];
         if (responseBlock) {
             responseBlock(response);
         }
@@ -145,7 +148,8 @@
     
     __block NSURLSessionDataTask *dataTask = nil;
     dataTask = [self.sessionManager uploadTaskWithStreamedRequest:request progress:progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        NSInteger codeInResponse = [(NSHTTPURLResponse *)response statusCode];
+        NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+        NSInteger codeInResponse = 0;
         if (error) {
             if ([error.domain isEqualToString:NSURLErrorDomain]) {
                 TCClientRequestErrorCode errorCode = [TCClientRequestError codeFromNSURLErrorCode:error.code];
@@ -154,7 +158,7 @@
                 error = [TCClientRequestError errorWithCode:TCClientRequestErrorNetworkError andDescription:nil];
             }
         }
-        TCClientResponse *clientResponse = [TCClientResponse responseWithStatusCode:codeInResponse data:nil orError:error];
+        TCClientResponse *clientResponse = [TCClientResponse responseWithStatusCode:statusCode codeInResponse:codeInResponse data:nil orError:error];
         if (responseBlock) {
             responseBlock(clientResponse);
         }
