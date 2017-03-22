@@ -213,7 +213,7 @@
                     cell.subtitleLabel.text = self.userCompanyInfo.position;
                     break;
                 case 5:
-                    cell.titleLabel.text = @"工号";
+                    cell.titleLabel.text = @"门卡号码";
                     cell.subtitleLabel.text = self.userCompanyInfo.personNum;
                     break;
                     
