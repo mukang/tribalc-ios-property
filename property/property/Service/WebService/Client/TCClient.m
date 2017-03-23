@@ -104,6 +104,9 @@
         } else {
             if (statusCode == 401) { // 当前账号在其他设备登录
                 error = [TCClientRequestError errorWithCode:TCClientRequestErrorUserSessionInvalid andDescription:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:TCClientUnauthorizedNotification object:nil];
+                });
             } else if ([error.domain isEqualToString:NSURLErrorDomain]) {
                 TCClientRequestErrorCode errorCode = [TCClientRequestError codeFromNSURLErrorCode:error.code];
                 error = [TCClientRequestError errorWithCode:errorCode andDescription:nil];
