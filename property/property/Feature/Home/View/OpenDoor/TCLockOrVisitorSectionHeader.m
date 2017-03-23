@@ -74,7 +74,7 @@
 - (UILabel *)titleLabel {
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.textColor = TCRGBColor(42, 42, 42);
+        _titleLabel.textColor = TCBlackColor;
         _titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel.text = @"张小花";
     }
@@ -84,7 +84,7 @@
 - (UIView *)lineView {
     if (_lineView == nil) {
         _lineView = [[UIView alloc] init];
-        _lineView.backgroundColor = TCRGBColor(186, 186, 186);
+        _lineView.backgroundColor = TCLightGrayColor;
     }
     return _lineView;
 }

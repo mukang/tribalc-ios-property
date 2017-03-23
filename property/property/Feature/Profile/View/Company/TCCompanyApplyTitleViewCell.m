@@ -24,7 +24,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"企业绑定";
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [self.contentView addSubview:titleLabel];
     

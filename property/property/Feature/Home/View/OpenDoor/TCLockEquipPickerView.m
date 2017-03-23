@@ -111,7 +111,7 @@ static CGFloat const duration = 0.25;
     [containerView addSubview:confirmButton];
     
     UIPickerView *pickerView = [[UIPickerView alloc] init];
-    pickerView.backgroundColor = TCRGBColor(242, 242, 242);
+    pickerView.backgroundColor = TCBackgroundColor;
     pickerView.dataSource = self;
     pickerView.delegate = self;
     pickerView.frame = CGRectMake(0, 40, containerView.width, containerView.height - 40);
@@ -136,7 +136,7 @@ static CGFloat const duration = 0.25;
     if (!label) {
         label = [[UILabel alloc] init];
         label.textAlignment = NSTextAlignmentCenter;
-        label.textColor = TCRGBColor(42, 42, 42);
+        label.textColor = TCBlackColor;
         label.font = [UIFont systemFontOfSize:16];
         label.adjustsFontSizeToFitWidth = YES;
         label.baselineAdjustment = UIBaselineAdjustmentAlignCenters;

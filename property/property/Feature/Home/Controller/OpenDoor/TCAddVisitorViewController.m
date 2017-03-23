@@ -56,8 +56,8 @@ TCLockEquipPickerViewDelegate>
 
 - (void)setupSubviews {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    tableView.backgroundColor = TCRGBColor(242, 242, 242);
-    tableView.separatorColor = TCRGBColor(221, 221, 221);
+    tableView.backgroundColor = TCBackgroundColor;
+    tableView.separatorColor = TCSeparatorLineColor;
     tableView.dataSource = self;
     tableView.delegate = self;
     UINib *nib = [UINib nibWithNibName:@"TCCommonInputViewCell" bundle:[NSBundle mainBundle]];
@@ -72,7 +72,7 @@ TCLockEquipPickerViewDelegate>
     }];
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, 100)];
-    footerView.backgroundColor = TCRGBColor(242, 242, 242);
+    footerView.backgroundColor = TCBackgroundColor;
     TCCommonButton *generateButton = [TCCommonButton buttonWithTitle:@"生成二维码" color:TCCommonButtonColorBlue target:self action:@selector(handleClickGenerateButton:)];
     generateButton.y = 37;
     generateButton.centerX = TCScreenWidth * 0.5;

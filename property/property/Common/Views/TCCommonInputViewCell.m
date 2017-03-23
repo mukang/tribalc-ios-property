@@ -46,7 +46,7 @@
     NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:placeholder
                                                                  attributes:@{
                                                                               NSFontAttributeName: [UIFont systemFontOfSize:14],
-                                                                              NSForegroundColorAttributeName: TCRGBColor(154, 154, 154)
+                                                                              NSForegroundColorAttributeName: TCGrayColor
                                                                               }];
     self.textField.attributedPlaceholder = attStr;
 }

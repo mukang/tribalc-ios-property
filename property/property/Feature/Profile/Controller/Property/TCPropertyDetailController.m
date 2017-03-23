@@ -295,7 +295,7 @@
             //已接单
             
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(_doorTimeLabel.frame.origin.x, CGRectGetMaxY(_phoneLabel.frame)+15, _masterView.frame.size.width-_doorTimeLabel.frame.origin.x-5, _doorTimeLabel.frame.size.height+10)];
-            textField.layer.borderColor = TCRGBColor(154, 154, 154).CGColor;
+            textField.layer.borderColor = TCGrayColor.CGColor;
             textField.layer.cornerRadius = 3.0;
             textField.layer.borderWidth = 0.5;
             textField.clipsToBounds = YES;
@@ -307,7 +307,7 @@
             UILabel *lefLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, textField.frame.size.height)];
             lefLabel.text = @"请选择";
             lefLabel.textAlignment = NSTextAlignmentRight;
-            lefLabel.textColor = TCRGBColor(154, 154, 154);
+            lefLabel.textColor = TCGrayColor;
             lefLabel.font = [UIFont systemFontOfSize:14];
             textField.leftView = lefLabel;
             textField.leftViewMode = UITextFieldViewModeAlways;
@@ -466,7 +466,7 @@
             make.height.equalTo(@30);
             make.top.equalTo(_masterView.mas_bottom);
         }];
-        _moneyLabel.textColor = TCRGBColor(42, 42, 42);
+        _moneyLabel.textColor = TCBlackColor;
     }
     return _moneyLabel;
 }

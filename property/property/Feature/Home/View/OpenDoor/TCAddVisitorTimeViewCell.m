@@ -35,30 +35,30 @@
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"有效期";
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     titleLabel.font = [UIFont systemFontOfSize:16];
     [self.contentView addSubview:titleLabel];
     self.titleLabel = titleLabel;
     
     UILabel *beginLabel = [[UILabel alloc] init];
     beginLabel.text = @"当前时间";
-    beginLabel.textColor = TCRGBColor(186, 186, 186);
+    beginLabel.textColor = TCLightGrayColor;
     beginLabel.textAlignment = NSTextAlignmentCenter;
     beginLabel.font = [UIFont systemFontOfSize:TCRealValue(12)];
     beginLabel.layer.cornerRadius = 2.5;
     beginLabel.layer.borderWidth = 0.5;
-    beginLabel.layer.borderColor = TCRGBColor(186, 186, 186).CGColor;
+    beginLabel.layer.borderColor = TCLightGrayColor.CGColor;
     beginLabel.layer.masksToBounds = YES;
     [self.contentView addSubview:beginLabel];
     self.beginLabel = beginLabel;
     
     UILabel *endLabel = [[UILabel alloc] init];
-    endLabel.textColor = TCRGBColor(186, 186, 186);
+    endLabel.textColor = TCLightGrayColor;
     endLabel.textAlignment = NSTextAlignmentCenter;
     endLabel.font = [UIFont systemFontOfSize:TCRealValue(12)];
     endLabel.layer.cornerRadius = 2.5;
     endLabel.layer.borderWidth = 0.5;
-    endLabel.layer.borderColor = TCRGBColor(186, 186, 186).CGColor;
+    endLabel.layer.borderColor = TCLightGrayColor.CGColor;
     endLabel.layer.masksToBounds = YES;
     [self.contentView addSubview:endLabel];
     self.endLabel = endLabel;
@@ -67,7 +67,7 @@
     [endLabel addGestureRecognizer:tap];
     
     UIView *lineView = [[UIView alloc] init];
-    lineView.backgroundColor = TCRGBColor(186, 186, 186);
+    lineView.backgroundColor = TCLightGrayColor;
     [self.contentView addSubview:lineView];
     self.lineView = lineView;
 }

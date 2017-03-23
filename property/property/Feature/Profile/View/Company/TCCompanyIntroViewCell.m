@@ -34,14 +34,14 @@
     self.contentView.backgroundColor = [UIColor whiteColor];
     
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.textColor = TCRGBColor(42, 42, 42);
+    nameLabel.textColor = TCBlackColor;
     nameLabel.textAlignment = NSTextAlignmentCenter;
     nameLabel.font = [UIFont boldSystemFontOfSize:17];
     [self.contentView addSubview:nameLabel];
     self.nameLabel = nameLabel;
     
     UILabel *introLabel = [[UILabel alloc] init];
-    introLabel.textColor = TCRGBColor(42, 42, 42);
+    introLabel.textColor = TCBlackColor;
     introLabel.font = [UIFont systemFontOfSize:14];
     introLabel.numberOfLines = 0;
     [self.contentView addSubview:introLabel];

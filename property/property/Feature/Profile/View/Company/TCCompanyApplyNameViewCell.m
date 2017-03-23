@@ -24,13 +24,13 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"部门名称";
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     titleLabel.font = [UIFont systemFontOfSize:16];
     [self.contentView addSubview:titleLabel];
     
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.textAlignment = NSTextAlignmentLeft;
-    nameLabel.textColor = TCRGBColor(42, 42, 42);
+    nameLabel.textColor = TCBlackColor;
     nameLabel.font = [UIFont systemFontOfSize:14];
     [self.contentView addSubview:nameLabel];
     self.nameLabel = nameLabel;
