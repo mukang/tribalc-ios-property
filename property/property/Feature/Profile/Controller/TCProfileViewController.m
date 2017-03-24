@@ -171,7 +171,7 @@ TCPhotoModeViewDelegate>
         titleColor = [UIColor whiteColor];
     } else {
         self.needsLightContentStatusBar = NO;
-        tintColor = TCRGBColor(42, 42, 42);
+        tintColor = TCBlackColor;
         titleColor = [UIColor clearColor];
     }
     [self.navBar setTintColor:tintColor];

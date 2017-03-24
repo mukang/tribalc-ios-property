@@ -33,18 +33,18 @@
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"选择门锁";
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     titleLabel.font = [UIFont systemFontOfSize:16];
     [self.contentView addSubview:titleLabel];
     self.titleLabel = titleLabel;
     
     UILabel *deviceLabel = [[UILabel alloc] init];
-    deviceLabel.textColor = TCRGBColor(186, 186, 186);
+    deviceLabel.textColor = TCLightGrayColor;
     deviceLabel.textAlignment = NSTextAlignmentCenter;
     deviceLabel.font = [UIFont systemFontOfSize:TCRealValue(12)];
     deviceLabel.layer.cornerRadius = 2.5;
     deviceLabel.layer.borderWidth = 0.5;
-    deviceLabel.layer.borderColor = TCRGBColor(186, 186, 186).CGColor;
+    deviceLabel.layer.borderColor = TCLightGrayColor.CGColor;
     deviceLabel.layer.masksToBounds = YES;
     [self.contentView addSubview:deviceLabel];
     self.deviceLabel = deviceLabel;

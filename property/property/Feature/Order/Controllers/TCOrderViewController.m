@@ -38,7 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = TCRGBColor(242, 242, 242);
+    self.view.backgroundColor = TCBackgroundColor;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.titleTextAttributes = @{
                                                                     NSFontAttributeName : [UIFont systemFontOfSize:16],
@@ -144,7 +144,7 @@
 - (void)setupPromptView {
     UILabel *promptLabel = [[UILabel alloc] init];
     promptLabel.text = @"绑定公司成功后，才可查看订单信息\n请到“我的公司”中申请绑定";
-    promptLabel.textColor = TCRGBColor(42, 42, 42);
+    promptLabel.textColor = TCBlackColor;
     promptLabel.textAlignment = NSTextAlignmentCenter;
     promptLabel.font = [UIFont systemFontOfSize:16];
     promptLabel.numberOfLines = 0;

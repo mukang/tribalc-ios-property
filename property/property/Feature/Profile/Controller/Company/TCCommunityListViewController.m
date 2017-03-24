@@ -44,8 +44,8 @@
 
 - (void)setupSubviews {
     UITableView *tableView = [[UITableView alloc] init];
-    tableView.backgroundColor = TCRGBColor(242, 242, 242);
-    tableView.separatorColor = TCRGBColor(221, 221, 221);
+    tableView.backgroundColor = TCBackgroundColor;
+    tableView.separatorColor = TCSeparatorLineColor;
     tableView.rowHeight = 42;
     tableView.sectionHeaderHeight = 29;
     tableView.dataSource = self;
@@ -114,11 +114,11 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     TCCommunityListInCity *communityListInCity = self.communities[section];
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, TCScreenWidth, 29)];
-    bgView.backgroundColor = TCRGBColor(242, 242, 242);
+    bgView.backgroundColor = TCBackgroundColor;
     UILabel *cityLabel = [[UILabel alloc] init];
     cityLabel.text = communityListInCity.city;
     cityLabel.textAlignment = NSTextAlignmentLeft;
-    cityLabel.textColor = TCRGBColor(42, 42, 42);
+    cityLabel.textColor = TCBlackColor;
     cityLabel.font = [UIFont boldSystemFontOfSize:12];
     cityLabel.frame = CGRectMake(20, 0, bgView.width - 40, bgView.height);
     [bgView addSubview:cityLabel];

@@ -24,7 +24,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"我的信息";
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     titleLabel.font = [UIFont systemFontOfSize:14];
     [self.contentView addSubview:titleLabel];
     

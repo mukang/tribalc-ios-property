@@ -24,7 +24,7 @@
     [super viewWillAppear:animated];
     
     UIImageView *barImageView = self.navigationController.navigationBar.subviews.firstObject;
-    barImageView.backgroundColor = TCRGBColor(42, 42, 42);
+    barImageView.backgroundColor = TCBlackColor;
     barImageView.alpha = 1;
     [self setupNavigationBar];
 }

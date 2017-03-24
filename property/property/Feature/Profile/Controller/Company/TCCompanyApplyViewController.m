@@ -80,7 +80,7 @@
     UILabel *promptLabel = [[UILabel alloc] init];
     promptLabel.text = prompt;
     promptLabel.textAlignment = NSTextAlignmentCenter;
-    promptLabel.textColor = TCRGBColor(42, 42, 42);
+    promptLabel.textColor = TCBlackColor;
     promptLabel.font = [UIFont systemFontOfSize:16];
     promptLabel.numberOfLines = 0;
     [self.view addSubview:promptLabel];

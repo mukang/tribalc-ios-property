@@ -36,13 +36,13 @@ static NSString *InputMessage = @"InputMessage";
     if (self.type == TCLockQRCodeTypeOneself) {
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.textAlignment = NSTextAlignmentCenter;
-        nameLabel.textColor = TCRGBColor(42, 42, 42);
+        nameLabel.textColor = TCBlackColor;
         nameLabel.font = [UIFont systemFontOfSize:14];
         [self addSubview:nameLabel];
         self.nameLabel = nameLabel;
         
         UIView *lineView = [[UIView alloc] init];
-        lineView.backgroundColor = TCRGBColor(221, 221, 221);
+        lineView.backgroundColor = TCSeparatorLineColor;
         [self addSubview:lineView];
         
         [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,16 +65,16 @@ static NSString *InputMessage = @"InputMessage";
         UILabel *shareLabel = [[UILabel alloc] init];
         shareLabel.text = @"分享";
         shareLabel.textAlignment = NSTextAlignmentCenter;
-        shareLabel.textColor = TCRGBColor(154, 154, 154);
+        shareLabel.textColor = TCGrayColor;
         shareLabel.font = [UIFont systemFontOfSize:14];
         [self addSubview:shareLabel];
         
         UIView *leftlineView = [[UIView alloc] init];
-        leftlineView.backgroundColor = TCRGBColor(221, 221, 221);
+        leftlineView.backgroundColor = TCSeparatorLineColor;
         [self addSubview:leftlineView];
         
         UIView *rightlineView = [[UIView alloc] init];
-        rightlineView.backgroundColor = TCRGBColor(221, 221, 221);
+        rightlineView.backgroundColor = TCSeparatorLineColor;
         [self addSubview:rightlineView];
         
         UIButton *wechatButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -75,14 +75,14 @@
     UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"选择门锁"];
     navBar.titleTextAttributes = @{
                                         NSFontAttributeName : [UIFont systemFontOfSize:16],
-                                        NSForegroundColorAttributeName : TCRGBColor(42, 42, 42)
+                                        NSForegroundColorAttributeName : TCBlackColor
                                         };
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back_item_black"]
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
                                                                 action:@selector(pop)];
     navItem.leftBarButtonItem = leftItem;
-    [navBar setTintColor:TCRGBColor(42, 42, 42)];
+    [navBar setTintColor:TCBlackColor];
     [navBar setBackgroundImage:[UIImage imageWithColor:TCARGBColor(42, 42, 42, 0.0)] forBarMetrics:UIBarMetricsDefault];
     [navBar setItems:@[navItem]];
 }
@@ -182,7 +182,7 @@
     UIView *noVisitorView = [[UIView alloc] init];
     noVisitorView.backgroundColor = [UIColor whiteColor];
     noVisitorView.layer.cornerRadius = 5.0;
-    noVisitorView.layer.borderColor = TCRGBColor(186, 186, 186).CGColor;
+    noVisitorView.layer.borderColor = TCLightGrayColor.CGColor;
     CGFloat scale = TCScreenWidth > 375.0 ? 3 : 2;
     noVisitorView.layer.borderWidth = 1 / scale;
     noVisitorView.clipsToBounds = YES;
@@ -194,7 +194,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = title;
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.textColor = TCRGBColor(154, 154, 154);
+    titleLabel.textColor = TCGrayColor;
     titleLabel.font = [UIFont systemFontOfSize:12];
     [noVisitorView addSubview:titleLabel];
     
@@ -342,7 +342,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.layer.cornerRadius = 5.0;
-        _tableView.layer.borderColor = TCRGBColor(186, 186, 186).CGColor;
+        _tableView.layer.borderColor = TCLightGrayColor.CGColor;
         CGFloat scale = TCScreenWidth > 375.0 ? 3 : 2;
         _tableView.layer.borderWidth = 1 / scale;
         _tableView.clipsToBounds = YES;
@@ -384,7 +384,7 @@
     if (_btnLabel == nil) {
         _btnLabel = [[UILabel alloc] init];
         _btnLabel.font = [UIFont systemFontOfSize:12];
-        _btnLabel.textColor = TCRGBColor(42, 42, 42);
+        _btnLabel.textColor = TCBlackColor;
         _btnLabel.textAlignment = NSTextAlignmentCenter;
         _btnLabel.text = @"添加";
     }

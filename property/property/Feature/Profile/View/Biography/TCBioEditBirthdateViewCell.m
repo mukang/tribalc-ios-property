@@ -33,7 +33,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"出生日期";
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     titleLabel.font = [UIFont systemFontOfSize:16];
     [self.contentView addSubview:titleLabel];
     self.titleLabel = titleLabel;
@@ -45,12 +45,12 @@
     UITextField *textField = [[UITextField alloc] init];
     textField.userInteractionEnabled = NO;
     textField.textAlignment = NSTextAlignmentLeft;
-    textField.textColor = TCRGBColor(42, 42, 42);
+    textField.textColor = TCBlackColor;
     textField.font = [UIFont systemFontOfSize:14];
     textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请选择出生日期"
                                                                       attributes:@{
                                                                                    NSFontAttributeName: [UIFont systemFontOfSize:14],
-                                                                                   NSForegroundColorAttributeName: TCRGBColor(154, 154, 154)
+                                                                                   NSForegroundColorAttributeName: TCGrayColor
                                                                                    }];
     textField.returnKeyType = UIReturnKeyDone;
     [containerView addSubview:textField];

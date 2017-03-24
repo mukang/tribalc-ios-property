@@ -32,19 +32,19 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"昵称";
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     titleLabel.font = [UIFont systemFontOfSize:16];
     [self.contentView addSubview:titleLabel];
     self.titleLabel = titleLabel;
     
     UITextField *textField = [[UITextField alloc] init];
     textField.textAlignment = NSTextAlignmentLeft;
-    textField.textColor = TCRGBColor(42, 42, 42);
+    textField.textColor = TCBlackColor;
     textField.font = [UIFont systemFontOfSize:14];
     textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入昵称"
                                                                       attributes:@{
                                                                                    NSFontAttributeName: [UIFont systemFontOfSize:14],
-                                                                                   NSForegroundColorAttributeName: TCRGBColor(154, 154, 154)
+                                                                                   NSForegroundColorAttributeName: TCGrayColor
                                                                                    }];
     textField.returnKeyType = UIReturnKeyDone;
     [self.contentView addSubview:textField];

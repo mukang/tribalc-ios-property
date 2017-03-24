@@ -43,11 +43,11 @@
     titleLabel.text = @"取消原因";
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:16];
-    titleLabel.textColor = TCRGBColor(42, 42, 42);
+    titleLabel.textColor = TCBlackColor;
     [whiteView addSubview:titleLabel];
     
     UIView *lineView = [[UIView alloc] init];
-    lineView.backgroundColor = TCRGBColor(154, 154, 154);
+    lineView.backgroundColor = TCGrayColor;
     [whiteView addSubview:lineView];
     
     _applyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -58,7 +58,7 @@
     [_applyBtn addSubview:_applyImageView];
     
     UILabel *applyLabel = [[UILabel alloc] init];
-    applyLabel.textColor = TCRGBColor(42, 42, 42);
+    applyLabel.textColor = TCBlackColor;
     applyLabel.text = @"报修者要取消订单";
     applyLabel.font = [UIFont systemFontOfSize:14];
     [_applyBtn addSubview:applyLabel];
@@ -72,7 +72,7 @@
     [_masterBtn addSubview:_masterImageView];
     
     UILabel *masterLabel = [[UILabel alloc] init];
-    masterLabel.textColor = TCRGBColor(42, 42, 42);
+    masterLabel.textColor = TCBlackColor;
     masterLabel.text = @"维修师傅要取消订单";
     masterLabel.font = [UIFont systemFontOfSize:14];
     [_masterBtn addSubview:masterLabel];

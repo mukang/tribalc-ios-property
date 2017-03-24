@@ -33,7 +33,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"昵称";
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = TCRGBColor(154, 154, 154);
+    titleLabel.textColor = TCGrayColor;
     titleLabel.font = [UIFont systemFontOfSize:16];
     [self.contentView addSubview:titleLabel];
     self.titleLabel = titleLabel;
@@ -68,7 +68,7 @@
         self.titleLabel.textColor = TCRGBColor(81, 199, 209);
         self.selectedImageView.hidden = NO;
     } else {
-        self.titleLabel.textColor = TCRGBColor(154, 154, 154);
+        self.titleLabel.textColor = TCGrayColor;
         self.selectedImageView.hidden = YES;
     }
 }

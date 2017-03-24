@@ -33,17 +33,17 @@
     [self addSubview:imageView];
     
     UILabel *deviceLabel = [[UILabel alloc] init];
-    deviceLabel.textColor = TCRGBColor(42, 42, 42);
+    deviceLabel.textColor = TCBlackColor;
     deviceLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:deviceLabel];
     
     UILabel *visitorLabel = [[UILabel alloc] init];
-    visitorLabel.textColor = TCRGBColor(42, 42, 42);
+    visitorLabel.textColor = TCBlackColor;
     visitorLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:visitorLabel];
     
     UILabel *phoneLabel = [[UILabel alloc] init];
-    phoneLabel.textColor = TCRGBColor(42, 42, 42);
+    phoneLabel.textColor = TCBlackColor;
     phoneLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:phoneLabel];
     
