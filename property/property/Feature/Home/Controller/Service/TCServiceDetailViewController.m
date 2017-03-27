@@ -300,7 +300,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.serviceDetail.detailStore.facilities.count) {
+    if (indexPath.row == 4 && self.serviceDetail.detailStore.facilities.count) {
         TCServiceFacilitiesViewController *vc = [[TCServiceFacilitiesViewController alloc] init];
         vc.facilities = self.serviceDetail.detailStore.facilities;
         [self.navigationController pushViewController:vc animated:YES];

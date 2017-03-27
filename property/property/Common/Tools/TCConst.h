@@ -12,5 +12,7 @@
 extern NSString *const TCBuluoUserLocationCoordinateKey;
 /** 需要认证信息或认证信息失败的通知 */
 extern NSString *const TCClientUnauthorizedNotification;
+/** 客服电话 */
+extern NSString *const TCCommonServiceTel;
 
 
