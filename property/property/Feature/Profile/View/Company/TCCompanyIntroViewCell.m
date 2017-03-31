@@ -8,7 +8,7 @@
 
 #import "TCCompanyIntroViewCell.h"
 #import "TCCompanyInfo.h"
-#import "TCExtendButton.h"
+#import <TCCommonLibs/TCExtendButton.h>
 
 @interface TCCompanyIntroViewCell ()
 

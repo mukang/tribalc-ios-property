@@ -7,12 +7,11 @@
 //
 
 #import "TCServiceListCell.h"
-#import "UIImage+Category.h"
+#import <TCCommonLibs/UIImage+Category.h>
 #import <UIImageView+WebCache.h>
-#import "TCImageURLSynthesizer.h"
+#import <TCCommonLibs/TCImageURLSynthesizer.h>
 #import "TCService.h"
 #import <CoreLocation/CoreLocation.h>
-#import "NSObject+Distance.h"
 
 @interface TCServiceListCell ()
 

@@ -30,21 +30,45 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - TCCommonLibs (0.4.2):
+    - TCCommonLibs/Category (= 0.4.2)
+    - TCCommonLibs/Controller (= 0.4.2)
+    - TCCommonLibs/DicToModel (= 0.4.2)
+    - TCCommonLibs/Tools (= 0.4.2)
+    - TCCommonLibs/UI (= 0.4.2)
+    - TCCommonLibs/Utility (= 0.4.2)
+    - TCCommonLibs/WebService (= 0.4.2)
+  - TCCommonLibs/Category (0.4.2):
+    - SDWebImage
+    - TCCommonLibs/Utility
+  - TCCommonLibs/Controller (0.4.2):
+    - TCCommonLibs/Category
+  - TCCommonLibs/DicToModel (0.4.2)
+  - TCCommonLibs/Tools (0.4.2):
+    - TCCommonLibs/WebService
+  - TCCommonLibs/UI (0.4.2):
+    - Masonry
+    - MJRefresh
+    - SDWebImage
+    - TCCommonLibs/Category
+    - TCCommonLibs/Tools
+    - TCCommonLibs/Utility
+  - TCCommonLibs/Utility (0.4.2)
+  - TCCommonLibs/WebService (0.4.2):
+    - AFNetworking
+    - TCCommonLibs/Utility
   - UITableView+FDTemplateLayoutCell (1.4)
   - YYText (1.0.7)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0)
   - AMap2DMap-NO-IDFA
   - AMapLocation-NO-IDFA
   - AMapSearch-NO-IDFA
   - FLEX (~> 2.0)
-  - Masonry
-  - MBProgressHUD (~> 1.0.0)
+  - MBProgressHUD
   - MGSwipeTableCell (~> 1.5.6)
-  - MJRefresh (~> 3.1.12)
   - pop (~> 1.0.7)
-  - SDWebImage
+  - TCCommonLibs
   - UITableView+FDTemplateLayoutCell
   - YYText
 
@@ -61,9 +85,10 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  TCCommonLibs: a8b252896214eff9b877be8cc27d5a80447930dd
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 5c720eb6e9644a20054047fdef253bce293785a8
+PODFILE CHECKSUM: b47a2a858c3d2ca2d8f31c304e480c485e504c10
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1.beta.1

@@ -9,10 +9,10 @@
 #import "TCSettingViewController.h"
 #import "TCSuggestionViewController.h"
 
-#import "TCCommonIndicatorViewCell.h"
+#import <TCCommonLibs/TCCommonIndicatorViewCell.h>
 #import "TCSettingNotificationViewCell.h"
 #import "TCSettingCacheViewCell.h"
-#import "TCCommonButton.h"
+#import <TCCommonLibs/TCCommonButton.h>
 
 #import "TCBuluoApi.h"
 #import "TCAboutUSViewController.h"

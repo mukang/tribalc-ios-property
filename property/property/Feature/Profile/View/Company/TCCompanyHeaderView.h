@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TCImagePlayerView.h"
+#import <TCCommonLibs/TCImagePlayerView.h>
 @class TCCompanyInfo;
 
 @interface TCCompanyHeaderView : UIView

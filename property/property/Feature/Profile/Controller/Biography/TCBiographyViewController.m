@@ -15,14 +15,14 @@
 
 #import "TCBiographyViewCell.h"
 #import "TCBiographyAvatarViewCell.h"
-#import "TCPhotoModeView.h"
+#import <TCCommonLibs/TCPhotoModeView.h>
 
-#import "UIImage+Category.h"
+#import <TCCommonLibs/UIImage+Category.h>
 #import "MBProgressHUD+Category.h"
 
 #import "TCBuluoApi.h"
 #import "TCPhotoPicker.h"
-#import "TCImageURLSynthesizer.h"
+#import <TCCommonLibs/TCImageURLSynthesizer.h>
 
 @interface TCBiographyViewController () <UITableViewDelegate, UITableViewDataSource, TCPhotoModeViewDelegate, TCPhotoPickerDelegate>
 

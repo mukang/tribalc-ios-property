@@ -7,7 +7,7 @@
 //
 
 #import "TCBiographyAvatarViewCell.h"
-#import "TCImageURLSynthesizer.h"
+#import <TCCommonLibs/TCImageURLSynthesizer.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface TCBiographyAvatarViewCell ()

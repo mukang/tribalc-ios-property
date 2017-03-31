@@ -14,7 +14,7 @@
 #import "TCBuluoApi.h"
 
 #import "WXApiManager.h"
-#import "TCImageCompressHandler.h"
+#import <TCCommonLibs/TCImageCompressHandler.h>
 
 #import <MessageUI/MessageUI.h>
 

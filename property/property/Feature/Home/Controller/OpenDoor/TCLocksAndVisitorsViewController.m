@@ -10,7 +10,7 @@
 #import "TCLockQRCodeViewController.h"
 #import "TCAddVisitorViewController.h"
 
-#import "UIImage+Category.h"
+#import <TCCommonLibs/UIImage+Category.h>
 #import "TCVisitorLocksCell.h"
 #import "TCLockOrVisitorSectionHeader.h"
 #import "TCBuluoApi.h"

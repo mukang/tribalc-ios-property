@@ -10,8 +10,8 @@
 
 #import "TCCommonInputViewCell.h"
 
-#import "TCCommonButton.h"
-#import "TCDatePickerView.h"
+#import <TCCommonLibs/TCCommonButton.h>
+#import <TCCommonLibs/TCDatePickerView.h>
 #import "TCGenderPickerView.h"
 
 #import "TCBuluoApi.h"

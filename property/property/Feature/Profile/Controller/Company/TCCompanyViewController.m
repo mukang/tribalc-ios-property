@@ -17,7 +17,7 @@
 #import "TCCompanyInfo.h"
 #import "TCBuluoApi.h"
 
-#import "UIImage+Category.h"
+#import <TCCommonLibs/UIImage+Category.h>
 
 #import <UITableView+FDTemplateLayoutCell.h>
 

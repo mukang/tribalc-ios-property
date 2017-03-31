@@ -9,7 +9,7 @@
 #import "TCCompanyApplyViewController.h"
 #import "TCCompanyApplyDetailViewController.h"
 
-#import "TCCommonButton.h"
+#import <TCCommonLibs/TCCommonButton.h>
 #import "TCBuluoApi.h"
 
 @interface TCCompanyApplyViewController ()

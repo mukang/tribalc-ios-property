@@ -8,13 +8,13 @@
 
 #import "TCPropertyDetailController.h"
 #import "TCPropertyManage.h"
-#import "TCImageURLSynthesizer.h"
+#import <TCCommonLibs/TCImageURLSynthesizer.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TCPaymentViewController.h"
 #import "TCBuluoApi.h"
-#import "TCDatePickerView.h"
+#import <TCCommonLibs/TCDatePickerView.h>
 #import "TCOrderCancelView.h"
-#import "UIImage+Category.h"
+#import <TCCommonLibs/UIImage+Category.h>
 #import "TCImagePreviewObject.h"
 #import "TCImagePreviewController.h"
 
