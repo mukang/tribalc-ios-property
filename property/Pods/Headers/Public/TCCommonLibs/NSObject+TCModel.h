@@ -1,1 +1,0 @@
-../../../TCCommonLibs/TCCommonLibs/Classes/DicToModel/NSObject+TCModel.h

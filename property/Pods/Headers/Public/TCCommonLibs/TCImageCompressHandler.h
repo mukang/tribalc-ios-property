@@ -1,1 +1,0 @@
-../../../TCCommonLibs/TCCommonLibs/Classes/Tools/TCImageCompressHandler.h
