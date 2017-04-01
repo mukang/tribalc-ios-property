@@ -8292,6 +8292,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: wang shuaifeng (CL336ERY54)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wang shuaifeng (CL336ERY54)";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -8314,6 +8315,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "8270d4c7-f534-4d6b-a973-7a0239249de5";
 				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -8342,6 +8344,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Tribal Commune Technology Co., Ltd. (452XNHBVYZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Tribal Commune Technology Co., Ltd. (452XNHBVYZ)";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -8358,6 +8361,7 @@
 				PROVISIONING_PROFILE = "6c03c065-0d61-4efb-8431-2543ab475929";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -8369,6 +8373,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: kang mu (3KD2Q352NW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kang mu (3KD2Q352NW)";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8405,8 +8410,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5ff660b3-a959-4d04-a991-4cbd286b385f";
+				PROVISIONING_PROFILE = "8270d4c7-f534-4d6b-a973-7a0239249de5";
 				PROVISIONING_PROFILE_SPECIFIER = "Property Development";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -8418,6 +8424,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Tribal Commune Technology Co., Ltd. (452XNHBVYZ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hangzhou Tribal Commune Technology Co., Ltd. (452XNHBVYZ)";
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 452XNHBVYZ;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -8454,8 +8461,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.buluo-gs.property";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a2b3c382-0b8a-4859-9005-db60e28bfaf2";
+				PROVISIONING_PROFILE = "26ef3a07-c1f8-486c-9f97-e7df18794fdd";
 				PROVISIONING_PROFILE_SPECIFIER = "Property Distribution";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
