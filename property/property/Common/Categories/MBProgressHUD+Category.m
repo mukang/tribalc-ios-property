@@ -11,8 +11,6 @@
 
 @implementation MBProgressHUD (Category)
 
-
-
 + (void)showHUD:(BOOL)animated {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     TCTabBarController *vc = (TCTabBarController *)keyWindow.rootViewController;

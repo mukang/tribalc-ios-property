@@ -9,7 +9,7 @@
 #import "TCBioEditSMSViewController.h"
 #import "TCBiographyViewController.h"
 
-#import "UIImage+Category.h"
+#import <TCCommonLibs/UIImage+Category.h>
 
 #import "TCBuluoApi.h"
 

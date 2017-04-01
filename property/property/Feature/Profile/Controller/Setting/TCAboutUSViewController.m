@@ -8,6 +8,10 @@
 
 #import "TCAboutUSViewController.h"
 
+#if DEBUG
+#import <FLEXManager.h>
+#endif
+
 @interface TCAboutUSViewController ()
 
 @end
@@ -25,6 +29,17 @@
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    UITapGestureRecognizer *tapG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    [self.view addGestureRecognizer:tapG];
+}
+
+- (void)tap {
+    
+#if DEBUG
+    // This could also live in a handler for a keyboard shortcut, debug menu item, etc.
+    [[FLEXManager sharedManager] showExplorer];
+#endif
     
 }
 

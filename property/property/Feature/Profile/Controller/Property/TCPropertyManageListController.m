@@ -10,8 +10,8 @@
 #import "TCBuluoApi.h"
 #import "TCPropertyManageWrapper.h"
 #import "TCPropertyManageCell.h"
-#import "TCRefreshHeader.h"
-#import "TCRefreshFooter.h"
+#import <TCCommonLibs/TCRefreshHeader.h>
+#import <TCCommonLibs/TCRefreshFooter.h>
 #import "TCPropertyDetailController.h"
 
 @interface TCPropertyManageListController ()<UITableViewDelegate,UITableViewDataSource>

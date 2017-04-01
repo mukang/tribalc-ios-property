@@ -8,9 +8,9 @@
 
 #import "TCCompanyHeaderView.h"
 #import "TCCompanyInfo.h"
-#import "TCImageURLSynthesizer.h"
+#import <TCCommonLibs/TCImageURLSynthesizer.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "UIImage+Category.h"
+#import <TCCommonLibs/UIImage+Category.h>
 
 @interface TCCompanyHeaderView ()
 
@@ -69,8 +69,7 @@
     UIImage *placeholderImage = [UIImage placeholderImageWithSize:CGSizeMake(64, 64)];
     [self.logoImageView sd_setImageWithURL:logoURL placeholderImage:placeholderImage options:SDWebImageRetryFailed];
     
-    self.imagePalyerView.pictures = companyInfo.pictures;
-    
+    [self.imagePalyerView setPictures:companyInfo.pictures isLocal:NO];
 }
 
 @end

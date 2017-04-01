@@ -7,14 +7,14 @@
 //
 
 #import "TCOrderViewController.h"
-#import "TCTabView.h"
+#import <TCCommonLibs/TCRefreshHeader.h>
 #import "TCPropertyManageWrapper.h"
-#import "TCRefreshFooter.h"
-#include "TCRefreshHeader.h"
+#import <TCCommonLibs/TCRefreshFooter.h>
 #import "TCBuluoApi.h"
 #import "TCPropertyManageCell.h"
 #import "TCPropertyDetailController.h"
-#import "TCCommonButton.h"
+#import <TCCommonLibs/TCCommonButton.h>
+#import <TCCommonLibs/TCTabView.h>
 
 @interface TCOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 

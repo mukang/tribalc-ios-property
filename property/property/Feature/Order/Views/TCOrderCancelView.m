@@ -7,7 +7,7 @@
 //
 
 #import "TCOrderCancelView.h"
-#import "TCCommonButton.h"
+#import <TCCommonLibs/TCCommonButton.h>
 
 @interface TCOrderCancelView ()
 

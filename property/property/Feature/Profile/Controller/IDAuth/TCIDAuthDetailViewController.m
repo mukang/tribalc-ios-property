@@ -9,7 +9,7 @@
 #import "TCIDAuthDetailViewController.h"
 #import "TCIDAuthViewController.h"
 
-#import "TCCommonButton.h"
+#import <TCCommonLibs/TCCommonButton.h>
 #import "TCIDAuthDetailViewCell.h"
 
 #import "TCBuluoApi.h"

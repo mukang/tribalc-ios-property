@@ -9,12 +9,12 @@
 #import "TCAddVisitorViewController.h"
 #import "TCLockQRCodeViewController.h"
 
-#import "TCCommonButton.h"
+#import <TCCommonLibs/TCCommonButton.h>
 #import "TCCommonInputViewCell.h"
 #import "TCAddVisitorTimeViewCell.h"
 #import "TCAddVisitorDeviceViewCell.h"
 
-#import "TCDatePickerView.h"
+#import <TCCommonLibs/TCDatePickerView.h>
 #import "TCLockEquipPickerView.h"
 
 #import "TCBuluoApi.h"

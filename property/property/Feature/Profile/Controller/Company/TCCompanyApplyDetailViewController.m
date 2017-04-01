@@ -10,7 +10,7 @@
 #import "TCCommunityListViewController.h"
 #import "TCCompanyApplyViewController.h"
 
-#import "TCCommonButton.h"
+#import <TCCommonLibs/TCCommonButton.h>
 #import "TCCommonInputViewCell.h"
 #import "TCCompanyApplyTitleViewCell.h"
 #import "TCCompanyApplyNameViewCell.h"
