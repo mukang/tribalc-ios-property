@@ -35,13 +35,13 @@ lane :to_firim do
   # 第一个递增 Build，第二个设定Version。
   # 如果你有多个target，就必须指定target的值，否则它会直接找找到的第一个plist修改
   # 在这里我建议每一个打的包的Build都要不一样，这样crash了拿到日志，可以对应到ipa上
-  #increment_build_number_in_plist(target: [target_name])
-  #increment_version_number_in_plist(
-  #  target: [target_name],
-  #  version_number: '7.1.3'
-  #  )
+  increment_build_number_in_plist(target: “property”)
+  increment_version_number_in_plist(
+    target: “property”,
+    version_number: ‘1.0.4’
+    )
 
-  increment_build_number
+  #increment_build_number
   git_increase_build_version(branch: "master")
   # gym用来编译ipa
   gym(
@@ -65,15 +65,15 @@ lane :to_appstore do
   # 执行 carthage bootstrap
   # carthage
   # 增加build版本号
-  increment_build_number
+  #increment_build_number
+
+  increment_build_number_in_plist(target: “property”)
+  increment_version_number_in_plist(
+    target: “property”,
+    version_number: ‘1.0.4’
+    )
   git_increase_build_version(branch: "master")
   # 编译代码
-
-   #increment_build_number_in_plist(target: “individual”)
-   #increment_version_number_in_plist(
-   # target: “individual”,
-   # version_number: ‘1.0.3’
-   # )
   gym(
 	clean: true,
 	scheme: “property”,
