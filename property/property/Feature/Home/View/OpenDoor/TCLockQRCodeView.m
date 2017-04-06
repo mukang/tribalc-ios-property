@@ -21,8 +21,6 @@ static NSString *InputMessage = @"InputMessage";
         weakSelf = self;
         _type = type;
         self.backgroundColor = [UIColor whiteColor];
-        self.layer.cornerRadius = 7.5;
-        self.layer.masksToBounds = YES;
         [self setupSubviews];
     }
     return self;
@@ -34,34 +32,12 @@ static NSString *InputMessage = @"InputMessage";
     self.codeImageView = codeImageView;
     
     if (self.type == TCLockQRCodeTypeOneself) {
-        UILabel *nameLabel = [[UILabel alloc] init];
-        nameLabel.textAlignment = NSTextAlignmentCenter;
-        nameLabel.textColor = TCBlackColor;
-        nameLabel.font = [UIFont systemFontOfSize:14];
-        [self addSubview:nameLabel];
-        self.nameLabel = nameLabel;
-        
-        UIView *lineView = [[UIView alloc] init];
-        lineView.backgroundColor = TCSeparatorLineColor;
-        [self addSubview:lineView];
-        
-        [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.trailing.equalTo(weakSelf);
-            make.top.equalTo(weakSelf).offset(TCRealValue(50));
-            make.height.mas_equalTo(0.5);
-        }];
-        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.equalTo(weakSelf).offset(10);
-            make.trailing.equalTo(weakSelf).offset(-10);
-            make.top.equalTo(weakSelf);
-            make.bottom.equalTo(lineView.mas_top);
-        }];
         [codeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(TCRealValue(180), TCRealValue(180)));
-            make.top.equalTo(lineView.mas_bottom).offset(TCRealValue(36));
-            make.centerX.equalTo(weakSelf);
+            make.edges.equalTo(self);
         }];
     } else {
+        self.layer.cornerRadius = 7.5;
+        self.layer.masksToBounds = YES;
         UILabel *shareLabel = [[UILabel alloc] init];
         shareLabel.text = @"分享";
         shareLabel.textAlignment = NSTextAlignmentCenter;

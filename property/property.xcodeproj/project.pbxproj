@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		449872E0BD2A034E9EAA7BCE /* libPods-property.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60C01C459883F0F2D9D46B1 /* libPods-property.a */; };
+		552D6C251E950C9D00CA4EA3 /* TCMyLockQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 552D6C241E950C9D00CA4EA3 /* TCMyLockQRCodeController.m */; };
 		559D88351E1257EB00982697 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D88341E1257EB00982697 /* main.m */; };
 		559D88381E1257EB00982697 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 559D88371E1257EB00982697 /* AppDelegate.mm */; };
 		559D88401E1257EB00982697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 559D883F1E1257EB00982697 /* Assets.xcassets */; };
@@ -643,6 +644,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		552D6C231E950C9D00CA4EA3 /* TCMyLockQRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCMyLockQRCodeController.h; sourceTree = "<group>"; };
+		552D6C241E950C9D00CA4EA3 /* TCMyLockQRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCMyLockQRCodeController.m; sourceTree = "<group>"; };
 		559D88301E1257EB00982697 /* property.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = property.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559D88341E1257EB00982697 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		559D88361E1257EB00982697 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -7533,6 +7536,8 @@
 				7A0191491E7A907A00283822 /* TCAddVisitorViewController.m */,
 				7A01914E1E7A907A00283822 /* TCLockQRCodeViewController.h */,
 				7A01914F1E7A907A00283822 /* TCLockQRCodeViewController.m */,
+				552D6C231E950C9D00CA4EA3 /* TCMyLockQRCodeController.h */,
+				552D6C241E950C9D00CA4EA3 /* TCMyLockQRCodeController.m */,
 			);
 			path = OpenDoor;
 			sourceTree = "<group>";
@@ -8039,7 +8044,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FE34FF64244B53EB63A6FCE7 /* [CP] Embed Pods Frameworks */ = {
@@ -8112,6 +8117,7 @@
 				559D88381E1257EB00982697 /* AppDelegate.mm in Sources */,
 				559D940C1E135D8000982697 /* TCScannerMaskView.m in Sources */,
 				559D92F31E135D6400982697 /* TCRecommendHeader.m in Sources */,
+				552D6C251E950C9D00CA4EA3 /* TCMyLockQRCodeController.m in Sources */,
 				55EC5BDD1E23833C00C5FB73 /* TCNavigationDelegate.m in Sources */,
 				559D93D71E135D8000982697 /* TCPropertyManageListController.m in Sources */,
 				7A1A85681E66DF6800BB5EDB /* TCServiceSelectItemView.m in Sources */,

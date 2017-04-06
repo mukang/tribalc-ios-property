@@ -14,6 +14,7 @@
 #import "TCVisitorLocksCell.h"
 #import "TCLockOrVisitorSectionHeader.h"
 #import "TCBuluoApi.h"
+#import "TCMyLockQRCodeController.h"
 
 #define kTCLocksCellID @"TCLocksCell"
 #define kTCVisitorLockCellID @"TCVisitorLocksCell"
@@ -309,18 +310,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TCLockQRCodeViewController *vc;
     if (self.locksOrVisitors == TCLocks) {
         TCLockEquip *lockEquip = self.lockArr[indexPath.row];
-        vc = [[TCLockQRCodeViewController alloc] initWithLockQRCodeType:TCLockQRCodeTypeOneself];
+        TCMyLockQRCodeController *vc = [[TCMyLockQRCodeController alloc] init];
         vc.equipID = lockEquip.ID;
+        [self.navigationController pushViewController:vc animated:YES];
     } else {
         TCLockWrapper *wrapper = self.lockArr[indexPath.section];
         TCLockKey *key = wrapper.keys[indexPath.row];
-        vc = [[TCLockQRCodeViewController alloc] initWithLockQRCodeType:TCLockQRCodeTypeVisitor];
+        TCLockQRCodeViewController *vc = [[TCLockQRCodeViewController alloc] initWithLockQRCodeType:TCLockQRCodeTypeVisitor];
         vc.lockKey = key;
+        [self.navigationController pushViewController:vc animated:YES];
     }
-    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
