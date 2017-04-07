@@ -689,7 +689,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
             TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPut uploadURLString:uploadURLString];
             [request setImageData:imageData];
             [[TCClient client] upload:request progress:progress finish:^(TCClientResponse *response) {
-                if (response.codeInResponse == 200) {
+                if (response.statusCode == 200) {
                     if (resultBlock) {
                         TC_CALL_ASYNC_MQ(resultBlock(YES, uploadInfo, nil));
                     }
