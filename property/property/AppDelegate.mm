@@ -172,7 +172,7 @@
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
     }
     
-    if ([url.absoluteString hasPrefix:@"buluo_property"]) {
+    if ([url.absoluteString hasPrefix:@"buluoproperty"]) {
         [self pushUnitySetUpViewController];
         return YES;
     }
@@ -185,7 +185,7 @@
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
     }
     
-    if ([url.absoluteString hasPrefix:@"buluo_property"]) {
+    if ([url.absoluteString hasPrefix:@"buluoproperty"]) {
         [self pushUnitySetUpViewController];
         return YES;
     }
