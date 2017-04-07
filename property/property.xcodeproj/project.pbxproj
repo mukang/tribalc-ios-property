@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		449872E0BD2A034E9EAA7BCE /* libPods-property.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60C01C459883F0F2D9D46B1 /* libPods-property.a */; };
 		552D6C251E950C9D00CA4EA3 /* TCMyLockQRCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 552D6C241E950C9D00CA4EA3 /* TCMyLockQRCodeController.m */; };
+		552D6C2B1E9771BA00CA4EA3 /* TCUnitySetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 552D6C2A1E9771BA00CA4EA3 /* TCUnitySetUpViewController.m */; };
 		559D88351E1257EB00982697 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D88341E1257EB00982697 /* main.m */; };
 		559D88381E1257EB00982697 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 559D88371E1257EB00982697 /* AppDelegate.mm */; };
 		559D88401E1257EB00982697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 559D883F1E1257EB00982697 /* Assets.xcassets */; };
@@ -646,6 +647,8 @@
 /* Begin PBXFileReference section */
 		552D6C231E950C9D00CA4EA3 /* TCMyLockQRCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCMyLockQRCodeController.h; sourceTree = "<group>"; };
 		552D6C241E950C9D00CA4EA3 /* TCMyLockQRCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCMyLockQRCodeController.m; sourceTree = "<group>"; };
+		552D6C291E9771BA00CA4EA3 /* TCUnitySetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCUnitySetUpViewController.h; sourceTree = "<group>"; };
+		552D6C2A1E9771BA00CA4EA3 /* TCUnitySetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCUnitySetUpViewController.m; sourceTree = "<group>"; };
 		559D88301E1257EB00982697 /* property.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = property.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559D88341E1257EB00982697 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		559D88361E1257EB00982697 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -3156,6 +3159,8 @@
 			children = (
 				7A2A77501E6D5A02000CFAA8 /* TCLaunchViewController.h */,
 				7A2A77511E6D5A02000CFAA8 /* TCLaunchViewController.m */,
+				552D6C291E9771BA00CA4EA3 /* TCUnitySetUpViewController.h */,
+				552D6C2A1E9771BA00CA4EA3 /* TCUnitySetUpViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -8110,6 +8115,7 @@
 				7A0191541E7A907A00283822 /* TCAddVisitorViewController.m in Sources */,
 				559D93EC1E135D8000982697 /* TCBioEditBirthdateViewCell.m in Sources */,
 				559D91F61E12655D00982697 /* MBProgressHUD+Category.m in Sources */,
+				552D6C2B1E9771BA00CA4EA3 /* TCUnitySetUpViewController.m in Sources */,
 				559D946A1E1364A400982697 /* TCUserCompanyInfo.m in Sources */,
 				7A0191741E7A930800283822 /* TCLockQRCodeTitleView.m in Sources */,
 				559D93CF1E135D8000982697 /* TCIDAuthViewController.m in Sources */,
