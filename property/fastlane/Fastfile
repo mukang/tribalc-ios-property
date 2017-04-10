@@ -38,7 +38,7 @@ lane :to_firim do
   increment_build_number_in_plist(target: “property”)
   increment_version_number_in_plist(
     target: “property”,
-    version_number: ‘1.0.4’
+    version_number: ‘1.0.3’
     )
 
   #increment_build_number
@@ -70,7 +70,7 @@ lane :to_appstore do
   increment_build_number_in_plist(target: “property”)
   increment_version_number_in_plist(
     target: “property”,
-    version_number: ‘1.0.4’
+    version_number: ‘1.0.3’
     )
   git_increase_build_version(branch: "master")
   # 编译代码
