@@ -224,7 +224,7 @@
     self.second = (NSInteger)(lockKey.endTime/1000 - [[NSDate date] timeIntervalSince1970]);
     self.secondLabel.text = [NSString stringWithFormat:@"%ld",(long)self.second];
     self.deviceLabel.text = [NSString stringWithFormat:@"设备名称：%@",lockKey.equipName];
-    self.qRCodeView.codeImageView.image = [self generateQRCodeImageWithCodeString:@"sssssssssssssssssss" size:CGSizeMake(TCRealValue(180), TCRealValue(180))];
+    self.qRCodeView.codeImageView.image = [self generateQRCodeImageWithCodeString:lockKey.key size:CGSizeMake(TCRealValue(180), TCRealValue(180))];
     [self addGetPasswordTimer];
 }
 
