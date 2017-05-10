@@ -610,10 +610,10 @@
 		7A8352FB1E5EEF8D003A8E76 /* TCServiceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352F81E5EEF8D003A8E76 /* TCServiceAnnotation.m */; };
 		7A8352FC1E5EEF8D003A8E76 /* TCServiceAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352FA1E5EEF8D003A8E76 /* TCServiceAnnotationView.m */; };
 		7A8352FF1E5EEFE8003A8E76 /* TCHomeCommodityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8352FE1E5EEFE8003A8E76 /* TCHomeCommodityTableViewCell.m */; };
+		7AB03F151EC3052300DFB037 /* HD4.0''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB03F121EC3052300DFB037 /* HD4.0''.png */; };
+		7AB03F161EC3052300DFB037 /* HD4.7''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB03F131EC3052300DFB037 /* HD4.7''.png */; };
+		7AB03F171EC3052300DFB037 /* HD5.5''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AB03F141EC3052300DFB037 /* HD5.5''.png */; };
 		7ABCC10D1E26333D00750E47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ABCC10B1E26333D00750E47 /* LaunchScreen.storyboard */; };
-		7AC2935A1E6D893800FDC861 /* HD4.0''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC293571E6D893800FDC861 /* HD4.0''.png */; };
-		7AC2935B1E6D893800FDC861 /* HD4.7''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC293581E6D893800FDC861 /* HD4.7''.png */; };
-		7AC2935C1E6D893800FDC861 /* HD5.5''.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC293591E6D893800FDC861 /* HD5.5''.png */; };
 		7AC293601E6D904D00FDC861 /* TCUserAgreement.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7AC2935F1E6D904D00FDC861 /* TCUserAgreement.rtf */; };
 		7AF2ECEB1E1F7887008C556E /* TCCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE41E1F7887008C556E /* TCCommunity.m */; };
 		7AF2ECED1E1F7887008C556E /* TCCommunityListInCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF2ECE81E1F7887008C556E /* TCCommunityListInCity.m */; };
@@ -2802,11 +2802,11 @@
 		7A8352FA1E5EEF8D003A8E76 /* TCServiceAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCServiceAnnotationView.m; sourceTree = "<group>"; };
 		7A8352FD1E5EEFE8003A8E76 /* TCHomeCommodityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCommodityTableViewCell.h; sourceTree = "<group>"; };
 		7A8352FE1E5EEFE8003A8E76 /* TCHomeCommodityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCommodityTableViewCell.m; sourceTree = "<group>"; };
+		7AB03F121EC3052300DFB037 /* HD4.0''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.0''.png"; sourceTree = "<group>"; };
+		7AB03F131EC3052300DFB037 /* HD4.7''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.7''.png"; sourceTree = "<group>"; };
+		7AB03F141EC3052300DFB037 /* HD5.5''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD5.5''.png"; sourceTree = "<group>"; };
 		7ABCC10C1E26333D00750E47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7ABCC10E1E26335000750E47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		7AC293571E6D893800FDC861 /* HD4.0''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.0''.png"; sourceTree = "<group>"; };
-		7AC293581E6D893800FDC861 /* HD4.7''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD4.7''.png"; sourceTree = "<group>"; };
-		7AC293591E6D893800FDC861 /* HD5.5''.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HD5.5''.png"; sourceTree = "<group>"; };
 		7AC2935F1E6D904D00FDC861 /* TCUserAgreement.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TCUserAgreement.rtf; sourceTree = "<group>"; };
 		7AF2ECE31E1F7887008C556E /* TCCommunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCommunity.h; sourceTree = "<group>"; };
 		7AF2ECE41E1F7887008C556E /* TCCommunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCommunity.m; sourceTree = "<group>"; };
@@ -7571,9 +7571,9 @@
 		7A252CDF1E25CC4C00A4A58F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7AC293571E6D893800FDC861 /* HD4.0''.png */,
-				7AC293581E6D893800FDC861 /* HD4.7''.png */,
-				7AC293591E6D893800FDC861 /* HD5.5''.png */,
+				7AB03F121EC3052300DFB037 /* HD4.0''.png */,
+				7AB03F131EC3052300DFB037 /* HD4.7''.png */,
+				7AB03F141EC3052300DFB037 /* HD5.5''.png */,
 				7A252CE21E25CC9500A4A58F /* downImage.jpg */,
 				7A252CE31E25CC9500A4A58F /* downImage01.jpg */,
 			);
@@ -7761,7 +7761,6 @@
 				559D91E61E12653400982697 /* leaving_dreams.mkv in Resources */,
 				559D91191E12653200982697 /* its_a_game.mkv in Resources */,
 				559D91BE1E12653400982697 /* BcToolboxTargets-release.cmake in Resources */,
-				7AC2935B1E6D893800FDC861 /* HD4.7''.png in Resources */,
 				559D90AA1E12653200982697 /* ORTPTargets-release.cmake in Resources */,
 				559D95081E139C6500982697 /* rootca.pem in Resources */,
 				559D91211E12653300982697 /* Matroska2Config.cmake in Resources */,
@@ -7776,7 +7775,6 @@
 				559D91011E12653200982697 /* BZRTPTargets.cmake in Resources */,
 				559D91D51E12653400982697 /* rootca.pem in Resources */,
 				559D911C1E12653200982697 /* oldphone-mono-30s.caf in Resources */,
-				7AC2935C1E6D893800FDC861 /* HD5.5''.png in Resources */,
 				559D917C1E12653300982697 /* ringback.wav in Resources */,
 				559D91CA1E12653400982697 /* BZRTPConfig.cmake in Resources */,
 				559D947A1E13686700982697 /* TCCommonInputViewCell.xib in Resources */,
@@ -7812,6 +7810,7 @@
 				559D916B1E12653300982697 /* LinphoneConfig.cmake in Resources */,
 				559D91731E12653300982697 /* Mediastreamer2Targets.cmake in Resources */,
 				559D90AB1E12653200982697 /* ORTPTargets.cmake in Resources */,
+				7AB03F151EC3052300DFB037 /* HD4.0''.png in Resources */,
 				559D95051E139C6500982697 /* linphonerc in Resources */,
 				559D91171E12653200982697 /* four_hands_together.mkv in Resources */,
 				559D90A51E12653200982697 /* Mediastreamer2ConfigVersion.cmake in Resources */,
@@ -7863,6 +7862,7 @@
 				559D917E1E12653300982697 /* house_keeping.mkv in Resources */,
 				559D91071E12653200982697 /* LinphoneTargets-release.cmake in Resources */,
 				559D91E81E12653400982697 /* oldphone-mono-30s.caf in Resources */,
+				7AB03F161EC3052300DFB037 /* HD4.7''.png in Resources */,
 				559D91BD1E12653400982697 /* BcToolboxConfigVersion.cmake in Resources */,
 				559D91781E12653300982697 /* dont_wait_too_long.mkv in Resources */,
 				7A252CE51E25CC9500A4A58F /* downImage01.jpg in Resources */,
@@ -7976,6 +7976,7 @@
 				559D91851E12653300982697 /* toy-mono.wav in Resources */,
 				559D91871E12653300982697 /* Matroska2Config.cmake in Resources */,
 				559D911F1E12653200982697 /* toy-mono.wav in Resources */,
+				7AB03F171EC3052300DFB037 /* HD5.5''.png in Resources */,
 				559D95061E139C6500982697 /* linphonerc-factory in Resources */,
 				559D909D1E12653200982697 /* nowebcamCIF.jpg in Resources */,
 				559D917D1E12653300982697 /* four_hands_together.mkv in Resources */,
@@ -8001,7 +8002,6 @@
 				559D91621E12653300982697 /* BelrTargets-release.cmake in Resources */,
 				559D90EA1E12653200982697 /* bctoolbox.pc in Resources */,
 				559D91121E12653200982697 /* dont_wait_too_long.mkv in Resources */,
-				7AC2935A1E6D893800FDC861 /* HD4.0''.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8049,7 +8049,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FE34FF64244B53EB63A6FCE7 /* [CP] Embed Pods Frameworks */ = {
