@@ -274,11 +274,7 @@ typedef NS_ENUM(NSInteger, TCPayChannel) {
  @param resultBlock 结果回调，propertyManageWrapper为nil时表示获取失败，失败原因见error的code和userInfo
  */
 - (void)fetchPropertyWrapper:(NSString *)status count:(NSUInteger)count sortSkip:(NSString *)sortSkip result:(void (^)(TCPropertyManageWrapper *propertyManageWrapper, NSError *error))resultBlock;
-//
-///**
-// 手机开门
-//*/
-//- (void)openDoorWithResult:(void (^)(BOOL, NSError *))resultBlock;
+
 
 /**
  获取物业报修订单详情

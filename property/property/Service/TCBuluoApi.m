@@ -467,10 +467,6 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
         request.token = self.currentUserSession.token;
         [request setValue:userCompanyInfo.company.ID forParam:@"value"];
-//        [request setValue:userCompanyInfo.company.ID forParam:@"companyId"];
-//        [request setValue:userCompanyInfo.department forParam:@"department"];
-//        [request setValue:userCompanyInfo.position forParam:@"position"];
-//        [request setValue:userCompanyInfo.personNum forParam:@"personNum"];
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
             if (response.codeInResponse == 201) {
                 TCUserSession *userSession = self.currentUserSession;
@@ -767,7 +763,6 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         NSString *limitSizePart = [NSString stringWithFormat:@"limitSize=%zd", count];
         NSString *sortSkipPart = sortSkip ? [NSString stringWithFormat:@"&sortSkip=%@", sortSkip] : @"";
         NSString *apiName = [NSString stringWithFormat:@"property_orders?type=property&me=%@&%@%@%@", self.currentUserSession.assigned, s, limitSizePart, sortSkipPart];
-//        NSString *apiName = [NSString stringWithFormat:@"persons/%@/property_management?%@%@%@", @"5824287f0cf210fc9cef5e42", s, limitSizePart, sortSkipPart];
         TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodGet apiName:apiName];
         request.token = self.currentUserSession.token;
         [[TCClient client] send:request finish:^(TCClientResponse *response) {
@@ -789,34 +784,7 @@ NSString *const TCBuluoApiNotificationUserInfoDidUpdate = @"TCBuluoApiNotificati
         }
     }
 }
-//
-//#pragma 手机开锁
-//- (void)openDoorWithResult:(void (^)(BOOL, NSError *))resultBlock {
-//    if ([self isUserSessionValid]) {
-//        NSString *apiName = [NSString stringWithFormat:@"persons/%@/unlock_door?", self.currentUserSession.assigned];
-//        TCClientRequest *request = [TCClientRequest requestWithHTTPMethod:TCClientHTTPMethodPost apiName:apiName];
-//        request.token = self.currentUserSession.token;
-//        [request setValue:@"ssssss" forParam:@"value"];
-//        [[TCClient client] send:request finish:^(TCClientResponse *response) {
-//            if (response.codeInResponse == 200) {
-//                if (resultBlock) {
-//                    TC_CALL_ASYNC_MQ(resultBlock(YES, nil));
-//                }
-//            } else {
-//                if (resultBlock) {
-//                    TC_CALL_ASYNC_MQ(resultBlock(NO, response.error));
-//
-//                }
-//            }
-//        }];
-//    }else {
-//        TCClientRequestError *sessionError = [TCClientRequestError errorWithCode:TCClientRequestErrorUserSessionInvalid andDescription:nil];
-//        if (resultBlock) {
-//            TC_CALL_ASYNC_MQ(resultBlock(NO, sessionError));
-//            
-//        }
-//    }
-//}
+
 
 - (void)fetchPropertyDetailWithOrderId:(NSString *)orderId result:(void (^)(TCPropertyManage *propertyManage, NSError *error))resultBlock {
     if ([self isUserSessionValid]) {
