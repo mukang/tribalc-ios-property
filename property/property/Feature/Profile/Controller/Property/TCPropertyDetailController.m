@@ -169,7 +169,7 @@
     }else {
         self.navigationItem.rightBarButtonItem = nil;
     }
-    
+        
     NSTimeInterval appointTime = _propertyManage.appointTime/1000;
     NSDate *appointDate = [NSDate dateWithTimeIntervalSince1970:appointTime];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
