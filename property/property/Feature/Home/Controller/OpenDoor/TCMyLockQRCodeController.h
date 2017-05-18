@@ -7,7 +7,20 @@
 //
 
 #import <TCCommonLibs/TCBaseViewController.h>
+@class TCMultiLockKey;
+
+typedef NS_ENUM(NSInteger, TCQRCodeType) {
+    TCQRCodeTypeSystem = 0,
+    TCQRCodeTypeCustom
+};
 
 @interface TCMyLockQRCodeController : TCBaseViewController
-@property (strong, nonatomic) NSString *equipID;
+
+@property (nonatomic, readonly) TCQRCodeType codeType;
+
+@property (strong, nonatomic) TCMultiLockKey *multiLockKey;
+@property (copy, nonatomic) NSArray *equipIDs;
+
+- (instancetype)initWithLockQRCodeType:(TCQRCodeType)codeType;
+
 @end

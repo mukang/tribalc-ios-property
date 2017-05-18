@@ -162,31 +162,30 @@
 
 - (void)loadData {
     if (self.type == TCLockQRCodeTypeOneself) {
-        TCVisitorInfo *info = [[TCVisitorInfo alloc] init];
-        info.equipId = self.equipID;
-        [MBProgressHUD showHUD:YES];
-        [[TCBuluoApi api] fetchLockKeyWithVisitorInfo:info result:^(TCLockKey *lockKey, NSError *error) {
-            if (lockKey) {
-                [MBProgressHUD hideHUD:YES];
-                [weakSelf reloadUIWithLockKey:lockKey];
-            } else {
-                NSString *reason = error.localizedDescription ?: @"请稍后再试";
-                [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"获取数据失败，%@", reason]];
-            }
-        }];
+//        TCVisitorInfo *info = [[TCVisitorInfo alloc] init];
+//        info.equipId = self.equipID;
+//        [MBProgressHUD showHUD:YES];
+//        [[TCBuluoApi api] fetchLockKeyWithVisitorInfo:info result:^(TCLockKey *lockKey, NSError *error) {
+//            if (lockKey) {
+//                [MBProgressHUD hideHUD:YES];
+//                [weakSelf reloadUIWithLockKey:lockKey];
+//            } else {
+//                NSString *reason = error.localizedDescription ?: @"请稍后再试";
+//                [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"获取数据失败，%@", reason]];
+//            }
+//        }];
     } else {
         [self reloadUIWithLockKey:self.lockKey];
     }
 }
 
-- (void)reloadUIWithLockKey:(TCLockKey *)lockKey {
+- (void)reloadUIWithLockKey:(TCMultiLockKey *)lockKey {
     NSString *endTimeStr = [self.dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:lockKey.endTime / 1000]];
     self.timeLabel.text = [NSString stringWithFormat:@"有效期截止：%@", endTimeStr];
     self.QRCodeView.codeImageView.image = [self generateQRCodeImageWithCodeString:lockKey.key size:CGSizeMake(TCRealValue(180), TCRealValue(180))];
     if (self.type == TCLockQRCodeTypeOneself) {
-        self.QRCodeView.nameLabel.text = [NSString stringWithFormat:@"设备名称：%@", lockKey.equipName];
+
     } else {
-        self.titleView.deviceLabel.text = [NSString stringWithFormat:@"设备名称：%@", lockKey.equipName];
         self.titleView.visitorLabel.text = [NSString stringWithFormat:@"访客姓名：%@", lockKey.name];
         self.titleView.phoneLabel.text = [NSString stringWithFormat:@"访客电话：%@", lockKey.phone];
     }

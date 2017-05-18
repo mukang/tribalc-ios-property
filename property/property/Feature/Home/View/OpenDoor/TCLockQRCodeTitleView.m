@@ -32,11 +32,6 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lock_QR_code_title"]];
     [self addSubview:imageView];
     
-    UILabel *deviceLabel = [[UILabel alloc] init];
-    deviceLabel.textColor = TCBlackColor;
-    deviceLabel.font = [UIFont systemFontOfSize:14];
-    [self addSubview:deviceLabel];
-    
     UILabel *visitorLabel = [[UILabel alloc] init];
     visitorLabel.textColor = TCBlackColor;
     visitorLabel.font = [UIFont systemFontOfSize:14];
@@ -48,7 +43,6 @@
     [self addSubview:phoneLabel];
     
     self.imageView = imageView;
-    self.deviceLabel = deviceLabel;
     self.visitorLabel = visitorLabel;
     self.phoneLabel = phoneLabel;
 }
@@ -58,21 +52,18 @@
     
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(TCRealValue(33), TCRealValue(38)));
-        make.leading.equalTo(weakSelf).offset(TCRealValue(80));
+        make.leading.equalTo(weakSelf).offset(TCRealValue(60));
         make.centerY.equalTo(weakSelf);
     }];
-    [self.deviceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+
+    [self.visitorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(16);
-        make.top.equalTo(weakSelf).offset(TCRealValue(14));
+        make.top.equalTo(weakSelf).offset(TCRealValue(25));
         make.leading.equalTo(weakSelf.imageView.mas_trailing).offset(TCRealValue(20));
         make.trailing.equalTo(weakSelf.mas_trailing).offset(-10);
     }];
-    [self.visitorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.height.equalTo(weakSelf.deviceLabel);
-        make.top.equalTo(weakSelf.deviceLabel.mas_bottom).offset(TCRealValue(8));
-    }];
     [self.phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.height.equalTo(weakSelf.deviceLabel);
+        make.leading.trailing.height.equalTo(weakSelf.visitorLabel);
         make.top.equalTo(weakSelf.visitorLabel.mas_bottom).offset(TCRealValue(8));
     }];
 }

@@ -18,6 +18,7 @@
 #import "TCQRCodeViewController.h"
 #import "TCNavigationController.h"
 #import "TCLocksAndVisitorsViewController.h"
+#import "TCMyLockQRCodeController.h"
 
 #import "TCProfileHeaderView.h"
 #import "TCProfileViewCell.h"
@@ -467,9 +468,28 @@ TCPhotoModeViewDelegate>
         return;
     }
     
-    TCLocksAndVisitorsViewController *lockAndVisitorVC = [[TCLocksAndVisitorsViewController alloc] initWithType:TCLocks];
-    lockAndVisitorVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:lockAndVisitorVC animated:YES];
+    TCVisitorInfo *visitorInfo = [[TCVisitorInfo alloc] init];
+    visitorInfo.equipIds = [NSArray array];
+    [MBProgressHUD showHUD:YES];
+    [[TCBuluoApi api] fetchMultiLockKeyWithVisitorInfo:visitorInfo result:^(TCMultiLockKey *multiLockKey, NSError *error) {
+        if (multiLockKey) {
+            [MBProgressHUD hideHUD:YES];
+            TCMyLockQRCodeController *vc = [[TCMyLockQRCodeController alloc] initWithLockQRCodeType:TCQRCodeTypeSystem];
+            vc.multiLockKey = multiLockKey;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            if (error.code == 300) {
+                [MBProgressHUD hideHUD:YES];
+                TCLocksAndVisitorsViewController *lockAndVisitorVC = [[TCLocksAndVisitorsViewController alloc] initWithType:TCLocks];
+                lockAndVisitorVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:lockAndVisitorVC animated:YES];
+            } else {
+                NSString *reason = error.localizedDescription ?: @"请稍后再试";
+                [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"开门失败，%@", reason]];
+            }
+        }
+    }];
 }
 
 #pragma mark - Override Methods

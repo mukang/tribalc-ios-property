@@ -39,13 +39,6 @@
     }];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    CGRect frame = self.imageView.frame;
-    frame.origin.x += 10;
-    self.imageView.frame = frame;
-}
-
 - (UIButton *)rightBtn {
     if (_rightBtn == nil) {
         _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -63,13 +56,6 @@
     }
 }
 
-//- (UIImageView *)rightImageView {
-//    if (_rightImageView == nil) {
-//        _rightImageView = [[UIImageView alloc] init];
-//        _rightImageView.image = [UIImage imageNamed:@"deleteVisitor"];
-//    }
-//    return _rightImageView;
-//}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

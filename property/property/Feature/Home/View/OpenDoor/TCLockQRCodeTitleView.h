@@ -10,7 +10,7 @@
 
 @interface TCLockQRCodeTitleView : UIView
 
-@property (weak, nonatomic) UILabel *deviceLabel;
+//@property (weak, nonatomic) UILabel *deviceLabel;
 @property (weak, nonatomic) UILabel *visitorLabel;
 @property (weak, nonatomic) UILabel *phoneLabel;
 

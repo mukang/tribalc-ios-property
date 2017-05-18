@@ -26,4 +26,7 @@
 
 @property (assign, nonatomic) BOOL actived;
 
+/** 是否是选中状态 */
+@property (nonatomic, getter=isMarked) BOOL marked;
+
 @end

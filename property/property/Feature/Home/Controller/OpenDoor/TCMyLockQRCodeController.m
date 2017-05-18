@@ -7,6 +7,8 @@
 //
 
 #import "TCMyLockQRCodeController.h"
+#import "TCNavigationController.h"
+
 #import "TCLockQRCodeView.h"
 #import "TCVisitorInfo.h"
 #import "TCBuluoApi.h"
@@ -35,16 +37,40 @@
 
 @property (strong, nonatomic) NSTimer *timer;
 
+@property (nonatomic) BOOL originalInteractivePopGestureEnabled;
+
 @end
 
 @implementation TCMyLockQRCodeController
+
+- (instancetype)initWithLockQRCodeType:(TCQRCodeType)codeType {
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _codeType = codeType;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setupNavBar];
     [self setUpViews];
-    [self loadData];
+    if (self.codeType == TCQRCodeTypeSystem) {
+        [self reloadUIWithMultiLockKey:self.multiLockKey];
+    } else {
+        [self loadData];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.codeType == TCQRCodeTypeCustom) {
+        TCNavigationController *nav = (TCNavigationController *)self.navigationController;
+        self.originalInteractivePopGestureEnabled = nav.enableInteractivePopGesture;
+        nav.enableInteractivePopGesture = NO;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -80,7 +106,13 @@
 }
 
 - (void)handleClickBackButton:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.codeType == TCQRCodeTypeSystem) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        TCNavigationController *nav = (TCNavigationController *)self.navigationController;
+        nav.enableInteractivePopGesture = self.originalInteractivePopGestureEnabled;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)setUpViews {
@@ -199,18 +231,19 @@
 }
 
 - (void)loadData {
-    TCVisitorInfo *info = [[TCVisitorInfo alloc] init];
-    info.equipId = self.equipID;
+    TCVisitorInfo *visitorInfo = [[TCVisitorInfo alloc] init];
+    if (self.codeType == TCQRCodeTypeSystem) {
+        visitorInfo.equipIds = [NSArray array];
+    } else {
+        visitorInfo.equipIds = self.equipIDs;
+    }
     [MBProgressHUD showHUD:YES];
     @WeakObj(self)
-    [[TCBuluoApi api] fetchLockKeyWithVisitorInfo:info result:^(TCLockKey *lockKey, NSError *error) {
+    [[TCBuluoApi api] fetchMultiLockKeyWithVisitorInfo:visitorInfo result:^(TCMultiLockKey *multiLockKey, NSError *error) {
         @StrongObj(self)
-        if (lockKey) {
+        if (multiLockKey) {
             [MBProgressHUD hideHUD:YES];
-            [self reloadUIWithLockKey:lockKey];
-            self.imageView.image = [UIImage imageNamed:@"myLockQRBackgroundImage"];
-            self.coverView.hidden = YES;
-            self.refreshBtn.hidden = YES;
+            [self reloadUIWithMultiLockKey:multiLockKey];
         } else {
             self.refreshBtn.hidden = NO;
             NSString *reason = error.localizedDescription ?: @"请稍后再试";
@@ -219,12 +252,14 @@
     }];
 }
 
-- (void)reloadUIWithLockKey:(TCLockKey *)lockKey {
-    
-    self.second = (NSInteger)(lockKey.endTime/1000 - [[NSDate date] timeIntervalSince1970]);
+- (void)reloadUIWithMultiLockKey:(TCMultiLockKey *)multiLockKey {
+    self.imageView.image = [UIImage imageNamed:@"myLockQRBackgroundImage"];
+    self.coverView.hidden = YES;
+    self.refreshBtn.hidden = YES;
+    self.second = (NSInteger)(multiLockKey.endTime/1000 - [[NSDate date] timeIntervalSince1970]);
     self.secondLabel.text = [NSString stringWithFormat:@"%ld",(long)self.second];
-    self.deviceLabel.text = [NSString stringWithFormat:@"设备名称：%@",lockKey.equipName];
-    self.qRCodeView.codeImageView.image = [self generateQRCodeImageWithCodeString:lockKey.key size:CGSizeMake(TCRealValue(180), TCRealValue(180))];
+    self.deviceLabel.text = @"门锁二维码";
+    self.qRCodeView.codeImageView.image = [self generateQRCodeImageWithCodeString:multiLockKey.key size:CGSizeMake(TCRealValue(180), TCRealValue(180))];
     [self addGetPasswordTimer];
 }
 

@@ -60,6 +60,7 @@
 #import "TCLockEquip.h"
 #import "TCLockWrapper.h"
 #import "TCVisitorInfo.h"
+#import "TCMultiLockKey.h"
 
 @interface TCModelImport : NSObject
 
