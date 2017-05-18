@@ -239,12 +239,12 @@
     }
     [MBProgressHUD showHUD:YES];
     @WeakObj(self)
-    [[TCBuluoApi api] fetchMultiLockKeyWithVisitorInfo:visitorInfo result:^(TCMultiLockKey *multiLockKey, NSError *error) {
+    [[TCBuluoApi api] fetchMultiLockKeyWithVisitorInfo:visitorInfo result:^(TCMultiLockKey *multiLockKey, BOOL hasTooManyLocks, NSError *error) {
         @StrongObj(self)
         if (multiLockKey) {
             [MBProgressHUD hideHUD:YES];
             [self reloadUIWithMultiLockKey:multiLockKey];
-        } else {
+        } else if (error) {
             self.refreshBtn.hidden = NO;
             NSString *reason = error.localizedDescription ?: @"请稍后再试";
             [MBProgressHUD showHUDWithMessage:[NSString stringWithFormat:@"获取数据失败，%@", reason]];

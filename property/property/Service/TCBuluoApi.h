@@ -342,7 +342,7 @@ typedef NS_ENUM(NSInteger, TCPayChannel) {
  @param visitorInfo TCVisitorInfo对象
  @param resultBlock 结果回调
  */
-- (void)fetchMultiLockKeyWithVisitorInfo:(TCVisitorInfo *)visitorInfo result:(void(^)(TCMultiLockKey *multiLockKey, NSError *error))resultBlock;
+- (void)fetchMultiLockKeyWithVisitorInfo:(TCVisitorInfo *)visitorInfo result:(void(^)(TCMultiLockKey *multiLockKey, BOOL hasTooManyLocks, NSError *error))resultBlock;
 
 /**
  清除多锁二维码
