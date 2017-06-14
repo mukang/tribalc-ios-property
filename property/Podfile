@@ -12,4 +12,5 @@ pod 'AMap2DMap-NO-IDFA'
 pod 'AMapSearch-NO-IDFA'
 pod 'AMapLocation-NO-IDFA'
 pod 'FLEX', '~> 2.0', :configurations => ['Debug']
+pod 'Bugly'
 end

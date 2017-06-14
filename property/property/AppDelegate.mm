@@ -15,6 +15,10 @@
 #import "WXApiManager.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import <Bugly/Bugly.h>
+
+static NSString *const kBuglyAppID = @"9ed163958b";
+
 @interface AppDelegate ()<CLLocationManagerDelegate>
 
 @end
@@ -28,23 +32,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
-    //测试测试测试测试
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
     TCTabBarController *tabBarController = [[TCTabBarController alloc] init];
     self.window.rootViewController = tabBarController;
-    
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     [self showLaunchWindow];
     application.statusBarHidden = NO;
     
     // wechat
     [WXApi registerApp:kWXAppID];
+    
+    // Bugly
+    [Bugly startWithAppId:kBuglyAppID];
     
     [self startLocationAction];
     
